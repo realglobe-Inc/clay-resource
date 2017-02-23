@@ -1,0 +1,41 @@
+{
+  "classes": [
+    {
+      "name": "ClayResource",
+      "description": "",
+      "extends": [],
+      "access": "",
+      "virtual": false,
+      "fires": "",
+      "constructor": {
+        "name": "ClayResource",
+        "description": "",
+        "parameters": [],
+        "examples": []
+      }
+    }
+  ],
+  "functions": [
+    {
+      "name": "create",
+      "access": "",
+      "virtual": false,
+      "description": "Create a ClayResource instance",
+      "parameters": [
+        {
+          "name": "args",
+          "type": "*",
+          "description": "",
+          "default": "",
+          "optional": "",
+          "nullable": ""
+        }
+      ],
+      "examples": [],
+      "returns": {
+        "type": "ClayResource",
+        "description": ""
+      }
+    }
+  ]
+}
