@@ -9,8 +9,33 @@
       "fires": "",
       "constructor": {
         "name": "ClayResource",
-        "description": "",
-        "parameters": [],
+        "description": "Resource accessor",
+        "parameters": [
+          {
+            "name": "nameString",
+            "type": "string",
+            "description": "Name string",
+            "default": "",
+            "optional": "",
+            "nullable": ""
+          },
+          {
+            "name": "bounds",
+            "type": "Object.<string, function()>",
+            "description": "Method bounds",
+            "default": "",
+            "optional": "",
+            "nullable": ""
+          },
+          {
+            "name": "options",
+            "type": "Object",
+            "description": "Optional settings",
+            "default": "{}",
+            "optional": true,
+            "nullable": ""
+          }
+        ],
         "examples": []
       }
     }
@@ -35,6 +60,43 @@
       "returns": {
         "type": "ClayResource",
         "description": ""
+      }
+    },
+    {
+      "name": "fromDriver",
+      "access": "",
+      "virtual": false,
+      "description": "Create clayResource class from driver",
+      "parameters": [
+        {
+          "name": "driver",
+          "type": "Driver",
+          "description": "Driver to bind",
+          "default": "",
+          "optional": "",
+          "nullable": ""
+        },
+        {
+          "name": "nameString",
+          "type": "string",
+          "description": "Resource name string",
+          "default": "",
+          "optional": "",
+          "nullable": ""
+        },
+        {
+          "name": "options",
+          "type": "Object",
+          "description": "Optional settings",
+          "default": "{}",
+          "optional": true,
+          "nullable": ""
+        }
+      ],
+      "examples": [],
+      "returns": {
+        "type": "ClayResource",
+        "description": "Created class"
       }
     }
   ]
