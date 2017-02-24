@@ -1,6 +1,6 @@
 {
   "name": "clay-resource",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Resource accessor for ClayDB",
   "main": "lib",
   "scripts": {
