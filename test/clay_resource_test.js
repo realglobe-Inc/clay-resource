@@ -20,7 +20,7 @@ describe('clay-resource', function () {
   }))
 
   it('Clay resource', () => co(function * () {
-    let resource = new ClayResource('hoge@1.0.0', {
+    let resource = new ClayResource('hoge@example.com', {
       one () {
         return {}
       }
@@ -28,7 +28,7 @@ describe('clay-resource', function () {
     ok(resource)
     ok(resource.one)
     equal(resource.name, 'hoge')
-    equal(resource.version, '1.0.0')
+    equal(resource.domain, 'example.com')
   }))
 })
 
