@@ -6,8 +6,10 @@
 
 const fromDriver = require('../lib/from_driver.js')
 const clayDriverMemory = require('clay-driver-memory')
+const { decorate } = require('clay-entity')
 const { ok, equal } = require('assert')
 const asleep = require('asleep')
+const { generate: generateKeys, verify } = require('clay-crypto')
 const co = require('co')
 
 describe('from-driver', function () {
@@ -71,6 +73,23 @@ describe('from-driver', function () {
 
     let count = yield resource.destroyBulk([ created.id ])
     equal(count, 1)
+  }))
+  it('From driver seal', () => co(function * () {
+    let driver = clayDriverMemory()
+    let resource = fromDriver(driver, 'hogehoge')
+    let created = yield resource.create({ foo: 'bar' })
+    let { id } = created
+
+    let { privateKey, publicKey } = generateKeys()
+    yield resource.seal(privateKey, { by: 'foo!' })
+
+    let one = yield resource.one(id)
+    ok(one.$$seal)
+    equal(one.$$by, 'foo!')
+
+    ok(decorate(one).verify(publicKey))
+    one.hoge = 'fuge'
+    ok(!decorate(one).verify(publicKey))
   }))
 })
 
