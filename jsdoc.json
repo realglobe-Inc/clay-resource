@@ -289,6 +289,27 @@
             "type": "Object",
             "description": "{Promise.<[Symbol.iterator], function>} Iterable cursor"
           }
+        },
+        {
+          "name": "seal",
+          "access": "",
+          "virtual": false,
+          "description": "Seal resources",
+          "parameters": [
+            {
+              "name": "privateKey",
+              "type": "string",
+              "description": "",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            }
+          ],
+          "examples": [],
+          "returns": {
+            "type": "Promise",
+            "description": ""
+          }
         }
       ]
     }
