@@ -291,6 +291,27 @@
           }
         },
         {
+          "name": "first",
+          "access": "",
+          "virtual": false,
+          "description": "Get the first entity matches filter",
+          "parameters": [
+            {
+              "name": "filter",
+              "type": "Object",
+              "description": "Listing filter",
+              "default": "{}",
+              "optional": true,
+              "nullable": ""
+            }
+          ],
+          "examples": [],
+          "returns": {
+            "type": "Promise.<?ClayEntity>",
+            "description": "Found one"
+          }
+        },
+        {
           "name": "seal",
           "access": "",
           "virtual": false,
