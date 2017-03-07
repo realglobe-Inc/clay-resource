@@ -1,4 +1,4 @@
-# clay-resource@2.0.3
+# clay-resource@2.0.4
 
 Resource accessor for ClayDB
 
@@ -20,6 +20,7 @@ Resource accessor for ClayDB
   + [resource.destroyBulk(ids)](#clay-resource-classes-clay-resource-destroyBulk)
   + [resource.cursor(options)](#clay-resource-classes-clay-resource-cursor)
   + [resource.seal(privateKey, options)](#clay-resource-classes-clay-resource-seal)
+  + [resource.exists(filter)](#clay-resource-classes-clay-resource-exists)
 
 ## Functions
 
@@ -208,6 +209,17 @@ Seal resources
 | privateKey | string | RSA Private key |
 | options | Object | Optional settings |
 | options.by | string | For $$by |
+
+
+<a class='md-heading-link' name="clay-resource-classes-clay-resource-exists" ></a>
+
+### resource.exists(filter) -> `Promise.<boolean>`
+
+Check data exists
+
+| Param | Type | Description |
+| ----- | --- | -------- |
+| filter | Object | List filter |
 
 
 
