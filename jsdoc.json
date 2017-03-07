@@ -326,6 +326,27 @@
             "type": "Promise",
             "description": ""
           }
+        },
+        {
+          "name": "exists",
+          "access": "",
+          "virtual": false,
+          "description": "Check data exists",
+          "parameters": [
+            {
+              "name": "filter",
+              "type": "Object",
+              "description": "List filter",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            }
+          ],
+          "examples": [],
+          "returns": {
+            "type": "Promise.<boolean>",
+            "description": "Exists or not"
+          }
         }
       ]
     }
