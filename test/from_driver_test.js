@@ -46,6 +46,10 @@ describe('from-driver', function () {
     equal(updated.foo2, 'bar2')
     ok(updated.$$at > created.$$at)
 
+    let first = yield resource.first({ foo2: 'bar2' })
+    ok(first)
+    ok(first.foo2, 'bar2')
+
     yield resource.destroy(id)
   }))
 
