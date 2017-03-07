@@ -22,9 +22,11 @@
   },
   "homepage": "https://github.com/realglobe-Inc/clay-resource#readme",
   "dependencies": {
-    "clay-constants": "^2.0.1",
+    "clay-collection": "^1.0.1",
+    "clay-constants": "^2.3.2",
+    "clay-entity": "^1.2.1",
     "clay-resource-name": "^3.0.1",
-    "clay-schemas": "^1.0.2",
+    "clay-schemas": "^2.0.2",
     "co": "^4.6.0"
   },
   "devDependencies": {
@@ -37,10 +39,11 @@
     "ape-tasking": "^4.0.9",
     "ape-tmpl": "^5.0.20",
     "ape-updating": "^4.1.0",
-    "clay-driver-memory": "^2.1.5",
+    "asleep": "^1.0.3",
+    "clay-driver-memory": "^3.0.1",
     "coz": "^6.0.20",
     "injectmock": "^2.0.0",
-    "request": "^2.79.0",
+    "request": "^2.80.0",
     "sg-templates": "^1.3.2",
     "sugos-travis": "^2.0.7",
     "writeout": "^2.1.0"
