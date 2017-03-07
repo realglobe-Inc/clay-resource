@@ -1,4 +1,4 @@
-# clay-resource@2.1.0
+# clay-resource@2.0.4
 
 Resource accessor for ClayDB
 
@@ -19,6 +19,7 @@ Resource accessor for ClayDB
   + [resource.updateBulk(attributesHash)](#clay-resource-classes-clay-resource-updateBulk)
   + [resource.destroyBulk(ids)](#clay-resource-classes-clay-resource-destroyBulk)
   + [resource.cursor(options)](#clay-resource-classes-clay-resource-cursor)
+  + [resource.first(filter)](#clay-resource-classes-clay-resource-first)
   + [resource.seal(privateKey, options)](#clay-resource-classes-clay-resource-seal)
   + [resource.exists(filter)](#clay-resource-classes-clay-resource-exists)
 
@@ -196,6 +197,17 @@ Create cursor to cursor
 | Param | Type | Description |
 | ----- | --- | -------- |
 | options | Object | Optional settings |
+
+
+<a class='md-heading-link' name="clay-resource-classes-clay-resource-first" ></a>
+
+### resource.first(filter) -> `Promise.<?ClayEntity>`
+
+Get the first entity matches filter
+
+| Param | Type | Description |
+| ----- | --- | -------- |
+| filter | Object | Listing filter |
 
 
 <a class='md-heading-link' name="clay-resource-classes-clay-resource-seal" ></a>
