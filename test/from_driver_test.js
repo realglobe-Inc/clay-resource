@@ -71,7 +71,6 @@ describe('from-driver', function () {
 
     yield resource.destroy(id)
 
-
     // Bulk
     {
       let [ created ] = yield resource.createBulk([ { foo: 'bar' } ])
