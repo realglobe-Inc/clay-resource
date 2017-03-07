@@ -123,7 +123,7 @@ describe('from-driver', function () {
   }))
   it('From driver seal', () => co(function * () {
     let driver = clayDriverMemory()
-    let resource = fromDriver(driver, 'hogehoge')
+    let resource = fromDriver(driver, 'hogehoge').clone().toggleAnnotate(true)
     let created = yield resource.create({ foo: 'bar' })
     let { id } = created
 
