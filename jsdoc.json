@@ -37,7 +37,260 @@
           }
         ],
         "examples": []
-      }
+      },
+      "functions": [
+        {
+          "name": "one",
+          "access": "",
+          "virtual": false,
+          "description": "Get a resource",
+          "parameters": [
+            {
+              "name": "id",
+              "type": "ClayId",
+              "description": "Id of the entity",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            }
+          ],
+          "examples": [],
+          "returns": {
+            "type": "Promise.<ClayEntity>",
+            "description": "Found entity"
+          }
+        },
+        {
+          "name": "list",
+          "access": "",
+          "virtual": false,
+          "description": "List entities from resource",
+          "parameters": [
+            {
+              "name": "condition",
+              "type": "ListCondition",
+              "description": "List condition query",
+              "default": "{}",
+              "optional": true,
+              "nullable": ""
+            }
+          ],
+          "examples": [],
+          "returns": {
+            "type": "Promise.<ClayCollection>",
+            "description": "Found resource collection"
+          }
+        },
+        {
+          "name": "create",
+          "access": "",
+          "virtual": false,
+          "description": "Create a new entity with resource",
+          "parameters": [
+            {
+              "name": "attributes",
+              "type": "Object",
+              "description": "Resource attributes to create",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            }
+          ],
+          "examples": [],
+          "returns": {
+            "type": "Promise.<ClayEntity>",
+            "description": "Created data"
+          }
+        },
+        {
+          "name": "update",
+          "access": "",
+          "virtual": false,
+          "description": "Update an existing entity in resource",
+          "parameters": [
+            {
+              "name": "id",
+              "type": "ClayId",
+              "description": "Resource id",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            },
+            {
+              "name": "attributes",
+              "type": "Object",
+              "description": "Resource attributes to update",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            }
+          ],
+          "examples": [],
+          "returns": {
+            "type": "Promise.<ClayEntity>",
+            "description": "Updated data"
+          }
+        },
+        {
+          "name": "destroy",
+          "access": "",
+          "virtual": false,
+          "description": "Delete a entity resource",
+          "parameters": [
+            {
+              "name": "id",
+              "type": "ClayId",
+              "description": "Resource id",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            }
+          ],
+          "examples": [],
+          "returns": {
+            "type": "Promise.<number>",
+            "description": "Destroyed count (0 or 1)"
+          }
+        },
+        {
+          "name": "drop",
+          "access": "",
+          "virtual": false,
+          "description": "Drop resource",
+          "parameters": [],
+          "examples": [],
+          "returns": {
+            "type": "Promise.<boolean>",
+            "description": "False if there were nothing to drop"
+          }
+        },
+        {
+          "name": "oneBulk",
+          "access": "",
+          "virtual": false,
+          "description": "One as bulk",
+          "parameters": [
+            {
+              "name": "ids",
+              "type": "Array.<ClayId>",
+              "description": "Resource ids",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            }
+          ],
+          "examples": [],
+          "returns": {
+            "type": "Promise.<Object.<ClayId, ClayEntity>>",
+            "description": "Found resources"
+          }
+        },
+        {
+          "name": "listBulk",
+          "access": "",
+          "virtual": false,
+          "description": "List with multiple conditions",
+          "parameters": [
+            {
+              "name": "conditionArray",
+              "type": "Array.<ListCondition>",
+              "description": "",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            }
+          ],
+          "examples": [],
+          "returns": {
+            "type": "Promise.<Array.<ClayCollection>>",
+            "description": "Found resource collections"
+          }
+        },
+        {
+          "name": "createBulk",
+          "access": "",
+          "virtual": false,
+          "description": "Create multiple resources",
+          "parameters": [
+            {
+              "name": "attributesArray",
+              "type": "Array.<Object>",
+              "description": "List of attributes",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            }
+          ],
+          "examples": [],
+          "returns": {
+            "type": "Promise.<Array.<ClayEntity>>",
+            "description": "Created resources"
+          }
+        },
+        {
+          "name": "updateBulk",
+          "access": "",
+          "virtual": false,
+          "description": "Update multiple resources",
+          "parameters": [
+            {
+              "name": "attributesHash",
+              "type": "Object.<ClayId, Object>",
+              "description": "Hash of attributes",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            }
+          ],
+          "examples": [],
+          "returns": {
+            "type": "Promise.<Object.<ClayId, ClayEntity>>",
+            "description": "Updated resources"
+          }
+        },
+        {
+          "name": "destroyBulk",
+          "access": "",
+          "virtual": false,
+          "description": "Update multiple resources",
+          "parameters": [
+            {
+              "name": "ids",
+              "type": "Array.<ClayId>",
+              "description": "Ids to destroy",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            }
+          ],
+          "examples": [],
+          "returns": {
+            "type": "Promise.<number>",
+            "description": "Destroyed counts"
+          }
+        },
+        {
+          "name": "cursor",
+          "access": "",
+          "virtual": false,
+          "description": "Create cursor to cursor",
+          "parameters": [
+            {
+              "name": "options",
+              "type": "Object",
+              "description": "Optional settings",
+              "default": "{}",
+              "optional": true,
+              "nullable": ""
+            }
+          ],
+          "examples": [],
+          "returns": {
+            "type": "Object",
+            "description": "{Promise.<[Symbol.iterator], function>} Iterable cursor"
+          }
+        }
+      ]
     }
   ],
   "functions": [
