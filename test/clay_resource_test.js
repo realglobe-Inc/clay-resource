@@ -29,6 +29,12 @@ describe('clay-resource', function () {
     ok(resource.one)
     equal(resource.name, 'hoge')
     equal(resource.domain, 'example.com')
+
+    let clone = resource.clone()
+    ok(clone)
+    ok(clone.one)
+    equal(clone.name, 'hoge')
+    equal(clone.domain, 'example.com')
   }))
 })
 

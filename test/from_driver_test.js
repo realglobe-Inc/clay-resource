@@ -25,7 +25,7 @@ describe('from-driver', function () {
 
   it('From driver', () => co(function * () {
     let driver = clayDriverMemory()
-    let resource = fromDriver(driver, 'hogehoge')
+    let resource = fromDriver(driver, 'hogehoge', { annotate: true })
 
     let created = yield resource.create({ foo: 'bar' })
     ok(created)
@@ -49,9 +49,56 @@ describe('from-driver', function () {
     yield resource.destroy(id)
   }))
 
-  it('From driver bulk', () => co(function * () {
+  it('From driver without annotate', () => co(function * () {
     let driver = clayDriverMemory()
     let resource = fromDriver(driver, 'hogehoge')
+
+    let created = yield resource.create({ foo: 'bar' })
+    ok(!created.$$at)
+
+    let { id } = created
+
+    let one = yield resource.one(id)
+    equal(one.foo, 'bar')
+    equal(String(one.id), String(id))
+    ok(!one.$$at)
+
+    let updated = yield resource.update(id, { foo2: 'bar2' })
+    ok(updated)
+    equal(updated.foo, 'bar')
+    equal(updated.foo2, 'bar2')
+    ok(!updated.$$at)
+
+    yield resource.destroy(id)
+
+    // Bulk
+    {
+      let [ created ] = yield resource.createBulk([ { foo: 'bar' } ])
+      ok(created)
+      ok(created.id)
+      ok(!created.$$at)
+
+      let { id } = created
+      let one = (yield resource.oneBulk([ id ]))[ id ]
+      equal(one.foo, 'bar')
+      equal(String(one.id), String(created.id))
+
+      yield asleep(10)
+
+      let updated = (yield resource.updateBulk({ [id]: { foo2: 'bar2' } }))[ id ]
+      ok(updated)
+      equal(updated.foo, 'bar')
+      equal(updated.foo2, 'bar2')
+      ok(!updated.$$at)
+
+      let count = yield resource.destroyBulk([ created.id ])
+      equal(count, 1)
+    }
+  }))
+
+  it('From driver bulk', () => co(function * () {
+    let driver = clayDriverMemory()
+    let resource = fromDriver(driver, 'hogehoge', { annotate: true })
 
     let [ created ] = yield resource.createBulk([ { foo: 'bar' } ])
     ok(created)
@@ -76,7 +123,7 @@ describe('from-driver', function () {
   }))
   it('From driver seal', () => co(function * () {
     let driver = clayDriverMemory()
-    let resource = fromDriver(driver, 'hogehoge')
+    let resource = fromDriver(driver, 'hogehoge').clone().toggleAnnotate(true)
     let created = yield resource.create({ foo: 'bar' })
     let { id } = created
 
