@@ -299,25 +299,9 @@
             {
               "name": "privateKey",
               "type": "string",
-              "description": "RSA Private key",
+              "description": "",
               "default": "",
               "optional": "",
-              "nullable": ""
-            },
-            {
-              "name": "options",
-              "type": "Object",
-              "description": "Optional settings",
-              "default": "{}",
-              "optional": true,
-              "nullable": ""
-            },
-            {
-              "name": "options.by",
-              "type": "string",
-              "description": "For $$by",
-              "default": null,
-              "optional": true,
               "nullable": ""
             }
           ],
