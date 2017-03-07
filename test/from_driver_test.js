@@ -7,6 +7,7 @@
 const fromDriver = require('../lib/from_driver.js')
 const clayDriverMemory = require('clay-driver-memory')
 const { ok, equal } = require('assert')
+const asleep = require('asleep')
 const co = require('co')
 
 describe('from-driver', function () {
@@ -35,6 +36,8 @@ describe('from-driver', function () {
     equal(one.foo, 'bar')
     equal(String(one.id), String(id))
 
+    yield asleep(10)
+
     let updated = yield resource.update(id, { foo2: 'bar2' })
     ok(updated)
     equal(updated.foo, 'bar')
@@ -57,6 +60,8 @@ describe('from-driver', function () {
     let one = (yield resource.oneBulk([ id ]))[ id ]
     equal(one.foo, 'bar')
     equal(String(one.id), String(created.id))
+
+    yield asleep(10)
 
     let updated = (yield resource.updateBulk({ [id]: { foo2: 'bar2' } }))[ id ]
     ok(updated)
