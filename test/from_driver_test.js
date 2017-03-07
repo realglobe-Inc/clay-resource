@@ -23,7 +23,7 @@ describe('from-driver', function () {
 
   it('From driver', () => co(function * () {
     let driver = clayDriverMemory()
-    let resource = fromDriver(driver, 'hogehoge')
+    let resource = fromDriver(driver, 'hogehoge', { annotate: true })
 
     let created = yield resource.create({ foo: 'bar' })
     ok(created)
@@ -47,9 +47,17 @@ describe('from-driver', function () {
     yield resource.destroy(id)
   }))
 
-  it('From driver bulk', () => co(function * () {
+  it('From driver without annotate', () => co(function * () {
     let driver = clayDriverMemory()
     let resource = fromDriver(driver, 'hogehoge')
+
+    let created = yield resource.create({ foo: 'bar' })
+    ok(!created.$$at)
+  }))
+
+  it('From driver bulk', () => co(function * () {
+    let driver = clayDriverMemory()
+    let resource = fromDriver(driver, 'hogehoge', { annotate: true })
 
     let [ created ] = yield resource.createBulk([ { foo: 'bar' } ])
     ok(created)
