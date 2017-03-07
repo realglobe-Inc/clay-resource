@@ -289,6 +289,43 @@
             "type": "Object",
             "description": "{Promise.<[Symbol.iterator], function>} Iterable cursor"
           }
+        },
+        {
+          "name": "seal",
+          "access": "",
+          "virtual": false,
+          "description": "Seal resources",
+          "parameters": [
+            {
+              "name": "privateKey",
+              "type": "string",
+              "description": "RSA Private key",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            },
+            {
+              "name": "options",
+              "type": "Object",
+              "description": "Optional settings",
+              "default": "{}",
+              "optional": true,
+              "nullable": ""
+            },
+            {
+              "name": "options.by",
+              "type": "string",
+              "description": "For $$by",
+              "default": null,
+              "optional": true,
+              "nullable": ""
+            }
+          ],
+          "examples": [],
+          "returns": {
+            "type": "Promise",
+            "description": ""
+          }
         }
       ]
     }

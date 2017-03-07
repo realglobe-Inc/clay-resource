@@ -19,6 +19,7 @@ Resource accessor for ClayDB
   + [resource.updateBulk(attributesHash)](#clay-resource-classes-clay-resource-updateBulk)
   + [resource.destroyBulk(ids)](#clay-resource-classes-clay-resource-destroyBulk)
   + [resource.cursor(options)](#clay-resource-classes-clay-resource-cursor)
+  + [resource.seal(privateKey, options)](#clay-resource-classes-clay-resource-seal)
 
 ## Functions
 
@@ -194,6 +195,19 @@ Create cursor to cursor
 | Param | Type | Description |
 | ----- | --- | -------- |
 | options | Object | Optional settings |
+
+
+<a class='md-heading-link' name="clay-resource-classes-clay-resource-seal" ></a>
+
+### resource.seal(privateKey, options) -> `Promise`
+
+Seal resources
+
+| Param | Type | Description |
+| ----- | --- | -------- |
+| privateKey | string | RSA Private key |
+| options | Object | Optional settings |
+| options.by | string | For $$by |
 
 
 
