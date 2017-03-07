@@ -27,10 +27,14 @@ describe('from-driver', function () {
     let driver = clayDriverMemory()
     let resource = fromDriver(driver, 'hogehoge', { annotate: true })
 
+    ok(!(yield resource.exists({ foo: 'bar' })))
+
     let created = yield resource.create({ foo: 'bar' })
     ok(created)
     ok(created.id)
     ok(created.$$at)
+
+    ok(yield resource.exists({ foo: 'bar' }))
 
     let { id } = created
 
