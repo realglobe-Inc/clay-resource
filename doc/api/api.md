@@ -1,4 +1,4 @@
-# clay-resource@2.1.1
+# clay-resource@2.1.2
 
 Resource accessor for ClayDB
 
@@ -22,7 +22,7 @@ Resource accessor for ClayDB
   + [resource.first(filter)](#clay-resource-classes-clay-resource-first)
   + [resource.seal(privateKey, options)](#clay-resource-classes-clay-resource-seal)
   + [resource.exists(filter)](#clay-resource-classes-clay-resource-exists)
-  + [resource.counts(filter)](#clay-resource-classes-clay-resource-counts)
+  + [resource.count(filter)](#clay-resource-classes-clay-resource-count)
 
 ## Functions
 
@@ -208,7 +208,7 @@ Get the first entity matches filter
 
 | Param | Type | Description |
 | ----- | --- | -------- |
-| filter | Object | Listing filter |
+| filter | ListFilter | Listing filter |
 
 
 <a class='md-heading-link' name="clay-resource-classes-clay-resource-seal" ></a>
@@ -232,18 +232,18 @@ Check data exists
 
 | Param | Type | Description |
 | ----- | --- | -------- |
-| filter | Object | List filter |
+| filter | ListFilter | List filter |
 
 
-<a class='md-heading-link' name="clay-resource-classes-clay-resource-counts" ></a>
+<a class='md-heading-link' name="clay-resource-classes-clay-resource-count" ></a>
 
-### resource.counts(filter) -> `Promise.<number>`
+### resource.count(filter) -> `Promise.<number>`
 
 Count data matches filter
 
 | Param | Type | Description |
 | ----- | --- | -------- |
-| filter | Object | List filter |
+| filter | ListFilter | List filter |
 
 
 

@@ -298,7 +298,7 @@
           "parameters": [
             {
               "name": "filter",
-              "type": "Object",
+              "type": "ListFilter",
               "description": "Listing filter",
               "default": "{}",
               "optional": true,
@@ -356,10 +356,10 @@
           "parameters": [
             {
               "name": "filter",
-              "type": "Object",
+              "type": "ListFilter",
               "description": "List filter",
-              "default": "",
-              "optional": "",
+              "default": "{}",
+              "optional": true,
               "nullable": ""
             }
           ],
@@ -370,17 +370,17 @@
           }
         },
         {
-          "name": "counts",
+          "name": "count",
           "access": "",
           "virtual": false,
           "description": "Count data matches filter",
           "parameters": [
             {
               "name": "filter",
-              "type": "Object",
+              "type": "ListFilter",
               "description": "List filter",
-              "default": "",
-              "optional": "",
+              "default": "{}",
+              "optional": true,
               "nullable": ""
             }
           ],
