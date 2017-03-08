@@ -36,6 +36,8 @@ describe('from-driver', function () {
 
     ok(yield resource.exists({ foo: 'bar' }))
 
+    equal(yield resource.count(), 1)
+
     let { id } = created
 
     let one = yield resource.one(id)

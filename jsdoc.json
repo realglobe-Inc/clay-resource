@@ -368,6 +368,27 @@
             "type": "Promise.<boolean>",
             "description": "Exists or not"
           }
+        },
+        {
+          "name": "counts",
+          "access": "",
+          "virtual": false,
+          "description": "Count data matches filter",
+          "parameters": [
+            {
+              "name": "filter",
+              "type": "Object",
+              "description": "List filter",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            }
+          ],
+          "examples": [],
+          "returns": {
+            "type": "Promise.<number>",
+            "description": "Number of entities"
+          }
         }
       ]
     }
