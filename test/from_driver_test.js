@@ -7,7 +7,7 @@
 const fromDriver = require('../lib/from_driver.js')
 const clayDriverMemory = require('clay-driver-memory')
 const { decorate } = require('clay-entity')
-const { ok, equal } = require('assert')
+const { ok, equal, strictEqual } = require('assert')
 const asleep = require('asleep')
 const { refTo } = require('clay-resource-ref')
 const { generate: generateKeys, verify } = require('clay-crypto')
@@ -58,6 +58,18 @@ describe('from-driver', function () {
     ok(first.foo2, 'bar2')
 
     yield resource.destroy(id)
+
+    // Sub resource
+    {
+      let hogeResource = resource.sub('hoge')
+      ok(hogeResource)
+      yield hogeResource.create({ fooSub: 'barSub' })
+
+      strictEqual(resource.sub('hoge'), resource.sub('hoge'), 'Using cache')
+
+      equal(hogeResource.name, 'hogehogehoge')
+    }
+
   }))
 
   it('From driver without annotate', () => co(function * () {
