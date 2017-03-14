@@ -5,7 +5,7 @@
 'use strict'
 
 const annotateMix = require('../lib/mixins/annotate_mix.js')
-const assert = require('assert')
+const { ok } = require('assert')
 const co = require('co')
 
 describe('annotate-mix', function () {
@@ -20,7 +20,9 @@ describe('annotate-mix', function () {
   }))
 
   it('Annotate mix', () => co(function * () {
-    const annotateMixed = annotateMix({})
+    const annotateMixed = annotateMix(class {
+
+    })
     ok(annotateMix)
   }))
 })

@@ -1,4 +1,4 @@
-# clay-resource@2.1.2
+# clay-resource@2.1.3
 
 Resource accessor for ClayDB
 
@@ -70,6 +70,8 @@ Constructor of ClayResource class
 | nameString | string | Name string |
 | bounds | Object.&lt;string, function()&gt; | Method bounds |
 | options | Object | Optional settings |
+| options.annotates} | boolean | Enable annotation |
+| options.refs} | Array.&lt;ClayResources&gt; | Add resource refs |
 
 
 <a class='md-heading-link' name="clay-resource-classes-clay-resource-one" ></a>

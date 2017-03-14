@@ -9,6 +9,7 @@ const clayDriverMemory = require('clay-driver-memory')
 const { decorate } = require('clay-entity')
 const { ok, equal } = require('assert')
 const asleep = require('asleep')
+const { refTo } = require('clay-resource-ref')
 const { generate: generateKeys, verify } = require('clay-crypto')
 const co = require('co')
 
@@ -131,6 +132,7 @@ describe('from-driver', function () {
     let count = yield resource.destroyBulk([ created.id ])
     equal(count, 1)
   }))
+
   it('From driver seal', () => co(function * () {
     let driver = clayDriverMemory()
     let resource = fromDriver(driver, 'hogehoge').clone().annotates(true)
@@ -142,11 +144,29 @@ describe('from-driver', function () {
 
     let one = yield resource.one(id)
     ok(one.$$seal)
+    equal(one.$$as, 'hogehoge')
     equal(one.$$by, 'foo!')
 
     ok(decorate(one).verify(publicKey))
     one.hoge = 'fuge'
     ok(!decorate(one).verify(publicKey))
+  }))
+
+  it('Resolve refs', () => co(function * () {
+    let driver = clayDriverMemory()
+    let Org = fromDriver(driver, 'Org').annotates(true)
+    let User = fromDriver(driver, 'User').refs(Org).annotates(true)
+    let org01 = yield Org.create({ name: 'org01' })
+    let user01 = yield User.create({
+      name: 'user01',
+      org: { $ref: refTo(Org, org01.id) }
+    })
+    equal(user01.org.name, 'org01')
+    let user02 = yield User.create({
+      name: 'user02',
+      org: org01
+    })
+    equal(user02.org.name, 'org01')
   }))
 })
 
