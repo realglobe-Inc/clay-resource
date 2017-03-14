@@ -34,6 +34,22 @@
             "default": "{}",
             "optional": true,
             "nullable": ""
+          },
+          {
+            "name": "options.annotates}",
+            "type": "boolean",
+            "description": "Enable annotation",
+            "default": "",
+            "optional": "",
+            "nullable": ""
+          },
+          {
+            "name": "options.refs}",
+            "type": "Array.<ClayResources>",
+            "description": "Add resource refs",
+            "default": "",
+            "optional": "",
+            "nullable": ""
           }
         ],
         "examples": []
