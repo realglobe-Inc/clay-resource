@@ -2,6 +2,7 @@
   "name": "clay-resource",
   "version": "2.3.4",
   "description": "Resource accessor for ClayDB",
+  "browser": "shim/browser",
   "main": "lib",
   "scripts": {
     "test": "node ./ci/test.js",
@@ -25,6 +26,7 @@
     "clay-collection": "^1.0.2",
     "clay-constants": "^2.5.1",
     "clay-entity": "^1.5.1",
+    "clay-errors": "file:///Users/okunishitaka/Projects/realglobe-projects/clay-errors",
     "clay-resource-name": "^3.0.1",
     "clay-resource-ref": "^1.0.3",
     "clay-schemas": "^2.0.2",

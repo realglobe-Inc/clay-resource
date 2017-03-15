@@ -70,6 +70,17 @@ describe('from-driver', function () {
       equal(hogeResource.name, 'hogehogehoge')
     }
 
+    {
+      let notFoundError
+      try {
+        yield resource.update('__invalid_id__', {})
+      } catch (thrown) {
+        notFoundError = thrown
+      }
+      ok(notFoundError)
+      equal(notFoundError.name, 'NotFoundError')
+    }
+
   }))
 
   it('From driver without annotate', () => co(function * () {
