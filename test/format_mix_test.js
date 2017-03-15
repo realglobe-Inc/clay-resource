@@ -1,14 +1,14 @@
 /**
- * Test case for processMix.
+ * Test case for formatMix.
  * Runs with mocha.
  */
 'use strict'
 
-const processMix = require('../lib/mixins/process_mix.js')
+const formatMix = require('../lib/mixins/format_mix.js')
 const assert = require('assert')
 const co = require('co')
 
-describe('process-mix', function () {
+describe('format-mix', function () {
   this.timeout(3000)
 
   before(() => co(function * () {
@@ -19,7 +19,7 @@ describe('process-mix', function () {
 
   }))
 
-  it('Process mix', () => co(function * () {
+  it('Format mix', () => co(function * () {
 
   }))
 })
