@@ -74,10 +74,9 @@ describe('from-driver', function () {
 
   it('From driver without annotate', () => co(function * () {
     let driver = clayDriverMemory()
-    let resource = fromDriver(driver, 'hogehoge')
+    let resource = fromDriver(driver, 'hogehoge').annotates(false)
 
     let created = yield resource.create({ foo: 'bar' })
-    ok(!created.$$at)
 
     let { id } = created
 
@@ -166,8 +165,8 @@ describe('from-driver', function () {
 
   it('Resolve refs', () => co(function * () {
     let driver = clayDriverMemory()
-    let Org = fromDriver(driver, 'Org').annotates(true)
-    let User = fromDriver(driver, 'User').refs(Org).annotates(true)
+    let Org = fromDriver(driver, 'Org')
+    let User = fromDriver(driver, 'User').refs(Org)
     let org01 = yield Org.create({ name: 'org01' })
     let user01 = yield User.create({
       name: 'user01',
@@ -179,6 +178,14 @@ describe('from-driver', function () {
       org: org01
     })
     equal(user02.org.name, 'org01')
+
+    let Team = fromDriver(driver, 'Team').refs(User)
+    let team01 = yield Team.create({
+      name: 'Team01',
+      users: [ { $ref: refTo(User, user01.id) } ]
+    })
+    ok(team01)
+    equal(team01.users[ 0 ].name, 'user01')
   }))
 })
 
