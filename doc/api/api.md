@@ -21,6 +21,7 @@ Resource accessor for ClayDB
   + [resource.cursor(options)](#clay-resource-classes-clay-resource-cursor)
   + [resource.first(filter)](#clay-resource-classes-clay-resource-first)
   + [resource.seal(privateKey, options)](#clay-resource-classes-clay-resource-seal)
+  + [resource.has(id)](#clay-resource-classes-clay-resource-has)
   + [resource.exists(filter)](#clay-resource-classes-clay-resource-exists)
   + [resource.count(filter)](#clay-resource-classes-clay-resource-count)
 
@@ -71,7 +72,7 @@ Constructor of ClayResource class
 | bounds | Object.&lt;string, function()&gt; | Method bounds |
 | options | Object | Optional settings |
 | options.annotates} | boolean | Enable annotation |
-| options.refs} | Array.&lt;ClayResources&gt; | Add resource refs |
+| options.refs} | Array.&lt;ClayResource&gt; | Add resource refs |
 
 
 <a class='md-heading-link' name="clay-resource-classes-clay-resource-one" ></a>
@@ -226,11 +227,22 @@ Seal resources
 | options.by | string | For $$by |
 
 
+<a class='md-heading-link' name="clay-resource-classes-clay-resource-has" ></a>
+
+### resource.has(id) -> `Promise.<boolean>`
+
+Check entity with id exists
+
+| Param | Type | Description |
+| ----- | --- | -------- |
+| id | ClayId | Id of the entity |
+
+
 <a class='md-heading-link' name="clay-resource-classes-clay-resource-exists" ></a>
 
 ### resource.exists(filter) -> `Promise.<boolean>`
 
-Check data exists
+Check data exists with filter
 
 | Param | Type | Description |
 | ----- | --- | -------- |
