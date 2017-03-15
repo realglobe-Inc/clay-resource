@@ -22,7 +22,7 @@
   },
   "homepage": "https://github.com/realglobe-Inc/clay-resource#readme",
   "dependencies": {
-    "clay-collection": "^1.0.1",
+    "clay-collection": "^1.0.2",
     "clay-constants": "^2.5.1",
     "clay-entity": "^1.5.1",
     "clay-resource-name": "^3.0.1",

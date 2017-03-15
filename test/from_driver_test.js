@@ -179,6 +179,8 @@ describe('from-driver', function () {
     })
     equal(user02.org.name, 'org01')
 
+    equal(driver._storages.User[ String(user02.id) ].org.$ref, `Org#${org01.id}`)
+
     let Team = fromDriver(driver, 'Team').refs(User)
     let team01 = yield Team.create({
       name: 'Team01',
