@@ -1,14 +1,14 @@
 /**
- * Test case for parseMix.
+ * Test case for inboundMix.
  * Runs with mocha.
  */
 'use strict'
 
-const parseMix = require('../lib/mixins/parse_mix.js')
+const inboundMix = require('../lib/mixins/inbound_mix.js')
 const assert = require('assert')
 const co = require('co')
 
-describe('parse-mix', function () {
+describe('inbound-mix', function () {
   this.timeout(3000)
 
   before(() => co(function * () {
@@ -19,7 +19,7 @@ describe('parse-mix', function () {
 
   }))
 
-  it('Parse mix', () => co(function * () {
+  it('Inbound mix', () => co(function * () {
 
   }))
 })

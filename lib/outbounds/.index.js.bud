@@ -7,8 +7,8 @@
 const { indexJsBud } = require('ape-tmpl')
 
 module.exports = indexJsBud({
-  desc: 'Parser functions',
-  module: 'parsers',
+  desc: 'Format functions',
+  module: 'outbounds',
   dirname: __dirname,
   subclasses: []
 })
