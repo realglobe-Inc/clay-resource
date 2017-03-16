@@ -14,7 +14,7 @@ const coz = require('coz')
 const { execSync } = require('child_process')
 const writeout = require('writeout')
 
-apeTasking.runTasks('build', [
+apeTasking.runTasks('doc', [
   // Generate jsdoc.json
   () => co(function * () {
     let src = 'lib/*.js'

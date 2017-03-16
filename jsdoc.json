@@ -70,7 +70,9 @@
               "nullable": ""
             }
           ],
-          "examples": [],
+          "examples": [
+            "const Product = lump.resource('Product')\nasync function tryOne () {\n  let product = await Product.one(1) // Find by id\n  console.log(product)\n}"
+          ],
           "returns": {
             "type": "Promise.<ClayEntity>",
             "description": "Found entity"
@@ -89,9 +91,51 @@
               "default": "{}",
               "optional": true,
               "nullable": ""
+            },
+            {
+              "name": "condition.filter",
+              "type": "FilterTerm",
+              "description": "Filter condition",
+              "default": "{}",
+              "optional": true,
+              "nullable": ""
+            },
+            {
+              "name": "condition.page",
+              "type": "PagerTerm",
+              "description": "Page condition",
+              "default": "{}",
+              "optional": true,
+              "nullable": ""
+            },
+            {
+              "name": "condition.page.number",
+              "type": "number",
+              "description": "Number of page, start with 1",
+              "default": 1,
+              "optional": true,
+              "nullable": ""
+            },
+            {
+              "name": "condition.page.size",
+              "type": "number",
+              "description": "Number of resources per page",
+              "default": 100,
+              "optional": true,
+              "nullable": ""
+            },
+            {
+              "name": "condition.sort",
+              "type": "SortTerm",
+              "description": "Sort condition",
+              "default": "[]",
+              "optional": true,
+              "nullable": ""
             }
           ],
-          "examples": [],
+          "examples": [
+            "const Product = lump.resource('Product')\nasync function tryList () {\n  let products = await Product.list({\n    filter: { type: 'Vehicle' },  // Filter condition\n    page: { number: 1, size: 25 }, // Paginate\n    sort: [ 'createdAt', '-name' ] // Sort condition\n  })\n  console.log(products)\n}\ntryList()"
+          ],
           "returns": {
             "type": "Promise.<ClayCollection>",
             "description": "Found resource collection"
@@ -112,7 +156,9 @@
               "nullable": ""
             }
           ],
-          "examples": [],
+          "examples": [
+            "const Product = lump.resource('Product')\nasync function tryCreate () {\n  let product = await Product.create({\n    name: 'Super Car',\n    type: 'Vehicle'\n  })\n  console.log(product)\n}\ntryCreate()"
+          ],
           "returns": {
             "type": "Promise.<ClayEntity>",
             "description": "Created data"
@@ -141,7 +187,9 @@
               "nullable": ""
             }
           ],
-          "examples": [],
+          "examples": [
+            "const Product = lump.resource('Product')\nasync function tryUpdate () {\n  let product = await Product.update(1, {\n    name: 'Super Super Car'\n  })\n  console.log(product)\n}\ntryUpdate()"
+          ],
           "returns": {
             "type": "Promise.<ClayEntity>",
             "description": "Updated data"
@@ -162,7 +210,9 @@
               "nullable": ""
             }
           ],
-          "examples": [],
+          "examples": [
+            "const Product = lump.resource('Product')\nasync function tryDestroy () {\n  await Product.destroy(1)\n}\ntryDestroy()"
+          ],
           "returns": {
             "type": "Promise.<number>",
             "description": "Destroyed count (0 or 1)"
@@ -174,7 +224,9 @@
           "virtual": false,
           "description": "Drop resource",
           "parameters": [],
-          "examples": [],
+          "examples": [
+            "const Product = lump.resource('Product')\nasync function tryDrop () {\n  await Product.drop()\n}\ntryDrop()"
+          ],
           "returns": {
             "type": "Promise.<boolean>",
             "description": "False if there were nothing to drop"
@@ -195,7 +247,9 @@
               "nullable": ""
             }
           ],
-          "examples": [],
+          "examples": [
+            "const Product = lump.resource('Product')\nasync function tryOneBulk () {\n  let products = await Product.oneBulk([ 1, 5, 10 ])\n  console.log(products)\n}\ntryOneBulk()"
+          ],
           "returns": {
             "type": "Promise.<Object.<ClayId, ClayEntity>>",
             "description": "Found resources"
@@ -216,7 +270,9 @@
               "nullable": ""
             }
           ],
-          "examples": [],
+          "examples": [
+            "const Product = lump.resource('Product')\nasync function tryListBulk () {\n  let [ cars, ships ] = await Product.listBulk([\n    { filter: { type: 'CAR' } },\n    { filter: { type: 'SHIP' } },\n  ])\n  console.log(cars)\n  console.log(ships)\n}\ntryListBulk()"
+          ],
           "returns": {
             "type": "Promise.<Array.<ClayCollection>>",
             "description": "Found resource collections"
@@ -237,7 +293,9 @@
               "nullable": ""
             }
           ],
-          "examples": [],
+          "examples": [
+            "const Product = lump.resource('Product')\nasync function tryCreateBulk () {\n  let products = await Product.createBulk([\n    { name: 'Super Orange', type: 'CAR' },\n    { name: 'Ultra Green', type: 'CAR' },\n  ])\n  console.log(products)\n}\ntryCreateBulk()"
+          ],
           "returns": {
             "type": "Promise.<Array.<ClayEntity>>",
             "description": "Created resources"
@@ -258,7 +316,9 @@
               "nullable": ""
             }
           ],
-          "examples": [],
+          "examples": [
+            "const Product = lump.resource('Product')\nasync function tryUpdateBulk () {\n  let products = await Product.updateBulk({\n    '1': { name: 'Super Super Orange' },\n    '2': { name: 'Ultra Ultra Green' },\n  })\n  console.log(products)\n}\ntryUpdateBulk()"
+          ],
           "returns": {
             "type": "Promise.<Object.<ClayId, ClayEntity>>",
             "description": "Updated resources"
@@ -279,7 +339,9 @@
               "nullable": ""
             }
           ],
-          "examples": [],
+          "examples": [
+            "const Product = lump.resource('Product')\nasync function tryDestroyBulk () {\n  await Product.destroyBulk([1, 2])\n})\ntryDestroyBulk()"
+          ],
           "returns": {
             "type": "Promise.<number>",
             "description": "Destroyed counts"
@@ -298,9 +360,27 @@
               "default": "{}",
               "optional": true,
               "nullable": ""
+            },
+            {
+              "name": "options.filter",
+              "type": "FilterTerm",
+              "description": "Filter condition",
+              "default": "{}",
+              "optional": true,
+              "nullable": ""
+            },
+            {
+              "name": "options.sort",
+              "type": "SortTerm",
+              "description": "Sort condition",
+              "default": "[]",
+              "optional": true,
+              "nullable": ""
             }
           ],
-          "examples": [],
+          "examples": [
+            "const Product = lump.resource('Product')\nasync function tryCursor () {\n  let cursor = await Product.cursor({\n    filter: { type: 'CAR' }\n  })\n  console.log(cursor.length) // Number of entities matches the condition\n  for (let fetch of cursor) {\n    let car = yield fetch() // Fetch the pointed entity\n    console.log(car)\n  }\n}\ntryCursor()"
+          ],
           "returns": {
             "type": "Object",
             "description": "{Promise.<[Symbol.iterator], function>} Iterable cursor"
@@ -314,14 +394,32 @@
           "parameters": [
             {
               "name": "filter",
-              "type": "ListFilter",
+              "type": "FilterTerm",
               "description": "Listing filter",
               "default": "{}",
               "optional": true,
               "nullable": ""
+            },
+            {
+              "name": "options",
+              "type": "Object",
+              "description": "Optional settings",
+              "default": "{}",
+              "optional": true,
+              "nullable": ""
+            },
+            {
+              "name": "options.sort",
+              "type": "Object",
+              "description": "Sort conditions",
+              "default": "[]",
+              "optional": true,
+              "nullable": ""
             }
           ],
-          "examples": [],
+          "examples": [
+            "const Product = lump.resource('Product')\nasync function tryFirst () {\n  let product = Product.first({ name: 'Super Super Orange' })\n  console.log('product')\n}\ntryFirst()"
+          ],
           "returns": {
             "type": "Promise.<?ClayEntity>",
             "description": "Found one"
@@ -358,7 +456,9 @@
               "nullable": ""
             }
           ],
-          "examples": [],
+          "examples": [
+            "const Product = lump.resource('Product')\nconst privateKey = 'xxxxxxxxxxxxxxxxxxxxxxxxx'\nasync function trySeal () {\n  await Product.seal(privateKey)\n}\ntrySeal()"
+          ],
           "returns": {
             "type": "Promise",
             "description": ""
@@ -379,7 +479,9 @@
               "nullable": ""
             }
           ],
-          "examples": [],
+          "examples": [
+            "const Product = lump.resource('Product')\nasync function tryHas () {\n  let has = await Product.has(1)\n  console.log(has)\n}\ntryHas()"
+          ],
           "returns": {
             "type": "Promise.<boolean>",
             "description": "Exists or not"
@@ -393,14 +495,16 @@
           "parameters": [
             {
               "name": "filter",
-              "type": "ListFilter",
+              "type": "FilterTerm",
               "description": "List filter",
               "default": "{}",
               "optional": true,
               "nullable": ""
             }
           ],
-          "examples": [],
+          "examples": [
+            "const Product = lump.resource('Product')\nasync function tryExists () {\n  let exists = await Product.exists({ name: 'Super Super Orange' })\n  console.log(exists)\n}\ntryExists()"
+          ],
           "returns": {
             "type": "Promise.<boolean>",
             "description": "Exists or not"
@@ -414,14 +518,16 @@
           "parameters": [
             {
               "name": "filter",
-              "type": "ListFilter",
+              "type": "FilterTerm",
               "description": "List filter",
               "default": "{}",
               "optional": true,
               "nullable": ""
             }
           ],
-          "examples": [],
+          "examples": [
+            "const Product = lump.resource('Product')\nasync function tryCount () {\n  let count = await Product.count({ type: 'CAR' })\n  console.log(count)\n}\ntryCount()"
+          ],
           "returns": {
             "type": "Promise.<number>",
             "description": "Number of entities"
@@ -483,7 +589,9 @@
           "nullable": ""
         }
       ],
-      "examples": [],
+      "examples": [
+        "const { fromDriver } = require('clay-resource')\nconst { SqliteDriver } = require('clay-driver-sqlite')\n{\n  let driver = new SqliteDriver('var/test.db')\n  let resource = fromDriver(driver)\n}"
+      ],
       "returns": {
         "type": "ClayResource",
         "description": "Created class"
