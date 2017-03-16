@@ -68,6 +68,7 @@ describe('from-driver', function () {
       strictEqual(resource.sub('hoge'), resource.sub('hoge'), 'Using cache')
 
       equal(hogeResource.name, 'hogehogehoge')
+      ok(hogeResource.refs()[ 'hogehoge' ])
     }
 
     {

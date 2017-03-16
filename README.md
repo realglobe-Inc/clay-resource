@@ -119,7 +119,7 @@ co(function * () {
 API
 ---------
 
-# clay-resource@2.3.6
+# clay-resource@2.3.7
 
 Resource accessor for ClayDB
 
