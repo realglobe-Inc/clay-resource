@@ -587,7 +587,9 @@
           "nullable": ""
         }
       ],
-      "examples": [],
+      "examples": [
+        "const { fromDriver } = require('clay-resource')\nconst { SqliteDriver } = require('clay-driver-sqlite')\n{\n  let driver = new SqliteDriver('var/test.db')\n  let resource = fromDriver(driver)\n}"
+      ],
       "returns": {
         "type": "ClayResource",
         "description": "Created class"

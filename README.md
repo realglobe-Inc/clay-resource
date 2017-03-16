@@ -190,6 +190,8 @@ Get a resource
 | ----- | --- | -------- |
 | id | ClayId | Id of the entity |
 
+**Example**:
+
 ```javascript
 const Product = lump.resource('Product')
 async function tryOne () {
@@ -212,6 +214,8 @@ List entities from resource
 | condition.page.number | number | Number of page, start with 1 |
 | condition.page.size | number | Number of resources per page |
 | condition.sort | SortTerm | Sort condition |
+
+**Example**:
 
 ```javascript
 const Product = lump.resource('Product')
@@ -236,6 +240,8 @@ Create a new entity with resource
 | ----- | --- | -------- |
 | attributes | Object | Resource attributes to create |
 
+**Example**:
+
 ```javascript
 const Product = lump.resource('Product')
 async function tryCreate () {
@@ -259,6 +265,8 @@ Update an existing entity in resource
 | id | ClayId | Resource id |
 | attributes | Object | Resource attributes to update |
 
+**Example**:
+
 ```javascript
 const Product = lump.resource('Product')
 async function tryUpdate () {
@@ -280,6 +288,8 @@ Delete a entity resource
 | ----- | --- | -------- |
 | id | ClayId | Resource id |
 
+**Example**:
+
 ```javascript
 const Product = lump.resource('Product')
 async function tryDestroy () {
@@ -293,6 +303,8 @@ tryDestroy()
 ### resource.drop() -> `Promise.<boolean>`
 
 Drop resource
+**Example**:
+
 ```javascript
 const Product = lump.resource('Product')
 async function tryDrop () {
@@ -310,6 +322,8 @@ One as bulk
 | Param | Type | Description |
 | ----- | --- | -------- |
 | ids | Array.&lt;ClayId&gt; | Resource ids |
+
+**Example**:
 
 ```javascript
 const Product = lump.resource('Product')
@@ -329,6 +343,8 @@ List with multiple conditions
 | Param | Type | Description |
 | ----- | --- | -------- |
 | conditionArray | Array.&lt;ListCondition&gt; |  |
+
+**Example**:
 
 ```javascript
 const Product = lump.resource('Product')
@@ -353,6 +369,8 @@ Create multiple resources
 | ----- | --- | -------- |
 | attributesArray | Array.&lt;Object&gt; | List of attributes |
 
+**Example**:
+
 ```javascript
 const Product = lump.resource('Product')
 async function tryCreateBulk () {
@@ -374,6 +392,8 @@ Update multiple resources
 | Param | Type | Description |
 | ----- | --- | -------- |
 | attributesHash | Object.&lt;ClayId, Object&gt; | Hash of attributes |
+
+**Example**:
 
 ```javascript
 const Product = lump.resource('Product')
@@ -397,6 +417,8 @@ Update multiple resources
 | ----- | --- | -------- |
 | ids | Array.&lt;ClayId&gt; | Ids to destroy |
 
+**Example**:
+
 ```javascript
 const Product = lump.resource('Product')
 async function tryDestroyBulk () {
@@ -416,6 +438,8 @@ Create cursor to cursor
 | options | Object | Optional settings |
 | options.filter | FilterTerm | Filter condition |
 | options.sort | SortTerm | Sort condition |
+
+**Example**:
 
 ```javascript
 const Product = lump.resource('Product')
@@ -443,6 +467,8 @@ Get the first entity matches filter
 | filter | FilterTerm | Listing filter |
 | options | Object | Optional settings |
 | options.sort | Object | Sort conditions |
+
+**Example**:
 
 ```javascript
 const Product = lump.resource('Product')
@@ -476,6 +502,8 @@ Check entity with id exists
 | ----- | --- | -------- |
 | id | ClayId | Id of the entity |
 
+**Example**:
+
 ```javascript
 const Product = lump.resource('Product')
 async function tryHas () {
@@ -495,6 +523,8 @@ Check data exists with filter
 | ----- | --- | -------- |
 | filter | FilterTerm | List filter |
 
+**Example**:
+
 ```javascript
 const Product = lump.resource('Product')
 async function tryExists () {
@@ -513,6 +543,8 @@ Count data matches filter
 | Param | Type | Description |
 | ----- | --- | -------- |
 | filter | FilterTerm | List filter |
+
+**Example**:
 
 ```javascript
 const Product = lump.resource('Product')
