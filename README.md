@@ -154,6 +154,16 @@ Create clayResource class from driver
 | nameString | string | Resource name string |
 | options | Object | Optional settings |
 
+**Example**:
+
+```javascript
+const { fromDriver } = require('clay-resource')
+const { SqliteDriver } = require('clay-driver-sqlite')
+{
+  let driver = new SqliteDriver('var/test.db')
+  let resource = fromDriver(driver)
+}
+```
 
 
 <a class='md-heading-link' name="clay-resource-classes"></a>
@@ -474,7 +484,7 @@ Get the first entity matches filter
 const Product = lump.resource('Product')
 async function tryFirst () {
   let product = Product.first({ name: 'Super Super Orange' })
-  console.log(product')
+  console.log('product')
 }
 tryFirst()
 ```
@@ -491,6 +501,16 @@ Seal resources
 | options | Object | Optional settings |
 | options.by | string | For $$by |
 
+**Example**:
+
+```javascript
+const Product = lump.resource('Product')
+const privateKey = 'xxxxxxxxxxxxxxxxxxxxxxxxx'
+async function trySeal () {
+  await Product.seal(privateKey)
+}
+trySeal()
+```
 
 <a class='md-heading-link' name="clay-resource-classes-clay-resource-has" ></a>
 

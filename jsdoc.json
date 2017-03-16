@@ -418,7 +418,7 @@
             }
           ],
           "examples": [
-            "const Product = lump.resource('Product')\nasync function tryFirst () {\n  let product = Product.first({ name: 'Super Super Orange' })\n  console.log(product')\n}\ntryFirst()"
+            "const Product = lump.resource('Product')\nasync function tryFirst () {\n  let product = Product.first({ name: 'Super Super Orange' })\n  console.log('product')\n}\ntryFirst()"
           ],
           "returns": {
             "type": "Promise.<?ClayEntity>",
@@ -456,7 +456,9 @@
               "nullable": ""
             }
           ],
-          "examples": [],
+          "examples": [
+            "const Product = lump.resource('Product')\nconst privateKey = 'xxxxxxxxxxxxxxxxxxxxxxxxx'\nasync function trySeal () {\n  await Product.seal(privateKey)\n}\ntrySeal()"
+          ],
           "returns": {
             "type": "Promise",
             "description": ""
