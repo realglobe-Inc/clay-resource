@@ -103,7 +103,7 @@ co(function * () {
 API
 ---------
 
-# clay-resource@2.3.4
+# clay-resource@2.3.6
 
 Resource accessor for ClayDB
 
@@ -124,7 +124,7 @@ Resource accessor for ClayDB
   + [resource.updateBulk(attributesHash)](#clay-resource-classes-clay-resource-updateBulk)
   + [resource.destroyBulk(ids)](#clay-resource-classes-clay-resource-destroyBulk)
   + [resource.cursor(options)](#clay-resource-classes-clay-resource-cursor)
-  + [resource.first(filter)](#clay-resource-classes-clay-resource-first)
+  + [resource.first(filter, options)](#clay-resource-classes-clay-resource-first)
   + [resource.seal(privateKey, options)](#clay-resource-classes-clay-resource-seal)
   + [resource.has(id)](#clay-resource-classes-clay-resource-has)
   + [resource.exists(filter)](#clay-resource-classes-clay-resource-exists)
@@ -190,6 +190,13 @@ Get a resource
 | ----- | --- | -------- |
 | id | ClayId | Id of the entity |
 
+```javascript
+const Product = lump.resource('Product')
+async function tryOne () {
+  let product = await Product.one(1) // Find by id
+  console.log(product)
+}
+```
 
 <a class='md-heading-link' name="clay-resource-classes-clay-resource-list" ></a>
 
@@ -200,7 +207,24 @@ List entities from resource
 | Param | Type | Description |
 | ----- | --- | -------- |
 | condition | ListCondition | List condition query |
+| condition.filter | FilterTerm | Filter condition |
+| condition.page | PagerTerm | Page condition |
+| condition.page.number | number | Number of page, start with 1 |
+| condition.page.size | number | Number of resources per page |
+| condition.sort | SortTerm | Sort condition |
 
+```javascript
+const Product = lump.resource('Product')
+async function tryList () {
+  let products = await Product.list({
+    filter: { type: 'Vehicle' },  // Filter condition
+    page: { number: 1, size: 25 }, // Paginate
+    sort: [ 'createdAt', '-name' ] // Sort condition
+  })
+  console.log(products)
+}
+tryList()
+```
 
 <a class='md-heading-link' name="clay-resource-classes-clay-resource-create" ></a>
 
@@ -212,6 +236,17 @@ Create a new entity with resource
 | ----- | --- | -------- |
 | attributes | Object | Resource attributes to create |
 
+```javascript
+const Product = lump.resource('Product')
+async function tryCreate () {
+  let product = await Product.create({
+    name: 'Super Car',
+    type: 'Vehicle'
+  })
+  console.log(product)
+}
+tryCreate()
+```
 
 <a class='md-heading-link' name="clay-resource-classes-clay-resource-update" ></a>
 
@@ -224,6 +259,16 @@ Update an existing entity in resource
 | id | ClayId | Resource id |
 | attributes | Object | Resource attributes to update |
 
+```javascript
+const Product = lump.resource('Product')
+async function tryUpdate () {
+  let product = await Product.update(1, {
+    name: 'Super Super Car'
+  })
+  console.log(product)
+}
+tryUpdate()
+```
 
 <a class='md-heading-link' name="clay-resource-classes-clay-resource-destroy" ></a>
 
@@ -235,12 +280,26 @@ Delete a entity resource
 | ----- | --- | -------- |
 | id | ClayId | Resource id |
 
+```javascript
+const Product = lump.resource('Product')
+async function tryDestroy () {
+  await Product.destroy(1)
+}
+tryDestroy()
+```
 
 <a class='md-heading-link' name="clay-resource-classes-clay-resource-drop" ></a>
 
 ### resource.drop() -> `Promise.<boolean>`
 
 Drop resource
+```javascript
+const Product = lump.resource('Product')
+async function tryDrop () {
+  await Product.drop()
+}
+tryDrop()
+```
 
 <a class='md-heading-link' name="clay-resource-classes-clay-resource-oneBulk" ></a>
 
@@ -252,6 +311,14 @@ One as bulk
 | ----- | --- | -------- |
 | ids | Array.&lt;ClayId&gt; | Resource ids |
 
+```javascript
+const Product = lump.resource('Product')
+async function tryOneBulk () {
+  let products = await Product.oneBulk([ 1, 5, 10 ])
+  console.log(products)
+}
+tryOneBulk()
+```
 
 <a class='md-heading-link' name="clay-resource-classes-clay-resource-listBulk" ></a>
 
@@ -263,6 +330,18 @@ List with multiple conditions
 | ----- | --- | -------- |
 | conditionArray | Array.&lt;ListCondition&gt; |  |
 
+```javascript
+const Product = lump.resource('Product')
+async function tryListBulk () {
+  let [ cars, ships ] = await Product.listBulk([
+    { filter: { type: 'CAR' } },
+    { filter: { type: 'SHIP' } },
+  ])
+  console.log(cars)
+  console.log(ships)
+}
+tryListBulk()
+```
 
 <a class='md-heading-link' name="clay-resource-classes-clay-resource-createBulk" ></a>
 
@@ -274,6 +353,17 @@ Create multiple resources
 | ----- | --- | -------- |
 | attributesArray | Array.&lt;Object&gt; | List of attributes |
 
+```javascript
+const Product = lump.resource('Product')
+async function tryCreateBulk () {
+  let products = await Product.createBulk([
+    { name: 'Super Orange', type: 'CAR' },
+    { name: 'Ultra Green', type: 'CAR' },
+  ])
+  console.log(products)
+}
+tryCreateBulk()
+```
 
 <a class='md-heading-link' name="clay-resource-classes-clay-resource-updateBulk" ></a>
 
@@ -285,6 +375,17 @@ Update multiple resources
 | ----- | --- | -------- |
 | attributesHash | Object.&lt;ClayId, Object&gt; | Hash of attributes |
 
+```javascript
+const Product = lump.resource('Product')
+async function tryUpdateBulk () {
+  let products = await Product.updateBulk({
+    '1': { name: 'Super Super Orange' },
+    '2': { name: 'Ultra Ultra Green' },
+  })
+  console.log(products)
+}
+tryUpdateBulk()
+```
 
 <a class='md-heading-link' name="clay-resource-classes-clay-resource-destroyBulk" ></a>
 
@@ -296,6 +397,13 @@ Update multiple resources
 | ----- | --- | -------- |
 | ids | Array.&lt;ClayId&gt; | Ids to destroy |
 
+```javascript
+const Product = lump.resource('Product')
+async function tryDestroyBulk () {
+  await Product.destroyBulk([1, 2])
+})
+tryDestroyBulk()
+```
 
 <a class='md-heading-link' name="clay-resource-classes-clay-resource-cursor" ></a>
 
@@ -306,18 +414,44 @@ Create cursor to cursor
 | Param | Type | Description |
 | ----- | --- | -------- |
 | options | Object | Optional settings |
+| options.filter | FilterTerm | Filter condition |
+| options.sort | SortTerm | Sort condition |
 
+```javascript
+const Product = lump.resource('Product')
+async function tryCursor () {
+  let cursor = await Product.cursor({
+    filter: { type: 'CAR' }
+  })
+  console.log(cursor.length) // Number of entities matches the condition
+  for (let fetch of cursor) {
+    let car = yield fetch() // Fetch the pointed entity
+    console.log(car)
+  }
+}
+tryCursor()
+```
 
 <a class='md-heading-link' name="clay-resource-classes-clay-resource-first" ></a>
 
-### resource.first(filter) -> `Promise.<?ClayEntity>`
+### resource.first(filter, options) -> `Promise.<?ClayEntity>`
 
 Get the first entity matches filter
 
 | Param | Type | Description |
 | ----- | --- | -------- |
-| filter | ListFilter | Listing filter |
+| filter | FilterTerm | Listing filter |
+| options | Object | Optional settings |
+| options.sort | Object | Sort conditions |
 
+```javascript
+const Product = lump.resource('Product')
+async function tryFirst () {
+  let product = Product.first({ name: 'Super Super Orange' })
+  console.log(product')
+}
+tryFirst()
+```
 
 <a class='md-heading-link' name="clay-resource-classes-clay-resource-seal" ></a>
 
@@ -342,6 +476,14 @@ Check entity with id exists
 | ----- | --- | -------- |
 | id | ClayId | Id of the entity |
 
+```javascript
+const Product = lump.resource('Product')
+async function tryHas () {
+  let has = await Product.has(1)
+  console.log(has)
+}
+tryHas()
+```
 
 <a class='md-heading-link' name="clay-resource-classes-clay-resource-exists" ></a>
 
@@ -351,8 +493,16 @@ Check data exists with filter
 
 | Param | Type | Description |
 | ----- | --- | -------- |
-| filter | ListFilter | List filter |
+| filter | FilterTerm | List filter |
 
+```javascript
+const Product = lump.resource('Product')
+async function tryExists () {
+  let exists = await Product.exists({ name: 'Super Super Orange' })
+  console.log(exists)
+}
+tryExists()
+```
 
 <a class='md-heading-link' name="clay-resource-classes-clay-resource-count" ></a>
 
@@ -362,8 +512,16 @@ Count data matches filter
 
 | Param | Type | Description |
 | ----- | --- | -------- |
-| filter | ListFilter | List filter |
+| filter | FilterTerm | List filter |
 
+```javascript
+const Product = lump.resource('Product')
+async function tryCount () {
+  let count = await Product.count({ type: 'CAR' })
+  console.log(count)
+}
+tryCount()
+```
 
 
 
