@@ -1,14 +1,14 @@
 /**
- * Test case for entityRefFormatter.
+ * Test case for annotationStripOutbound.
  * Runs with mocha.
  */
 'use strict'
 
-const entityRefFormatter = require('../lib/formatters/entity_ref_formatter.js')
+const annotationStripOutbound = require('../lib/outbounds/annotation_strip_outbound.js')
 const assert = require('assert')
 const co = require('co')
 
-describe('entity-ref-formatter', function () {
+describe('annotation-strip-outbound', function () {
   this.timeout(3000)
 
   before(() => co(function * () {
@@ -19,7 +19,7 @@ describe('entity-ref-formatter', function () {
 
   }))
 
-  it('Entity ref formatter', () => co(function * () {
+  it('Annotation strip outbound', () => co(function * () {
 
   }))
 })

@@ -1,14 +1,14 @@
 /**
- * Test case for formatMix.
+ * Test case for entityRefOutbound.
  * Runs with mocha.
  */
 'use strict'
 
-const formatMix = require('../lib/mixins/format_mix.js')
+const entityRefOutbound = require('../lib/outbounds/entity_ref_outbound.js')
 const assert = require('assert')
 const co = require('co')
 
-describe('format-mix', function () {
+describe('entity-ref-outbound', function () {
   this.timeout(3000)
 
   before(() => co(function * () {
@@ -19,7 +19,7 @@ describe('format-mix', function () {
 
   }))
 
-  it('Format mix', () => co(function * () {
+  it('Entity ref outbound', () => co(function * () {
 
   }))
 })

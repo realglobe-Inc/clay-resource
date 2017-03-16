@@ -1,14 +1,14 @@
 /**
- * Test case for annotationStripFormatter.
+ * Test case for outboundMix.
  * Runs with mocha.
  */
 'use strict'
 
-const annotationStripFormatter = require('../lib/formatters/annotation_strip_formatter.js')
+const outboundMix = require('../lib/mixins/outbound_mix.js')
 const assert = require('assert')
 const co = require('co')
 
-describe('annotation-strip-formatter', function () {
+describe('outbound-mix', function () {
   this.timeout(3000)
 
   before(() => co(function * () {
@@ -19,7 +19,7 @@ describe('annotation-strip-formatter', function () {
 
   }))
 
-  it('Annotation strip formatter', () => co(function * () {
+  it('Outbound mix', () => co(function * () {
 
   }))
 })

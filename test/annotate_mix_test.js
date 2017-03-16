@@ -23,7 +23,7 @@ describe('annotate-mix', function () {
     const annotateMixed = annotateMix(class {
 
     })
-    ok(annotateMix)
+    ok(annotateMixed)
   }))
 })
 

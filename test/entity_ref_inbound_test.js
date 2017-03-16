@@ -1,14 +1,14 @@
 /**
- * Test case for entityRefParser.
+ * Test case for entityRefInbound.
  * Runs with mocha.
  */
 'use strict'
 
-const entityRefParser = require('../lib/parsers/entity_ref_parser.js')
+const entityRefInbound = require('../lib/inbounds/entity_ref_inbound.js')
 const assert = require('assert')
 const co = require('co')
 
-describe('entity-ref-parser', function () {
+describe('entity-ref-inbound', function () {
   this.timeout(3000)
 
   before(() => co(function * () {
@@ -19,7 +19,7 @@ describe('entity-ref-parser', function () {
 
   }))
 
-  it('Entity ref parser', () => co(function * () {
+  it('Entity ref inbound', () => co(function * () {
 
   }))
 })
