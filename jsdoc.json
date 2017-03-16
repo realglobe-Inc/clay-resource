@@ -45,7 +45,7 @@
           },
           {
             "name": "options.refs}",
-            "type": "Array.<ClayResources>",
+            "type": "Array.<ClayResource>",
             "description": "Add resource refs",
             "default": "",
             "optional": "",
@@ -365,10 +365,31 @@
           }
         },
         {
+          "name": "has",
+          "access": "",
+          "virtual": false,
+          "description": "Check entity with id exists",
+          "parameters": [
+            {
+              "name": "id",
+              "type": "ClayId",
+              "description": "Id of the entity",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            }
+          ],
+          "examples": [],
+          "returns": {
+            "type": "Promise.<boolean>",
+            "description": "Exists or not"
+          }
+        },
+        {
           "name": "exists",
           "access": "",
           "virtual": false,
-          "description": "Check data exists",
+          "description": "Check data exists with filter",
           "parameters": [
             {
               "name": "filter",
