@@ -24,9 +24,10 @@
   "homepage": "https://github.com/realglobe-Inc/clay-resource#readme",
   "dependencies": {
     "clay-collection": "^1.0.2",
-    "clay-constants": "^2.5.2",
+    "clay-constants": "^2.6.1",
     "clay-entity": "^1.5.1",
-    "clay-errors": "^1.0.1",
+    "clay-errors": "^2.0.1",
+    "clay-policy": "file:///Users/okunishitaka/Projects/realglobe-projects/clay-policy",
     "clay-resource-name": "^3.0.1",
     "clay-resource-ref": "^1.0.3",
     "clay-schemas": "^2.0.2",
