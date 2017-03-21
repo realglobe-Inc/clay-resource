@@ -60,34 +60,11 @@ Resource accessor for ClayDB
 Table of Contents
 ----------------
 
-  * [Installation](#installation)
-  * [Usage](#usage)
-  * [API](#api)
-- [clay-resource@2.3.9](#clay-resource239)
-  * [Functions](#functions)
-    + [create(args) -> `ClayResource`](#createargs---clayresource)
-    + [fromDriver(driver, nameString, options) -> `ClayResource`](#fromdriverdriver-namestring-options---clayresource)
-  * [`ClayResource` Class](#clayresource-class)
-    + [new ClayResource(nameString, bounds, options)](#new-clayresourcenamestring-bounds-options)
-    + [resource.one(id) -> `Promise.`](#resourceoneid---promise)
-    + [resource.list(condition) -> `Promise.`](#resourcelistcondition---promise)
-    + [resource.create(attributes) -> `Promise.`](#resourcecreateattributes---promise)
-    + [resource.update(id, attributes) -> `Promise.`](#resourceupdateid-attributes---promise)
-    + [resource.destroy(id) -> `Promise.`](#resourcedestroyid---promise)
-    + [resource.drop() -> `Promise.`](#resourcedrop---promise)
-    + [resource.oneBulk(ids) -> `Promise.>`](#resourceonebulkids---promise)
-    + [resource.listBulk(conditionArray) -> `Promise.>`](#resourcelistbulkconditionarray---promise)
-    + [resource.createBulk(attributesArray) -> `Promise.>`](#resourcecreatebulkattributesarray---promise)
-    + [resource.updateBulk(attributesHash) -> `Promise.>`](#resourceupdatebulkattributeshash---promise)
-    + [resource.destroyBulk(ids) -> `Promise.`](#resourcedestroybulkids---promise)
-    + [resource.cursor(options) -> `Object`](#resourcecursoroptions---object)
-    + [resource.first(filter, options) -> `Promise.`](#resourcefirstfilter-options---promise)
-    + [resource.seal(privateKey, options) -> `Promise`](#resourcesealprivatekey-options---promise)
-    + [resource.has(id) -> `Promise.`](#resourcehasid---promise)
-    + [resource.exists(filter) -> `Promise.`](#resourceexistsfilter---promise)
-    + [resource.count(filter) -> `Promise.`](#resourcecountfilter---promise)
-  * [License](#license)
-  * [Links](#links)
+- [Installation](#installation)
+- [Usage](#usage)
+- [API](#api)
+- [License](#license)
+- [Links](#links)
 
 
 <!-- Section from "doc/guides/00.TOC.md.hbs" End -->
@@ -142,9 +119,9 @@ co(function * () {
 API
 -----
 
-+ [clay-resource@2.3.9](./doc/api/api.md)
-  + [create(args)](./doc/api/api.md#clay-resource-create)
-  + [fromDriver(driver, nameString, options)](./doc/api/api.md#clay-resource-from-driver)
++ [clay-resource@2.3.10](./doc/api/api.md)
+  + [create(args)](./doc/api/api.md#clay-resource-function-create)
+  + [fromDriver(driver, nameString, options)](./doc/api/api.md#clay-resource-function-from-driver)
   + [ClayResource](./doc/api/api.md#clay-resource-class)
 
 
