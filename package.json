@@ -1,6 +1,6 @@
 {
   "name": "clay-resource",
-  "version": "2.3.10",
+  "version": "2.3.11",
   "description": "Resource accessor for ClayDB",
   "browser": "shim/browser",
   "main": "lib",
