@@ -238,6 +238,15 @@ describe('from-driver', function () {
       expects: { oneOf: [ 'GOLD', 'SLIVER', 'BRONZE' ] }
     })
   }))
+
+  it('of', () => co(function * () {
+    let driver = clayDriverMemory()
+    let Product = fromDriver(driver, 'Product')
+    let product01 = yield Product.of({ code: '#1234' })
+    equal(product01.code, '#1234')
+    let product02 = yield Product.of({ code: '#1234' })
+    equal(String(product01).id, String(product02).id)
+  }))
 })
 
 /* global describe, before, after, it */

@@ -541,6 +541,25 @@
             "type": "Promise.<number>",
             "description": "Number of entities"
           }
+        },
+        {
+          "name": "of",
+          "access": "",
+          "virtual": false,
+          "description": "Find entity with attributes and returns if found.\nIf not found, create and return the one.",
+          "parameters": [
+            {
+              "name": "attributes",
+              "type": "Object",
+              "description": "Attributes",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            }
+          ],
+          "examples": [
+            "const Product = lump.resource('Product')\nasync function tryOf () {\n  let values = await Product.of({ code: '#1234' })\n  console.log(values)\n}\ntryOf()"
+          ]
         }
       ]
     }

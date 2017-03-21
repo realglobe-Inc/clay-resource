@@ -1,4 +1,4 @@
-# clay-resource@2.3.12
+# clay-resource@2.3.13
 
 Resource accessor for ClayDB
 
@@ -24,6 +24,7 @@ Resource accessor for ClayDB
   + [resource.has(id)](#clay-resource-class-clay-resource-has)
   + [resource.exists(filter)](#clay-resource-class-clay-resource-exists)
   + [resource.count(filter)](#clay-resource-class-clay-resource-count)
+  + [resource.of(attributes)](#clay-resource-class-clay-resource-of)
 
 ## Functions
 
@@ -478,6 +479,28 @@ async function tryCount () {
   console.log(count)
 }
 tryCount()
+```
+
+<a class='md-heading-link' name="clay-resource-class-clay-resource-of" ></a>
+
+### resource.of(attributes)
+
+Find entity with attributes and returns if found.
+If not found, create and return the one.
+
+| Param | Type | Description |
+| ----- | --- | -------- |
+| attributes | Object | Attributes |
+
+**Example**:
+
+```javascript
+const Product = lump.resource('Product')
+async function tryOf () {
+  let values = await Product.of({ code: '#1234' })
+  console.log(values)
+}
+tryOf()
 ```
 
 
