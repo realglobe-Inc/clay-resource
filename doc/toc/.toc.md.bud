@@ -5,18 +5,23 @@
 
 const toc = require('markdown-toc')
 const fs = require('fs')
+const { EOL } = require('os')
 
 module.exports = {
   force: true,
   mode: '444',
   data: {
-    src: fs.readFileSync(`${__dirname}/../../README.md`).toString()
+    src: fs.readFileSync(`${__dirname}/../../README.md`)
+      .toString()
+      .split(EOL)
+      .slice(1)
+      .join(EOL)
   },
   tmpl (data){
     let { src } = data
     return toc(src, {
       filter (line) {
-        let rejectPatterns = [/Table of Contents/]
+        let rejectPatterns = [ /Table of Contents/ ]
         for (let pattern of rejectPatterns) {
           if (pattern.test(line)) {
             return false
