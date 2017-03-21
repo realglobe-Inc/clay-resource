@@ -142,7 +142,7 @@ co(function * () {
 API
 ---------
 
-# clay-resource@2.3.9
+# clay-resource@2.3.10
 
 Resource accessor for ClayDB
 
@@ -211,6 +211,16 @@ const { SqliteDriver } = require('clay-driver-sqlite')
 
 Resource accessor
 
+**Extends**:
+
++ `AnnotateMixed`
++ `CloneMixed`
++ `InboundMixed`
++ `OutboundMixed`
++ `PolicyMixed`
++ `RefMixed`
++ `SubMixed`
++ `ThrowMixed`
 
 
 

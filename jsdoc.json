@@ -3,7 +3,16 @@
     {
       "name": "ClayResource",
       "description": "",
-      "extends": [],
+      "extends": [
+        "AnnotateMixed",
+        "CloneMixed",
+        "InboundMixed",
+        "OutboundMixed",
+        "PolicyMixed",
+        "RefMixed",
+        "SubMixed",
+        "ThrowMixed"
+      ],
       "access": "",
       "virtual": false,
       "fires": "",
