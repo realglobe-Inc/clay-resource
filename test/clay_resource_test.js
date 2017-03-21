@@ -5,7 +5,7 @@
 'use strict'
 
 const ClayResource = require('../lib/clay_resource.js')
-const { ok, equal } = require('assert')
+const { ok, equal, deepEqual } = require('assert')
 const co = require('co')
 
 describe('clay-resource', function () {
@@ -35,6 +35,14 @@ describe('clay-resource', function () {
     ok(clone.one)
     equal(clone.name, 'hoge')
     equal(clone.domain, 'example.com')
+  }))
+
+  it('Ref and sub', () => co(function * () {
+    let resource01 = new ClayResource('resource01')
+    let resource02 = new ClayResource('resource02')
+    let resource03 = resource01.sub('03')
+    resource01.refs(resource02)
+    deepEqual(Object.keys(resource03.refs()), [ 'resource01', 'resource02' ])
   }))
 })
 
