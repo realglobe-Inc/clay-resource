@@ -24,7 +24,8 @@ module.exports = readmeMdBud({
   links: require('./doc/links'),
   vars: {
     values: require('./lib'),
-    jsdoc: require('./jsdoc')
+    signature: require('./misc/signature'),
+    apiPath: './doc/api/api.md'
   }
 })
 
