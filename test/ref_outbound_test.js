@@ -1,14 +1,14 @@
 /**
- * Test case for entityRefInbound.
+ * Test case for refOutbound.
  * Runs with mocha.
  */
 'use strict'
 
-const entityRefInbound = require('../lib/inbounds/entity_ref_inbound.js')
+const refOutbound = require('../lib/outbounds/ref_outbound.js')
 const assert = require('assert')
 const co = require('co')
 
-describe('entity-ref-inbound', function () {
+describe('ref-outbound', function () {
   this.timeout(3000)
 
   before(() => co(function * () {
@@ -19,7 +19,7 @@ describe('entity-ref-inbound', function () {
 
   }))
 
-  it('Entity ref inbound', () => co(function * () {
+  it('Ref outbound', () => co(function * () {
 
   }))
 })

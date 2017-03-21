@@ -1,7 +1,7 @@
   * [Installation](#installation)
   * [Usage](#usage)
   * [API](#api)
-- [clay-resource@2.3.7](#clay-resource237)
+- [clay-resource@2.3.9](#clay-resource239)
   * [Functions](#functions)
     + [create(args) -> `ClayResource`](#createargs---clayresource)
     + [fromDriver(driver, nameString, options) -> `ClayResource`](#fromdriverdriver-namestring-options---clayresource)

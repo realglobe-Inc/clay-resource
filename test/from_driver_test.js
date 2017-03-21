@@ -7,8 +7,9 @@
 const fromDriver = require('../lib/from_driver.js')
 const clayDriverMemory = require('clay-driver-memory')
 const { decorate } = require('clay-entity')
-const { ok, equal, strictEqual } = require('assert')
+const { ok, equal, strictEqual, deepEqual } = require('assert')
 const asleep = require('asleep')
+const clayPolicy = require('clay-policy')
 const { refTo } = require('clay-resource-ref')
 const { generate: generateKeys, verify } = require('clay-crypto')
 const co = require('co')
@@ -200,6 +201,42 @@ describe('from-driver', function () {
     })
     ok(team01)
     equal(team01.users[ 0 ].name, 'user01')
+  }))
+
+  it('Policy check', () => co(function * () {
+    const { STRING, DATE } = clayPolicy.Types
+    let driver = clayDriverMemory()
+    let User = fromDriver(driver, 'User')
+
+    User.setPolicy({
+      username: {
+        type: STRING,
+        required: true
+      },
+      birthday: {
+        type: DATE
+      },
+      rank: {
+        type: STRING,
+        oneOf: [ 'GOLD', 'SLIVER', 'BRONZE' ]
+      }
+    })
+
+    let caught
+    try {
+      yield User.create({
+        username: 'hoge',
+        rank: 'SUPER'
+      })
+    } catch (thrown) {
+      caught = thrown
+    }
+    ok(caught)
+    deepEqual(caught.detail.failures.rank, {
+      reason: 'value:unexpected',
+      actual: 'SUPER',
+      expects: { oneOf: [ 'GOLD', 'SLIVER', 'BRONZE' ] }
+    })
   }))
 })
 

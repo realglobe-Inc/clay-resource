@@ -1,14 +1,14 @@
 /**
- * Test case for annotationStripOutbound.
+ * Test case for annotationOutbound.
  * Runs with mocha.
  */
 'use strict'
 
-const annotationStripOutbound = require('../lib/outbounds/annotation_strip_outbound.js')
+const annotationOutbound = require('../lib/outbounds/annotation_outbound.js')
 const assert = require('assert')
 const co = require('co')
 
-describe('annotation-strip-outbound', function () {
+describe('annotation-outbound', function () {
   this.timeout(3000)
 
   before(() => co(function * () {
@@ -19,7 +19,7 @@ describe('annotation-strip-outbound', function () {
 
   }))
 
-  it('Annotation strip outbound', () => co(function * () {
+  it('Annotation outbound', () => co(function * () {
 
   }))
 })
