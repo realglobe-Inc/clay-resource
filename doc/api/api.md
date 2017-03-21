@@ -5,25 +5,25 @@ Resource accessor for ClayDB
 + Functions
   + [create(args)](#clay-resource-function-create)
   + [fromDriver(driver, nameString, options)](#clay-resource-function-from-driver)
-+ [`ClayResource`](#clay-resource-classes) Class
-  + [new ClayResource(nameString, bounds, options)](#clay-resource-classes-clay-resource-constructor)
-  + [resource.one(id)](#clay-resource-classes-clay-resource-one)
-  + [resource.list(condition)](#clay-resource-classes-clay-resource-list)
-  + [resource.create(attributes)](#clay-resource-classes-clay-resource-create)
-  + [resource.update(id, attributes)](#clay-resource-classes-clay-resource-update)
-  + [resource.destroy(id)](#clay-resource-classes-clay-resource-destroy)
-  + [resource.drop()](#clay-resource-classes-clay-resource-drop)
-  + [resource.oneBulk(ids)](#clay-resource-classes-clay-resource-oneBulk)
-  + [resource.listBulk(conditionArray)](#clay-resource-classes-clay-resource-listBulk)
-  + [resource.createBulk(attributesArray)](#clay-resource-classes-clay-resource-createBulk)
-  + [resource.updateBulk(attributesHash)](#clay-resource-classes-clay-resource-updateBulk)
-  + [resource.destroyBulk(ids)](#clay-resource-classes-clay-resource-destroyBulk)
-  + [resource.cursor(options)](#clay-resource-classes-clay-resource-cursor)
-  + [resource.first(filter, options)](#clay-resource-classes-clay-resource-first)
-  + [resource.seal(privateKey, options)](#clay-resource-classes-clay-resource-seal)
-  + [resource.has(id)](#clay-resource-classes-clay-resource-has)
-  + [resource.exists(filter)](#clay-resource-classes-clay-resource-exists)
-  + [resource.count(filter)](#clay-resource-classes-clay-resource-count)
++ [`ClayResource`](#clay-resource-class) Class
+  + [new ClayResource(nameString, bounds, options)](#clay-resource-class-clay-resource-constructor)
+  + [resource.one(id)](#clay-resource-class-clay-resource-one)
+  + [resource.list(condition)](#clay-resource-class-clay-resource-list)
+  + [resource.create(attributes)](#clay-resource-class-clay-resource-create)
+  + [resource.update(id, attributes)](#clay-resource-class-clay-resource-update)
+  + [resource.destroy(id)](#clay-resource-class-clay-resource-destroy)
+  + [resource.drop()](#clay-resource-class-clay-resource-drop)
+  + [resource.oneBulk(ids)](#clay-resource-class-clay-resource-oneBulk)
+  + [resource.listBulk(conditionArray)](#clay-resource-class-clay-resource-listBulk)
+  + [resource.createBulk(attributesArray)](#clay-resource-class-clay-resource-createBulk)
+  + [resource.updateBulk(attributesHash)](#clay-resource-class-clay-resource-updateBulk)
+  + [resource.destroyBulk(ids)](#clay-resource-class-clay-resource-destroyBulk)
+  + [resource.cursor(options)](#clay-resource-class-clay-resource-cursor)
+  + [resource.first(filter, options)](#clay-resource-class-clay-resource-first)
+  + [resource.seal(privateKey, options)](#clay-resource-class-clay-resource-seal)
+  + [resource.has(id)](#clay-resource-class-clay-resource-has)
+  + [resource.exists(filter)](#clay-resource-class-clay-resource-exists)
+  + [resource.count(filter)](#clay-resource-class-clay-resource-count)
 
 ## Functions
 
@@ -61,7 +61,7 @@ const { SqliteDriver } = require('clay-driver-sqlite')
 ```
 
 
-<a class='md-heading-link' name="clay-resource-classes"></a>
+<a class='md-heading-link' name="clay-resource-class"></a>
 
 ## `ClayResource` Class
 
@@ -70,7 +70,7 @@ Resource accessor
 
 
 
-<a class='md-heading-link' name="clay-resource-classes-clay-resource-constructor" ></a>
+<a class='md-heading-link' name="clay-resource-class-clay-resource-constructor" ></a>
 
 ### new ClayResource(nameString, bounds, options)
 
@@ -85,7 +85,7 @@ Constructor of ClayResource class
 | options.refs | Array.&lt;ClayResource&gt; | Add resource refs |
 
 
-<a class='md-heading-link' name="clay-resource-classes-clay-resource-one" ></a>
+<a class='md-heading-link' name="clay-resource-class-clay-resource-one" ></a>
 
 ### resource.one(id) -> `Promise.<ClayEntity>`
 
@@ -105,7 +105,7 @@ async function tryOne () {
 }
 ```
 
-<a class='md-heading-link' name="clay-resource-classes-clay-resource-list" ></a>
+<a class='md-heading-link' name="clay-resource-class-clay-resource-list" ></a>
 
 ### resource.list(condition) -> `Promise.<ClayCollection>`
 
@@ -135,7 +135,7 @@ async function tryList () {
 tryList()
 ```
 
-<a class='md-heading-link' name="clay-resource-classes-clay-resource-create" ></a>
+<a class='md-heading-link' name="clay-resource-class-clay-resource-create" ></a>
 
 ### resource.create(attributes) -> `Promise.<ClayEntity>`
 
@@ -159,7 +159,7 @@ async function tryCreate () {
 tryCreate()
 ```
 
-<a class='md-heading-link' name="clay-resource-classes-clay-resource-update" ></a>
+<a class='md-heading-link' name="clay-resource-class-clay-resource-update" ></a>
 
 ### resource.update(id, attributes) -> `Promise.<ClayEntity>`
 
@@ -183,7 +183,7 @@ async function tryUpdate () {
 tryUpdate()
 ```
 
-<a class='md-heading-link' name="clay-resource-classes-clay-resource-destroy" ></a>
+<a class='md-heading-link' name="clay-resource-class-clay-resource-destroy" ></a>
 
 ### resource.destroy(id) -> `Promise.<number>`
 
@@ -203,7 +203,7 @@ async function tryDestroy () {
 tryDestroy()
 ```
 
-<a class='md-heading-link' name="clay-resource-classes-clay-resource-drop" ></a>
+<a class='md-heading-link' name="clay-resource-class-clay-resource-drop" ></a>
 
 ### resource.drop() -> `Promise.<boolean>`
 
@@ -218,7 +218,7 @@ async function tryDrop () {
 tryDrop()
 ```
 
-<a class='md-heading-link' name="clay-resource-classes-clay-resource-oneBulk" ></a>
+<a class='md-heading-link' name="clay-resource-class-clay-resource-oneBulk" ></a>
 
 ### resource.oneBulk(ids) -> `Promise.<Object.<ClayId, ClayEntity>>`
 
@@ -239,7 +239,7 @@ async function tryOneBulk () {
 tryOneBulk()
 ```
 
-<a class='md-heading-link' name="clay-resource-classes-clay-resource-listBulk" ></a>
+<a class='md-heading-link' name="clay-resource-class-clay-resource-listBulk" ></a>
 
 ### resource.listBulk(conditionArray) -> `Promise.<Array.<ClayCollection>>`
 
@@ -264,7 +264,7 @@ async function tryListBulk () {
 tryListBulk()
 ```
 
-<a class='md-heading-link' name="clay-resource-classes-clay-resource-createBulk" ></a>
+<a class='md-heading-link' name="clay-resource-class-clay-resource-createBulk" ></a>
 
 ### resource.createBulk(attributesArray) -> `Promise.<Array.<ClayEntity>>`
 
@@ -288,7 +288,7 @@ async function tryCreateBulk () {
 tryCreateBulk()
 ```
 
-<a class='md-heading-link' name="clay-resource-classes-clay-resource-updateBulk" ></a>
+<a class='md-heading-link' name="clay-resource-class-clay-resource-updateBulk" ></a>
 
 ### resource.updateBulk(attributesHash) -> `Promise.<Object.<ClayId, ClayEntity>>`
 
@@ -312,7 +312,7 @@ async function tryUpdateBulk () {
 tryUpdateBulk()
 ```
 
-<a class='md-heading-link' name="clay-resource-classes-clay-resource-destroyBulk" ></a>
+<a class='md-heading-link' name="clay-resource-class-clay-resource-destroyBulk" ></a>
 
 ### resource.destroyBulk(ids) -> `Promise.<number>`
 
@@ -332,7 +332,7 @@ async function tryDestroyBulk () {
 tryDestroyBulk()
 ```
 
-<a class='md-heading-link' name="clay-resource-classes-clay-resource-cursor" ></a>
+<a class='md-heading-link' name="clay-resource-class-clay-resource-cursor" ></a>
 
 ### resource.cursor(options) -> `Object`
 
@@ -361,7 +361,7 @@ async function tryCursor () {
 tryCursor()
 ```
 
-<a class='md-heading-link' name="clay-resource-classes-clay-resource-first" ></a>
+<a class='md-heading-link' name="clay-resource-class-clay-resource-first" ></a>
 
 ### resource.first(filter, options) -> `Promise.<?ClayEntity>`
 
@@ -384,7 +384,7 @@ async function tryFirst () {
 tryFirst()
 ```
 
-<a class='md-heading-link' name="clay-resource-classes-clay-resource-seal" ></a>
+<a class='md-heading-link' name="clay-resource-class-clay-resource-seal" ></a>
 
 ### resource.seal(privateKey, options) -> `Promise`
 
@@ -407,7 +407,7 @@ async function trySeal () {
 trySeal()
 ```
 
-<a class='md-heading-link' name="clay-resource-classes-clay-resource-has" ></a>
+<a class='md-heading-link' name="clay-resource-class-clay-resource-has" ></a>
 
 ### resource.has(id) -> `Promise.<boolean>`
 
@@ -428,7 +428,7 @@ async function tryHas () {
 tryHas()
 ```
 
-<a class='md-heading-link' name="clay-resource-classes-clay-resource-exists" ></a>
+<a class='md-heading-link' name="clay-resource-class-clay-resource-exists" ></a>
 
 ### resource.exists(filter) -> `Promise.<boolean>`
 
@@ -449,7 +449,7 @@ async function tryExists () {
 tryExists()
 ```
 
-<a class='md-heading-link' name="clay-resource-classes-clay-resource-count" ></a>
+<a class='md-heading-link' name="clay-resource-class-clay-resource-count" ></a>
 
 ### resource.count(filter) -> `Promise.<number>`
 
