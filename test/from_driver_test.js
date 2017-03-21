@@ -226,18 +226,16 @@ describe('from-driver', function () {
     try {
       yield User.create({
         username: 'hoge',
-        rank: [ 'SUPER' ]
+        rank: 'SUPER'
       })
     } catch (thrown) {
       caught = thrown
     }
     ok(caught)
-    deepEqual(caught.detail.failures, {
-      rank: {
-        actual: [ 'SUPER' ],
-        expects: 'clay:string',
-        reason: 'type:unexpected'
-      }
+    deepEqual(caught.detail.failures.rank, {
+      reason: 'value:unexpected',
+      actual: 'SUPER',
+      expects: { oneOf: [ 'GOLD', 'SLIVER', 'BRONZE' ] }
     })
   }))
 })
