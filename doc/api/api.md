@@ -67,6 +67,16 @@ const { SqliteDriver } = require('clay-driver-sqlite')
 
 Resource accessor
 
+**Extends**:
+
++ `AnnotateMixed`
++ `CloneMixed`
++ `InboundMixed`
++ `OutboundMixed`
++ `PolicyMixed`
++ `RefMixed`
++ `SubMixed`
++ `ThrowMixed`
 
 
 
