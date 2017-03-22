@@ -62,7 +62,7 @@ Table of Contents
 
 - [Installation](#installation)
 - [Usage](#usage)
-- [API](#api)
+- [API Guide](#api-guide)
 - [License](#license)
 - [Links](#links)
 
@@ -112,20 +112,20 @@ co(function * () {
 
 <!-- Section from "doc/guides/02.Usage.md.hbs" End -->
 
-<!-- Section from "doc/guides/03.API.md.hbs" Start -->
+<!-- Section from "doc/guides/10.API Guide.md.hbs" Start -->
 
-<a name="section-doc-guides-03-a-p-i-md"></a>
+<a name="section-doc-guides-10-a-p-i-guide-md"></a>
 
-API
+API Guide
 -----
 
-+ [clay-resource@2.4.0](./doc/api/api.md)
++ [clay-resource@2.4.1](./doc/api/api.md)
   + [create(args)](./doc/api/api.md#clay-resource-function-create)
   + [fromDriver(driver, nameString, options)](./doc/api/api.md#clay-resource-function-from-driver)
   + [ClayResource](./doc/api/api.md#clay-resource-class)
 
 
-<!-- Section from "doc/guides/03.API.md.hbs" End -->
+<!-- Section from "doc/guides/10.API Guide.md.hbs" End -->
 
 
 <!-- Sections Start -->

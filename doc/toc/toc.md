@@ -1,5 +1,5 @@
 - [Installation](#installation)
 - [Usage](#usage)
-- [API](#api)
+- [API Guide](#api-guide)
 - [License](#license)
 - [Links](#links)
