@@ -44,6 +44,25 @@ describe('clay-resource', function () {
     resource01.refs(resource02)
     deepEqual(Object.keys(resource03.refs()), [ 'resource01', 'resource02' ])
   }))
+
+  it('Register prepare task', () => co(function * () {
+    let count = 0
+    const counter = () => {
+      count++
+      return count
+    }
+    let resource01 = new ClayResource('resource01')
+    resource01.addPrepareTask('counter', counter)
+    resource01.setNeedsPrepare()
+    equal(count, 0)
+    resource01.prepareIfNeeded()
+    resource01.prepareIfNeeded()
+    equal(count, 1)
+    resource01.setNeedsPrepare()
+    resource01.prepareIfNeeded()
+    resource01.prepareIfNeeded()
+    equal(count, 2)
+  }))
 })
 
 /* global describe, before, after, it */
