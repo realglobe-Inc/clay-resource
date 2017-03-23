@@ -11,7 +11,8 @@
         "PolicyMixed",
         "RefMixed",
         "SubMixed",
-        "ThrowMixed"
+        "ThrowMixed",
+        "PrepareMixed"
       ],
       "access": "",
       "virtual": false,
