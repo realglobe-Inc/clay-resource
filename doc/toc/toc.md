@@ -1,5 +1,7 @@
 - [Installation](#installation)
 - [Usage](#usage)
+- [Advanced Usage](#advanced-usage)
+  * [Listening to events](#listening-to-events)
 - [API Guide](#api-guide)
 - [License](#license)
 - [Links](#links)

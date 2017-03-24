@@ -62,6 +62,8 @@ Table of Contents
 
 - [Installation](#installation)
 - [Usage](#usage)
+- [Advanced Usage](#advanced-usage)
+  * [Listening to events](#listening-to-events)
 - [API Guide](#api-guide)
 - [License](#license)
 - [Links](#links)
@@ -120,6 +122,59 @@ tryExample()
 
 
 <!-- Section from "doc/guides/02.Usage.md.hbs" End -->
+
+<!-- Section from "doc/guides/03.Advanced Usage.md.hbs" Start -->
+
+<a name="section-doc-guides-03-advanced-usage-md"></a>
+
+Advanced Usage
+---------
+
+### Listening to events
+
+Resources are instances of [EventEmitter](https://nodejs.org/api/events.html) and fires events.
+See [ResourceEvents](https://github.com/realglobe-Inc/clay-constants#ResourceEvents) to know what you can listen.
+
+```javascript
+'use strict'
+
+const { fromDriver, ResourceEvents } = require('clay-resource')
+const clayDriverMemory = require('clay-driver-memory')
+
+// Events fired from resource
+const {
+  ENTITY_CREATE,
+  ENTITY_CREATE_BULK,
+  ENTITY_UPDATE,
+  ENTITY_UPDATE_BULK,
+  ENTITY_DESTROY,
+  ENTITY_DESTROY_BULK,
+  ENTITY_DROP
+} = ResourceEvents
+
+async function tryEvents () {
+  let driver = clayDriverMemory()
+  let Product = fromDriver(driver, 'Product')
+
+  Product.on(ENTITY_CREATE, ({ created }) => { /* ... */ })
+  Product.on(ENTITY_CREATE_BULK, ({ created }) => { /* ... */ })
+  Product.on(ENTITY_UPDATE, ({ id, updated }) => { /* ... */ })
+  Product.on(ENTITY_UPDATE_BULK, ({ ids, updated }) => { /* ... */ })
+  Product.on(ENTITY_DESTROY, ({ id, destroyed }) => { /* ... */ })
+  Product.on(ENTITY_DESTROY_BULK, ({ ids, destroyed }) => { /* ... */ })
+  Product.on(ENTITY_DROP, ({ dropped }) => { /* ... */ })
+  {
+    let product01 = await Product.create({ name: 'Awesome Box', price: 100 })
+    /* ... */
+  }
+}
+
+tryEvents()
+
+```
+
+
+<!-- Section from "doc/guides/03.Advanced Usage.md.hbs" End -->
 
 <!-- Section from "doc/guides/10.API Guide.md.hbs" Start -->
 
