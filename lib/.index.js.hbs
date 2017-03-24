@@ -8,12 +8,14 @@
 const create = require('./create')
 const ClayResource = require('./clay_resource')
 const fromDriver = require('./from_driver')
+const ResourceEvents = require('./resource_events')
 
 let lib = create.bind(this)
 
 Object.assign(lib, ClayResource, {
   create,
   ClayResource,
+  ResourceEvents,
   fromDriver
 })
 
