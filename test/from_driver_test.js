@@ -13,6 +13,7 @@ const clayPolicy = require('clay-policy')
 const { refTo } = require('clay-resource-ref')
 const { generate: generateKeys, verify } = require('clay-crypto')
 const co = require('co')
+const { DataTypes } = clayPolicy
 
 describe('from-driver', function () {
   this.timeout(3000)
@@ -204,7 +205,7 @@ describe('from-driver', function () {
   }))
 
   it('Policy check', () => co(function * () {
-    const { STRING, DATE } = clayPolicy.Types
+    const { STRING, DATE } = clayPolicy.DataTypes
     let driver = clayDriverMemory()
     let User = fromDriver(driver, 'User')
 
@@ -246,6 +247,27 @@ describe('from-driver', function () {
     equal(product01.code, '#1234')
     let product02 = yield Product.of({ code: '#1234' })
     equal(String(product01).id, String(product02).id)
+    yield Product.drop()
+  }))
+
+  it('Unique', () => co(function * () {
+    let driver = clayDriverMemory()
+    let Fruit = fromDriver(driver, 'Fruit')
+    Fruit.policy({
+      name: {
+        type: DataTypes.STRING,
+        unique: true
+      }
+    })
+    yield Fruit.create({ name: 'banana' })
+    let caught
+    try {
+      yield Fruit.create({ name: 'banana' })
+    } catch (thrown) {
+      caught = thrown
+    }
+    ok(caught)
+    yield Fruit.drop()
   }))
 })
 
