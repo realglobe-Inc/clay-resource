@@ -62,6 +62,11 @@ describe('clay-resource', function () {
     resource01.prepareIfNeeded()
     resource01.prepareIfNeeded()
     equal(count, 2)
+
+    ok(resource01.internal('foo'))
+    ok(resource01.sub('foo'))
+
+    equal(resource01.internal('foo').name, 'foo.resource01')
   }))
 })
 
