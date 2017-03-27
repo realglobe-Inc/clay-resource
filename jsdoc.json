@@ -12,6 +12,7 @@
         "RefMixed",
         "SubMixed",
         "ThrowMixed",
+        "InternalMixed",
         "PrepareMixed"
       ],
       "access": "",

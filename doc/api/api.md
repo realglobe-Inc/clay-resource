@@ -1,4 +1,4 @@
-# clay-resource@2.6.0
+# clay-resource@2.7.0
 
 Resource accessor for ClayDB
 
@@ -78,6 +78,7 @@ Resource accessor
 + `RefMixed`
 + `SubMixed`
 + `ThrowMixed`
++ `InternalMixed`
 + `PrepareMixed`
 
 
