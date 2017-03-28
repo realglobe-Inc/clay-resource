@@ -269,6 +269,21 @@ describe('from-driver', function () {
     ok(caught)
     yield Fruit.drop()
   }))
+
+  it('Save/Fetch policy', () => co(function * () {
+    let driver = clayDriverMemory()
+    let Fruit = fromDriver(driver, 'Fruit')
+    let policy = clayPolicy({
+      name: {
+        type: DataTypes.STRING,
+        unique: true
+      }
+    })
+    let digest = yield Fruit.savePolicy(policy)
+    let fetched = yield Fruit.fetchPolicy(digest)
+    ok(fetched)
+    ok(fetched.hasRestrictionFor('name'))
+  }))
 })
 
 /* global describe, before, after, it */
