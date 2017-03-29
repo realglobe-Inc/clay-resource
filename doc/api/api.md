@@ -1,4 +1,4 @@
-# clay-resource@2.8.0
+# clay-resource@2.8.1
 
 Resource accessor for ClayDB
 
@@ -25,6 +25,44 @@ Resource accessor for ClayDB
   + [resource.exists(filter)](#clay-resource-class-clay-resource-exists)
   + [resource.count(filter)](#clay-resource-class-clay-resource-count)
   + [resource.of(attributes)](#clay-resource-class-clay-resource-of)
+  + [resource.toggleAnnotate()](#clay-resource-class-clay-resource-toggleAnnotate)
+  + [resource.clone()](#clay-resource-class-clay-resource-clone)
+  + [resource.addInbound(name, inbound)](#clay-resource-class-clay-resource-addInbound)
+  + [resource.hasInbound(name)](#clay-resource-class-clay-resource-hasInbound)
+  + [resource.removeInbound(name)](#clay-resource-class-clay-resource-removeInbound)
+  + [resource.applyInbound(attributesArray)](#clay-resource-class-clay-resource-applyInbound)
+  + [resource.inboundAttributes(attributes)](#clay-resource-class-clay-resource-inboundAttributes)
+  + [resource.inboundAttributesArray(attributesArray)](#clay-resource-class-clay-resource-inboundAttributesArray)
+  + [resource.inboundAttributesHash(attributesHash)](#clay-resource-class-clay-resource-inboundAttributesHash)
+  + [resource.addOutbound(name, handler)](#clay-resource-class-clay-resource-addOutbound)
+  + [resource.hasOutbound(name)](#clay-resource-class-clay-resource-hasOutbound)
+  + [resource.removeOutbound(name)](#clay-resource-class-clay-resource-removeOutbound)
+  + [resource.applyOutbound(entities)](#clay-resource-class-clay-resource-applyOutbound)
+  + [resource.outboundEntity(entity)](#clay-resource-class-clay-resource-outboundEntity)
+  + [resource.outboundEntityArray(entityArray)](#clay-resource-class-clay-resource-outboundEntityArray)
+  + [resource.outboundCollection(collection)](#clay-resource-class-clay-resource-outboundCollection)
+  + [resource.outboundEntityHash(entityHash)](#clay-resource-class-clay-resource-outboundEntityHash)
+  + [resource.outboundCollectionArray(collectionArray)](#clay-resource-class-clay-resource-outboundCollectionArray)
+  + [resource.getPolicy()](#clay-resource-class-clay-resource-getPolicy)
+  + [resource.setPolicy(policy)](#clay-resource-class-clay-resource-setPolicy)
+  + [resource.removePolicy()](#clay-resource-class-clay-resource-removePolicy)
+  + [resource.fetchPolicy(digest)](#clay-resource-class-clay-resource-fetchPolicy)
+  + [resource.savePolicy(policy)](#clay-resource-class-clay-resource-savePolicy)
+  + [resource.addRef(resourceName, resource)](#clay-resource-class-clay-resource-addRef)
+  + [resource.hasRef(resourceName)](#clay-resource-class-clay-resource-hasRef)
+  + [resource.removeRef(resourceName)](#clay-resource-class-clay-resource-removeRef)
+  + [resource.sub(name)](#clay-resource-class-clay-resource-sub)
+  + [resource.subNames()](#clay-resource-class-clay-resource-subNames)
+  + [resource.throwEntityNotFoundError(id)](#clay-resource-class-clay-resource-throwEntityNotFoundError)
+  + [resource.internal(name)](#clay-resource-class-clay-resource-internal)
+  + [resource.internalNames()](#clay-resource-class-clay-resource-internalNames)
+  + [resource.prepareIfNeeded()](#clay-resource-class-clay-resource-prepareIfNeeded)
+  + [resource.prepare()](#clay-resource-class-clay-resource-prepare)
+  + [resource.addPrepareTask(name, task)](#clay-resource-class-clay-resource-addPrepareTask)
+  + [resource.hasPrepareTask(name)](#clay-resource-class-clay-resource-hasPrepareTask)
+  + [resource.removePrepareTask(name)](#clay-resource-class-clay-resource-removePrepareTask)
+  + [resource.setNeedsPrepare(needsPrepare)](#clay-resource-class-clay-resource-setNeedsPrepare)
+  + [resource.decorate(methodName, decorate)](#clay-resource-class-clay-resource-decorate)
 
 ## Functions
 
@@ -80,6 +118,7 @@ Resource accessor
 + `ThrowMixed`
 + `InternalMixed`
 + `PrepareMixed`
++ `DecorateMixed`
 
 
 
@@ -504,6 +543,389 @@ async function tryOf () {
 }
 tryOf()
 ```
+
+<a class='md-heading-link' name="clay-resource-class-clay-resource-toggleAnnotate" ></a>
+
+### resource.toggleAnnotate()
+
+
+
+<a class='md-heading-link' name="clay-resource-class-clay-resource-clone" ></a>
+
+### resource.clone() -> `Object`
+
+Clone the instance
+
+<a class='md-heading-link' name="clay-resource-class-clay-resource-addInbound" ></a>
+
+### resource.addInbound(name, inbound) -> `InboundMixed`
+
+Add inbound
+
+| Param | Type | Description |
+| ----- | --- | -------- |
+| name | string | Name of inbound |
+| inbound | function | Inbound function |
+
+
+<a class='md-heading-link' name="clay-resource-class-clay-resource-hasInbound" ></a>
+
+### resource.hasInbound(name) -> `boolean`
+
+Check if has inbound
+
+| Param | Type | Description |
+| ----- | --- | -------- |
+| name | string | Name of inbound |
+
+
+<a class='md-heading-link' name="clay-resource-class-clay-resource-removeInbound" ></a>
+
+### resource.removeInbound(name) -> `InboundMixed`
+
+Remove inbound
+
+| Param | Type | Description |
+| ----- | --- | -------- |
+| name | string | Name of inbound |
+
+
+<a class='md-heading-link' name="clay-resource-class-clay-resource-applyInbound" ></a>
+
+### resource.applyInbound(attributesArray) -> `Promise.<Array.<EntityAttributes>>`
+
+Apply inbound to array of attributes
+
+| Param | Type | Description |
+| ----- | --- | -------- |
+| attributesArray | Array.&lt;EntityAttributes&gt; | Array of attributes |
+
+
+<a class='md-heading-link' name="clay-resource-class-clay-resource-inboundAttributes" ></a>
+
+### resource.inboundAttributes(attributes) -> `Promise.<EntityAttributes>`
+
+Inbound attributes
+
+| Param | Type | Description |
+| ----- | --- | -------- |
+| attributes | EntityAttributes | Attributes to inbound |
+
+
+<a class='md-heading-link' name="clay-resource-class-clay-resource-inboundAttributesArray" ></a>
+
+### resource.inboundAttributesArray(attributesArray) -> `Promise.<Array.<EntityAttributes>>`
+
+Inbound attributes array
+
+| Param | Type | Description |
+| ----- | --- | -------- |
+| attributesArray | Array.&lt;EntityAttributes&gt; | Attributes array to inbound |
+
+
+<a class='md-heading-link' name="clay-resource-class-clay-resource-inboundAttributesHash" ></a>
+
+### resource.inboundAttributesHash(attributesHash) -> `Promise.<AttributesHash>`
+
+Inbound attributes hash
+
+| Param | Type | Description |
+| ----- | --- | -------- |
+| attributesHash | AttributesHash |  |
+
+
+<a class='md-heading-link' name="clay-resource-class-clay-resource-addOutbound" ></a>
+
+### resource.addOutbound(name, handler) -> `OutboundMixed`
+
+Add outbound
+
+| Param | Type | Description |
+| ----- | --- | -------- |
+| name | string | Name of outbound |
+| handler | function | Format handler function |
+
+
+<a class='md-heading-link' name="clay-resource-class-clay-resource-hasOutbound" ></a>
+
+### resource.hasOutbound(name) -> `boolean`
+
+Check if has outbound
+
+| Param | Type | Description |
+| ----- | --- | -------- |
+| name | string | Name of outbound |
+
+
+<a class='md-heading-link' name="clay-resource-class-clay-resource-removeOutbound" ></a>
+
+### resource.removeOutbound(name) -> `OutboundMixed`
+
+Remove outbound
+
+| Param | Type | Description |
+| ----- | --- | -------- |
+| name | string | Name of outbound |
+
+
+<a class='md-heading-link' name="clay-resource-class-clay-resource-applyOutbound" ></a>
+
+### resource.applyOutbound(entities) -> `Promise.<Array.<ClayEntity>>`
+
+Apply outbound to entities
+
+| Param | Type | Description |
+| ----- | --- | -------- |
+| entities | Array.&lt;ClayEntity&gt; | Entities to outbound |
+
+
+<a class='md-heading-link' name="clay-resource-class-clay-resource-outboundEntity" ></a>
+
+### resource.outboundEntity(entity) -> `Promise.<ClayEntity>`
+
+Format entity
+
+| Param | Type | Description |
+| ----- | --- | -------- |
+| entity | ClayEntity |  |
+
+
+<a class='md-heading-link' name="clay-resource-class-clay-resource-outboundEntityArray" ></a>
+
+### resource.outboundEntityArray(entityArray) -> `Promise.<Array.<ClayEntity>>`
+
+Proses entity array
+
+| Param | Type | Description |
+| ----- | --- | -------- |
+| entityArray | Array.&lt;ClayEntity&gt; |  |
+
+
+<a class='md-heading-link' name="clay-resource-class-clay-resource-outboundCollection" ></a>
+
+### resource.outboundCollection(collection) -> `Promise.<ClayCollection>`
+
+Format entity collection
+
+| Param | Type | Description |
+| ----- | --- | -------- |
+| collection | ClayCollection |  |
+
+
+<a class='md-heading-link' name="clay-resource-class-clay-resource-outboundEntityHash" ></a>
+
+### resource.outboundEntityHash(entityHash) -> `Promise.<EntityHash>`
+
+Format entity hash
+
+| Param | Type | Description |
+| ----- | --- | -------- |
+| entityHash | EntityHash |  |
+
+
+<a class='md-heading-link' name="clay-resource-class-clay-resource-outboundCollectionArray" ></a>
+
+### resource.outboundCollectionArray(collectionArray) -> `Promise.<CollectionArray>`
+
+Format collection array
+
+| Param | Type | Description |
+| ----- | --- | -------- |
+| collectionArray | CollectionArray |  |
+
+
+<a class='md-heading-link' name="clay-resource-class-clay-resource-getPolicy" ></a>
+
+### resource.getPolicy() -> `ClayPolicy`
+
+Get the policy
+
+<a class='md-heading-link' name="clay-resource-class-clay-resource-setPolicy" ></a>
+
+### resource.setPolicy(policy) -> `PolicyMix`
+
+Set policy
+
+| Param | Type | Description |
+| ----- | --- | -------- |
+| policy |  |  |
+
+
+<a class='md-heading-link' name="clay-resource-class-clay-resource-removePolicy" ></a>
+
+### resource.removePolicy()
+
+Remove policy
+
+<a class='md-heading-link' name="clay-resource-class-clay-resource-fetchPolicy" ></a>
+
+### resource.fetchPolicy(digest) -> `Promise.<ClayPolicy>`
+
+Fetch policy from db
+
+| Param | Type | Description |
+| ----- | --- | -------- |
+| digest | string |  |
+
+
+<a class='md-heading-link' name="clay-resource-class-clay-resource-savePolicy" ></a>
+
+### resource.savePolicy(policy) -> `Promise.<string>`
+
+Save policy
+
+| Param | Type | Description |
+| ----- | --- | -------- |
+| policy | ClayPolicy |  |
+
+
+<a class='md-heading-link' name="clay-resource-class-clay-resource-addRef" ></a>
+
+### resource.addRef(resourceName, resource)
+
+Add resource ref
+
+| Param | Type | Description |
+| ----- | --- | -------- |
+| resourceName | string |  |
+| resource | ClayResource |  |
+
+
+<a class='md-heading-link' name="clay-resource-class-clay-resource-hasRef" ></a>
+
+### resource.hasRef(resourceName) -> `boolean`
+
+has resources ref
+
+| Param | Type | Description |
+| ----- | --- | -------- |
+| resourceName | string |  |
+
+
+<a class='md-heading-link' name="clay-resource-class-clay-resource-removeRef" ></a>
+
+### resource.removeRef(resourceName) -> `FormatMix`
+
+Remove resource ref
+
+| Param | Type | Description |
+| ----- | --- | -------- |
+| resourceName | string |  |
+
+
+<a class='md-heading-link' name="clay-resource-class-clay-resource-sub" ></a>
+
+### resource.sub(name) -> `ClayResource`
+
+Get sub resource
+
+| Param | Type | Description |
+| ----- | --- | -------- |
+| name | string |  |
+
+
+<a class='md-heading-link' name="clay-resource-class-clay-resource-subNames" ></a>
+
+### resource.subNames() -> `Promise.<Array.<string>>`
+
+Get names of sub resources
+
+<a class='md-heading-link' name="clay-resource-class-clay-resource-throwEntityNotFoundError" ></a>
+
+### resource.throwEntityNotFoundError(id)
+
+Throw entity not found error
+
+| Param | Type | Description |
+| ----- | --- | -------- |
+| id | ClayId |  |
+
+
+<a class='md-heading-link' name="clay-resource-class-clay-resource-internal" ></a>
+
+### resource.internal(name) -> `ClayResource`
+
+Get internal resource
+
+| Param | Type | Description |
+| ----- | --- | -------- |
+| name | string |  |
+
+
+<a class='md-heading-link' name="clay-resource-class-clay-resource-internalNames" ></a>
+
+### resource.internalNames() -> `Promise.<Array.<string>>`
+
+Get names of internal resources
+
+<a class='md-heading-link' name="clay-resource-class-clay-resource-prepareIfNeeded" ></a>
+
+### resource.prepareIfNeeded() -> `Promise`
+
+Do prepare if needed
+
+<a class='md-heading-link' name="clay-resource-class-clay-resource-prepare" ></a>
+
+### resource.prepare() -> `Promise.<Object>`
+
+Do preparing
+
+<a class='md-heading-link' name="clay-resource-class-clay-resource-addPrepareTask" ></a>
+
+### resource.addPrepareTask(name, task) -> `PrepareMixed`
+
+Add prepare task
+
+| Param | Type | Description |
+| ----- | --- | -------- |
+| name | string | Name of task |
+| task | function | Task function |
+
+
+<a class='md-heading-link' name="clay-resource-class-clay-resource-hasPrepareTask" ></a>
+
+### resource.hasPrepareTask(name) -> `boolean`
+
+Check if has task
+
+| Param | Type | Description |
+| ----- | --- | -------- |
+| name | string |  |
+
+
+<a class='md-heading-link' name="clay-resource-class-clay-resource-removePrepareTask" ></a>
+
+### resource.removePrepareTask(name) -> `PrepareMixed`
+
+Remove a task
+
+| Param | Type | Description |
+| ----- | --- | -------- |
+| name | string | Name of task |
+
+
+<a class='md-heading-link' name="clay-resource-class-clay-resource-setNeedsPrepare" ></a>
+
+### resource.setNeedsPrepare(needsPrepare) -> `PrepareMixed`
+
+Set needs prepare
+
+| Param | Type | Description |
+| ----- | --- | -------- |
+| needsPrepare | boolean | Needs preparing |
+
+
+<a class='md-heading-link' name="clay-resource-class-clay-resource-decorate" ></a>
+
+### resource.decorate(methodName, decorate) -> `DecorateMixed`
+
+Decorate a method
+
+| Param | Type | Description |
+| ----- | --- | -------- |
+| methodName | string | Name of method |
+| decorate | function | Decorate function |
+
 
 
 

@@ -17,7 +17,7 @@ const writeout = require('writeout')
 apeTasking.runTasks('doc', [
   // Generate jsdoc.json
   () => co(function * () {
-    let src = 'lib/*.js'
+    let src = 'lib/*.js lib/mixins/*.js'
     let dest = 'jsdoc.json'
     let data = execSync(`
     jsdoc ${src} -t templates/haruki -d console -q format=JSON
