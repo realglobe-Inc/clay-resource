@@ -63,7 +63,8 @@ Table of Contents
 - [Installation](#installation)
 - [Usage](#usage)
 - [Advanced Usage](#advanced-usage)
-  * [Listening to events](#listening-to-events)
+  * [Listening to Events](#listening-to-events)
+  * [Decorating Resource Method](#decorating-resource-method)
 - [API Guide](#api-guide)
 - [License](#license)
 - [Links](#links)
@@ -130,7 +131,7 @@ tryExample()
 Advanced Usage
 ---------
 
-### Listening to events
+### Listening to Events
 
 Resources are instances of [EventEmitter](https://nodejs.org/api/events.html) and fires events.
 See [ResourceEvents](https://github.com/realglobe-Inc/clay-constants#ResourceEvents) to know what you can listen.
@@ -174,6 +175,48 @@ tryEvents()
 ```
 
 
+### Decorating Resource Method
+
+To add some custom logic before/after resource handling, use `.decorate(methodName, decorator)`.
+
+```javascript
+'use strict'
+
+const { fromDriver } = require('clay-resource')
+const clayDriverMemory = require('clay-driver-memory')
+
+async function tryDecoration () {
+  let driver = clayDriverMemory()
+  let Product = fromDriver(driver, 'Product')
+
+  // Decorate resource method
+  Product.decorate('create', (create) => async function decoratedCreate (attributes) {
+    // Add custom check before create
+    {
+      let ok = /^[a-zA-Z\d].$/.test(attributes.name)
+      if (ok) {
+        throw new Error('Invalid name!')
+      }
+    }
+    let created = await create(attributes) // Call the original method
+
+    // Add custom logging after created
+    {
+      let logMsg = '[product] New entity created:' + created.id
+      console.log(logMsg)
+    }
+    return created
+  })
+
+  let created = await Product.create({ name: 'foo' })
+  /* ... */
+}
+
+tryDecoration()
+
+```
+
+
 <!-- Section from "doc/guides/03.Advanced Usage.md.hbs" End -->
 
 <!-- Section from "doc/guides/10.API Guide.md.hbs" Start -->
@@ -183,7 +226,7 @@ tryEvents()
 API Guide
 -----
 
-+ [clay-resource@2.8.0](./doc/api/api.md)
++ [clay-resource@2.8.1](./doc/api/api.md)
   + [create(args)](./doc/api/api.md#clay-resource-function-create)
   + [fromDriver(driver, nameString, options)](./doc/api/api.md#clay-resource-function-from-driver)
   + [ClayResource](./doc/api/api.md#clay-resource-class)

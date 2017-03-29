@@ -65,6 +65,13 @@ describe('clay-resource', function () {
 
     equal(resource01.internal('foo').name, 'foo.resource01')
   }))
+
+  it('Do decorate', () => co(function * () {
+    let resource01 = new ClayResource('resource01')
+    resource01.foo = (arg) => 'foo:' + arg
+    resource01.decorate('foo', (foo) => (arg) => 'decorated:' + foo(arg))
+    equal(resource01.foo('bar'), 'decorated:foo:bar')
+  }))
 })
 
 /* global describe, before, after, it */

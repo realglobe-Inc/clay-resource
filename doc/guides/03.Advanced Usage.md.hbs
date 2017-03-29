@@ -1,11 +1,20 @@
 Advanced Usage
 ---------
 
-### Listening to events
+### Listening to Events
 
 Resources are instances of [EventEmitter](https://nodejs.org/api/events.html) and fires events.
 See [ResourceEvents](https://github.com/realglobe-Inc/clay-constants#ResourceEvents) to know what you can listen.
 
 ```javascript
 {{{read 'example/example-events.js'}}}
+```
+
+
+### Decorating Resource Method
+
+To add some custom logic before/after resource handling, use `.decorate(methodName, decorator)`.
+
+```javascript
+{{{read 'example/example-decorate.js'}}}
 ```
