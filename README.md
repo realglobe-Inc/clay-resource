@@ -63,7 +63,8 @@ Table of Contents
 - [Installation](#installation)
 - [Usage](#usage)
 - [Advanced Usage](#advanced-usage)
-  * [Listening to events](#listening-to-events)
+  * [Listening to Events](#listening-to-events)
+  * [Decorating Resource Method](#decorating-resource-method)
 - [API Guide](#api-guide)
 - [License](#license)
 - [Links](#links)
@@ -184,12 +185,12 @@ To add some custom logic before/after resource handling, use `.decorate(methodNa
 const { fromDriver } = require('clay-resource')
 const clayDriverMemory = require('clay-driver-memory')
 
-async function tryEvents () {
+async function tryDecoration () {
   let driver = clayDriverMemory()
   let Product = fromDriver(driver, 'Product')
 
   // Decorate resource method
-  Product.decorate('create', (create) => async function decoratedCrate (attributes) {
+  Product.decorate('create', (create) => async function decoratedCreate (attributes) {
     // Add custom check before create
     {
       let ok = /^[a-zA-Z\d].$/.test(attributes.name)
@@ -197,11 +198,11 @@ async function tryEvents () {
         throw new Error('Invalid name!')
       }
     }
-    let created = await create(attributes) // Call original method
+    let created = await create(attributes) // Call the original method
 
     // Add custom logging after created
     {
-      let logMsg = '[product] New Product created:' + created.id
+      let logMsg = '[product] New entity created:' + created.id
       console.log(logMsg)
     }
     return created
@@ -211,7 +212,7 @@ async function tryEvents () {
   /* ... */
 }
 
-tryEvents()
+tryDecoration()
 
 ```
 

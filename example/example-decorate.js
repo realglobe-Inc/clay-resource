@@ -8,7 +8,7 @@ async function tryDecoration () {
   let Product = fromDriver(driver, 'Product')
 
   // Decorate resource method
-  Product.decorate('create', (create) => async function decoratedCrate (attributes) {
+  Product.decorate('create', (create) => async function decoratedCreate (attributes) {
     // Add custom check before create
     {
       let ok = /^[a-zA-Z\d].$/.test(attributes.name)
@@ -16,11 +16,11 @@ async function tryDecoration () {
         throw new Error('Invalid name!')
       }
     }
-    let created = await create(attributes) // Call original method
+    let created = await create(attributes) // Call the original method
 
     // Add custom logging after created
     {
-      let logMsg = '[product] New Product created:' + created.id
+      let logMsg = '[product] New entity created:' + created.id
       console.log(logMsg)
     }
     return created
