@@ -29,7 +29,7 @@
     "clay-errors": "^3.0.1",
     "clay-policy": "^2.0.1",
     "clay-resource-name": "^4.0.1",
-    "clay-resource-ref": "^1.1.3",
+    "clay-resource-ref": "^2.0.1",
     "clay-schemas": "^4.0.2",
     "co": "^4.6.0"
   },
