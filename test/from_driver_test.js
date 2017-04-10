@@ -270,6 +270,19 @@ describe('from-driver', function () {
     yield Fruit.drop()
   }))
 
+  it('Default', () => co(function * () {
+    let driver = clayDriverMemory()
+    let Box = fromDriver(driver, 'Box')
+    Box.policy({
+      type: {
+        type: DataTypes.STRING,
+        default: 'Wood'
+      }
+    })
+    let toyBox = yield Box.create({ name: 'toy' })
+    equal(toyBox.type, 'Wood')
+  }))
+
   it('Save/Fetch policy', () => co(function * () {
     let driver = clayDriverMemory()
     let Fruit = fromDriver(driver, 'Fruit')
