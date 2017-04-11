@@ -30,7 +30,7 @@
     "clay-policy": "^2.0.1",
     "clay-resource-name": "^4.0.1",
     "clay-resource-ref": "^2.0.1",
-    "clay-schemas": "^4.0.2",
+    "clay-schemas": "^4.0.3",
     "co": "^4.6.0"
   },
   "devDependencies": {

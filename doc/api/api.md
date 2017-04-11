@@ -1,4 +1,4 @@
-# clay-resource@3.0.1
+# clay-resource@3.0.2
 
 Resource accessor for ClayDB
 
@@ -30,19 +30,19 @@ Resource accessor for ClayDB
   + [resource.addInbound(name, inbound)](#clay-resource-class-clay-resource-addInbound)
   + [resource.hasInbound(name)](#clay-resource-class-clay-resource-hasInbound)
   + [resource.removeInbound(name)](#clay-resource-class-clay-resource-removeInbound)
-  + [resource.applyInbound(attributesArray)](#clay-resource-class-clay-resource-applyInbound)
-  + [resource.inboundAttributes(attributes)](#clay-resource-class-clay-resource-inboundAttributes)
-  + [resource.inboundAttributesArray(attributesArray)](#clay-resource-class-clay-resource-inboundAttributesArray)
-  + [resource.inboundAttributesHash(attributesHash)](#clay-resource-class-clay-resource-inboundAttributesHash)
+  + [resource.applyInbound(attributesArray, actionContext)](#clay-resource-class-clay-resource-applyInbound)
+  + [resource.inboundAttributes(attributes, actionContext)](#clay-resource-class-clay-resource-inboundAttributes)
+  + [resource.inboundAttributesArray(attributesArray, actionContext)](#clay-resource-class-clay-resource-inboundAttributesArray)
+  + [resource.inboundAttributesHash(attributesHash, actionContext)](#clay-resource-class-clay-resource-inboundAttributesHash)
   + [resource.addOutbound(name, handler)](#clay-resource-class-clay-resource-addOutbound)
   + [resource.hasOutbound(name)](#clay-resource-class-clay-resource-hasOutbound)
   + [resource.removeOutbound(name)](#clay-resource-class-clay-resource-removeOutbound)
-  + [resource.applyOutbound(entities)](#clay-resource-class-clay-resource-applyOutbound)
-  + [resource.outboundEntity(entity)](#clay-resource-class-clay-resource-outboundEntity)
-  + [resource.outboundEntityArray(entityArray)](#clay-resource-class-clay-resource-outboundEntityArray)
-  + [resource.outboundCollection(collection)](#clay-resource-class-clay-resource-outboundCollection)
-  + [resource.outboundEntityHash(entityHash)](#clay-resource-class-clay-resource-outboundEntityHash)
-  + [resource.outboundCollectionArray(collectionArray)](#clay-resource-class-clay-resource-outboundCollectionArray)
+  + [resource.applyOutbound(entities, actionContext)](#clay-resource-class-clay-resource-applyOutbound)
+  + [resource.outboundEntity(entity, actionContext)](#clay-resource-class-clay-resource-outboundEntity)
+  + [resource.outboundEntityArray(entityArray, actionContext)](#clay-resource-class-clay-resource-outboundEntityArray)
+  + [resource.outboundCollection(collection, actionContext)](#clay-resource-class-clay-resource-outboundCollection)
+  + [resource.outboundEntityHash(entityHash, actionContext)](#clay-resource-class-clay-resource-outboundEntityHash)
+  + [resource.outboundCollectionArray(collectionArray, actionContext)](#clay-resource-class-clay-resource-outboundCollectionArray)
   + [resource.getPolicy()](#clay-resource-class-clay-resource-getPolicy)
   + [resource.setPolicy(policy)](#clay-resource-class-clay-resource-setPolicy)
   + [resource.removePolicy()](#clay-resource-class-clay-resource-removePolicy)
@@ -592,46 +592,50 @@ Remove inbound
 
 <a class='md-heading-link' name="clay-resource-class-clay-resource-applyInbound" ></a>
 
-### resource.applyInbound(attributesArray) -> `Promise.<Array.<EntityAttributes>>`
+### resource.applyInbound(attributesArray, actionContext) -> `Promise.<Array.<EntityAttributes>>`
 
 Apply inbound to array of attributes
 
 | Param | Type | Description |
 | ----- | --- | -------- |
 | attributesArray | Array.&lt;EntityAttributes&gt; | Array of attributes |
+| actionContext | ActionContext | Context for resource action |
 
 
 <a class='md-heading-link' name="clay-resource-class-clay-resource-inboundAttributes" ></a>
 
-### resource.inboundAttributes(attributes) -> `Promise.<EntityAttributes>`
+### resource.inboundAttributes(attributes, actionContext) -> `Promise.<EntityAttributes>`
 
 Inbound attributes
 
 | Param | Type | Description |
 | ----- | --- | -------- |
 | attributes | EntityAttributes | Attributes to inbound |
+| actionContext | ActionContext | Context for resource action |
 
 
 <a class='md-heading-link' name="clay-resource-class-clay-resource-inboundAttributesArray" ></a>
 
-### resource.inboundAttributesArray(attributesArray) -> `Promise.<Array.<EntityAttributes>>`
+### resource.inboundAttributesArray(attributesArray, actionContext) -> `Promise.<Array.<EntityAttributes>>`
 
 Inbound attributes array
 
 | Param | Type | Description |
 | ----- | --- | -------- |
 | attributesArray | Array.&lt;EntityAttributes&gt; | Attributes array to inbound |
+| actionContext | ActionContext | Context for resource action |
 
 
 <a class='md-heading-link' name="clay-resource-class-clay-resource-inboundAttributesHash" ></a>
 
-### resource.inboundAttributesHash(attributesHash) -> `Promise.<AttributesHash>`
+### resource.inboundAttributesHash(attributesHash, actionContext) -> `Promise.<AttributesHash>`
 
 Inbound attributes hash
 
 | Param | Type | Description |
 | ----- | --- | -------- |
 | attributesHash | AttributesHash |  |
+| actionContext | ActionContext | Context for resource action |
 
 
 <a class='md-heading-link' name="clay-resource-class-clay-resource-addOutbound" ></a>
@@ -670,68 +674,74 @@ Remove outbound
 
 <a class='md-heading-link' name="clay-resource-class-clay-resource-applyOutbound" ></a>
 
-### resource.applyOutbound(entities) -> `Promise.<Array.<ClayEntity>>`
+### resource.applyOutbound(entities, actionContext) -> `Promise.<Array.<ClayEntity>>`
 
 Apply outbound to entities
 
 | Param | Type | Description |
 | ----- | --- | -------- |
 | entities | Array.&lt;ClayEntity&gt; | Entities to outbound |
+| actionContext | Object |  |
 
 
 <a class='md-heading-link' name="clay-resource-class-clay-resource-outboundEntity" ></a>
 
-### resource.outboundEntity(entity) -> `Promise.<ClayEntity>`
+### resource.outboundEntity(entity, actionContext) -> `Promise.<ClayEntity>`
 
 Format entity
 
 | Param | Type | Description |
 | ----- | --- | -------- |
 | entity | ClayEntity |  |
+| actionContext | Object |  |
 
 
 <a class='md-heading-link' name="clay-resource-class-clay-resource-outboundEntityArray" ></a>
 
-### resource.outboundEntityArray(entityArray) -> `Promise.<Array.<ClayEntity>>`
+### resource.outboundEntityArray(entityArray, actionContext) -> `Promise.<Array.<ClayEntity>>`
 
 Proses entity array
 
 | Param | Type | Description |
 | ----- | --- | -------- |
 | entityArray | Array.&lt;ClayEntity&gt; |  |
+| actionContext | Object |  |
 
 
 <a class='md-heading-link' name="clay-resource-class-clay-resource-outboundCollection" ></a>
 
-### resource.outboundCollection(collection) -> `Promise.<ClayCollection>`
+### resource.outboundCollection(collection, actionContext) -> `Promise.<ClayCollection>`
 
 Format entity collection
 
 | Param | Type | Description |
 | ----- | --- | -------- |
 | collection | ClayCollection |  |
+| actionContext | Object |  |
 
 
 <a class='md-heading-link' name="clay-resource-class-clay-resource-outboundEntityHash" ></a>
 
-### resource.outboundEntityHash(entityHash) -> `Promise.<EntityHash>`
+### resource.outboundEntityHash(entityHash, actionContext) -> `Promise.<EntityHash>`
 
 Format entity hash
 
 | Param | Type | Description |
 | ----- | --- | -------- |
 | entityHash | EntityHash |  |
+| actionContext | Object |  |
 
 
 <a class='md-heading-link' name="clay-resource-class-clay-resource-outboundCollectionArray" ></a>
 
-### resource.outboundCollectionArray(collectionArray) -> `Promise.<CollectionArray>`
+### resource.outboundCollectionArray(collectionArray, actionContext) -> `Promise.<CollectionArray>`
 
 Format collection array
 
 | Param | Type | Description |
 | ----- | --- | -------- |
 | collectionArray | CollectionArray |  |
+| actionContext | Object |  |
 
 
 <a class='md-heading-link' name="clay-resource-class-clay-resource-getPolicy" ></a>

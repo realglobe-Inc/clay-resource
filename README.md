@@ -226,7 +226,7 @@ tryDecoration()
 API Guide
 -----
 
-+ [clay-resource@3.0.1](./doc/api/api.md)
++ [clay-resource@3.0.2](./doc/api/api.md)
   + [create(args)](./doc/api/api.md#clay-resource-function-create)
   + [fromDriver(driver, nameString, options)](./doc/api/api.md#clay-resource-function-from-driver)
   + [ClayResource](./doc/api/api.md#clay-resource-class)
