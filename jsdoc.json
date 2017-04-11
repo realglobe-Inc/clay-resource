@@ -668,12 +668,20 @@
               "default": "",
               "optional": "",
               "nullable": ""
+            },
+            {
+              "name": "actionContext",
+              "type": "ActionContext",
+              "description": "Context for resource action",
+              "default": "{}",
+              "optional": true,
+              "nullable": ""
             }
           ],
           "examples": [],
           "returns": {
             "type": "Promise.<Array.<EntityAttributes>>",
-            "description": "Inboundd attributes array"
+            "description": "Inbounded attributes array"
           }
         },
         {
@@ -688,6 +696,14 @@
               "description": "Attributes to inbound",
               "default": "",
               "optional": "",
+              "nullable": ""
+            },
+            {
+              "name": "actionContext",
+              "type": "ActionContext",
+              "description": "Context for resource action",
+              "default": "{}",
+              "optional": true,
               "nullable": ""
             }
           ],
@@ -710,12 +726,20 @@
               "default": "",
               "optional": "",
               "nullable": ""
+            },
+            {
+              "name": "actionContext",
+              "type": "ActionContext",
+              "description": "Context for resource action",
+              "default": "{}",
+              "optional": true,
+              "nullable": ""
             }
           ],
           "examples": [],
           "returns": {
             "type": "Promise.<Array.<EntityAttributes>>",
-            "description": "Inboundd attributes array"
+            "description": "Inbounded attributes array"
           }
         },
         {
@@ -730,6 +754,14 @@
               "description": "",
               "default": "",
               "optional": "",
+              "nullable": ""
+            },
+            {
+              "name": "actionContext",
+              "type": "ActionContext",
+              "description": "Context for resource action",
+              "default": "{}",
+              "optional": true,
               "nullable": ""
             }
           ],
@@ -823,12 +855,20 @@
               "default": "",
               "optional": "",
               "nullable": ""
+            },
+            {
+              "name": "actionContext",
+              "type": "Object",
+              "description": "",
+              "default": "{}",
+              "optional": true,
+              "nullable": ""
             }
           ],
           "examples": [],
           "returns": {
             "type": "Promise.<Array.<ClayEntity>>",
-            "description": "Formated entities"
+            "description": "Formatted entities"
           }
         },
         {
@@ -843,6 +883,14 @@
               "description": "",
               "default": "",
               "optional": "",
+              "nullable": ""
+            },
+            {
+              "name": "actionContext",
+              "type": "Object",
+              "description": "",
+              "default": "{}",
+              "optional": true,
               "nullable": ""
             }
           ],
@@ -865,6 +913,14 @@
               "default": "",
               "optional": "",
               "nullable": ""
+            },
+            {
+              "name": "actionContext",
+              "type": "Object",
+              "description": "",
+              "default": "{}",
+              "optional": true,
+              "nullable": ""
             }
           ],
           "examples": [],
@@ -885,6 +941,14 @@
               "description": "",
               "default": "",
               "optional": "",
+              "nullable": ""
+            },
+            {
+              "name": "actionContext",
+              "type": "Object",
+              "description": "",
+              "default": "{}",
+              "optional": true,
               "nullable": ""
             }
           ],
@@ -907,6 +971,14 @@
               "default": "",
               "optional": "",
               "nullable": ""
+            },
+            {
+              "name": "actionContext",
+              "type": "Object",
+              "description": "",
+              "default": "{}",
+              "optional": true,
+              "nullable": ""
             }
           ],
           "examples": [],
@@ -927,6 +999,14 @@
               "description": "",
               "default": "",
               "optional": "",
+              "nullable": ""
+            },
+            {
+              "name": "actionContext",
+              "type": "Object",
+              "description": "",
+              "default": "{}",
+              "optional": true,
               "nullable": ""
             }
           ],
@@ -1511,12 +1591,20 @@
               "default": "",
               "optional": "",
               "nullable": ""
+            },
+            {
+              "name": "actionContext",
+              "type": "ActionContext",
+              "description": "Context for resource action",
+              "default": "{}",
+              "optional": true,
+              "nullable": ""
             }
           ],
           "examples": [],
           "returns": {
             "type": "Promise.<Array.<EntityAttributes>>",
-            "description": "Inboundd attributes array"
+            "description": "Inbounded attributes array"
           }
         },
         {
@@ -1531,6 +1619,14 @@
               "description": "Attributes to inbound",
               "default": "",
               "optional": "",
+              "nullable": ""
+            },
+            {
+              "name": "actionContext",
+              "type": "ActionContext",
+              "description": "Context for resource action",
+              "default": "{}",
+              "optional": true,
               "nullable": ""
             }
           ],
@@ -1553,12 +1649,20 @@
               "default": "",
               "optional": "",
               "nullable": ""
+            },
+            {
+              "name": "actionContext",
+              "type": "ActionContext",
+              "description": "Context for resource action",
+              "default": "{}",
+              "optional": true,
+              "nullable": ""
             }
           ],
           "examples": [],
           "returns": {
             "type": "Promise.<Array.<EntityAttributes>>",
-            "description": "Inboundd attributes array"
+            "description": "Inbounded attributes array"
           }
         },
         {
@@ -1573,6 +1677,14 @@
               "description": "",
               "default": "",
               "optional": "",
+              "nullable": ""
+            },
+            {
+              "name": "actionContext",
+              "type": "ActionContext",
+              "description": "Context for resource action",
+              "default": "{}",
+              "optional": true,
               "nullable": ""
             }
           ],
@@ -1731,12 +1843,20 @@
               "default": "",
               "optional": "",
               "nullable": ""
+            },
+            {
+              "name": "actionContext",
+              "type": "Object",
+              "description": "",
+              "default": "{}",
+              "optional": true,
+              "nullable": ""
             }
           ],
           "examples": [],
           "returns": {
             "type": "Promise.<Array.<ClayEntity>>",
-            "description": "Formated entities"
+            "description": "Formatted entities"
           }
         },
         {
@@ -1751,6 +1871,14 @@
               "description": "",
               "default": "",
               "optional": "",
+              "nullable": ""
+            },
+            {
+              "name": "actionContext",
+              "type": "Object",
+              "description": "",
+              "default": "{}",
+              "optional": true,
               "nullable": ""
             }
           ],
@@ -1773,6 +1901,14 @@
               "default": "",
               "optional": "",
               "nullable": ""
+            },
+            {
+              "name": "actionContext",
+              "type": "Object",
+              "description": "",
+              "default": "{}",
+              "optional": true,
+              "nullable": ""
             }
           ],
           "examples": [],
@@ -1793,6 +1929,14 @@
               "description": "",
               "default": "",
               "optional": "",
+              "nullable": ""
+            },
+            {
+              "name": "actionContext",
+              "type": "Object",
+              "description": "",
+              "default": "{}",
+              "optional": true,
               "nullable": ""
             }
           ],
@@ -1815,6 +1959,14 @@
               "default": "",
               "optional": "",
               "nullable": ""
+            },
+            {
+              "name": "actionContext",
+              "type": "Object",
+              "description": "",
+              "default": "{}",
+              "optional": true,
+              "nullable": ""
             }
           ],
           "examples": [],
@@ -1835,6 +1987,14 @@
               "description": "",
               "default": "",
               "optional": "",
+              "nullable": ""
+            },
+            {
+              "name": "actionContext",
+              "type": "Object",
+              "description": "",
+              "default": "{}",
+              "optional": true,
               "nullable": ""
             }
           ],
