@@ -6,6 +6,7 @@
 
 const ClayResource = require('../lib/clay_resource.js')
 const { ok, equal, deepEqual } = require('assert')
+const { MemoryDriver } = require('clay-driver-memory')
 const co = require('co')
 
 describe('clay-resource', function () {
@@ -71,6 +72,15 @@ describe('clay-resource', function () {
     resource01.foo = (arg) => 'foo:' + arg
     resource01.decorate('foo', (foo) => (arg) => 'decorated:' + foo(arg))
     equal(resource01.foo('bar'), 'decorated:foo:bar')
+  }))
+
+  it('Extension', () => co(function * () {
+    class UserResource extends ClayResource {
+    }
+    let driver = new MemoryDriver()
+    let userResource = UserResource.fromDriver(driver, 'User')
+    let user = yield userResource.create({ name: 'foo' })
+    equal(user.name, 'foo')
   }))
 })
 

@@ -65,6 +65,7 @@ Table of Contents
 - [Advanced Usage](#advanced-usage)
   * [Listening to Events](#listening-to-events)
   * [Decorating Resource Method](#decorating-resource-method)
+  * [Define Custom Resource class](#define-custom-resource-class)
 - [API Guide](#api-guide)
 - [License](#license)
 - [Links](#links)
@@ -213,6 +214,15 @@ async function tryDecoration () {
 }
 
 tryDecoration()
+
+```
+
+
+### Define Custom Resource class
+
+To define custom resource,  extends `ClayResource` class and use `.fromDriver()` method to create new instance
+
+```javascript
 
 ```
 
