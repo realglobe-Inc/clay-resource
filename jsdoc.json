@@ -2405,6 +2405,43 @@
   ],
   "functions": [
     {
+      "name": "fromDriver",
+      "access": "",
+      "virtual": false,
+      "description": "",
+      "parameters": [
+        {
+          "name": "driver",
+          "type": "Driver",
+          "description": "Driver to bind",
+          "default": "",
+          "optional": "",
+          "nullable": ""
+        },
+        {
+          "name": "nameString",
+          "type": "string",
+          "description": "Resource name string",
+          "default": "",
+          "optional": "",
+          "nullable": ""
+        },
+        {
+          "name": "options",
+          "type": "Object",
+          "description": "Optional settings",
+          "default": "{}",
+          "optional": true,
+          "nullable": ""
+        }
+      ],
+      "examples": [],
+      "returns": {
+        "type": "ClayResource",
+        "description": "Resource instance"
+      }
+    },
+    {
       "name": "create",
       "access": "",
       "virtual": false,
@@ -2461,7 +2498,7 @@
       ],
       "returns": {
         "type": "ClayResource",
-        "description": "Created class"
+        "description": "Resource instance"
       }
     },
     {
