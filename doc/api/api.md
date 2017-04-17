@@ -63,7 +63,7 @@ Resource accessor for ClayDB
   + [resource.removePrepareTask(name)](#clay-resource-class-clay-resource-removePrepareTask)
   + [resource.setNeedsPrepare(needsPrepare)](#clay-resource-class-clay-resource-setNeedsPrepare)
   + [resource.decorate(methodName, decorate)](#clay-resource-class-clay-resource-decorate)
-  + [resource.caches(caches, caches)](#clay-resource-class-clay-resource-caches)
+  + [resource.caches(caches)](#clay-resource-class-clay-resource-caches)
   + [resource.storeCache(entity)](#clay-resource-class-clay-resource-storeCache)
   + [resource.gainCache(id)](#clay-resource-class-clay-resource-gainCache)
   + [resource.requestCacheClear(ids)](#clay-resource-class-clay-resource-requestCacheClear)
@@ -944,13 +944,12 @@ Decorate a method
 
 <a class='md-heading-link' name="clay-resource-class-clay-resource-caches" ></a>
 
-### resource.caches(caches, caches) -> `CacheMixed`
+### resource.caches(caches) -> `CacheMixed`
 
 Toggle caching
 
 | Param | Type | Description |
 | ----- | --- | -------- |
-| caches |  |  |
 | caches | boolean | Should cache or not |
 
 

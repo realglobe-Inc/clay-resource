@@ -1403,14 +1403,6 @@
           "parameters": [
             {
               "name": "caches",
-              "type": "",
-              "description": "",
-              "default": "",
-              "optional": "",
-              "nullable": ""
-            },
-            {
-              "name": "caches",
               "type": "boolean",
               "description": "Should cache or not",
               "default": "",
@@ -1524,14 +1516,6 @@
           "virtual": false,
           "description": "Toggle caching",
           "parameters": [
-            {
-              "name": "caches",
-              "type": "",
-              "description": "",
-              "default": "",
-              "optional": "",
-              "nullable": ""
-            },
             {
               "name": "caches",
               "type": "boolean",
