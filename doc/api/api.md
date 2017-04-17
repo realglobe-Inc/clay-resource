@@ -1,4 +1,4 @@
-# clay-resource@3.0.3
+# clay-resource@3.0.4
 
 Resource accessor for ClayDB
 
@@ -63,6 +63,10 @@ Resource accessor for ClayDB
   + [resource.removePrepareTask(name)](#clay-resource-class-clay-resource-removePrepareTask)
   + [resource.setNeedsPrepare(needsPrepare)](#clay-resource-class-clay-resource-setNeedsPrepare)
   + [resource.decorate(methodName, decorate)](#clay-resource-class-clay-resource-decorate)
+  + [resource.caches(caches, caches)](#clay-resource-class-clay-resource-caches)
+  + [resource.storeCache(entity)](#clay-resource-class-clay-resource-storeCache)
+  + [resource.gainCache(id)](#clay-resource-class-clay-resource-gainCache)
+  + [resource.requestCacheClear(ids)](#clay-resource-class-clay-resource-requestCacheClear)
 
 ## Functions
 
@@ -119,6 +123,7 @@ Resource accessor
 + `InternalMixed`
 + `PrepareMixed`
 + `DecorateMixed`
++ `CacheMixed`
 
 
 
@@ -935,6 +940,51 @@ Decorate a method
 | ----- | --- | -------- |
 | methodName | string | Name of method |
 | decorate | function | Decorate function |
+
+
+<a class='md-heading-link' name="clay-resource-class-clay-resource-caches" ></a>
+
+### resource.caches(caches, caches) -> `CacheMixed`
+
+Toggle caching
+
+| Param | Type | Description |
+| ----- | --- | -------- |
+| caches |  |  |
+| caches | boolean | Should cache or not |
+
+
+<a class='md-heading-link' name="clay-resource-class-clay-resource-storeCache" ></a>
+
+### resource.storeCache(entity)
+
+Store an entity into cache
+
+| Param | Type | Description |
+| ----- | --- | -------- |
+| entity |  |  |
+
+
+<a class='md-heading-link' name="clay-resource-class-clay-resource-gainCache" ></a>
+
+### resource.gainCache(id)
+
+Gain entity from cache
+
+| Param | Type | Description |
+| ----- | --- | -------- |
+| id | ClayId |  |
+
+
+<a class='md-heading-link' name="clay-resource-class-clay-resource-requestCacheClear" ></a>
+
+### resource.requestCacheClear(ids)
+
+Request cache clear
+
+| Param | Type | Description |
+| ----- | --- | -------- |
+| ids | ClayId,Array.&lt;ClayId&gt; | Ids to clear |
 
 
 

@@ -74,16 +74,15 @@ describe('from-driver', function () {
     }
 
     {
-      let notFoundError
+      let caught
       try {
         yield resource.update('__invalid_id__', {})
       } catch (thrown) {
-        notFoundError = thrown
+        caught = thrown
       }
-      ok(notFoundError)
-      equal(notFoundError.name, 'NotFoundError')
+      ok(caught)
+      equal(caught.name, 'NotFoundError')
     }
-
   }))
 
   it('From driver without annotate', () => co(function * () {
@@ -306,6 +305,32 @@ describe('from-driver', function () {
     let fetched = yield Fruit.fetchPolicy(digest)
     ok(fetched)
     ok(fetched.hasRestrictionFor('name'))
+  }))
+
+  it('Using cache', () => co(function * () {
+    let driver = clayDriverMemory()
+    let Fruit = fromDriver(driver, 'Fruit')
+
+    let orange01 = yield Fruit.create({ name: 'orange' })
+    let banana01 = yield Fruit.create({ name: 'banana' })
+
+    yield Fruit.one(orange01.id)
+    yield Fruit.one(orange01.id)
+    equal(Fruit._resourceCache.size, 1)
+    yield Fruit.one(banana01.id)
+    equal(Fruit._resourceCache.size, 2)
+
+    yield Fruit.update(orange01.id, { vr: 2 })
+    yield asleep(300)
+    equal(Fruit._resourceCache.size, 1)
+    let orange01Again = yield Fruit.one(orange01.id)
+    equal(orange01Again.vr, 2)
+    yield Fruit.one(orange01.id)
+    equal(Fruit._resourceCache.size, 2)
+
+    yield Fruit.destroy(orange01.id)
+    let orange01AgainAgain = yield Fruit.one(orange01.id)
+    equal(orange01AgainAgain, null)
   }))
 })
 
