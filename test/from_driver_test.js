@@ -74,14 +74,14 @@ describe('from-driver', function () {
     }
 
     {
-      let notFoundError
+      let caught
       try {
         yield resource.update('__invalid_id__', {})
       } catch (thrown) {
-        notFoundError = thrown
+        caught = thrown
       }
-      ok(notFoundError)
-      equal(notFoundError.name, 'NotFoundError')
+      ok(caught)
+      equal(caught.name, 'NotFoundError')
     }
 
   }))
