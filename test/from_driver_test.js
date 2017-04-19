@@ -322,7 +322,6 @@ describe('from-driver', function () {
     equal(Fruit._resourceCache.size, 2)
 
     yield Fruit.update(orange01.id, { vr: 2 })
-    yield asleep(300)
     equal(Fruit._resourceCache.size, 1)
     let orange01Again = yield Fruit.one(orange01.id)
     equal(orange01Again.vr, 2)
@@ -355,6 +354,28 @@ describe('from-driver', function () {
       let [ user ] = entities
       equal(user.name, 'user01')
     }
+  }))
+
+  it('Circular refs', () => co(function * () {
+    let driver = clayDriverMemory()
+    let Toy = fromDriver(driver, 'Toy')
+    let House = fromDriver(driver, 'House')
+
+    Toy.refs(House)
+    House.refs(Toy)
+
+    let house01 = yield House.create({ name: 'house01' })
+
+    let toy01 = yield Toy.create({ name: 'toy01', house: house01 })
+    let toy02 = yield Toy.create({ name: 'toy02', house: house01 })
+
+    yield House.update(house01.id, { toys: [ toy01, toy02 ] })
+
+    let house01Again = yield House.one(house01.id)
+    equal(house01Again.toys[ 0 ].house.$ref, `House#${house01.id}`)
+
+    let toy01Again = yield Toy.one(toy01.id)
+    equal(toy01Again.house.toys[ 0 ].$ref, `Toy#${toy01.id}`)
   }))
 })
 

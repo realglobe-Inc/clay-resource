@@ -1,4 +1,4 @@
-# clay-resource@3.0.5
+# clay-resource@3.0.6
 
 Resource accessor for ClayDB
 
@@ -7,7 +7,7 @@ Resource accessor for ClayDB
   + [fromDriver(driver, nameString, options)](#clay-resource-function-from-driver)
 + [`ClayResource`](#clay-resource-class) Class
   + [new ClayResource(nameString, bounds, options)](#clay-resource-class-clay-resource-constructor)
-  + [resource.one(id)](#clay-resource-class-clay-resource-one)
+  + [resource.one(id, options)](#clay-resource-class-clay-resource-one)
   + [resource.list(condition)](#clay-resource-class-clay-resource-list)
   + [resource.create(attributes)](#clay-resource-class-clay-resource-create)
   + [resource.update(id, attributes)](#clay-resource-class-clay-resource-update)
@@ -147,13 +147,14 @@ Constructor of ClayResource class
 
 <a class='md-heading-link' name="clay-resource-class-clay-resource-one" ></a>
 
-### resource.one(id) -> `Promise.<ClayEntity>`
+### resource.one(id, options) -> `Promise.<ClayEntity>`
 
 Get a resource
 
 | Param | Type | Description |
 | ----- | --- | -------- |
 | id | ClayId | Id of the entity |
+| options | Object | Optional settings |
 
 **Example**:
 
