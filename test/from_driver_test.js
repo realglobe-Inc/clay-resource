@@ -377,6 +377,36 @@ describe('from-driver', function () {
     let toy01Again = yield Toy.one(toy01.id)
     equal(toy01Again.house.toys[ 0 ].$ref, `Toy#${toy01.id}`)
   }))
+
+  // https://github.com/realglobe-Inc/claydb/issues/8
+  it('claydb/issues/8', () => co(function * () {
+    let driver = clayDriverMemory()
+    let Org = fromDriver(driver, 'Org')
+    let User = fromDriver(driver, 'User')
+    Org.refs(User)
+    User.refs(Org)
+    let realglobe = yield Org.create({ name: 'realglobe' })
+    let realglobeObj = Object(realglobe)
+    let user = yield User.create({ name: 'fuji', org: realglobeObj })
+    ok(user.org.$$entity)
+  }))
+
+  it('Add invalid ref', () => co(function * () {
+    let driver = clayDriverMemory()
+    let Org = fromDriver(driver, 'Org')
+    let User = fromDriver(driver, 'User')
+    Org.refs(User)
+    User.refs(Org)
+    let org01 = yield Org.create({ name: 'FantasticPark' })
+    let user01 = yield User.create({
+      name: 'Rider01',
+      org: {
+        '$$as': org01.$$as,
+        'id': 'hogehoge'
+      }
+    })
+    ok(user01)
+  }))
 })
 
 /* global describe, before, after, it */
