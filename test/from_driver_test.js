@@ -322,7 +322,6 @@ describe('from-driver', function () {
     equal(Fruit._resourceCache.size, 2)
 
     yield Fruit.update(orange01.id, { vr: 2 })
-    yield asleep(300)
     equal(Fruit._resourceCache.size, 1)
     let orange01Again = yield Fruit.one(orange01.id)
     equal(orange01Again.vr, 2)
