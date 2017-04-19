@@ -15,7 +15,8 @@
         "InternalMixed",
         "PrepareMixed",
         "DecorateMixed",
-        "CacheMixed"
+        "CacheMixed",
+        "ConditionMixed"
       ],
       "access": "",
       "virtual": false,
@@ -1469,6 +1470,48 @@
             }
           ],
           "examples": []
+        },
+        {
+          "name": "parseCondition",
+          "access": "",
+          "virtual": false,
+          "description": "Parse list condition",
+          "parameters": [
+            {
+              "name": "condition",
+              "type": "ListCondition",
+              "description": "",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            }
+          ],
+          "examples": [],
+          "returns": {
+            "type": "ListCondition",
+            "description": "- Parsed condition"
+          }
+        },
+        {
+          "name": "parseConditionArray",
+          "access": "",
+          "virtual": false,
+          "description": "Parse list condition array",
+          "parameters": [
+            {
+              "name": "conditionArray",
+              "type": "Array.<ListCondition>",
+              "description": "",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            }
+          ],
+          "examples": [],
+          "returns": {
+            "type": "Array.<ListCondition>",
+            "description": "- Parsed condition array"
+          }
         }
       ]
     },
@@ -1611,6 +1654,64 @@
           "returns": {
             "type": "Object",
             "description": "Cloned instance"
+          }
+        }
+      ]
+    },
+    {
+      "name": "ConditionMixed",
+      "description": "",
+      "extends": [],
+      "access": "",
+      "virtual": false,
+      "fires": "",
+      "constructor": {
+        "name": "ConditionMixed",
+        "description": "",
+        "parameters": [],
+        "examples": []
+      },
+      "functions": [
+        {
+          "name": "parseCondition",
+          "access": "",
+          "virtual": false,
+          "description": "Parse list condition",
+          "parameters": [
+            {
+              "name": "condition",
+              "type": "ListCondition",
+              "description": "",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            }
+          ],
+          "examples": [],
+          "returns": {
+            "type": "ListCondition",
+            "description": "- Parsed condition"
+          }
+        },
+        {
+          "name": "parseConditionArray",
+          "access": "",
+          "virtual": false,
+          "description": "Parse list condition array",
+          "parameters": [
+            {
+              "name": "conditionArray",
+              "type": "Array.<ListCondition>",
+              "description": "",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            }
+          ],
+          "examples": [],
+          "returns": {
+            "type": "Array.<ListCondition>",
+            "description": "- Parsed condition array"
           }
         }
       ]
@@ -2736,6 +2837,27 @@
       "access": "",
       "virtual": false,
       "description": "Mixin for clone feature",
+      "parameters": [
+        {
+          "name": "BaseClass",
+          "type": "function",
+          "description": "Class to mix",
+          "default": "",
+          "optional": "",
+          "nullable": ""
+        }
+      ],
+      "examples": [],
+      "returns": {
+        "type": "function",
+        "description": "Mixed class"
+      }
+    },
+    {
+      "name": "conditionMix",
+      "access": "",
+      "virtual": false,
+      "description": "Mixin for condition",
       "parameters": [
         {
           "name": "BaseClass",
