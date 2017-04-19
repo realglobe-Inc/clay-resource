@@ -236,7 +236,7 @@ To define custom resource,  extends `ClayResource` class and use `.fromDriver()`
 API Guide
 -----
 
-+ [clay-resource@3.0.6](./doc/api/api.md)
++ [clay-resource@3.0.7](./doc/api/api.md)
   + [create(args)](./doc/api/api.md#clay-resource-function-create)
   + [fromDriver(driver, nameString, options)](./doc/api/api.md#clay-resource-function-from-driver)
   + [ClayResource](./doc/api/api.md#clay-resource-class)
