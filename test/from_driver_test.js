@@ -6,6 +6,7 @@
 
 const fromDriver = require('../lib/from_driver.js')
 const clayDriverMemory = require('clay-driver-memory')
+const clayDriverSqlite = require('clay-driver-sqlite')
 const { decorate } = require('clay-entity')
 const { ok, equal, strictEqual, deepEqual } = require('assert')
 const asleep = require('asleep')
@@ -331,6 +332,29 @@ describe('from-driver', function () {
     yield Fruit.destroy(orange01.id)
     let orange01AgainAgain = yield Fruit.one(orange01.id)
     equal(orange01AgainAgain, null)
+  }))
+
+  it('Search by ref', () => co(function * () {
+    let drivers = [
+      clayDriverMemory(),
+      clayDriverSqlite(`${__dirname}/../tmp/search-by-ref.db`)
+    ]
+    for (let driver of drivers) {
+      let Org = fromDriver(driver, 'Org')
+      let User = fromDriver(driver, 'User')
+      Org.refs(User)
+      User.refs(Org)
+
+      let org01 = yield Org.create({ name: 'org01' })
+      let org02 = yield Org.create({ name: 'org02' })
+      yield User.create({ name: 'user01', org: org01 })
+      yield User.create({ name: 'user02', org: org02 })
+
+      let { meta, entities } = yield User.list({ filter: { org: org01 } })
+      equal(meta.length, 1)
+      let [ user ] = entities
+      equal(user.name, 'user01')
+    }
   }))
 
   it('Circular refs', () => co(function * () {

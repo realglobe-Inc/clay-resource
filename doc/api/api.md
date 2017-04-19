@@ -1,4 +1,4 @@
-# clay-resource@3.0.4
+# clay-resource@3.0.5
 
 Resource accessor for ClayDB
 
@@ -67,6 +67,8 @@ Resource accessor for ClayDB
   + [resource.storeCache(entity)](#clay-resource-class-clay-resource-storeCache)
   + [resource.gainCache(id)](#clay-resource-class-clay-resource-gainCache)
   + [resource.requestCacheClear(ids)](#clay-resource-class-clay-resource-requestCacheClear)
+  + [resource.parseCondition(condition)](#clay-resource-class-clay-resource-parseCondition)
+  + [resource.parseConditionArray(conditionArray)](#clay-resource-class-clay-resource-parseConditionArray)
 
 ## Functions
 
@@ -124,6 +126,7 @@ Resource accessor
 + `PrepareMixed`
 + `DecorateMixed`
 + `CacheMixed`
++ `ConditionMixed`
 
 
 
@@ -984,6 +987,28 @@ Request cache clear
 | Param | Type | Description |
 | ----- | --- | -------- |
 | ids | ClayId,Array.&lt;ClayId&gt; | Ids to clear |
+
+
+<a class='md-heading-link' name="clay-resource-class-clay-resource-parseCondition" ></a>
+
+### resource.parseCondition(condition) -> `ListCondition`
+
+Parse list condition
+
+| Param | Type | Description |
+| ----- | --- | -------- |
+| condition | ListCondition |  |
+
+
+<a class='md-heading-link' name="clay-resource-class-clay-resource-parseConditionArray" ></a>
+
+### resource.parseConditionArray(conditionArray) -> `Array.<ListCondition>`
+
+Parse list condition array
+
+| Param | Type | Description |
+| ----- | --- | -------- |
+| conditionArray | Array.&lt;ListCondition&gt; |  |
 
 
 
