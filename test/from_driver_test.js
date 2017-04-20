@@ -407,6 +407,20 @@ describe('from-driver', function () {
     })
     ok(user01)
   }))
+
+  it('Convert id', () => co(function * () {
+    let driver = clayDriverMemory()
+    let User = fromDriver(driver, 'User')
+    let user01 = yield User.create({ name: 'Rider01' })
+
+    yield User.update(user01, { name: 'Updated Rider01' })
+
+    equal((yield User.one(user01)).name, 'Updated Rider01')
+
+    ok(yield User.has(user01))
+    yield User.destroy(user01)
+    ok(!(yield User.has(user01)))
+  }))
 })
 
 /* global describe, before, after, it */
