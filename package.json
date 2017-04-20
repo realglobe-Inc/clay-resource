@@ -1,6 +1,6 @@
 {
   "name": "clay-resource",
-  "version": "3.0.10",
+  "version": "3.1.0",
   "description": "Resource accessor for ClayDB",
   "browser": "shim/browser",
   "main": "lib",
@@ -23,16 +23,17 @@
   },
   "homepage": "https://github.com/realglobe-Inc/clay-resource#readme",
   "dependencies": {
+    "asleep": "^1.0.3",
     "clay-collection": "^2.0.1",
     "clay-constants": "^3.0.1",
     "clay-entity": "^2.0.1",
     "clay-errors": "^3.0.1",
     "clay-policy": "^2.0.2",
     "clay-resource-cache": "^1.0.4",
+    "clay-resource-entity": "^1.0.2",
     "clay-resource-name": "^4.0.1",
     "clay-resource-ref": "^2.0.1",
     "clay-schemas": "^4.0.3",
-    "asleep": "^1.0.3",
     "co": "^4.6.0"
   },
   "devDependencies": {
