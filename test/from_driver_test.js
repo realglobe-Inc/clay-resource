@@ -349,10 +349,19 @@ describe('from-driver', function () {
       yield User.create({ name: 'user01', org: org01 })
       yield User.create({ name: 'user02', org: org02 })
 
-      let { meta, entities } = yield User.list({ filter: { org: org01 } })
+      let { meta, entities, demand } = yield User.list({ filter: { org: org01 } })
       equal(meta.length, 1)
       let [ user ] = entities
       equal(user.name, 'user01')
+      equal(demand.filter.org.$ref, `Org#${org01.id}`)
+
+      {
+        let [ { meta, entities, demand } ] = yield User.listBulk([ { filter: { org: org01 } } ])
+        equal(meta.length, 1)
+        let [ user ] = entities
+        equal(user.name, 'user01')
+        equal(demand.filter.org.$ref, `Org#${org01.id}`)
+      }
     }
   }))
 
