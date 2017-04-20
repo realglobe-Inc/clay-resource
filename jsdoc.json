@@ -90,6 +90,14 @@
               "default": "{}",
               "optional": true,
               "nullable": ""
+            },
+            {
+              "name": "options.strict",
+              "type": "boolean",
+              "description": "If true, throws an error when not found",
+              "default": "",
+              "optional": true,
+              "nullable": ""
             }
           ],
           "examples": [
