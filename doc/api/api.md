@@ -1,4 +1,4 @@
-# clay-resource@3.0.8
+# clay-resource@3.0.9
 
 Resource accessor for ClayDB
 
@@ -155,6 +155,7 @@ Get a resource
 | ----- | --- | -------- |
 | id | ClayId | Id of the entity |
 | options | Object | Optional settings |
+| options.strict | boolean | If true, throws an error when not found |
 
 **Example**:
 
