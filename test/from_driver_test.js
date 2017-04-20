@@ -421,6 +421,27 @@ describe('from-driver', function () {
     yield User.destroy(user01)
     ok(!(yield User.has(user01)))
   }))
+
+  it('Using entity bind', () => co(function * () {
+    let driver = clayDriverMemory()
+    let User = fromDriver(driver, 'User')
+    let user01 = yield User.create({ name: 'Rider01' })
+    ok(user01.update)
+    ok(user01.destroy)
+    ok(Object.assign({}, user01).name)
+    ok(!Object.assign({}, user01).update)
+    ok(!Object.assign({}, user01).destroy)
+
+    yield user01.update({ version: 2 })
+    yield User.update(user01, { foo: 'bar' })
+    yield user01.sync()
+    equal(user01.foo, 'bar')
+    equal(user01.version, 2)
+
+    yield user01.destroy()
+
+    equal(yield User.count(), 0)
+  }))
 })
 
 /* global describe, before, after, it */
