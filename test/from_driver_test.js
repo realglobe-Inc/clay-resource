@@ -421,6 +421,23 @@ describe('from-driver', function () {
     yield User.destroy(user01)
     ok(!(yield User.has(user01)))
   }))
+
+  it('Use strict options', () => co(function * () {
+    let driver = clayDriverMemory()
+    let User = fromDriver(driver, 'User')
+    let user01 = yield User.create({ name: 'Rider01' })
+    yield User.one(user01.id, { strict: false })
+    yield User.one(user01.id, { strict: true })
+
+    yield User.one('__invalid_id__', { strict: false })
+    let caught
+    try {
+      yield User.one('__invalid_id__', { strict: true })
+    } catch (e) {
+      caught = e
+    }
+    ok(caught)
+  }))
 })
 
 /* global describe, before, after, it */
