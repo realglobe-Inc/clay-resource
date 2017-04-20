@@ -1778,6 +1778,20 @@
       ]
     },
     {
+      "name": "EntityMixed",
+      "description": "",
+      "extends": [],
+      "access": "",
+      "virtual": false,
+      "fires": "",
+      "constructor": {
+        "name": "EntityMixed",
+        "description": "",
+        "parameters": [],
+        "examples": []
+      }
+    },
+    {
       "name": "InboundMixed",
       "description": "",
       "extends": [],
@@ -2895,6 +2909,27 @@
       "access": "private",
       "virtual": false,
       "description": "Mix decorate support",
+      "parameters": [
+        {
+          "name": "BaseClass",
+          "type": "function",
+          "description": "Class to mix",
+          "default": "",
+          "optional": "",
+          "nullable": ""
+        }
+      ],
+      "examples": [],
+      "returns": {
+        "type": "function",
+        "description": "Mixed class"
+      }
+    },
+    {
+      "name": "entityMix",
+      "access": "",
+      "virtual": false,
+      "description": "Mixin for entity",
       "parameters": [
         {
           "name": "BaseClass",
