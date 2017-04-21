@@ -1,14 +1,14 @@
 /**
- * Test case for entityOutbound.
+ * Test case for collectionMix.
  * Runs with mocha.
  */
 'use strict'
 
-const entityOutbound = require('../lib/outbounds/entity_outbound.js')
+const collectionMix = require('../lib/mixins/collection_mix.js')
 const assert = require('assert')
 const co = require('co')
 
-describe('entity-outbound', function () {
+describe('collection-mix', function () {
   this.timeout(3000)
 
   before(() => co(function * () {
@@ -19,7 +19,7 @@ describe('entity-outbound', function () {
 
   }))
 
-  it('Entity outbound', () => co(function * () {
+  it('Collection mix', () => co(function * () {
 
   }))
 })
