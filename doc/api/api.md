@@ -147,7 +147,7 @@ Constructor of ClayResource class
 
 <a class='md-heading-link' name="clay-resource-class-clay-resource-one" ></a>
 
-### resource.one(id, options) -> `Promise.<ClayEntity>`
+### resource.one(id, options) -> `Promise.<Entity>`
 
 Get a resource
 
@@ -169,7 +169,7 @@ async function tryOne () {
 
 <a class='md-heading-link' name="clay-resource-class-clay-resource-list" ></a>
 
-### resource.list(condition) -> `Promise.<ClayCollection>`
+### resource.list(condition) -> `Promise.<Collection>`
 
 List entities from resource
 
@@ -199,7 +199,7 @@ tryList()
 
 <a class='md-heading-link' name="clay-resource-class-clay-resource-create" ></a>
 
-### resource.create(attributes) -> `Promise.<ClayEntity>`
+### resource.create(attributes) -> `Promise.<Entity>`
 
 Create a new entity with resource
 
@@ -223,7 +223,7 @@ tryCreate()
 
 <a class='md-heading-link' name="clay-resource-class-clay-resource-update" ></a>
 
-### resource.update(id, attributes) -> `Promise.<ClayEntity>`
+### resource.update(id, attributes) -> `Promise.<Entity>`
 
 Update an existing entity in resource
 
@@ -282,7 +282,7 @@ tryDrop()
 
 <a class='md-heading-link' name="clay-resource-class-clay-resource-oneBulk" ></a>
 
-### resource.oneBulk(ids) -> `Promise.<Object.<ClayId, ClayEntity>>`
+### resource.oneBulk(ids) -> `Promise.<Object.<ClayId, Entity>>`
 
 One as bulk
 
@@ -303,7 +303,7 @@ tryOneBulk()
 
 <a class='md-heading-link' name="clay-resource-class-clay-resource-listBulk" ></a>
 
-### resource.listBulk(conditionArray) -> `Promise.<Array.<ClayCollection>>`
+### resource.listBulk(conditionArray) -> `Promise.<Array.<Collection>>`
 
 List with multiple conditions
 
@@ -328,7 +328,7 @@ tryListBulk()
 
 <a class='md-heading-link' name="clay-resource-class-clay-resource-createBulk" ></a>
 
-### resource.createBulk(attributesArray) -> `Promise.<Array.<ClayEntity>>`
+### resource.createBulk(attributesArray) -> `Promise.<Array.<Entity>>`
 
 Create multiple resources
 
@@ -352,7 +352,7 @@ tryCreateBulk()
 
 <a class='md-heading-link' name="clay-resource-class-clay-resource-updateBulk" ></a>
 
-### resource.updateBulk(attributesHash) -> `Promise.<Object.<ClayId, ClayEntity>>`
+### resource.updateBulk(attributesHash) -> `Promise.<Object.<ClayId, Entity>>`
 
 Update multiple resources
 
@@ -425,7 +425,7 @@ tryCursor()
 
 <a class='md-heading-link' name="clay-resource-class-clay-resource-first" ></a>
 
-### resource.first(filter, options) -> `Promise.<?ClayEntity>`
+### resource.first(filter, options) -> `Promise.<?Entity>`
 
 Get the first entity matches filter
 
@@ -684,49 +684,49 @@ Remove outbound
 
 <a class='md-heading-link' name="clay-resource-class-clay-resource-applyOutbound" ></a>
 
-### resource.applyOutbound(entities, actionContext) -> `Promise.<Array.<ClayEntity>>`
+### resource.applyOutbound(entities, actionContext) -> `Promise.<Array.<Entity>>`
 
 Apply outbound to entities
 
 | Param | Type | Description |
 | ----- | --- | -------- |
-| entities | Array.&lt;ClayEntity&gt; | Entities to outbound |
+| entities | Array.&lt;Entity&gt; | Entities to outbound |
 | actionContext | Object |  |
 
 
 <a class='md-heading-link' name="clay-resource-class-clay-resource-outboundEntity" ></a>
 
-### resource.outboundEntity(entity, actionContext) -> `Promise.<ClayEntity>`
+### resource.outboundEntity(entity, actionContext) -> `Promise.<Entity>`
 
 Format entity
 
 | Param | Type | Description |
 | ----- | --- | -------- |
-| entity | ClayEntity |  |
+| entity | Entity |  |
 | actionContext | Object |  |
 
 
 <a class='md-heading-link' name="clay-resource-class-clay-resource-outboundEntityArray" ></a>
 
-### resource.outboundEntityArray(entityArray, actionContext) -> `Promise.<Array.<ClayEntity>>`
+### resource.outboundEntityArray(entityArray, actionContext) -> `Promise.<Array.<Entity>>`
 
 Proses entity array
 
 | Param | Type | Description |
 | ----- | --- | -------- |
-| entityArray | Array.&lt;ClayEntity&gt; |  |
+| entityArray | Array.&lt;Entity&gt; |  |
 | actionContext | Object |  |
 
 
 <a class='md-heading-link' name="clay-resource-class-clay-resource-outboundCollection" ></a>
 
-### resource.outboundCollection(collection, actionContext) -> `Promise.<ClayCollection>`
+### resource.outboundCollection(collection, actionContext) -> `Promise.<Collection>`
 
 Format entity collection
 
 | Param | Type | Description |
 | ----- | --- | -------- |
-| collection | ClayCollection |  |
+| collection | Collection |  |
 | actionContext | Object |  |
 
 

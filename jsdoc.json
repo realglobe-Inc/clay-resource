@@ -104,7 +104,7 @@
             "const Product = lump.resource('Product')\nasync function tryOne () {\n  let product = await Product.one(1) // Find by id\n  console.log(product)\n}"
           ],
           "returns": {
-            "type": "Promise.<ClayEntity>",
+            "type": "Promise.<Entity>",
             "description": "Found entity"
           }
         },
@@ -167,7 +167,7 @@
             "const Product = lump.resource('Product')\nasync function tryList () {\n  let products = await Product.list({\n    filter: { type: 'Vehicle' },  // Filter condition\n    page: { number: 1, size: 25 }, // Paginate\n    sort: [ 'createdAt', '-name' ] // Sort condition\n  })\n  console.log(products)\n}\ntryList()"
           ],
           "returns": {
-            "type": "Promise.<ClayCollection>",
+            "type": "Promise.<Collection>",
             "description": "Found resource collection"
           }
         },
@@ -190,7 +190,7 @@
             "const Product = lump.resource('Product')\nasync function tryCreate () {\n  let product = await Product.create({\n    name: 'Super Car',\n    type: 'Vehicle'\n  })\n  console.log(product)\n}\ntryCreate()"
           ],
           "returns": {
-            "type": "Promise.<ClayEntity>",
+            "type": "Promise.<Entity>",
             "description": "Created data"
           }
         },
@@ -221,7 +221,7 @@
             "const Product = lump.resource('Product')\nasync function tryUpdate () {\n  let product = await Product.update(1, {\n    name: 'Super Super Car'\n  })\n  console.log(product)\n}\ntryUpdate()"
           ],
           "returns": {
-            "type": "Promise.<ClayEntity>",
+            "type": "Promise.<Entity>",
             "description": "Updated data"
           }
         },
@@ -281,7 +281,7 @@
             "const Product = lump.resource('Product')\nasync function tryOneBulk () {\n  let products = await Product.oneBulk([ 1, 5, 10 ])\n  console.log(products)\n}\ntryOneBulk()"
           ],
           "returns": {
-            "type": "Promise.<Object.<ClayId, ClayEntity>>",
+            "type": "Promise.<Object.<ClayId, Entity>>",
             "description": "Found resources"
           }
         },
@@ -304,7 +304,7 @@
             "const Product = lump.resource('Product')\nasync function tryListBulk () {\n  let [ cars, ships ] = await Product.listBulk([\n    { filter: { type: 'CAR' } },\n    { filter: { type: 'SHIP' } },\n  ])\n  console.log(cars)\n  console.log(ships)\n}\ntryListBulk()"
           ],
           "returns": {
-            "type": "Promise.<Array.<ClayCollection>>",
+            "type": "Promise.<Array.<Collection>>",
             "description": "Found resource collections"
           }
         },
@@ -327,7 +327,7 @@
             "const Product = lump.resource('Product')\nasync function tryCreateBulk () {\n  let products = await Product.createBulk([\n    { name: 'Super Orange', type: 'CAR' },\n    { name: 'Ultra Green', type: 'CAR' },\n  ])\n  console.log(products)\n}\ntryCreateBulk()"
           ],
           "returns": {
-            "type": "Promise.<Array.<ClayEntity>>",
+            "type": "Promise.<Array.<Entity>>",
             "description": "Created resources"
           }
         },
@@ -350,7 +350,7 @@
             "const Product = lump.resource('Product')\nasync function tryUpdateBulk () {\n  let products = await Product.updateBulk({\n    '1': { name: 'Super Super Orange' },\n    '2': { name: 'Ultra Ultra Green' },\n  })\n  console.log(products)\n}\ntryUpdateBulk()"
           ],
           "returns": {
-            "type": "Promise.<Object.<ClayId, ClayEntity>>",
+            "type": "Promise.<Object.<ClayId, Entity>>",
             "description": "Updated resources"
           }
         },
@@ -451,7 +451,7 @@
             "const Product = lump.resource('Product')\nasync function tryFirst () {\n  let product = Product.first({ name: 'Super Super Orange' })\n  console.log('product')\n}\ntryFirst()"
           ],
           "returns": {
-            "type": "Promise.<?ClayEntity>",
+            "type": "Promise.<?Entity>",
             "description": "Found one"
           }
         },
@@ -868,7 +868,7 @@
           "parameters": [
             {
               "name": "entities",
-              "type": "Array.<ClayEntity>",
+              "type": "Array.<Entity>",
               "description": "Entities to outbound",
               "default": "",
               "optional": "",
@@ -885,7 +885,7 @@
           ],
           "examples": [],
           "returns": {
-            "type": "Promise.<Array.<ClayEntity>>",
+            "type": "Promise.<Array.<Entity>>",
             "description": "Formatted entities"
           }
         },
@@ -897,7 +897,7 @@
           "parameters": [
             {
               "name": "entity",
-              "type": "ClayEntity",
+              "type": "Entity",
               "description": "",
               "default": "",
               "optional": "",
@@ -914,7 +914,7 @@
           ],
           "examples": [],
           "returns": {
-            "type": "Promise.<ClayEntity>",
+            "type": "Promise.<Entity>",
             "description": ""
           }
         },
@@ -926,7 +926,7 @@
           "parameters": [
             {
               "name": "entityArray",
-              "type": "Array.<ClayEntity>",
+              "type": "Array.<Entity>",
               "description": "",
               "default": "",
               "optional": "",
@@ -943,7 +943,7 @@
           ],
           "examples": [],
           "returns": {
-            "type": "Promise.<Array.<ClayEntity>>",
+            "type": "Promise.<Array.<Entity>>",
             "description": ""
           }
         },
@@ -955,7 +955,7 @@
           "parameters": [
             {
               "name": "collection",
-              "type": "ClayCollection",
+              "type": "Collection",
               "description": "",
               "default": "",
               "optional": "",
@@ -972,7 +972,7 @@
           ],
           "examples": [],
           "returns": {
-            "type": "Promise.<ClayCollection>",
+            "type": "Promise.<Collection>",
             "description": ""
           }
         },
@@ -1675,6 +1675,43 @@
       ]
     },
     {
+      "name": "CollectionMixed",
+      "description": "",
+      "extends": [],
+      "access": "",
+      "virtual": false,
+      "fires": "",
+      "constructor": {
+        "name": "CollectionMixed",
+        "description": "",
+        "parameters": [],
+        "examples": []
+      },
+      "functions": [
+        {
+          "name": "toResourceCollection",
+          "access": "",
+          "virtual": false,
+          "description": "Convert collection into resource collection",
+          "parameters": [
+            {
+              "name": "collection",
+              "type": "Collection",
+              "description": "Collection to convert",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            }
+          ],
+          "examples": [],
+          "returns": {
+            "type": "CollectionMixed.ResourceCollection",
+            "description": ""
+          }
+        }
+      ]
+    },
+    {
       "name": "ConditionMixed",
       "description": "",
       "extends": [],
@@ -1789,7 +1826,30 @@
         "description": "",
         "parameters": [],
         "examples": []
-      }
+      },
+      "functions": [
+        {
+          "name": "toResourceEntity",
+          "access": "",
+          "virtual": false,
+          "description": "Convert entity into resource entity",
+          "parameters": [
+            {
+              "name": "entity",
+              "type": "Entity",
+              "description": "to convert",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            }
+          ],
+          "examples": [],
+          "returns": {
+            "type": "EntityMixed.ResourceEntity",
+            "description": ""
+          }
+        }
+      ]
     },
     {
       "name": "InboundMixed",
@@ -2136,7 +2196,7 @@
           "parameters": [
             {
               "name": "entities",
-              "type": "Array.<ClayEntity>",
+              "type": "Array.<Entity>",
               "description": "Entities to outbound",
               "default": "",
               "optional": "",
@@ -2153,7 +2213,7 @@
           ],
           "examples": [],
           "returns": {
-            "type": "Promise.<Array.<ClayEntity>>",
+            "type": "Promise.<Array.<Entity>>",
             "description": "Formatted entities"
           }
         },
@@ -2165,7 +2225,7 @@
           "parameters": [
             {
               "name": "entity",
-              "type": "ClayEntity",
+              "type": "Entity",
               "description": "",
               "default": "",
               "optional": "",
@@ -2182,7 +2242,7 @@
           ],
           "examples": [],
           "returns": {
-            "type": "Promise.<ClayEntity>",
+            "type": "Promise.<Entity>",
             "description": ""
           }
         },
@@ -2194,7 +2254,7 @@
           "parameters": [
             {
               "name": "entityArray",
-              "type": "Array.<ClayEntity>",
+              "type": "Array.<Entity>",
               "description": "",
               "default": "",
               "optional": "",
@@ -2211,7 +2271,7 @@
           ],
           "examples": [],
           "returns": {
-            "type": "Promise.<Array.<ClayEntity>>",
+            "type": "Promise.<Array.<Entity>>",
             "description": ""
           }
         },
@@ -2223,7 +2283,7 @@
           "parameters": [
             {
               "name": "collection",
-              "type": "ClayCollection",
+              "type": "Collection",
               "description": "",
               "default": "",
               "optional": "",
@@ -2240,7 +2300,7 @@
           ],
           "examples": [],
           "returns": {
-            "type": "Promise.<ClayCollection>",
+            "type": "Promise.<Collection>",
             "description": ""
           }
         },
@@ -2867,6 +2927,27 @@
       "access": "",
       "virtual": false,
       "description": "Mixin for clone feature",
+      "parameters": [
+        {
+          "name": "BaseClass",
+          "type": "function",
+          "description": "Class to mix",
+          "default": "",
+          "optional": "",
+          "nullable": ""
+        }
+      ],
+      "examples": [],
+      "returns": {
+        "type": "function",
+        "description": "Mixed class"
+      }
+    },
+    {
+      "name": "collectionMix",
+      "access": "",
+      "virtual": false,
+      "description": "Mixin for collection",
       "parameters": [
         {
           "name": "BaseClass",

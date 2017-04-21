@@ -450,6 +450,16 @@ describe('from-driver', function () {
     yield user01.destroy()
 
     equal(yield User.count(), 0)
+
+    {
+      let caught
+      try {
+        yield user01.update({ foo: 'bar' })
+      } catch (e) {
+        caught = e
+      }
+      ok(caught)
+    }
   }))
 
   it('Use strict options', () => co(function * () {
@@ -467,6 +477,29 @@ describe('from-driver', function () {
       caught = e
     }
     ok(caught)
+  }))
+
+  it('Use resource collection', () => co(function * () {
+    let driver = clayDriverMemory()
+    let User = fromDriver(driver, 'User')
+    for (let i = 0; i < 102; i++) {
+      yield User.create({
+        name: `user-${i}`,
+        group: i % 2 === 0 ? 'yellow' : 'green'
+      })
+    }
+    let users = yield User.list({ filter: { group: 'green' }, page: { number: 1, size: 25 } })
+    let counts = []
+    while (users.hasNext) {
+      counts.push(users.meta)
+      users = yield users.next()
+    }
+    counts.push(users.meta)
+    deepEqual(counts, [
+      { offset: 0, limit: 25, length: 25, total: 51 },
+      { offset: 25, limit: 25, length: 25, total: 51 },
+      { offset: 50, limit: 25, length: 1, total: 51 }
+    ])
   }))
 })
 
