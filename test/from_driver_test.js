@@ -480,8 +480,8 @@ describe('from-driver', function () {
   }))
 
   it('Use resource collection', () => co(function * () {
-    let driver = clayDriverMemory()
-    let User = fromDriver(driver, 'User')
+    const driver = clayDriverMemory()
+    const User = fromDriver(driver, 'User')
     for (let i = 0; i < 102; i++) {
       yield User.create({
         name: `user-${i}`,
@@ -500,6 +500,51 @@ describe('from-driver', function () {
       { offset: 25, limit: 25, length: 25, total: 51 },
       { offset: 50, limit: 25, length: 1, total: 51 }
     ])
+  }))
+
+  it('Enhance entity', () => co(function * () {
+    const driver = clayDriverMemory()
+    const User = fromDriver(driver, 'User')
+    User.enhanceResourceEntity((UserEntity) =>
+      class EnhancedUserEntity extends UserEntity {
+        get fullName () {
+          let { familyName, firstName } = this
+          return [ firstName, familyName ].filter(Boolean).join(' ')
+        }
+      }
+    )
+
+    let user01 = yield User.create({ firstName: 'Taka', familyName: 'Okunishi' })
+    equal(user01.fullName, 'Taka Okunishi')
+  }))
+
+  it('Enhance collection', () => co(function * () {
+    const driver = clayDriverMemory()
+    const User = fromDriver(driver, 'User')
+    User.enhanceResourceCollection((UserCollection) =>
+      class EnhancedUserCollection extends UserCollection {
+        nextOne () {
+          let { demand, page } = this
+          return User.first(demand.filter, {
+            sort: demand.sort,
+            skip: page.size * page.number
+          })
+        }
+      }
+    )
+
+    yield User.create({ name: 'user01' })
+    yield User.create({ name: 'user02' })
+    yield User.create({ name: 'user03' })
+
+    let users = yield User.list({
+      page: {
+        size: 2,
+        number: 1
+      },
+      sort: [ '-name' ]
+    })
+    equal((yield users.nextOne()).name, 'user01')
   }))
 })
 
