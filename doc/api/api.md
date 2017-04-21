@@ -1,4 +1,4 @@
-# clay-resource@3.1.2
+# clay-resource@3.1.3
 
 Resource accessor for ClayDB
 

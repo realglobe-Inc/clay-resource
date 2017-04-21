@@ -1689,7 +1689,7 @@
       },
       "functions": [
         {
-          "name": "toResourceCollection",
+          "name": "createResourceCollection",
           "access": "",
           "virtual": false,
           "description": "Convert collection into resource collection",
@@ -1829,7 +1829,7 @@
       },
       "functions": [
         {
-          "name": "toResourceEntity",
+          "name": "createResourceEntity",
           "access": "",
           "virtual": false,
           "description": "Convert entity into resource entity",
@@ -1847,6 +1847,27 @@
           "returns": {
             "type": "EntityMixed.ResourceEntity",
             "description": ""
+          }
+        },
+        {
+          "name": "enhanceResourceEntity",
+          "access": "",
+          "virtual": false,
+          "description": "Extend resource entity",
+          "parameters": [
+            {
+              "name": "enhancer",
+              "type": "function",
+              "description": "Enhancer function",
+              "default": "",
+              "optional": "",
+              "nullable": ""
+            }
+          ],
+          "examples": [],
+          "returns": {
+            "type": "EntityMixed",
+            "description": "Returns this for chaining"
           }
         }
       ]
