@@ -546,6 +546,34 @@ describe('from-driver', function () {
     })
     equal((yield users.nextOne()).name, 'user01')
   }))
+
+  // https://github.com/realglobe-Inc/clay-resource/issues/51
+  it('issues/51', () => co(function * () {
+    const driver = clayDriverMemory()
+    const User = fromDriver(driver, 'User')
+    const UserAuth = fromDriver(driver, 'UserAuth')
+    const Live = fromDriver(driver, 'Live')
+
+    Live.refs(User, UserAuth)
+    User.refs(UserAuth, Live)
+    UserAuth.refs(User, Live)
+
+    let userData = {
+      userKey: 'miyazaki',
+      name: 'miyazaki'
+    }
+    let user = yield User.create(userData)
+    ok(user)
+
+    let liveData = {
+      name: 'Universe',
+      createdBy: user
+    }
+    let live = yield Live.create(liveData)
+    ok(live)
+
+    equal(live.createdBy.userKey, 'miyazaki')
+  }))
 })
 
 /* global describe, before, after, it */
