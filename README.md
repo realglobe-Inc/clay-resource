@@ -223,6 +223,24 @@ tryDecoration()
 To define custom resource,  extends `ClayResource` class and use `.fromDriver()` method to create new instance
 
 ```javascript
+'use strict'
+
+const { ClayResource } = require('clay-resource')
+const clayDriverMemory = require('clay-driver-memory')
+
+// Extends ClayResource class
+class UserResource extends ClayResource {
+  /* ... */
+}
+
+{
+  let driver = clayDriverMemory()
+  let userResource = UserResource.fromDriver(driver, 'User')
+
+  let user = yield userResource.create({ name: 'Taka Okunishi' })
+  /* ... */
+}
+
 
 ```
 
@@ -236,7 +254,7 @@ To define custom resource,  extends `ClayResource` class and use `.fromDriver()`
 API Guide
 -----
 
-+ [clay-resource@3.1.4](./doc/api/api.md)
++ [clay-resource@3.1.5](./doc/api/api.md)
   + [create(args)](./doc/api/api.md#clay-resource-function-create)
   + [fromDriver(driver, nameString, options)](./doc/api/api.md#clay-resource-function-from-driver)
   + [ClayResource](./doc/api/api.md#clay-resource-class)

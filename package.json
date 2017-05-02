@@ -48,7 +48,7 @@
     "ape-tmpl": "^5.0.20",
     "ape-updating": "^4.1.0",
     "clay-driver-memory": "^4.0.1",
-    "clay-driver-sqlite": "^3.0.2",
+    "clay-driver-sqlite": "^3.0.3",
     "claydb-assets": "^2.0.3",
     "coz": "^6.0.20",
     "filecopy": "^3.0.1",
