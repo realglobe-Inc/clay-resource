@@ -28,7 +28,7 @@
     "clay-constants": "^3.0.1",
     "clay-entity": "^2.0.1",
     "clay-errors": "^3.1.1",
-    "clay-policy": "^2.0.8",
+    "clay-policy": "^2.0.9",
     "clay-resource-cache": "^1.0.4",
     "clay-resource-collection": "^1.0.1",
     "clay-resource-entity": "^1.0.4",
