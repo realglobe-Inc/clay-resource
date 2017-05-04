@@ -448,7 +448,46 @@
             }
           ],
           "examples": [
-            "const Product = lump.resource('Product')\nasync function tryFirst () {\n  let product = Product.first({ name: 'Super Super Orange' })\n  console.log('product')\n}\ntryFirst()"
+            "const Product = lump.resource('Product')\nasync function tryFirst () {\n  let product = Product.first({ name: 'Super Super Orange' })\n  console.log(product)\n}\ntryFirst()"
+          ],
+          "returns": {
+            "type": "Promise.<?Entity>",
+            "description": "Found one"
+          }
+        },
+        {
+          "name": "only",
+          "access": "",
+          "virtual": false,
+          "description": "Almost same with `.first()`, but throws an error if multiple record hits, or no record found",
+          "parameters": [
+            {
+              "name": "filter",
+              "type": "FilterTerm",
+              "description": "Listing filter",
+              "default": "{}",
+              "optional": true,
+              "nullable": ""
+            },
+            {
+              "name": "options",
+              "type": "Object",
+              "description": "Optional settings",
+              "default": "{}",
+              "optional": true,
+              "nullable": ""
+            },
+            {
+              "name": "options.strict",
+              "type": "boolean",
+              "description": "If true, throws an error when not found",
+              "default": "",
+              "optional": true,
+              "nullable": ""
+            }
+          ],
+          "examples": [
+            "const Product = lump.resource('Product')\nasync function tryFirst () {\n  let product = Product.only({ name: 'Super Super Orange' })\n  console.log(product)\n}\ntryFirst()"
           ],
           "returns": {
             "type": "Promise.<?Entity>",

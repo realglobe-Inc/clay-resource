@@ -1,4 +1,4 @@
-# clay-resource@3.1.5
+# clay-resource@3.1.6
 
 Resource accessor for ClayDB
 
@@ -20,6 +20,7 @@ Resource accessor for ClayDB
   + [resource.destroyBulk(ids)](#clay-resource-class-clay-resource-destroyBulk)
   + [resource.cursor(options)](#clay-resource-class-clay-resource-cursor)
   + [resource.first(filter, options)](#clay-resource-class-clay-resource-first)
+  + [resource.only(filter, options)](#clay-resource-class-clay-resource-only)
   + [resource.seal(privateKey, options)](#clay-resource-class-clay-resource-seal)
   + [resource.has(id)](#clay-resource-class-clay-resource-has)
   + [resource.exists(filter)](#clay-resource-class-clay-resource-exists)
@@ -441,7 +442,30 @@ Get the first entity matches filter
 const Product = lump.resource('Product')
 async function tryFirst () {
   let product = Product.first({ name: 'Super Super Orange' })
-  console.log('product')
+  console.log(product)
+}
+tryFirst()
+```
+
+<a class='md-heading-link' name="clay-resource-class-clay-resource-only" ></a>
+
+### resource.only(filter, options) -> `Promise.<?Entity>`
+
+Almost same with `.first()`, but throws an error if multiple record hits, or no record found
+
+| Param | Type | Description |
+| ----- | --- | -------- |
+| filter | FilterTerm | Listing filter |
+| options | Object | Optional settings |
+| options.strict | boolean | If true, throws an error when not found |
+
+**Example**:
+
+```javascript
+const Product = lump.resource('Product')
+async function tryFirst () {
+  let product = Product.only({ name: 'Super Super Orange' })
+  console.log(product)
 }
 tryFirst()
 ```

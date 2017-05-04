@@ -60,6 +60,10 @@ describe('from-driver', function () {
     ok(first)
     ok(first.foo2, 'bar2')
 
+    let only = yield resource.only({ foo2: 'bar2' })
+    ok(only)
+    ok(only.foo2, 'bar2')
+
     yield resource.destroy(id)
 
     // Sub resource
@@ -212,7 +216,8 @@ describe('from-driver', function () {
     User.setPolicy({
       username: {
         type: STRING,
-        required: true
+        required: true,
+        trim: true
       },
       birthday: {
         type: DATE
@@ -238,6 +243,9 @@ describe('from-driver', function () {
       actual: 'SUPER',
       expects: { oneOf: [ 'GOLD', 'SLIVER', 'BRONZE' ] }
     })
+
+    let user02 = yield User.create({ username: '  hoge  ' })
+    equal(user02.username, 'hoge', 'Should be trimmed')
   }))
 
   it('of', () => co(function * () {
