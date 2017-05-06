@@ -131,8 +131,11 @@ describe('from-driver', function () {
       equal(updated.foo2, 'bar2')
       ok(!updated.$$at)
 
+      equal((yield resource.all())[ 0 ].foo, 'bar')
+
       let count = yield resource.destroyBulk([ created.id ])
       equal(count, 1)
+
     }
   }))
 
