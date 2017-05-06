@@ -622,6 +622,35 @@
           ]
         },
         {
+          "name": "all",
+          "access": "",
+          "virtual": false,
+          "description": "Get all entities inside resource which matches the filter",
+          "parameters": [
+            {
+              "name": "filter",
+              "type": "FilterTerm",
+              "description": "Listing filter",
+              "default": "{}",
+              "optional": true,
+              "nullable": ""
+            },
+            {
+              "name": "options",
+              "type": "Object",
+              "description": "Optional settings",
+              "default": "{}",
+              "optional": true,
+              "nullable": ""
+            }
+          ],
+          "examples": [],
+          "returns": {
+            "type": "Promise.<Array.<ClayEntity>>",
+            "description": "Entities"
+          }
+        },
+        {
           "name": "toggleAnnotate",
           "access": "",
           "virtual": false,

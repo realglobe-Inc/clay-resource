@@ -1,4 +1,4 @@
-# clay-resource@3.1.10
+# clay-resource@3.1.11
 
 Resource accessor for ClayDB
 
@@ -26,6 +26,7 @@ Resource accessor for ClayDB
   + [resource.exists(filter)](#clay-resource-class-clay-resource-exists)
   + [resource.count(filter)](#clay-resource-class-clay-resource-count)
   + [resource.of(attributes)](#clay-resource-class-clay-resource-of)
+  + [resource.all(filter, options)](#clay-resource-class-clay-resource-all)
   + [resource.toggleAnnotate()](#clay-resource-class-clay-resource-toggleAnnotate)
   + [resource.clone()](#clay-resource-class-clay-resource-clone)
   + [resource.addInbound(name, inbound)](#clay-resource-class-clay-resource-addInbound)
@@ -577,6 +578,18 @@ async function tryOf () {
 }
 tryOf()
 ```
+
+<a class='md-heading-link' name="clay-resource-class-clay-resource-all" ></a>
+
+### resource.all(filter, options) -> `Promise.<Array.<ClayEntity>>`
+
+Get all entities inside resource which matches the filter
+
+| Param | Type | Description |
+| ----- | --- | -------- |
+| filter | FilterTerm | Listing filter |
+| options | Object | Optional settings |
+
 
 <a class='md-heading-link' name="clay-resource-class-clay-resource-toggleAnnotate" ></a>
 

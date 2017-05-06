@@ -242,7 +242,7 @@ describe('from-driver', function () {
     }
     ok(caught)
     deepEqual(caught.detail.failures.rank, {
-      reason: 'value:unexpected',
+      reason: 'UNEXPECTED_VALUE_ERROR',
       actual: 'SUPER',
       expects: { oneOf: [ 'GOLD', 'SLIVER', 'BRONZE' ] }
     })
