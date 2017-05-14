@@ -1,4 +1,4 @@
-# clay-resource@3.1.12
+# clay-resource@3.1.13
 
 Resource accessor for ClayDB
 
@@ -9,7 +9,7 @@ Resource accessor for ClayDB
   + [new ClayResource(nameString, bounds, options)](#clay-resource-class-clay-resource-constructor)
   + [resource.one(id, options)](#clay-resource-class-clay-resource-one)
   + [resource.list(condition)](#clay-resource-class-clay-resource-list)
-  + [resource.create(attributes)](#clay-resource-class-clay-resource-create)
+  + [resource.create(attributes, options)](#clay-resource-class-clay-resource-create)
   + [resource.update(id, attributes)](#clay-resource-class-clay-resource-update)
   + [resource.destroy(id)](#clay-resource-class-clay-resource-destroy)
   + [resource.drop()](#clay-resource-class-clay-resource-drop)
@@ -201,13 +201,14 @@ tryList()
 
 <a class='md-heading-link' name="clay-resource-class-clay-resource-create" ></a>
 
-### resource.create(attributes) -> `Promise.<Entity>`
+### resource.create(attributes, options) -> `Promise.<Entity>`
 
 Create a new entity with resource
 
 | Param | Type | Description |
 | ----- | --- | -------- |
 | attributes | Object | Resource attributes to create |
+| options | Object | Optional settings |
 
 **Example**:
 
