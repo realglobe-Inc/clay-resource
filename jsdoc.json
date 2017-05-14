@@ -192,6 +192,14 @@
               "default": "{}",
               "optional": true,
               "nullable": ""
+            },
+            {
+              "name": "options.allowReserved",
+              "type": "boolean",
+              "description": "Arrow to set reserved attributes (like \"id\")",
+              "default": "",
+              "optional": true,
+              "nullable": ""
             }
           ],
           "examples": [

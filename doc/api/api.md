@@ -209,6 +209,7 @@ Create a new entity with resource
 | ----- | --- | -------- |
 | attributes | Object | Resource attributes to create |
 | options | Object | Optional settings |
+| options.allowReserved | boolean | Arrow to set reserved attributes (like "id") |
 
 **Example**:
 
