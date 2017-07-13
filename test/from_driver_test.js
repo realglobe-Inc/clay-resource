@@ -17,7 +17,7 @@ const co = require('co')
 const { DataTypes } = clayPolicy
 
 describe('from-driver', function () {
-  this.timeout(3000)
+  this.timeout(30000)
 
   before(() => co(function * () {
 
@@ -584,6 +584,14 @@ describe('from-driver', function () {
     ok(live)
 
     equal(live.createdBy.userKey, 'miyazaki')
+  }))
+
+  it('Numeric id', () => co(function * () {
+    const driver = clayDriverMemory()
+    const Ball = fromDriver(driver, 'Ball')
+
+    let created = yield Ball.create({ id: 1 }, { allowReserved: true })
+    strictEqual(String(created.id), '1')
   }))
 })
 
