@@ -523,6 +523,14 @@ describe('from-driver', function () {
       {offset: 25, limit: 25, length: 25, total: 51},
       {offset: 50, limit: 25, length: 1, total: 51}
     ])
+
+    {
+      const every = []
+      yield User.each((entity) => {
+        every.push(entity)
+      })
+      equal(every.length, 102)
+    }
   }))
 
   it('Enhance entity', () => co(function * () {
