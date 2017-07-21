@@ -1,4 +1,4 @@
-# clay-resource@3.1.15
+# clay-resource@3.1.16
 
 Resource accessor for ClayDB
 
@@ -19,6 +19,7 @@ Resource accessor for ClayDB
   + [resource.updateBulk(attributesHash)](#clay-resource-class-clay-resource-updateBulk)
   + [resource.destroyBulk(ids)](#clay-resource-class-clay-resource-destroyBulk)
   + [resource.cursor(options)](#clay-resource-class-clay-resource-cursor)
+  + [resource.each(handler, options)](#clay-resource-class-clay-resource-each)
   + [resource.first(filter, options)](#clay-resource-class-clay-resource-first)
   + [resource.only(filter, options)](#clay-resource-class-clay-resource-only)
   + [resource.seal(privateKey, options)](#clay-resource-class-clay-resource-seal)
@@ -39,6 +40,7 @@ Resource accessor for ClayDB
   + [resource.updateBulk(attributesHash)](#clay-resource-class-clay-resource-updateBulk)
   + [resource.destroyBulk(ids)](#clay-resource-class-clay-resource-destroyBulk)
   + [resource.cursor(options)](#clay-resource-class-clay-resource-cursor)
+  + [resource.each(handler, options)](#clay-resource-class-clay-resource-each)
   + [resource.first(filter, options)](#clay-resource-class-clay-resource-first)
   + [resource.only(filter, options)](#clay-resource-class-clay-resource-only)
   + [resource.seal(privateKey, options)](#clay-resource-class-clay-resource-seal)
@@ -445,6 +447,31 @@ async function tryCursor () {
   }
 }
 tryCursor()
+```
+
+<a class='md-heading-link' name="clay-resource-class-clay-resource-each" ></a>
+
+### resource.each(handler, options) -> `Promise`
+
+Iterate entities with handler
+
+| Param | Type | Description |
+| ----- | --- | -------- |
+| handler | function | Entity handler |
+| options | Object | Optional |
+
+**Example**:
+
+```javascript
+const Product = lump.resource('Product')
+async function tryEach () {
+   async Product.each(async (product) => {
+      // Do something with each entity
+   }, {
+      filter: {price: {$gt: 100}}
+   })
+}
+tryEach()
 ```
 
 <a class='md-heading-link' name="clay-resource-class-clay-resource-first" ></a>
@@ -891,6 +918,31 @@ async function tryCursor () {
   }
 }
 tryCursor()
+```
+
+<a class='md-heading-link' name="clay-resource-class-clay-resource-each" ></a>
+
+### resource.each(handler, options) -> `Promise`
+
+Iterate entities with handler
+
+| Param | Type | Description |
+| ----- | --- | -------- |
+| handler | function | Entity handler |
+| options | Object | Optional |
+
+**Example**:
+
+```javascript
+const Product = lump.resource('Product')
+async function tryEach () {
+   async Product.each(async (product) => {
+      // Do something with each entity
+   }, {
+      filter: {price: {$gt: 100}}
+   })
+}
+tryEach()
 ```
 
 <a class='md-heading-link' name="clay-resource-class-clay-resource-first" ></a>

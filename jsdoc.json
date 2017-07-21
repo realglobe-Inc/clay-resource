@@ -433,6 +433,37 @@
                     }
                 },
                 {
+                    "name": "each",
+                    "access": "",
+                    "virtual": false,
+                    "description": "Iterate entities with handler",
+                    "parameters": [
+                        {
+                            "name": "handler",
+                            "type": "function",
+                            "description": "Entity handler",
+                            "default": "",
+                            "optional": "",
+                            "nullable": ""
+                        },
+                        {
+                            "name": "options",
+                            "type": "Object",
+                            "description": "Optional",
+                            "default": "{}",
+                            "optional": true,
+                            "nullable": ""
+                        }
+                    ],
+                    "examples": [
+                        "const Product = lump.resource('Product')\nasync function tryEach () {\n   async Product.each(async (product) => {\n      // Do something with each entity\n   }, {\n      filter: {price: {$gt: 100}}\n   })\n}\ntryEach()"
+                    ],
+                    "returns": {
+                        "type": "Promise",
+                        "description": ""
+                    }
+                },
+                {
                     "name": "first",
                     "access": "",
                     "virtual": false,
@@ -1027,6 +1058,37 @@
                     "returns": {
                         "type": "Object",
                         "description": "{Promise.<[Symbol.iterator], function>} Iterable cursor"
+                    }
+                },
+                {
+                    "name": "each",
+                    "access": "",
+                    "virtual": false,
+                    "description": "Iterate entities with handler",
+                    "parameters": [
+                        {
+                            "name": "handler",
+                            "type": "function",
+                            "description": "Entity handler",
+                            "default": "",
+                            "optional": "",
+                            "nullable": ""
+                        },
+                        {
+                            "name": "options",
+                            "type": "Object",
+                            "description": "Optional",
+                            "default": "{}",
+                            "optional": true,
+                            "nullable": ""
+                        }
+                    ],
+                    "examples": [
+                        "const Product = lump.resource('Product')\nasync function tryEach () {\n   async Product.each(async (product) => {\n      // Do something with each entity\n   }, {\n      filter: {price: {$gt: 100}}\n   })\n}\ntryEach()"
+                    ],
+                    "returns": {
+                        "type": "Promise",
+                        "description": ""
                     }
                 },
                 {
@@ -2645,6 +2707,37 @@
                     }
                 },
                 {
+                    "name": "each",
+                    "access": "",
+                    "virtual": false,
+                    "description": "Iterate entities with handler",
+                    "parameters": [
+                        {
+                            "name": "handler",
+                            "type": "function",
+                            "description": "Entity handler",
+                            "default": "",
+                            "optional": "",
+                            "nullable": ""
+                        },
+                        {
+                            "name": "options",
+                            "type": "Object",
+                            "description": "Optional",
+                            "default": "{}",
+                            "optional": true,
+                            "nullable": ""
+                        }
+                    ],
+                    "examples": [
+                        "const Product = lump.resource('Product')\nasync function tryEach () {\n   async Product.each(async (product) => {\n      // Do something with each entity\n   }, {\n      filter: {price: {$gt: 100}}\n   })\n}\ntryEach()"
+                    ],
+                    "returns": {
+                        "type": "Promise",
+                        "description": ""
+                    }
+                },
+                {
                     "name": "first",
                     "access": "",
                     "virtual": false,
@@ -3239,6 +3332,37 @@
                     "returns": {
                         "type": "Object",
                         "description": "{Promise.<[Symbol.iterator], function>} Iterable cursor"
+                    }
+                },
+                {
+                    "name": "each",
+                    "access": "",
+                    "virtual": false,
+                    "description": "Iterate entities with handler",
+                    "parameters": [
+                        {
+                            "name": "handler",
+                            "type": "function",
+                            "description": "Entity handler",
+                            "default": "",
+                            "optional": "",
+                            "nullable": ""
+                        },
+                        {
+                            "name": "options",
+                            "type": "Object",
+                            "description": "Optional",
+                            "default": "{}",
+                            "optional": true,
+                            "nullable": ""
+                        }
+                    ],
+                    "examples": [
+                        "const Product = lump.resource('Product')\nasync function tryEach () {\n   async Product.each(async (product) => {\n      // Do something with each entity\n   }, {\n      filter: {price: {$gt: 100}}\n   })\n}\ntryEach()"
+                    ],
+                    "returns": {
+                        "type": "Promise",
+                        "description": ""
                     }
                 },
                 {
