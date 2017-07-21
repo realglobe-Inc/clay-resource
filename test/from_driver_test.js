@@ -103,6 +103,18 @@ describe('from-driver', function () {
     equal(String(one.id), String(id))
     ok(!one.$$at)
 
+    // One without ID
+    {
+      let caught
+      try {
+        yield resource.one()
+      } catch (e) {
+        caught = e
+      }
+      ok(caught)
+      equal(caught.message, '[Clay][hogehoge] id is required')
+    }
+
     let updated = yield resource.update(id, {foo2: 'bar2'})
     ok(updated)
     equal(updated.foo, 'bar')
@@ -511,14 +523,6 @@ describe('from-driver', function () {
       {offset: 25, limit: 25, length: 25, total: 51},
       {offset: 50, limit: 25, length: 1, total: 51}
     ])
-
-    {
-      const every = []
-      yield User.each((entity) => {
-        every.push(entity)
-      })
-      equal(every.length, 102)
-    }
   }))
 
   it('Enhance entity', () => co(function * () {
