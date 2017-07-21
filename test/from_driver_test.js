@@ -19,15 +19,15 @@ const { DataTypes } = clayPolicy
 describe('from-driver', function () {
   this.timeout(30000)
 
-  before(() => co(function* () {
+  before(() => co(function * () {
 
   }))
 
-  after(() => co(function* () {
+  after(() => co(function * () {
 
   }))
 
-  it('From driver', () => co(function* () {
+  it('From driver', () => co(function * () {
     let driver = clayDriverMemory()
     let resource = fromDriver(driver, 'hogehoge', { annotates: true })
 
@@ -90,7 +90,7 @@ describe('from-driver', function () {
     }
   }))
 
-  it('From driver without annotate', () => co(function* () {
+  it('From driver without annotate', () => co(function * () {
     let driver = clayDriverMemory()
     let resource = fromDriver(driver, 'hogehoge').annotates(false)
 
@@ -151,7 +151,7 @@ describe('from-driver', function () {
     }
   }))
 
-  it('From driver bulk', () => co(function* () {
+  it('From driver bulk', () => co(function * () {
     let driver = clayDriverMemory()
     let resource = fromDriver(driver, 'hogehoge', { annotate: true })
 
@@ -177,7 +177,7 @@ describe('from-driver', function () {
     equal(count, 1)
   }))
 
-  it('From driver seal', () => co(function* () {
+  it('From driver seal', () => co(function * () {
     let driver = clayDriverMemory()
     let resource = fromDriver(driver, 'hogehoge').clone().annotates(true)
     let created = yield resource.create({ foo: 'bar' })
@@ -196,7 +196,7 @@ describe('from-driver', function () {
     ok(!decorate(one).verify(publicKey))
   }))
 
-  it('Resolve refs', () => co(function* () {
+  it('Resolve refs', () => co(function * () {
     let driver = clayDriverMemory()
     let Org = fromDriver(driver, 'Org')
     let User = fromDriver(driver, 'User').refs(Org)
@@ -223,7 +223,7 @@ describe('from-driver', function () {
     equal(team01.users[ 0 ].name, 'user01')
   }))
 
-  it('Policy check', () => co(function* () {
+  it('Policy check', () => co(function * () {
     const { STRING, DATE } = clayPolicy.DataTypes
     let driver = clayDriverMemory()
     let User = fromDriver(driver, 'User')
@@ -263,7 +263,7 @@ describe('from-driver', function () {
     equal(user02.username, 'hoge', 'Should be trimmed')
   }))
 
-  it('of', () => co(function* () {
+  it('of', () => co(function * () {
     let driver = clayDriverMemory()
     let Product = fromDriver(driver, 'Product')
     let product01 = yield Product.of({ code: '#1234' })
@@ -273,7 +273,7 @@ describe('from-driver', function () {
     yield Product.drop()
   }))
 
-  it('Unique', () => co(function* () {
+  it('Unique', () => co(function * () {
     let driver = clayDriverMemory()
     let Fruit = fromDriver(driver, 'Fruit')
     Fruit.policy({
@@ -293,7 +293,7 @@ describe('from-driver', function () {
     yield Fruit.drop()
   }))
 
-  it('Default', () => co(function* () {
+  it('Default', () => co(function * () {
     let driver = clayDriverMemory()
     let Box = fromDriver(driver, 'Box')
     Box.policy({
@@ -316,7 +316,7 @@ describe('from-driver', function () {
     equal(toyBox3.type, 'Steal')
   }))
 
-  it('Save/Fetch policy', () => co(function* () {
+  it('Save/Fetch policy', () => co(function * () {
     let driver = clayDriverMemory()
     let Fruit = fromDriver(driver, 'Fruit')
     let policy = clayPolicy({
@@ -331,7 +331,7 @@ describe('from-driver', function () {
     ok(fetched.hasRestrictionFor('name'))
   }))
 
-  it('Using cache', () => co(function* () {
+  it('Using cache', () => co(function * () {
     let driver = clayDriverMemory()
     let Fruit = fromDriver(driver, 'Fruit')
 
@@ -356,7 +356,7 @@ describe('from-driver', function () {
     equal(orange01AgainAgain, null)
   }))
 
-  it('Search by ref', () => co(function* () {
+  it('Search by ref', () => co(function * () {
     let drivers = [
       clayDriverMemory(),
       clayDriverSqlite(`${__dirname}/../tmp/search-by-ref.db`)
@@ -388,7 +388,7 @@ describe('from-driver', function () {
     }
   }))
 
-  it('Circular refs', () => co(function* () {
+  it('Circular refs', () => co(function * () {
     let driver = clayDriverMemory()
     let Toy = fromDriver(driver, 'Toy')
     let House = fromDriver(driver, 'House')
@@ -411,7 +411,7 @@ describe('from-driver', function () {
   }))
 
   // https://github.com/realglobe-Inc/claydb/issues/8
-  it('claydb/issues/8', () => co(function* () {
+  it('claydb/issues/8', () => co(function * () {
     let driver = clayDriverMemory()
     let Org = fromDriver(driver, 'Org')
     let User = fromDriver(driver, 'User')
@@ -423,7 +423,7 @@ describe('from-driver', function () {
     ok(user.org.$$entity)
   }))
 
-  it('Add invalid ref', () => co(function* () {
+  it('Add invalid ref', () => co(function * () {
     let driver = clayDriverMemory()
     let Org = fromDriver(driver, 'Org')
     let User = fromDriver(driver, 'User')
@@ -440,7 +440,7 @@ describe('from-driver', function () {
     ok(user01)
   }))
 
-  it('Convert id', () => co(function* () {
+  it('Convert id', () => co(function * () {
     let driver = clayDriverMemory()
     let User = fromDriver(driver, 'User')
     let user01 = yield User.create({ name: 'Rider01' })
@@ -454,7 +454,7 @@ describe('from-driver', function () {
     ok(!(yield User.has(user01)))
   }))
 
-  it('Using entity bind', () => co(function* () {
+  it('Using entity bind', () => co(function * () {
     let driver = clayDriverMemory()
     let User = fromDriver(driver, 'User')
     let user01 = yield User.create({ name: 'Rider01' })
@@ -485,7 +485,7 @@ describe('from-driver', function () {
     }
   }))
 
-  it('Use strict options', () => co(function* () {
+  it('Use strict options', () => co(function * () {
     let driver = clayDriverMemory()
     let User = fromDriver(driver, 'User')
     let user01 = yield User.create({ name: 'Rider01' })
@@ -502,7 +502,7 @@ describe('from-driver', function () {
     ok(caught)
   }))
 
-  it('Use resource collection', () => co(function* () {
+  it('Use resource collection', () => co(function * () {
     const driver = clayDriverMemory()
     const User = fromDriver(driver, 'User')
     for (let i = 0; i < 102; i++) {
@@ -525,7 +525,7 @@ describe('from-driver', function () {
     ])
   }))
 
-  it('Enhance entity', () => co(function* () {
+  it('Enhance entity', () => co(function * () {
     const driver = clayDriverMemory()
     const User = fromDriver(driver, 'User')
     User.enhanceResourceEntity((UserEntity) =>
@@ -541,7 +541,7 @@ describe('from-driver', function () {
     equal(user01.fullName, 'Taka Okunishi')
   }))
 
-  it('Enhance collection', () => co(function* () {
+  it('Enhance collection', () => co(function * () {
     const driver = clayDriverMemory()
     const User = fromDriver(driver, 'User')
     User.enhanceResourceCollection((UserCollection) =>
@@ -571,7 +571,7 @@ describe('from-driver', function () {
   }))
 
   // https://github.com/realglobe-Inc/clay-resource/issues/51
-  it('issues/51', () => co(function* () {
+  it('issues/51', () => co(function * () {
     const driver = clayDriverMemory()
     const User = fromDriver(driver, 'User')
     const UserAuth = fromDriver(driver, 'UserAuth')
@@ -598,7 +598,7 @@ describe('from-driver', function () {
     equal(live.createdBy.userKey, 'miyazaki')
   }))
 
-  it('Numeric id', () => co(function* () {
+  it('Numeric id', () => co(function * () {
     const driver = clayDriverMemory()
     const Ball = fromDriver(driver, 'Ball')
 
