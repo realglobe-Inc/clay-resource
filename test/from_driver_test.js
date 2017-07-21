@@ -7,14 +7,14 @@
 const fromDriver = require('../lib/from_driver.js')
 const clayDriverMemory = require('clay-driver-memory')
 const clayDriverSqlite = require('clay-driver-sqlite')
-const { decorate } = require('clay-entity')
-const { ok, equal, strictEqual, deepEqual } = require('assert')
+const {decorate} = require('clay-entity')
+const {ok, equal, strictEqual, deepEqual} = require('assert')
 const asleep = require('asleep')
 const clayPolicy = require('clay-policy')
-const { refTo } = require('clay-resource-ref')
-const { generate: generateKeys, verify } = require('clay-crypto')
+const {refTo} = require('clay-resource-ref')
+const {generate: generateKeys, verify} = require('clay-crypto')
 const co = require('co')
-const { DataTypes } = clayPolicy
+const {DataTypes} = clayPolicy
 
 describe('from-driver', function () {
   this.timeout(30000)
@@ -29,20 +29,20 @@ describe('from-driver', function () {
 
   it('From driver', () => co(function * () {
     let driver = clayDriverMemory()
-    let resource = fromDriver(driver, 'hogehoge', { annotates: true })
+    let resource = fromDriver(driver, 'hogehoge', {annotates: true})
 
-    ok(!(yield resource.exists({ foo: 'bar' })))
+    ok(!(yield resource.exists({foo: 'bar'})))
 
-    let created = yield resource.create({ foo: 'bar' })
+    let created = yield resource.create({foo: 'bar'})
     ok(created)
     ok(created.id)
     ok(created.$$at)
 
-    ok(yield resource.exists({ foo: 'bar' }))
+    ok(yield resource.exists({foo: 'bar'}))
 
     equal(yield resource.count(), 1)
 
-    let { id } = created
+    let {id} = created
 
     let one = yield resource.one(id)
     equal(one.foo, 'bar')
@@ -50,17 +50,17 @@ describe('from-driver', function () {
 
     yield asleep(10)
 
-    let updated = yield resource.update(id, { foo2: 'bar2' })
+    let updated = yield resource.update(id, {foo2: 'bar2'})
     ok(updated)
     equal(updated.foo, 'bar')
     equal(updated.foo2, 'bar2')
     ok(updated.$$at > created.$$at)
 
-    let first = yield resource.first({ foo2: 'bar2' })
+    let first = yield resource.first({foo2: 'bar2'})
     ok(first)
     ok(first.foo2, 'bar2')
 
-    let only = yield resource.only({ foo2: 'bar2' })
+    let only = yield resource.only({foo2: 'bar2'})
     ok(only)
     ok(only.foo2, 'bar2')
 
@@ -70,12 +70,12 @@ describe('from-driver', function () {
     {
       let hogeResource = resource.sub('hoge')
       ok(hogeResource)
-      yield hogeResource.create({ fooSub: 'barSub' })
+      yield hogeResource.create({fooSub: 'barSub'})
 
       strictEqual(resource.sub('hoge'), resource.sub('hoge'), 'Using cache')
 
       equal(hogeResource.name, 'hogehogehoge')
-      ok(hogeResource.refs()[ 'hogehoge' ])
+      ok(hogeResource.refs()['hogehoge'])
     }
 
     {
@@ -94,16 +94,28 @@ describe('from-driver', function () {
     let driver = clayDriverMemory()
     let resource = fromDriver(driver, 'hogehoge').annotates(false)
 
-    let created = yield resource.create({ foo: 'bar' })
+    let created = yield resource.create({foo: 'bar'})
 
-    let { id } = created
+    let {id} = created
 
     let one = yield resource.one(id)
     equal(one.foo, 'bar')
     equal(String(one.id), String(id))
     ok(!one.$$at)
 
-    let updated = yield resource.update(id, { foo2: 'bar2' })
+    // One without ID
+    {
+      let caught
+      try {
+        yield resource.one()
+      } catch (e) {
+        caught = e
+      }
+      ok(caught)
+      equal(caught.message, '[Clay][hogehoge] id is required')
+    }
+
+    let updated = yield resource.update(id, {foo2: 'bar2'})
     ok(updated)
     equal(updated.foo, 'bar')
     equal(updated.foo2, 'bar2')
@@ -113,27 +125,27 @@ describe('from-driver', function () {
 
     // Bulk
     {
-      let [ created ] = yield resource.createBulk([ { foo: 'bar' } ])
+      let [created] = yield resource.createBulk([{foo: 'bar'}])
       ok(created)
       ok(created.id)
       ok(!created.$$at)
 
-      let { id } = created
-      let one = (yield resource.oneBulk([ id ]))[ id ]
+      let {id} = created
+      let one = (yield resource.oneBulk([id]))[id]
       equal(one.foo, 'bar')
       equal(String(one.id), String(created.id))
 
       yield asleep(10)
 
-      let updated = (yield resource.updateBulk({ [id]: { foo2: 'bar2' } }))[ id ]
+      let updated = (yield resource.updateBulk({[id]: {foo2: 'bar2'}}))[id]
       ok(updated)
       equal(updated.foo, 'bar')
       equal(updated.foo2, 'bar2')
       ok(!updated.$$at)
 
-      equal((yield resource.all())[ 0 ].foo, 'bar')
+      equal((yield resource.all())[0].foo, 'bar')
 
-      let count = yield resource.destroyBulk([ created.id ])
+      let count = yield resource.destroyBulk([created.id])
       equal(count, 1)
 
     }
@@ -141,38 +153,38 @@ describe('from-driver', function () {
 
   it('From driver bulk', () => co(function * () {
     let driver = clayDriverMemory()
-    let resource = fromDriver(driver, 'hogehoge', { annotate: true })
+    let resource = fromDriver(driver, 'hogehoge', {annotate: true})
 
-    let [ created ] = yield resource.createBulk([ { foo: 'bar' } ])
+    let [created] = yield resource.createBulk([{foo: 'bar'}])
     ok(created)
     ok(created.id)
     ok(created.$$at)
 
-    let { id } = created
-    let one = (yield resource.oneBulk([ id ]))[ id ]
+    let {id} = created
+    let one = (yield resource.oneBulk([id]))[id]
     equal(one.foo, 'bar')
     equal(String(one.id), String(created.id))
 
     yield asleep(10)
 
-    let updated = (yield resource.updateBulk({ [id]: { foo2: 'bar2' } }))[ id ]
+    let updated = (yield resource.updateBulk({[id]: {foo2: 'bar2'}}))[id]
     ok(updated)
     equal(updated.foo, 'bar')
     equal(updated.foo2, 'bar2')
     ok(updated.$$at > created.$$at)
 
-    let count = yield resource.destroyBulk([ created.id ])
+    let count = yield resource.destroyBulk([created.id])
     equal(count, 1)
   }))
 
   it('From driver seal', () => co(function * () {
     let driver = clayDriverMemory()
     let resource = fromDriver(driver, 'hogehoge').clone().annotates(true)
-    let created = yield resource.create({ foo: 'bar' })
-    let { id } = created
+    let created = yield resource.create({foo: 'bar'})
+    let {id} = created
 
-    let { privateKey, publicKey } = generateKeys()
-    yield resource.seal(privateKey, { by: 'foo!' })
+    let {privateKey, publicKey} = generateKeys()
+    yield resource.seal(privateKey, {by: 'foo!'})
 
     let one = yield resource.one(id)
     ok(one.$$seal)
@@ -188,10 +200,10 @@ describe('from-driver', function () {
     let driver = clayDriverMemory()
     let Org = fromDriver(driver, 'Org')
     let User = fromDriver(driver, 'User').refs(Org)
-    let org01 = yield Org.create({ name: 'org01' })
+    let org01 = yield Org.create({name: 'org01'})
     let user01 = yield User.create({
       name: 'user01',
-      org: { $ref: refTo(Org, org01.id) }
+      org: {$ref: refTo(Org, org01.id)}
     })
     equal(user01.org.name, 'org01')
     let user02 = yield User.create({
@@ -200,19 +212,19 @@ describe('from-driver', function () {
     })
     equal(user02.org.name, 'org01')
 
-    equal(driver._storages.User[ String(user02.id) ].org.$ref, `Org#${org01.id}`)
+    equal(driver._storages.User[String(user02.id)].org.$ref, `Org#${org01.id}`)
 
     let Team = fromDriver(driver, 'Team').refs(User)
     let team01 = yield Team.create({
       name: 'Team01',
-      users: [ { $ref: refTo(User, user01.id) } ]
+      users: [{$ref: refTo(User, user01.id)}]
     })
     ok(team01)
-    equal(team01.users[ 0 ].name, 'user01')
+    equal(team01.users[0].name, 'user01')
   }))
 
   it('Policy check', () => co(function * () {
-    const { STRING, DATE } = clayPolicy.DataTypes
+    const {STRING, DATE} = clayPolicy.DataTypes
     let driver = clayDriverMemory()
     let User = fromDriver(driver, 'User')
 
@@ -227,7 +239,7 @@ describe('from-driver', function () {
       },
       rank: {
         type: STRING,
-        oneOf: [ 'GOLD', 'SLIVER', 'BRONZE' ]
+        oneOf: ['GOLD', 'SLIVER', 'BRONZE']
       }
     })
 
@@ -244,19 +256,19 @@ describe('from-driver', function () {
     deepEqual(caught.detail.failures.rank, {
       reason: 'UNEXPECTED_VALUE_ERROR',
       actual: 'SUPER',
-      expects: { oneOf: [ 'GOLD', 'SLIVER', 'BRONZE' ] }
+      expects: {oneOf: ['GOLD', 'SLIVER', 'BRONZE']}
     })
 
-    let user02 = yield User.create({ username: '  hoge  ' })
+    let user02 = yield User.create({username: '  hoge  '})
     equal(user02.username, 'hoge', 'Should be trimmed')
   }))
 
   it('of', () => co(function * () {
     let driver = clayDriverMemory()
     let Product = fromDriver(driver, 'Product')
-    let product01 = yield Product.of({ code: '#1234' })
+    let product01 = yield Product.of({code: '#1234'})
     equal(product01.code, '#1234')
-    let product02 = yield Product.of({ code: '#1234' })
+    let product02 = yield Product.of({code: '#1234'})
     equal(String(product01).id, String(product02).id)
     yield Product.drop()
   }))
@@ -270,10 +282,10 @@ describe('from-driver', function () {
         unique: true
       }
     })
-    yield Fruit.create({ name: 'banana' })
+    yield Fruit.create({name: 'banana'})
     let caught
     try {
-      yield Fruit.create({ name: 'banana' })
+      yield Fruit.create({name: 'banana'})
     } catch (thrown) {
       caught = thrown
     }
@@ -290,7 +302,7 @@ describe('from-driver', function () {
         default: 'Wood'
       }
     })
-    let toyBox = yield Box.create({ name: 'toy' })
+    let toyBox = yield Box.create({name: 'toy'})
     equal(toyBox.type, 'Wood')
     Box.policy({
       type: {
@@ -298,9 +310,9 @@ describe('from-driver', function () {
         default: 'Steal'
       }
     })
-    let toyBox2 = yield Box.update(toyBox.id, { name: 'toy2' })
+    let toyBox2 = yield Box.update(toyBox.id, {name: 'toy2'})
     equal(toyBox2.type, 'Wood')
-    let toyBox3 = yield Box.create({ name: 'toy3' })
+    let toyBox3 = yield Box.create({name: 'toy3'})
     equal(toyBox3.type, 'Steal')
   }))
 
@@ -323,8 +335,8 @@ describe('from-driver', function () {
     let driver = clayDriverMemory()
     let Fruit = fromDriver(driver, 'Fruit')
 
-    let orange01 = yield Fruit.create({ name: 'orange' })
-    let banana01 = yield Fruit.create({ name: 'banana' })
+    let orange01 = yield Fruit.create({name: 'orange'})
+    let banana01 = yield Fruit.create({name: 'banana'})
 
     yield Fruit.one(orange01.id)
     yield Fruit.one(orange01.id)
@@ -332,7 +344,7 @@ describe('from-driver', function () {
     yield Fruit.one(banana01.id)
     equal(Fruit._resourceCache.size, 2)
 
-    yield Fruit.update(orange01.id, { vr: 2 })
+    yield Fruit.update(orange01.id, {vr: 2})
     equal(Fruit._resourceCache.size, 1)
     let orange01Again = yield Fruit.one(orange01.id)
     equal(orange01Again.vr, 2)
@@ -355,21 +367,21 @@ describe('from-driver', function () {
       Org.refs(User)
       User.refs(Org)
 
-      let org01 = yield Org.create({ name: 'org01' })
-      let org02 = yield Org.create({ name: 'org02' })
-      yield User.create({ name: 'user01', org: org01 })
-      yield User.create({ name: 'user02', org: org02 })
+      let org01 = yield Org.create({name: 'org01'})
+      let org02 = yield Org.create({name: 'org02'})
+      yield User.create({name: 'user01', org: org01})
+      yield User.create({name: 'user02', org: org02})
 
-      let { meta, entities, demand } = yield User.list({ filter: { org: org01 } })
+      let {meta, entities, demand} = yield User.list({filter: {org: org01}})
       equal(meta.length, 1)
-      let [ user ] = entities
+      let [user] = entities
       equal(user.name, 'user01')
       equal(demand.filter.org.$ref, `Org#${org01.id}`)
 
       {
-        let [ { meta, entities, demand } ] = yield User.listBulk([ { filter: { org: org01 } } ])
+        let [{meta, entities, demand}] = yield User.listBulk([{filter: {org: org01}}])
         equal(meta.length, 1)
-        let [ user ] = entities
+        let [user] = entities
         equal(user.name, 'user01')
         equal(demand.filter.org.$ref, `Org#${org01.id}`)
       }
@@ -384,18 +396,18 @@ describe('from-driver', function () {
     Toy.refs(House)
     House.refs(Toy)
 
-    let house01 = yield House.create({ name: 'house01' })
+    let house01 = yield House.create({name: 'house01'})
 
-    let toy01 = yield Toy.create({ name: 'toy01', house: house01 })
-    let toy02 = yield Toy.create({ name: 'toy02', house: house01 })
+    let toy01 = yield Toy.create({name: 'toy01', house: house01})
+    let toy02 = yield Toy.create({name: 'toy02', house: house01})
 
-    yield House.update(house01.id, { toys: [ toy01, toy02 ] })
+    yield House.update(house01.id, {toys: [toy01, toy02]})
 
     let house01Again = yield House.one(house01.id)
-    equal(house01Again.toys[ 0 ].house.$ref, `House#${house01.id}`)
+    equal(house01Again.toys[0].house.$ref, `House#${house01.id}`)
 
     let toy01Again = yield Toy.one(toy01.id)
-    equal(toy01Again.house.toys[ 0 ].$ref, `Toy#${toy01.id}`)
+    equal(toy01Again.house.toys[0].$ref, `Toy#${toy01.id}`)
   }))
 
   // https://github.com/realglobe-Inc/claydb/issues/8
@@ -405,9 +417,9 @@ describe('from-driver', function () {
     let User = fromDriver(driver, 'User')
     Org.refs(User)
     User.refs(Org)
-    let realglobe = yield Org.create({ name: 'realglobe' })
+    let realglobe = yield Org.create({name: 'realglobe'})
     let realglobeObj = Object(realglobe)
-    let user = yield User.create({ name: 'fuji', org: realglobeObj })
+    let user = yield User.create({name: 'fuji', org: realglobeObj})
     ok(user.org.$$entity)
   }))
 
@@ -417,7 +429,7 @@ describe('from-driver', function () {
     let User = fromDriver(driver, 'User')
     Org.refs(User)
     User.refs(Org)
-    let org01 = yield Org.create({ name: 'FantasticPark' })
+    let org01 = yield Org.create({name: 'FantasticPark'})
     let user01 = yield User.create({
       name: 'Rider01',
       org: {
@@ -431,9 +443,9 @@ describe('from-driver', function () {
   it('Convert id', () => co(function * () {
     let driver = clayDriverMemory()
     let User = fromDriver(driver, 'User')
-    let user01 = yield User.create({ name: 'Rider01' })
+    let user01 = yield User.create({name: 'Rider01'})
 
-    yield User.update(user01, { name: 'Updated Rider01' })
+    yield User.update(user01, {name: 'Updated Rider01'})
 
     equal((yield User.one(user01)).name, 'Updated Rider01')
 
@@ -445,15 +457,15 @@ describe('from-driver', function () {
   it('Using entity bind', () => co(function * () {
     let driver = clayDriverMemory()
     let User = fromDriver(driver, 'User')
-    let user01 = yield User.create({ name: 'Rider01' })
+    let user01 = yield User.create({name: 'Rider01'})
     ok(user01.update)
     ok(user01.destroy)
     ok(Object.assign({}, user01).name)
     ok(!Object.assign({}, user01).update)
     ok(!Object.assign({}, user01).destroy)
 
-    yield user01.update({ version: 2 })
-    yield User.update(user01, { foo: 'bar' })
+    yield user01.update({version: 2})
+    yield User.update(user01, {foo: 'bar'})
     yield user01.sync()
     equal(user01.foo, 'bar')
     equal(user01.version, 2)
@@ -465,7 +477,7 @@ describe('from-driver', function () {
     {
       let caught
       try {
-        yield user01.update({ foo: 'bar' })
+        yield user01.update({foo: 'bar'})
       } catch (e) {
         caught = e
       }
@@ -476,14 +488,14 @@ describe('from-driver', function () {
   it('Use strict options', () => co(function * () {
     let driver = clayDriverMemory()
     let User = fromDriver(driver, 'User')
-    let user01 = yield User.create({ name: 'Rider01' })
-    yield User.one(user01.id, { strict: false })
-    yield User.one(user01.id, { strict: true })
+    let user01 = yield User.create({name: 'Rider01'})
+    yield User.one(user01.id, {strict: false})
+    yield User.one(user01.id, {strict: true})
 
-    yield User.one('__invalid_id__', { strict: false })
+    yield User.one('__invalid_id__', {strict: false})
     let caught
     try {
-      yield User.one('__invalid_id__', { strict: true })
+      yield User.one('__invalid_id__', {strict: true})
     } catch (e) {
       caught = e
     }
@@ -499,7 +511,7 @@ describe('from-driver', function () {
         group: i % 2 === 0 ? 'yellow' : 'green'
       })
     }
-    let users = yield User.list({ filter: { group: 'green' }, page: { number: 1, size: 25 } })
+    let users = yield User.list({filter: {group: 'green'}, page: {number: 1, size: 25}})
     let counts = []
     while (users.hasNext) {
       counts.push(users.meta)
@@ -507,9 +519,9 @@ describe('from-driver', function () {
     }
     counts.push(users.meta)
     deepEqual(counts, [
-      { offset: 0, limit: 25, length: 25, total: 51 },
-      { offset: 25, limit: 25, length: 25, total: 51 },
-      { offset: 50, limit: 25, length: 1, total: 51 }
+      {offset: 0, limit: 25, length: 25, total: 51},
+      {offset: 25, limit: 25, length: 25, total: 51},
+      {offset: 50, limit: 25, length: 1, total: 51}
     ])
   }))
 
@@ -519,13 +531,13 @@ describe('from-driver', function () {
     User.enhanceResourceEntity((UserEntity) =>
       class EnhancedUserEntity extends UserEntity {
         get fullName () {
-          let { familyName, firstName } = this
-          return [ firstName, familyName ].filter(Boolean).join(' ')
+          let {familyName, firstName} = this
+          return [firstName, familyName].filter(Boolean).join(' ')
         }
       }
     )
 
-    let user01 = yield User.create({ firstName: 'Taka', familyName: 'Okunishi' })
+    let user01 = yield User.create({firstName: 'Taka', familyName: 'Okunishi'})
     equal(user01.fullName, 'Taka Okunishi')
   }))
 
@@ -535,7 +547,7 @@ describe('from-driver', function () {
     User.enhanceResourceCollection((UserCollection) =>
       class EnhancedUserCollection extends UserCollection {
         nextOne () {
-          let { demand, page } = this
+          let {demand, page} = this
           return User.first(demand.filter, {
             sort: demand.sort,
             skip: page.size * page.number
@@ -544,16 +556,16 @@ describe('from-driver', function () {
       }
     )
 
-    yield User.create({ name: 'user01' })
-    yield User.create({ name: 'user02' })
-    yield User.create({ name: 'user03' })
+    yield User.create({name: 'user01'})
+    yield User.create({name: 'user02'})
+    yield User.create({name: 'user03'})
 
     let users = yield User.list({
       page: {
         size: 2,
         number: 1
       },
-      sort: [ '-name' ]
+      sort: ['-name']
     })
     equal((yield users.nextOne()).name, 'user01')
   }))
@@ -590,7 +602,7 @@ describe('from-driver', function () {
     const driver = clayDriverMemory()
     const Ball = fromDriver(driver, 'Ball')
 
-    let created = yield Ball.create({ id: 1 }, { allowReserved: true })
+    let created = yield Ball.create({id: 1}, {allowReserved: true})
     strictEqual(String(created.id), '1')
   }))
 })
