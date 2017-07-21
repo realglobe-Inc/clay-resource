@@ -514,7 +514,7 @@ describe('from-driver', function () {
 
     {
       const every = []
-      yield User.every((entity) => {
+      yield User.each((entity) => {
         every.push(entity)
       })
       equal(every.length, 102)
