@@ -26,7 +26,7 @@
     "asleep": "^1.0.3",
     "clay-collection": "^3.0.1",
     "clay-constants": "^3.0.3",
-    "clay-driver-base": "file:../clay-driver-base",
+    "clay-driver-base": "^3.1.3",
     "clay-entity": "^2.0.2",
     "clay-errors": "^3.1.1",
     "clay-policy": "^2.0.14",
