@@ -504,11 +504,14 @@ describe('from-driver', function () {
 
   it('Use resource collection', () => co(function * () {
     const driver = clayDriverMemory()
+    const Org = fromDriver(driver, 'Org')
     const User = fromDriver(driver, 'User')
+    const org01 = yield Org.create({name: 'org01'})
     for (let i = 0; i < 102; i++) {
       yield User.create({
         name: `user-${i}`,
-        group: i % 2 === 0 ? 'yellow' : 'green'
+        group: i % 2 === 0 ? 'yellow' : 'green',
+        org: org01
       })
     }
     let users = yield User.list({filter: {group: 'green'}, page: {number: 1, size: 25}})
@@ -525,11 +528,12 @@ describe('from-driver', function () {
     ])
 
     {
-      const every = []
-      yield User.each((entity) => {
-        every.push(entity)
+      const eachUsers = []
+      yield User.each((user) => {
+        ok(user.org)
+        eachUsers.push(user)
       })
-      equal(every.length, 102)
+      equal(eachUsers.length, 102)
     }
   }))
 
