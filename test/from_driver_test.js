@@ -506,12 +506,17 @@ describe('from-driver', function () {
     const driver = clayDriverMemory()
     const Org = fromDriver(driver, 'Org')
     const User = fromDriver(driver, 'User')
+
+    Org.refs(User)
+    User.refs(Org)
+
     const org01 = yield Org.create({name: 'org01'})
+    const org02 = yield Org.create({name: 'org02'})
     for (let i = 0; i < 102; i++) {
       yield User.create({
         name: `user-${i}`,
         group: i % 2 === 0 ? 'yellow' : 'green',
-        org: org01
+        org: i % 2 === 0 ? org01 : org02
       })
     }
     let users = yield User.list({filter: {group: 'green'}, page: {number: 1, size: 25}})
@@ -532,8 +537,8 @@ describe('from-driver', function () {
       yield User.each((user) => {
         ok(user.org)
         eachUsers.push(user)
-      })
-      equal(eachUsers.length, 102)
+      }, {filter: {org: org01}})
+      equal(eachUsers.length, 51)
     }
   }))
 

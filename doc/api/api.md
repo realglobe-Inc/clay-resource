@@ -1,4 +1,4 @@
-# clay-resource@3.1.18
+# clay-resource@3.1.19
 
 Resource accessor for ClayDB
 
@@ -18,8 +18,8 @@ Resource accessor for ClayDB
   + [resource.createBulk(attributesArray)](#clay-resource-class-clay-resource-createBulk)
   + [resource.updateBulk(attributesHash)](#clay-resource-class-clay-resource-updateBulk)
   + [resource.destroyBulk(ids)](#clay-resource-class-clay-resource-destroyBulk)
-  + [resource.cursor(options)](#clay-resource-class-clay-resource-cursor)
-  + [resource.each(handler, options)](#clay-resource-class-clay-resource-each)
+  + [resource.cursor(condition)](#clay-resource-class-clay-resource-cursor)
+  + [resource.each(handler, condition)](#clay-resource-class-clay-resource-each)
   + [resource.first(filter, options)](#clay-resource-class-clay-resource-first)
   + [resource.only(filter, options)](#clay-resource-class-clay-resource-only)
   + [resource.seal(privateKey, options)](#clay-resource-class-clay-resource-seal)
@@ -39,8 +39,8 @@ Resource accessor for ClayDB
   + [resource.createBulk(attributesArray)](#clay-resource-class-clay-resource-createBulk)
   + [resource.updateBulk(attributesHash)](#clay-resource-class-clay-resource-updateBulk)
   + [resource.destroyBulk(ids)](#clay-resource-class-clay-resource-destroyBulk)
-  + [resource.cursor(options)](#clay-resource-class-clay-resource-cursor)
-  + [resource.each(handler, options)](#clay-resource-class-clay-resource-each)
+  + [resource.cursor(condition)](#clay-resource-class-clay-resource-cursor)
+  + [resource.each(handler, condition)](#clay-resource-class-clay-resource-each)
   + [resource.first(filter, options)](#clay-resource-class-clay-resource-first)
   + [resource.only(filter, options)](#clay-resource-class-clay-resource-only)
   + [resource.seal(privateKey, options)](#clay-resource-class-clay-resource-seal)
@@ -422,15 +422,15 @@ tryDestroyBulk()
 
 <a class='md-heading-link' name="clay-resource-class-clay-resource-cursor" ></a>
 
-### resource.cursor(options) -> `Object`
+### resource.cursor(condition) -> `Object`
 
 Create cursor to cursor
 
 | Param | Type | Description |
 | ----- | --- | -------- |
-| options | Object | Optional settings |
-| options.filter | FilterTerm | Filter condition |
-| options.sort | SortTerm | Sort condition |
+| condition | Object | Optional settings |
+| condition.filter | FilterTerm | Filter condition |
+| condition.sort | SortTerm | Sort condition |
 
 **Example**:
 
@@ -451,14 +451,16 @@ tryCursor()
 
 <a class='md-heading-link' name="clay-resource-class-clay-resource-each" ></a>
 
-### resource.each(handler, options) -> `Promise`
+### resource.each(handler, condition) -> `Promise`
 
 Iterate entities with handler
 
 | Param | Type | Description |
 | ----- | --- | -------- |
 | handler | function | Entity handler |
-| options | Object | Optional |
+| condition | Object | Optional settings |
+| condition.filter | FilterTerm | Filter condition |
+| condition.sort | SortTerm | Sort condition |
 
 **Example**:
 
@@ -893,15 +895,15 @@ tryDestroyBulk()
 
 <a class='md-heading-link' name="clay-resource-class-clay-resource-cursor" ></a>
 
-### resource.cursor(options) -> `Object`
+### resource.cursor(condition) -> `Object`
 
 Create cursor to cursor
 
 | Param | Type | Description |
 | ----- | --- | -------- |
-| options | Object | Optional settings |
-| options.filter | FilterTerm | Filter condition |
-| options.sort | SortTerm | Sort condition |
+| condition | Object | Optional settings |
+| condition.filter | FilterTerm | Filter condition |
+| condition.sort | SortTerm | Sort condition |
 
 **Example**:
 
@@ -922,14 +924,16 @@ tryCursor()
 
 <a class='md-heading-link' name="clay-resource-class-clay-resource-each" ></a>
 
-### resource.each(handler, options) -> `Promise`
+### resource.each(handler, condition) -> `Promise`
 
 Iterate entities with handler
 
 | Param | Type | Description |
 | ----- | --- | -------- |
 | handler | function | Entity handler |
-| options | Object | Optional |
+| condition | Object | Optional settings |
+| condition.filter | FilterTerm | Filter condition |
+| condition.sort | SortTerm | Sort condition |
 
 **Example**:
 

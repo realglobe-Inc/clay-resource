@@ -400,7 +400,7 @@
                     "description": "Create cursor to cursor",
                     "parameters": [
                         {
-                            "name": "options",
+                            "name": "condition",
                             "type": "Object",
                             "description": "Optional settings",
                             "default": "{}",
@@ -408,7 +408,7 @@
                             "nullable": ""
                         },
                         {
-                            "name": "options.filter",
+                            "name": "condition.filter",
                             "type": "FilterTerm",
                             "description": "Filter condition",
                             "default": "{}",
@@ -416,7 +416,7 @@
                             "nullable": ""
                         },
                         {
-                            "name": "options.sort",
+                            "name": "condition.sort",
                             "type": "SortTerm",
                             "description": "Sort condition",
                             "default": "[]",
@@ -447,10 +447,26 @@
                             "nullable": ""
                         },
                         {
-                            "name": "options",
+                            "name": "condition",
                             "type": "Object",
-                            "description": "Optional",
+                            "description": "Optional settings",
                             "default": "{}",
+                            "optional": true,
+                            "nullable": ""
+                        },
+                        {
+                            "name": "condition.filter",
+                            "type": "FilterTerm",
+                            "description": "Filter condition",
+                            "default": "{}",
+                            "optional": true,
+                            "nullable": ""
+                        },
+                        {
+                            "name": "condition.sort",
+                            "type": "SortTerm",
+                            "description": "Sort condition",
+                            "default": "[]",
                             "optional": true,
                             "nullable": ""
                         }
@@ -1028,7 +1044,7 @@
                     "description": "Create cursor to cursor",
                     "parameters": [
                         {
-                            "name": "options",
+                            "name": "condition",
                             "type": "Object",
                             "description": "Optional settings",
                             "default": "{}",
@@ -1036,7 +1052,7 @@
                             "nullable": ""
                         },
                         {
-                            "name": "options.filter",
+                            "name": "condition.filter",
                             "type": "FilterTerm",
                             "description": "Filter condition",
                             "default": "{}",
@@ -1044,7 +1060,7 @@
                             "nullable": ""
                         },
                         {
-                            "name": "options.sort",
+                            "name": "condition.sort",
                             "type": "SortTerm",
                             "description": "Sort condition",
                             "default": "[]",
@@ -1075,10 +1091,26 @@
                             "nullable": ""
                         },
                         {
-                            "name": "options",
+                            "name": "condition",
                             "type": "Object",
-                            "description": "Optional",
+                            "description": "Optional settings",
                             "default": "{}",
+                            "optional": true,
+                            "nullable": ""
+                        },
+                        {
+                            "name": "condition.filter",
+                            "type": "FilterTerm",
+                            "description": "Filter condition",
+                            "default": "{}",
+                            "optional": true,
+                            "nullable": ""
+                        },
+                        {
+                            "name": "condition.sort",
+                            "type": "SortTerm",
+                            "description": "Sort condition",
+                            "default": "[]",
                             "optional": true,
                             "nullable": ""
                         }
@@ -2674,7 +2706,7 @@
                     "description": "Create cursor to cursor",
                     "parameters": [
                         {
-                            "name": "options",
+                            "name": "condition",
                             "type": "Object",
                             "description": "Optional settings",
                             "default": "{}",
@@ -2682,7 +2714,7 @@
                             "nullable": ""
                         },
                         {
-                            "name": "options.filter",
+                            "name": "condition.filter",
                             "type": "FilterTerm",
                             "description": "Filter condition",
                             "default": "{}",
@@ -2690,7 +2722,7 @@
                             "nullable": ""
                         },
                         {
-                            "name": "options.sort",
+                            "name": "condition.sort",
                             "type": "SortTerm",
                             "description": "Sort condition",
                             "default": "[]",
@@ -2721,10 +2753,26 @@
                             "nullable": ""
                         },
                         {
-                            "name": "options",
+                            "name": "condition",
                             "type": "Object",
-                            "description": "Optional",
+                            "description": "Optional settings",
                             "default": "{}",
+                            "optional": true,
+                            "nullable": ""
+                        },
+                        {
+                            "name": "condition.filter",
+                            "type": "FilterTerm",
+                            "description": "Filter condition",
+                            "default": "{}",
+                            "optional": true,
+                            "nullable": ""
+                        },
+                        {
+                            "name": "condition.sort",
+                            "type": "SortTerm",
+                            "description": "Sort condition",
+                            "default": "[]",
                             "optional": true,
                             "nullable": ""
                         }
@@ -3302,7 +3350,7 @@
                     "description": "Create cursor to cursor",
                     "parameters": [
                         {
-                            "name": "options",
+                            "name": "condition",
                             "type": "Object",
                             "description": "Optional settings",
                             "default": "{}",
@@ -3310,7 +3358,7 @@
                             "nullable": ""
                         },
                         {
-                            "name": "options.filter",
+                            "name": "condition.filter",
                             "type": "FilterTerm",
                             "description": "Filter condition",
                             "default": "{}",
@@ -3318,7 +3366,7 @@
                             "nullable": ""
                         },
                         {
-                            "name": "options.sort",
+                            "name": "condition.sort",
                             "type": "SortTerm",
                             "description": "Sort condition",
                             "default": "[]",
@@ -3349,10 +3397,26 @@
                             "nullable": ""
                         },
                         {
-                            "name": "options",
+                            "name": "condition",
                             "type": "Object",
-                            "description": "Optional",
+                            "description": "Optional settings",
                             "default": "{}",
+                            "optional": true,
+                            "nullable": ""
+                        },
+                        {
+                            "name": "condition.filter",
+                            "type": "FilterTerm",
+                            "description": "Filter condition",
+                            "default": "{}",
+                            "optional": true,
+                            "nullable": ""
+                        },
+                        {
+                            "name": "condition.sort",
+                            "type": "SortTerm",
+                            "description": "Sort condition",
+                            "default": "[]",
                             "optional": true,
                             "nullable": ""
                         }
