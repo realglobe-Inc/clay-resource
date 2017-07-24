@@ -15,7 +15,7 @@ apeTasking.runTasks('assets', [
   async () => {
     for (let name of Object.keys(images)) {
       let filename = images[name]
-      let result = yield filecopy(filename, `assets/images/${path.basename(filename)}`, {
+      let result = await filecopy(filename, `assets/images/${path.basename(filename)}`, {
         mkdirp: true,
         force: true,
         mode: '644'
