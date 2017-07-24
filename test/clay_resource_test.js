@@ -5,22 +5,21 @@
 'use strict'
 
 const ClayResource = require('../lib/clay_resource.js')
-const { ok, equal, deepEqual } = require('assert')
-const { MemoryDriver } = require('clay-driver-memory')
-const co = require('co')
+const {ok, equal, deepEqual} = require('assert')
+const {MemoryDriver} = require('clay-driver-memory')
 
 describe('clay-resource', function () {
   this.timeout(3000)
 
-  before(() => co(function * () {
+  before(async () => {
 
-  }))
+  })
 
-  after(() => co(function * () {
+  after(async () => {
 
-  }))
+  })
 
-  it('Clay resource', () => co(function * () {
+  it('Clay resource', async () => {
     let resource = new ClayResource('hoge@example.com', {
       one () {
         return {}
@@ -36,17 +35,17 @@ describe('clay-resource', function () {
     ok(clone.one)
     equal(clone.name, 'hoge')
     equal(clone.domain, 'example.com')
-  }))
+  })
 
-  it('Ref and sub', () => co(function * () {
+  it('Ref and sub', async () => {
     let resource01 = new ClayResource('resource01')
     let resource02 = new ClayResource('resource02')
     let resource03 = resource01.sub('03')
     resource01.refs(resource02)
-    deepEqual(Object.keys(resource03.refs()), [ 'resource01', 'resource02' ])
-  }))
+    deepEqual(Object.keys(resource03.refs()), ['resource01', 'resource02'])
+  })
 
-  it('Register prepare task', () => co(function * () {
+  it('Register prepare task', async () => {
     let count = 0
     const counter = () => {
       count++
@@ -65,23 +64,24 @@ describe('clay-resource', function () {
     ok(resource01.sub('foo'))
 
     equal(resource01.internal('foo').name, 'foo.resource01')
-  }))
+  })
 
-  it('Do decorate', () => co(function * () {
+  it('Do decorate', async () => {
     let resource01 = new ClayResource('resource01')
     resource01.foo = (arg) => 'foo:' + arg
     resource01.decorate('foo', (foo) => (arg) => 'decorated:' + foo(arg))
     equal(resource01.foo('bar'), 'decorated:foo:bar')
-  }))
+  })
 
-  it('Extension', () => co(function * () {
+  it('Extension', async () => {
     class UserResource extends ClayResource {
     }
+
     let driver = new MemoryDriver()
     let userResource = UserResource.fromDriver(driver, 'User')
-    let user = yield userResource.create({ name: 'foo' })
+    let user = await userResource.create({name: 'foo'})
     equal(user.name, 'foo')
-  }))
+  })
 })
 
 /* global describe, before, after, it */

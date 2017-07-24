@@ -6,25 +6,25 @@
 
 const refMix = require('../lib/mixins/ref_mix.js')
 const { ok } = require('assert')
-const co = require('co')
+
 
 describe('ref-mix', function () {
   this.timeout(3000)
 
-  before(() => co(function * () {
+  before(async () => {
 
-  }))
+  })
 
-  after(() => co(function * () {
+  after(async () => {
 
-  }))
+  })
 
-  it('Ref mix', () => co(function * () {
+  it('Ref mix', async () => {
     const refMixed = refMix(
       class {}
     )
     ok(refMixed)
-  }))
+  })
 })
 
 /* global describe, before, after, it */

@@ -6,16 +6,15 @@
 
 process.chdir(`${__dirname}/..`)
 
-const co = require('co')
 const apeTasking = require('ape-tasking')
 const filecopy = require('filecopy')
 const path = require('path')
-const { images } = require('claydb-assets/lib/paths')
+const {images} = require('claydb-assets/lib/paths')
 
 apeTasking.runTasks('assets', [
-  () => co(function * () {
+  async () => {
     for (let name of Object.keys(images)) {
-      let filename = images[ name ]
+      let filename = images[name]
       let result = yield filecopy(filename, `assets/images/${path.basename(filename)}`, {
         mkdirp: true,
         force: true,
@@ -25,5 +24,5 @@ apeTasking.runTasks('assets', [
         console.log(`File generated: ${filename}`)
       )
     }
-  })
+  }
 ])

@@ -6,22 +6,22 @@
 
 const sureId = require('../lib/helpers/sure_id.js')
 const assert = require('assert')
-const co = require('co')
+
 
 describe('sure-id', function () {
   this.timeout(3000)
 
-  before(() => co(function * () {
+  before(async () => {
 
-  }))
+  })
 
-  after(() => co(function * () {
+  after(async () => {
 
-  }))
+  })
 
-  it('Sure id', () => co(function * () {
+  it('Sure id', async () => {
 
-  }))
+  })
 })
 
 /* global describe, before, after, it */

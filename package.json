@@ -1,6 +1,6 @@
 {
   "name": "clay-resource",
-  "version": "3.1.19",
+  "version": "4.0.0",
   "description": "Resource accessor for ClayDB",
   "browser": "shim/browser",
   "main": "lib",
@@ -35,8 +35,7 @@
     "clay-resource-entity": "^1.0.4",
     "clay-resource-name": "^4.0.2",
     "clay-resource-ref": "^2.0.2",
-    "clay-schemas": "^4.0.5",
-    "co": "^4.6.0"
+    "clay-schemas": "^4.0.5"
   },
   "devDependencies": {
     "ababel": "^2.0.2",
@@ -63,7 +62,7 @@
     "writeout": "^2.2.0"
   },
   "engines": {
-    "node": ">=6",
+    "node": ">=7.6",
     "npm": ">=4"
   }
 }
