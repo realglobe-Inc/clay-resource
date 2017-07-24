@@ -6,22 +6,22 @@
 
 const inboundMix = require('../lib/mixins/inbound_mix.js')
 const assert = require('assert')
-const co = require('co')
+
 
 describe('inbound-mix', function () {
   this.timeout(3000)
 
-  before(() => co(function * () {
+  before(async () => {
 
-  }))
+  })
 
-  after(() => co(function * () {
+  after(async () => {
 
-  }))
+  })
 
-  it('Inbound mix', () => co(function * () {
+  it('Inbound mix', async () => {
 
-  }))
+  })
 })
 
 /* global describe, before, after, it */

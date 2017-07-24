@@ -6,26 +6,26 @@
 
 const subMix = require('../lib/mixins/sub_mix.js')
 const { ok } = require('assert')
-const co = require('co')
+
 
 describe('sub-mix', function () {
   this.timeout(3000)
 
-  before(() => co(function * () {
+  before(async () => {
 
-  }))
+  })
 
-  after(() => co(function * () {
+  after(async () => {
 
-  }))
+  })
 
-  it('Sub mix', () => co(function * () {
+  it('Sub mix', async () => {
     class Hoge {
 
     }
     let HogeWithSub = subMix(Hoge)
     ok(HogeWithSub)
-  }))
+  })
 })
 
 /* global describe, before, after, it */

@@ -6,22 +6,21 @@
 
 const annotationOutbound = require('../lib/outbounds/annotation_outbound.js')
 const assert = require('assert')
-const co = require('co')
 
 describe('annotation-outbound', function () {
   this.timeout(3000)
 
-  before(() => co(function * () {
+  before(async () => {
 
-  }))
+  })
 
-  after(() => co(function * () {
+  after(async () => {
 
-  }))
+  })
 
-  it('Annotation outbound', () => co(function * () {
+  it('Annotation outbound', async () => {
 
-  }))
+  })
 })
 
 /* global describe, before, after, it */

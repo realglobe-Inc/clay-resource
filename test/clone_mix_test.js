@@ -5,27 +5,27 @@
 'use strict'
 
 const cloneMix = require('../lib/mixins/clone_mix.js')
-const { ok } = require('assert')
-const co = require('co')
+const {ok} = require('assert')
 
 describe('clone-mix', function () {
   this.timeout(3000)
 
-  before(() => co(function * () {
+  before(async () => {
 
-  }))
+  })
 
-  after(() => co(function * () {
+  after(async () => {
 
-  }))
+  })
 
-  it('Clone mix', () => co(function * () {
+  it('Clone mix', async () => {
     class Hoge {
 
     }
+
     const HogeClone = cloneMix(Hoge)
     ok(new HogeClone().clone())
-  }))
+  })
 })
 
 /* global describe, before, after, it */

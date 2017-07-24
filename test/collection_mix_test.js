@@ -6,22 +6,21 @@
 
 const collectionMix = require('../lib/mixins/collection_mix.js')
 const assert = require('assert')
-const co = require('co')
 
 describe('collection-mix', function () {
   this.timeout(3000)
 
-  before(() => co(function * () {
+  before(async () => {
 
-  }))
+  })
 
-  after(() => co(function * () {
+  after(async () => {
 
-  }))
+  })
 
-  it('Collection mix', () => co(function * () {
+  it('Collection mix', async () => {
 
-  }))
+  })
 })
 
 /* global describe, before, after, it */

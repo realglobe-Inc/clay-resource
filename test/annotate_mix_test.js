@@ -5,26 +5,25 @@
 'use strict'
 
 const annotateMix = require('../lib/mixins/annotate_mix.js')
-const { ok } = require('assert')
-const co = require('co')
+const {ok} = require('assert')
 
 describe('annotate-mix', function () {
   this.timeout(3000)
 
-  before(() => co(function * () {
+  before(async () => {
 
-  }))
+  })
 
-  after(() => co(function * () {
+  after(async () => {
 
-  }))
+  })
 
-  it('Annotate mix', () => co(function * () {
+  it('Annotate mix', async () => {
     const annotateMixed = annotateMix(class {
 
     })
     ok(annotateMixed)
-  }))
+  })
 })
 
 /* global describe, before, after, it */
