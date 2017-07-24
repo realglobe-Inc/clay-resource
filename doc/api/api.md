@@ -1,4 +1,4 @@
-# clay-resource@3.1.19
+# clay-resource@4.0.0
 
 Resource accessor for ClayDB
 
@@ -442,7 +442,7 @@ async function tryCursor () {
   })
   console.log(cursor.length) // Number of entities matches the condition
   for (let fetch of cursor) {
-    let car = yield fetch() // Fetch the pointed entity
+    let car = await fetch() // Fetch the pointed entity
     console.log(car)
   }
 }
@@ -915,7 +915,7 @@ async function tryCursor () {
   })
   console.log(cursor.length) // Number of entities matches the condition
   for (let fetch of cursor) {
-    let car = yield fetch() // Fetch the pointed entity
+    let car = await fetch() // Fetch the pointed entity
     console.log(car)
   }
 }

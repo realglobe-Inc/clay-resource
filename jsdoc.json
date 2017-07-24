@@ -425,7 +425,7 @@
                         }
                     ],
                     "examples": [
-                        "const Product = lump.resource('Product')\nasync function tryCursor () {\n  let cursor = await Product.cursor({\n    filter: { type: 'CAR' }\n  })\n  console.log(cursor.length) // Number of entities matches the condition\n  for (let fetch of cursor) {\n    let car = yield fetch() // Fetch the pointed entity\n    console.log(car)\n  }\n}\ntryCursor()"
+                        "const Product = lump.resource('Product')\nasync function tryCursor () {\n  let cursor = await Product.cursor({\n    filter: { type: 'CAR' }\n  })\n  console.log(cursor.length) // Number of entities matches the condition\n  for (let fetch of cursor) {\n    let car = await fetch() // Fetch the pointed entity\n    console.log(car)\n  }\n}\ntryCursor()"
                     ],
                     "returns": {
                         "type": "Object",
@@ -1069,7 +1069,7 @@
                         }
                     ],
                     "examples": [
-                        "const Product = lump.resource('Product')\nasync function tryCursor () {\n  let cursor = await Product.cursor({\n    filter: { type: 'CAR' }\n  })\n  console.log(cursor.length) // Number of entities matches the condition\n  for (let fetch of cursor) {\n    let car = yield fetch() // Fetch the pointed entity\n    console.log(car)\n  }\n}\ntryCursor()"
+                        "const Product = lump.resource('Product')\nasync function tryCursor () {\n  let cursor = await Product.cursor({\n    filter: { type: 'CAR' }\n  })\n  console.log(cursor.length) // Number of entities matches the condition\n  for (let fetch of cursor) {\n    let car = await fetch() // Fetch the pointed entity\n    console.log(car)\n  }\n}\ntryCursor()"
                     ],
                     "returns": {
                         "type": "Object",
@@ -2731,7 +2731,7 @@
                         }
                     ],
                     "examples": [
-                        "const Product = lump.resource('Product')\nasync function tryCursor () {\n  let cursor = await Product.cursor({\n    filter: { type: 'CAR' }\n  })\n  console.log(cursor.length) // Number of entities matches the condition\n  for (let fetch of cursor) {\n    let car = yield fetch() // Fetch the pointed entity\n    console.log(car)\n  }\n}\ntryCursor()"
+                        "const Product = lump.resource('Product')\nasync function tryCursor () {\n  let cursor = await Product.cursor({\n    filter: { type: 'CAR' }\n  })\n  console.log(cursor.length) // Number of entities matches the condition\n  for (let fetch of cursor) {\n    let car = await fetch() // Fetch the pointed entity\n    console.log(car)\n  }\n}\ntryCursor()"
                     ],
                     "returns": {
                         "type": "Object",
@@ -3375,7 +3375,7 @@
                         }
                     ],
                     "examples": [
-                        "const Product = lump.resource('Product')\nasync function tryCursor () {\n  let cursor = await Product.cursor({\n    filter: { type: 'CAR' }\n  })\n  console.log(cursor.length) // Number of entities matches the condition\n  for (let fetch of cursor) {\n    let car = yield fetch() // Fetch the pointed entity\n    console.log(car)\n  }\n}\ntryCursor()"
+                        "const Product = lump.resource('Product')\nasync function tryCursor () {\n  let cursor = await Product.cursor({\n    filter: { type: 'CAR' }\n  })\n  console.log(cursor.length) // Number of entities matches the condition\n  for (let fetch of cursor) {\n    let car = await fetch() // Fetch the pointed entity\n    console.log(car)\n  }\n}\ntryCursor()"
                     ],
                     "returns": {
                         "type": "Object",
