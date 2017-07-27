@@ -519,7 +519,7 @@ describe('from-driver', function () {
         org: i % 2 === 0 ? org01 : org02
       })
     }
-    let users = await User.list({filter: {group: 'green'}, page: {number: 1, size: 25}})
+    let users = await User.list({filter: {group: 'green'}, page: {number: 1, size: '25'}})
     let counts = []
     while (users.hasNext) {
       counts.push(users.meta)
