@@ -622,6 +622,25 @@ describe('from-driver', function () {
     let created = await Ball.create({id: 1}, {allowReserved: true})
     strictEqual(String(created.id), '1')
   })
+
+  it('Save ref', async () => {
+    const driver = clayDriverMemory()
+    const Ball = fromDriver(driver, 'Ball')
+    const Box = fromDriver(driver, 'Box')
+    Box.refs(Ball)
+    Ball.refs(Box)
+
+    let created = await Ball.create({
+      box: {
+        $$as: 'Box',
+        name: 'box01'
+      }
+    })
+    equal(created.box.name, 'box01')
+
+    let one = await Ball.one(created.id)
+    equal(one.box.name, 'box01')
+  })
 })
 
 /* global describe, before, after, it */
