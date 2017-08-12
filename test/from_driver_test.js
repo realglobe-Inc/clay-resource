@@ -253,6 +253,20 @@ describe('from-driver', function () {
       caught = thrown
     }
     ok(caught)
+
+    {
+      let caught
+      try {
+        await User.create({
+          username: 'hoge',
+          rank: 'SUPER'
+        }, {errorNamespace: 'joined'})
+      } catch (thrown) {
+        caught = thrown
+      }
+      deepEqual(Object.keys(caught.detail.failures), ['joined.rank'])
+      ok(caught)
+    }
     deepEqual(caught.detail.failures.rank, {
       reason: 'UNEXPECTED_VALUE_ERROR',
       actual: 'SUPER',

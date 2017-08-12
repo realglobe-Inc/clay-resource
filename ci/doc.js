@@ -16,7 +16,8 @@ apeTasking.runTasks('doc', [
   // Generate jsdoc.json
   async () => {
     let src = [
-      'lib/*.js lib/mixins/*.js'
+      'lib/*.js',
+      'lib/**/*.js'
     ]
     let dest = 'jsdoc.json'
     await jsdoc(src, dest)

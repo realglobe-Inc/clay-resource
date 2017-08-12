@@ -20,7 +20,7 @@ describe('clay-resource', function () {
   })
 
   it('Clay resource', async () => {
-    let resource = new ClayResource('hoge@example.com', {
+    const resource = new ClayResource('hoge@example.com', {
       one () {
         return {}
       }
