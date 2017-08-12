@@ -1,4 +1,4 @@
-# clay-resource@4.0.3
+# clay-resource@4.1.0
 
 Resource accessor for ClayDB
 
@@ -10,13 +10,13 @@ Resource accessor for ClayDB
   + [resource.one(id, options)](#clay-resource-class-clay-resource-one)
   + [resource.list(condition)](#clay-resource-class-clay-resource-list)
   + [resource.create(attributes, options)](#clay-resource-class-clay-resource-create)
-  + [resource.update(id, attributes)](#clay-resource-class-clay-resource-update)
+  + [resource.update(id, attributes, options)](#clay-resource-class-clay-resource-update)
   + [resource.destroy(id)](#clay-resource-class-clay-resource-destroy)
   + [resource.drop()](#clay-resource-class-clay-resource-drop)
   + [resource.oneBulk(ids)](#clay-resource-class-clay-resource-oneBulk)
   + [resource.listBulk(conditionArray)](#clay-resource-class-clay-resource-listBulk)
-  + [resource.createBulk(attributesArray)](#clay-resource-class-clay-resource-createBulk)
-  + [resource.updateBulk(attributesHash)](#clay-resource-class-clay-resource-updateBulk)
+  + [resource.createBulk(attributesArray, options)](#clay-resource-class-clay-resource-createBulk)
+  + [resource.updateBulk(attributesHash, options)](#clay-resource-class-clay-resource-updateBulk)
   + [resource.destroyBulk(ids)](#clay-resource-class-clay-resource-destroyBulk)
   + [resource.cursor(condition)](#clay-resource-class-clay-resource-cursor)
   + [resource.each(handler, condition)](#clay-resource-class-clay-resource-each)
@@ -31,13 +31,13 @@ Resource accessor for ClayDB
   + [resource.one(id, options)](#clay-resource-class-clay-resource-one)
   + [resource.list(condition)](#clay-resource-class-clay-resource-list)
   + [resource.create(attributes, options)](#clay-resource-class-clay-resource-create)
-  + [resource.update(id, attributes)](#clay-resource-class-clay-resource-update)
+  + [resource.update(id, attributes, options)](#clay-resource-class-clay-resource-update)
   + [resource.destroy(id)](#clay-resource-class-clay-resource-destroy)
   + [resource.drop()](#clay-resource-class-clay-resource-drop)
   + [resource.oneBulk(ids)](#clay-resource-class-clay-resource-oneBulk)
   + [resource.listBulk(conditionArray)](#clay-resource-class-clay-resource-listBulk)
-  + [resource.createBulk(attributesArray)](#clay-resource-class-clay-resource-createBulk)
-  + [resource.updateBulk(attributesHash)](#clay-resource-class-clay-resource-updateBulk)
+  + [resource.createBulk(attributesArray, options)](#clay-resource-class-clay-resource-createBulk)
+  + [resource.updateBulk(attributesHash, options)](#clay-resource-class-clay-resource-updateBulk)
   + [resource.destroyBulk(ids)](#clay-resource-class-clay-resource-destroyBulk)
   + [resource.cursor(condition)](#clay-resource-class-clay-resource-cursor)
   + [resource.each(handler, condition)](#clay-resource-class-clay-resource-each)
@@ -232,6 +232,7 @@ Create a new entity with resource
 | attributes | Object | Resource attributes to create |
 | options | Object | Optional settings |
 | options.allowReserved | boolean | Arrow to set reserved attributes (like "id") |
+| options.errorNamespace | string | Namespace for error fields |
 
 **Example**:
 
@@ -249,7 +250,7 @@ tryCreate()
 
 <a class='md-heading-link' name="clay-resource-class-clay-resource-update" ></a>
 
-### resource.update(id, attributes) -> `Promise.<Entity>`
+### resource.update(id, attributes, options) -> `Promise.<Entity>`
 
 Update an existing entity in resource
 
@@ -257,6 +258,8 @@ Update an existing entity in resource
 | ----- | --- | -------- |
 | id | ClayId | Resource id |
 | attributes | Object | Resource attributes to update |
+| options | Object | Optional settings |
+| options.errorNamespace | string | Namespace for error fields |
 
 **Example**:
 
@@ -354,20 +357,23 @@ tryListBulk()
 
 <a class='md-heading-link' name="clay-resource-class-clay-resource-createBulk" ></a>
 
-### resource.createBulk(attributesArray) -> `Promise.<Array.<Entity>>`
+### resource.createBulk(attributesArray, options) -> `Promise.<Array.<Entity>>`
 
 Create multiple resources
 
 | Param | Type | Description |
 | ----- | --- | -------- |
 | attributesArray | Array.&lt;Object&gt; | List of attributes |
+| options | Object | Optional settings |
+| options.allowReserved | boolean | Arrow to set reserved attributes (like "id") |
+| options.errorNamespace | string | Namespace for error fields |
 
 **Example**:
 
 ```javascript
 const Product = lump.resource('Product')
 async function tryCreateBulk () {
-  let products = await Product.createBulk([
+  const products = await Product.createBulk([
     { name: 'Super Orange', type: 'CAR' },
     { name: 'Ultra Green', type: 'CAR' },
   ])
@@ -378,13 +384,15 @@ tryCreateBulk()
 
 <a class='md-heading-link' name="clay-resource-class-clay-resource-updateBulk" ></a>
 
-### resource.updateBulk(attributesHash) -> `Promise.<Object.<ClayId, Entity>>`
+### resource.updateBulk(attributesHash, options) -> `Promise.<Object.<ClayId, Entity>>`
 
 Update multiple resources
 
 | Param | Type | Description |
 | ----- | --- | -------- |
 | attributesHash | Object.&lt;ClayId, Object&gt; | Hash of attributes |
+| options | Object | Optional settings |
+| options.errorNamespace | string | Namespace for error fields |
 
 **Example**:
 
@@ -705,6 +713,7 @@ Create a new entity with resource
 | attributes | Object | Resource attributes to create |
 | options | Object | Optional settings |
 | options.allowReserved | boolean | Arrow to set reserved attributes (like "id") |
+| options.errorNamespace | string | Namespace for error fields |
 
 **Example**:
 
@@ -722,7 +731,7 @@ tryCreate()
 
 <a class='md-heading-link' name="clay-resource-class-clay-resource-update" ></a>
 
-### resource.update(id, attributes) -> `Promise.<Entity>`
+### resource.update(id, attributes, options) -> `Promise.<Entity>`
 
 Update an existing entity in resource
 
@@ -730,6 +739,8 @@ Update an existing entity in resource
 | ----- | --- | -------- |
 | id | ClayId | Resource id |
 | attributes | Object | Resource attributes to update |
+| options | Object | Optional settings |
+| options.errorNamespace | string | Namespace for error fields |
 
 **Example**:
 
@@ -827,20 +838,23 @@ tryListBulk()
 
 <a class='md-heading-link' name="clay-resource-class-clay-resource-createBulk" ></a>
 
-### resource.createBulk(attributesArray) -> `Promise.<Array.<Entity>>`
+### resource.createBulk(attributesArray, options) -> `Promise.<Array.<Entity>>`
 
 Create multiple resources
 
 | Param | Type | Description |
 | ----- | --- | -------- |
 | attributesArray | Array.&lt;Object&gt; | List of attributes |
+| options | Object | Optional settings |
+| options.allowReserved | boolean | Arrow to set reserved attributes (like "id") |
+| options.errorNamespace | string | Namespace for error fields |
 
 **Example**:
 
 ```javascript
 const Product = lump.resource('Product')
 async function tryCreateBulk () {
-  let products = await Product.createBulk([
+  const products = await Product.createBulk([
     { name: 'Super Orange', type: 'CAR' },
     { name: 'Ultra Green', type: 'CAR' },
   ])
@@ -851,13 +865,15 @@ tryCreateBulk()
 
 <a class='md-heading-link' name="clay-resource-class-clay-resource-updateBulk" ></a>
 
-### resource.updateBulk(attributesHash) -> `Promise.<Object.<ClayId, Entity>>`
+### resource.updateBulk(attributesHash, options) -> `Promise.<Object.<ClayId, Entity>>`
 
 Update multiple resources
 
 | Param | Type | Description |
 | ----- | --- | -------- |
 | attributesHash | Object.&lt;ClayId, Object&gt; | Hash of attributes |
+| options | Object | Optional settings |
+| options.errorNamespace | string | Namespace for error fields |
 
 **Example**:
 
