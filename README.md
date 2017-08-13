@@ -254,7 +254,7 @@ class UserResource extends ClayResource {
 API Guide
 -----
 
-+ [clay-resource@4.1.0](./doc/api/api.md)
++ [clay-resource@4.1.1](./doc/api/api.md)
   + [create(args)](./doc/api/api.md#clay-resource-function-create)
   + [fromDriver(driver, nameString, options)](./doc/api/api.md#clay-resource-function-from-driver)
   + [ClayResource](./doc/api/api.md#clay-resource-class)
