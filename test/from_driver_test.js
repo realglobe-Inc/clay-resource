@@ -655,6 +655,35 @@ describe('from-driver', function () {
     let one = await Ball.one(created.id)
     equal(one.box.name, 'box01')
   })
+
+  // https://github.com/realglobe-Inc/claydb/issues/10
+  it('Indirect circular ref', async () => {
+    const driver = clayDriverMemory()
+    const A = fromDriver(driver, 'A')
+    const B = fromDriver(driver, 'B')
+    const C = fromDriver(driver, 'C')
+
+    A.refs(B)
+    A.refs(C)
+    B.refs(C)
+    B.refs(A)
+    C.refs(B)
+    C.refs(A)
+
+    const c = await C.create({})
+    const b = await B.create({c})
+    const a = await A.create({b})
+    await C.update(c.id, {a})
+
+    {
+      const a = await A.first()
+      ok(a.b)
+      ok(a.b.c)
+      ok(a.b.c.a)
+      equal(a.b.c.a.$ref, `A#${String(a.id)}`)
+    }
+
+  })
 })
 
 /* global describe, before, after, it */
