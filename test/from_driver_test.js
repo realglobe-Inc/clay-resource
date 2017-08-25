@@ -376,19 +376,20 @@ describe('from-driver', function () {
       clayDriverSqlite(`${__dirname}/../tmp/search-by-ref.db`)
     ]
     for (let driver of drivers) {
-      let Org = fromDriver(driver, 'Org')
-      let User = fromDriver(driver, 'User')
+      const Org = fromDriver(driver, 'Org')
+      const User = fromDriver(driver, 'User')
       Org.refs(User)
       User.refs(Org)
 
-      let org01 = await Org.create({name: 'org01'})
-      let org02 = await Org.create({name: 'org02'})
+      const org01 = await Org.create({name: 'org01'})
+      const org02 = await Org.create({name: 'org02'})
       await User.create({name: 'user01', org: org01})
       await User.create({name: 'user02', org: org02})
 
-      let {meta, entities, demand} = await User.list({filter: {org: org01}})
+      const org01onceJSON = JSON.parse(JSON.stringify(org01))
+      const {meta, entities, demand} = await User.list({filter: {org: org01onceJSON}})
       equal(meta.length, 1)
-      let [user] = entities
+      const [user] = entities
       equal(user.name, 'user01')
       equal(demand.filter.org.$ref, `Org#${org01.id}`)
 
