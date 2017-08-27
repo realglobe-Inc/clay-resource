@@ -1,4 +1,4 @@
-# clay-resource@4.2.1
+# clay-resource@4.3.0
 
 Resource accessor for ClayDB
 
@@ -28,6 +28,7 @@ Resource accessor for ClayDB
   + [resource.count(filter)](#clay-resource-class-clay-resource-count)
   + [resource.of(attributes)](#clay-resource-class-clay-resource-of)
   + [resource.all(filter, options)](#clay-resource-class-clay-resource-all)
+  + [resource.refOf(id)](#clay-resource-class-clay-resource-refOf)
   + [resource.one(id, options)](#clay-resource-class-clay-resource-one)
   + [resource.list(condition)](#clay-resource-class-clay-resource-list)
   + [resource.create(attributes, options)](#clay-resource-class-clay-resource-create)
@@ -49,6 +50,7 @@ Resource accessor for ClayDB
   + [resource.count(filter)](#clay-resource-class-clay-resource-count)
   + [resource.of(attributes)](#clay-resource-class-clay-resource-of)
   + [resource.all(filter, options)](#clay-resource-class-clay-resource-all)
+  + [resource.refOf(id)](#clay-resource-class-clay-resource-refOf)
   + [resource.toggleAnnotate()](#clay-resource-class-clay-resource-toggleAnnotate)
   + [resource.clone()](#clay-resource-class-clay-resource-clone)
   + [resource.addInbound(name, inbound)](#clay-resource-class-clay-resource-addInbound)
@@ -186,7 +188,7 @@ Get a resource
 ```javascript
 const Product = lump.resource('Product')
 async function tryOne () {
-  let product = await Product.one(1) // Find by id
+  const product = await Product.one(1) // Find by id
   console.log(product)
 }
 ```
@@ -211,7 +213,7 @@ List entities from resource
 ```javascript
 const Product = lump.resource('Product')
 async function tryList () {
-  let products = await Product.list({
+  const products = await Product.list({
     filter: { type: 'Vehicle' },  // Filter condition
     page: { number: 1, size: 25 }, // Paginate
     sort: [ 'createdAt', '-name' ] // Sort condition
@@ -239,7 +241,7 @@ Create a new entity with resource
 ```javascript
 const Product = lump.resource('Product')
 async function tryCreate () {
-  let product = await Product.create({
+  const product = await Product.create({
     name: 'Super Car',
     type: 'Vehicle'
   })
@@ -266,7 +268,7 @@ Update an existing entity in resource
 ```javascript
 const Product = lump.resource('Product')
 async function tryUpdate () {
-  let product = await Product.update(1, {
+  const product = await Product.update(1, {
     name: 'Super Super Car'
   })
   console.log(product)
@@ -324,7 +326,7 @@ One as bulk
 ```javascript
 const Product = lump.resource('Product')
 async function tryOneBulk () {
-  let products = await Product.oneBulk([ 1, 5, 10 ])
+  const products = await Product.oneBulk([ 1, 5, 10 ])
   console.log(products)
 }
 tryOneBulk()
@@ -345,7 +347,7 @@ List with multiple conditions
 ```javascript
 const Product = lump.resource('Product')
 async function tryListBulk () {
-  let [ cars, ships ] = await Product.listBulk([
+  const [ cars, ships ] = await Product.listBulk([
     { filter: { type: 'CAR' } },
     { filter: { type: 'SHIP' } },
   ])
@@ -475,7 +477,7 @@ Iterate entities with handler
 ```javascript
 const Product = lump.resource('Product')
 async function tryEach () {
-   async Product.each(async (product) => {
+   await Product.each(async (product) => {
       // Do something with each entity
    }, {
       filter: {price: {$gt: 100}}
@@ -501,7 +503,7 @@ Get the first entity matches filter
 ```javascript
 const Product = lump.resource('Product')
 async function tryFirst () {
-  let product = Product.first({ name: 'Super Super Orange' })
+  const product = Product.first({ name: 'Super Super Orange' })
   console.log(product)
 }
 tryFirst()
@@ -524,7 +526,7 @@ Almost same with `.first()`, but throws an error if multiple record hits, or no 
 ```javascript
 const Product = lump.resource('Product')
 async function tryFirst () {
-  let product = Product.only({ name: 'Super Super Orange' })
+  const product = Product.only({ name: 'Super Super Orange' })
   console.log(product)
 }
 tryFirst()
@@ -632,7 +634,7 @@ If not found, create and return the one.
 ```javascript
 const Product = lump.resource('Product')
 async function tryOf () {
-  let values = await Product.of({ code: '#1234' })
+  const values = await Product.of({ code: '#1234' })
   console.log(values)
 }
 tryOf()
@@ -648,6 +650,17 @@ Get all entities inside resource which matches the filter
 | ----- | --- | -------- |
 | filter | FilterTerm | Listing filter |
 | options | Object | Optional settings |
+
+
+<a class='md-heading-link' name="clay-resource-class-clay-resource-refOf" ></a>
+
+### resource.refOf(id) -> `string`
+
+Get resource ref string for this resource
+
+| Param | Type | Description |
+| ----- | --- | -------- |
+| id | ClayId,string | Resource id |
 
 
 <a class='md-heading-link' name="clay-resource-class-clay-resource-one" ></a>
@@ -667,7 +680,7 @@ Get a resource
 ```javascript
 const Product = lump.resource('Product')
 async function tryOne () {
-  let product = await Product.one(1) // Find by id
+  const product = await Product.one(1) // Find by id
   console.log(product)
 }
 ```
@@ -692,7 +705,7 @@ List entities from resource
 ```javascript
 const Product = lump.resource('Product')
 async function tryList () {
-  let products = await Product.list({
+  const products = await Product.list({
     filter: { type: 'Vehicle' },  // Filter condition
     page: { number: 1, size: 25 }, // Paginate
     sort: [ 'createdAt', '-name' ] // Sort condition
@@ -720,7 +733,7 @@ Create a new entity with resource
 ```javascript
 const Product = lump.resource('Product')
 async function tryCreate () {
-  let product = await Product.create({
+  const product = await Product.create({
     name: 'Super Car',
     type: 'Vehicle'
   })
@@ -747,7 +760,7 @@ Update an existing entity in resource
 ```javascript
 const Product = lump.resource('Product')
 async function tryUpdate () {
-  let product = await Product.update(1, {
+  const product = await Product.update(1, {
     name: 'Super Super Car'
   })
   console.log(product)
@@ -805,7 +818,7 @@ One as bulk
 ```javascript
 const Product = lump.resource('Product')
 async function tryOneBulk () {
-  let products = await Product.oneBulk([ 1, 5, 10 ])
+  const products = await Product.oneBulk([ 1, 5, 10 ])
   console.log(products)
 }
 tryOneBulk()
@@ -826,7 +839,7 @@ List with multiple conditions
 ```javascript
 const Product = lump.resource('Product')
 async function tryListBulk () {
-  let [ cars, ships ] = await Product.listBulk([
+  const [ cars, ships ] = await Product.listBulk([
     { filter: { type: 'CAR' } },
     { filter: { type: 'SHIP' } },
   ])
@@ -956,7 +969,7 @@ Iterate entities with handler
 ```javascript
 const Product = lump.resource('Product')
 async function tryEach () {
-   async Product.each(async (product) => {
+   await Product.each(async (product) => {
       // Do something with each entity
    }, {
       filter: {price: {$gt: 100}}
@@ -982,7 +995,7 @@ Get the first entity matches filter
 ```javascript
 const Product = lump.resource('Product')
 async function tryFirst () {
-  let product = Product.first({ name: 'Super Super Orange' })
+  const product = Product.first({ name: 'Super Super Orange' })
   console.log(product)
 }
 tryFirst()
@@ -1005,7 +1018,7 @@ Almost same with `.first()`, but throws an error if multiple record hits, or no 
 ```javascript
 const Product = lump.resource('Product')
 async function tryFirst () {
-  let product = Product.only({ name: 'Super Super Orange' })
+  const product = Product.only({ name: 'Super Super Orange' })
   console.log(product)
 }
 tryFirst()
@@ -1113,7 +1126,7 @@ If not found, create and return the one.
 ```javascript
 const Product = lump.resource('Product')
 async function tryOf () {
-  let values = await Product.of({ code: '#1234' })
+  const values = await Product.of({ code: '#1234' })
   console.log(values)
 }
 tryOf()
@@ -1129,6 +1142,17 @@ Get all entities inside resource which matches the filter
 | ----- | --- | -------- |
 | filter | FilterTerm | Listing filter |
 | options | Object | Optional settings |
+
+
+<a class='md-heading-link' name="clay-resource-class-clay-resource-refOf" ></a>
+
+### resource.refOf(id) -> `string`
+
+Get resource ref string for this resource
+
+| Param | Type | Description |
+| ----- | --- | -------- |
+| id | ClayId,string | Resource id |
 
 
 <a class='md-heading-link' name="clay-resource-class-clay-resource-toggleAnnotate" ></a>

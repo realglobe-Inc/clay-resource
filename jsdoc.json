@@ -101,7 +101,7 @@
                         }
                     ],
                     "examples": [
-                        "const Product = lump.resource('Product')\nasync function tryOne () {\n  let product = await Product.one(1) // Find by id\n  console.log(product)\n}"
+                        "const Product = lump.resource('Product')\nasync function tryOne () {\n  const product = await Product.one(1) // Find by id\n  console.log(product)\n}"
                     ],
                     "returns": {
                         "type": "Promise.<Entity>",
@@ -164,7 +164,7 @@
                         }
                     ],
                     "examples": [
-                        "const Product = lump.resource('Product')\nasync function tryList () {\n  let products = await Product.list({\n    filter: { type: 'Vehicle' },  // Filter condition\n    page: { number: 1, size: 25 }, // Paginate\n    sort: [ 'createdAt', '-name' ] // Sort condition\n  })\n  console.log(products)\n}\ntryList()"
+                        "const Product = lump.resource('Product')\nasync function tryList () {\n  const products = await Product.list({\n    filter: { type: 'Vehicle' },  // Filter condition\n    page: { number: 1, size: 25 }, // Paginate\n    sort: [ 'createdAt', '-name' ] // Sort condition\n  })\n  console.log(products)\n}\ntryList()"
                     ],
                     "returns": {
                         "type": "Promise.<Collection>",
@@ -211,7 +211,7 @@
                         }
                     ],
                     "examples": [
-                        "const Product = lump.resource('Product')\nasync function tryCreate () {\n  let product = await Product.create({\n    name: 'Super Car',\n    type: 'Vehicle'\n  })\n  console.log(product)\n}\ntryCreate()"
+                        "const Product = lump.resource('Product')\nasync function tryCreate () {\n  const product = await Product.create({\n    name: 'Super Car',\n    type: 'Vehicle'\n  })\n  console.log(product)\n}\ntryCreate()"
                     ],
                     "returns": {
                         "type": "Promise.<Entity>",
@@ -258,7 +258,7 @@
                         }
                     ],
                     "examples": [
-                        "const Product = lump.resource('Product')\nasync function tryUpdate () {\n  let product = await Product.update(1, {\n    name: 'Super Super Car'\n  })\n  console.log(product)\n}\ntryUpdate()"
+                        "const Product = lump.resource('Product')\nasync function tryUpdate () {\n  const product = await Product.update(1, {\n    name: 'Super Super Car'\n  })\n  console.log(product)\n}\ntryUpdate()"
                     ],
                     "returns": {
                         "type": "Promise.<Entity>",
@@ -318,7 +318,7 @@
                         }
                     ],
                     "examples": [
-                        "const Product = lump.resource('Product')\nasync function tryOneBulk () {\n  let products = await Product.oneBulk([ 1, 5, 10 ])\n  console.log(products)\n}\ntryOneBulk()"
+                        "const Product = lump.resource('Product')\nasync function tryOneBulk () {\n  const products = await Product.oneBulk([ 1, 5, 10 ])\n  console.log(products)\n}\ntryOneBulk()"
                     ],
                     "returns": {
                         "type": "Promise.<Object.<ClayId, Entity>>",
@@ -341,7 +341,7 @@
                         }
                     ],
                     "examples": [
-                        "const Product = lump.resource('Product')\nasync function tryListBulk () {\n  let [ cars, ships ] = await Product.listBulk([\n    { filter: { type: 'CAR' } },\n    { filter: { type: 'SHIP' } },\n  ])\n  console.log(cars)\n  console.log(ships)\n}\ntryListBulk()"
+                        "const Product = lump.resource('Product')\nasync function tryListBulk () {\n  const [ cars, ships ] = await Product.listBulk([\n    { filter: { type: 'CAR' } },\n    { filter: { type: 'SHIP' } },\n  ])\n  console.log(cars)\n  console.log(ships)\n}\ntryListBulk()"
                     ],
                     "returns": {
                         "type": "Promise.<Array.<Collection>>",
@@ -536,7 +536,7 @@
                         }
                     ],
                     "examples": [
-                        "const Product = lump.resource('Product')\nasync function tryEach () {\n   async Product.each(async (product) => {\n      // Do something with each entity\n   }, {\n      filter: {price: {$gt: 100}}\n   })\n}\ntryEach()"
+                        "const Product = lump.resource('Product')\nasync function tryEach () {\n   await Product.each(async (product) => {\n      // Do something with each entity\n   }, {\n      filter: {price: {$gt: 100}}\n   })\n}\ntryEach()"
                     ],
                     "returns": {
                         "type": "Promise",
@@ -575,7 +575,7 @@
                         }
                     ],
                     "examples": [
-                        "const Product = lump.resource('Product')\nasync function tryFirst () {\n  let product = Product.first({ name: 'Super Super Orange' })\n  console.log(product)\n}\ntryFirst()"
+                        "const Product = lump.resource('Product')\nasync function tryFirst () {\n  const product = Product.first({ name: 'Super Super Orange' })\n  console.log(product)\n}\ntryFirst()"
                     ],
                     "returns": {
                         "type": "Promise.<?Entity>",
@@ -614,7 +614,7 @@
                         }
                     ],
                     "examples": [
-                        "const Product = lump.resource('Product')\nasync function tryFirst () {\n  let product = Product.only({ name: 'Super Super Orange' })\n  console.log(product)\n}\ntryFirst()"
+                        "const Product = lump.resource('Product')\nasync function tryFirst () {\n  const product = Product.only({ name: 'Super Super Orange' })\n  console.log(product)\n}\ntryFirst()"
                     ],
                     "returns": {
                         "type": "Promise.<?Entity>",
@@ -745,7 +745,7 @@
                         }
                     ],
                     "examples": [
-                        "const Product = lump.resource('Product')\nasync function tryOf () {\n  let values = await Product.of({ code: '#1234' })\n  console.log(values)\n}\ntryOf()"
+                        "const Product = lump.resource('Product')\nasync function tryOf () {\n  const values = await Product.of({ code: '#1234' })\n  console.log(values)\n}\ntryOf()"
                     ]
                 },
                 {
@@ -775,6 +775,30 @@
                     "returns": {
                         "type": "Promise.<Array.<ClayEntity>>",
                         "description": "Entities"
+                    }
+                },
+                {
+                    "name": "refOf",
+                    "access": "",
+                    "virtual": false,
+                    "description": "Get resource ref string for this resource",
+                    "parameters": [
+                        {
+                            "name": "id",
+                            "type": [
+                                "ClayId",
+                                "string"
+                            ],
+                            "description": "Resource id",
+                            "default": "",
+                            "optional": "",
+                            "nullable": ""
+                        }
+                    ],
+                    "examples": [],
+                    "returns": {
+                        "type": "string",
+                        "description": "- Ref string"
                     }
                 },
                 {
@@ -809,7 +833,7 @@
                         }
                     ],
                     "examples": [
-                        "const Product = lump.resource('Product')\nasync function tryOne () {\n  let product = await Product.one(1) // Find by id\n  console.log(product)\n}"
+                        "const Product = lump.resource('Product')\nasync function tryOne () {\n  const product = await Product.one(1) // Find by id\n  console.log(product)\n}"
                     ],
                     "returns": {
                         "type": "Promise.<Entity>",
@@ -872,7 +896,7 @@
                         }
                     ],
                     "examples": [
-                        "const Product = lump.resource('Product')\nasync function tryList () {\n  let products = await Product.list({\n    filter: { type: 'Vehicle' },  // Filter condition\n    page: { number: 1, size: 25 }, // Paginate\n    sort: [ 'createdAt', '-name' ] // Sort condition\n  })\n  console.log(products)\n}\ntryList()"
+                        "const Product = lump.resource('Product')\nasync function tryList () {\n  const products = await Product.list({\n    filter: { type: 'Vehicle' },  // Filter condition\n    page: { number: 1, size: 25 }, // Paginate\n    sort: [ 'createdAt', '-name' ] // Sort condition\n  })\n  console.log(products)\n}\ntryList()"
                     ],
                     "returns": {
                         "type": "Promise.<Collection>",
@@ -919,7 +943,7 @@
                         }
                     ],
                     "examples": [
-                        "const Product = lump.resource('Product')\nasync function tryCreate () {\n  let product = await Product.create({\n    name: 'Super Car',\n    type: 'Vehicle'\n  })\n  console.log(product)\n}\ntryCreate()"
+                        "const Product = lump.resource('Product')\nasync function tryCreate () {\n  const product = await Product.create({\n    name: 'Super Car',\n    type: 'Vehicle'\n  })\n  console.log(product)\n}\ntryCreate()"
                     ],
                     "returns": {
                         "type": "Promise.<Entity>",
@@ -966,7 +990,7 @@
                         }
                     ],
                     "examples": [
-                        "const Product = lump.resource('Product')\nasync function tryUpdate () {\n  let product = await Product.update(1, {\n    name: 'Super Super Car'\n  })\n  console.log(product)\n}\ntryUpdate()"
+                        "const Product = lump.resource('Product')\nasync function tryUpdate () {\n  const product = await Product.update(1, {\n    name: 'Super Super Car'\n  })\n  console.log(product)\n}\ntryUpdate()"
                     ],
                     "returns": {
                         "type": "Promise.<Entity>",
@@ -1026,7 +1050,7 @@
                         }
                     ],
                     "examples": [
-                        "const Product = lump.resource('Product')\nasync function tryOneBulk () {\n  let products = await Product.oneBulk([ 1, 5, 10 ])\n  console.log(products)\n}\ntryOneBulk()"
+                        "const Product = lump.resource('Product')\nasync function tryOneBulk () {\n  const products = await Product.oneBulk([ 1, 5, 10 ])\n  console.log(products)\n}\ntryOneBulk()"
                     ],
                     "returns": {
                         "type": "Promise.<Object.<ClayId, Entity>>",
@@ -1049,7 +1073,7 @@
                         }
                     ],
                     "examples": [
-                        "const Product = lump.resource('Product')\nasync function tryListBulk () {\n  let [ cars, ships ] = await Product.listBulk([\n    { filter: { type: 'CAR' } },\n    { filter: { type: 'SHIP' } },\n  ])\n  console.log(cars)\n  console.log(ships)\n}\ntryListBulk()"
+                        "const Product = lump.resource('Product')\nasync function tryListBulk () {\n  const [ cars, ships ] = await Product.listBulk([\n    { filter: { type: 'CAR' } },\n    { filter: { type: 'SHIP' } },\n  ])\n  console.log(cars)\n  console.log(ships)\n}\ntryListBulk()"
                     ],
                     "returns": {
                         "type": "Promise.<Array.<Collection>>",
@@ -1244,7 +1268,7 @@
                         }
                     ],
                     "examples": [
-                        "const Product = lump.resource('Product')\nasync function tryEach () {\n   async Product.each(async (product) => {\n      // Do something with each entity\n   }, {\n      filter: {price: {$gt: 100}}\n   })\n}\ntryEach()"
+                        "const Product = lump.resource('Product')\nasync function tryEach () {\n   await Product.each(async (product) => {\n      // Do something with each entity\n   }, {\n      filter: {price: {$gt: 100}}\n   })\n}\ntryEach()"
                     ],
                     "returns": {
                         "type": "Promise",
@@ -1283,7 +1307,7 @@
                         }
                     ],
                     "examples": [
-                        "const Product = lump.resource('Product')\nasync function tryFirst () {\n  let product = Product.first({ name: 'Super Super Orange' })\n  console.log(product)\n}\ntryFirst()"
+                        "const Product = lump.resource('Product')\nasync function tryFirst () {\n  const product = Product.first({ name: 'Super Super Orange' })\n  console.log(product)\n}\ntryFirst()"
                     ],
                     "returns": {
                         "type": "Promise.<?Entity>",
@@ -1322,7 +1346,7 @@
                         }
                     ],
                     "examples": [
-                        "const Product = lump.resource('Product')\nasync function tryFirst () {\n  let product = Product.only({ name: 'Super Super Orange' })\n  console.log(product)\n}\ntryFirst()"
+                        "const Product = lump.resource('Product')\nasync function tryFirst () {\n  const product = Product.only({ name: 'Super Super Orange' })\n  console.log(product)\n}\ntryFirst()"
                     ],
                     "returns": {
                         "type": "Promise.<?Entity>",
@@ -1453,7 +1477,7 @@
                         }
                     ],
                     "examples": [
-                        "const Product = lump.resource('Product')\nasync function tryOf () {\n  let values = await Product.of({ code: '#1234' })\n  console.log(values)\n}\ntryOf()"
+                        "const Product = lump.resource('Product')\nasync function tryOf () {\n  const values = await Product.of({ code: '#1234' })\n  console.log(values)\n}\ntryOf()"
                     ]
                 },
                 {
@@ -1483,6 +1507,30 @@
                     "returns": {
                         "type": "Promise.<Array.<ClayEntity>>",
                         "description": "Entities"
+                    }
+                },
+                {
+                    "name": "refOf",
+                    "access": "",
+                    "virtual": false,
+                    "description": "Get resource ref string for this resource",
+                    "parameters": [
+                        {
+                            "name": "id",
+                            "type": [
+                                "ClayId",
+                                "string"
+                            ],
+                            "description": "Resource id",
+                            "default": "",
+                            "optional": "",
+                            "nullable": ""
+                        }
+                    ],
+                    "examples": [],
+                    "returns": {
+                        "type": "string",
+                        "description": "- Ref string"
                     }
                 },
                 {
@@ -2535,7 +2583,7 @@
                         }
                     ],
                     "examples": [
-                        "const Product = lump.resource('Product')\nasync function tryOne () {\n  let product = await Product.one(1) // Find by id\n  console.log(product)\n}"
+                        "const Product = lump.resource('Product')\nasync function tryOne () {\n  const product = await Product.one(1) // Find by id\n  console.log(product)\n}"
                     ],
                     "returns": {
                         "type": "Promise.<Entity>",
@@ -2598,7 +2646,7 @@
                         }
                     ],
                     "examples": [
-                        "const Product = lump.resource('Product')\nasync function tryList () {\n  let products = await Product.list({\n    filter: { type: 'Vehicle' },  // Filter condition\n    page: { number: 1, size: 25 }, // Paginate\n    sort: [ 'createdAt', '-name' ] // Sort condition\n  })\n  console.log(products)\n}\ntryList()"
+                        "const Product = lump.resource('Product')\nasync function tryList () {\n  const products = await Product.list({\n    filter: { type: 'Vehicle' },  // Filter condition\n    page: { number: 1, size: 25 }, // Paginate\n    sort: [ 'createdAt', '-name' ] // Sort condition\n  })\n  console.log(products)\n}\ntryList()"
                     ],
                     "returns": {
                         "type": "Promise.<Collection>",
@@ -2645,7 +2693,7 @@
                         }
                     ],
                     "examples": [
-                        "const Product = lump.resource('Product')\nasync function tryCreate () {\n  let product = await Product.create({\n    name: 'Super Car',\n    type: 'Vehicle'\n  })\n  console.log(product)\n}\ntryCreate()"
+                        "const Product = lump.resource('Product')\nasync function tryCreate () {\n  const product = await Product.create({\n    name: 'Super Car',\n    type: 'Vehicle'\n  })\n  console.log(product)\n}\ntryCreate()"
                     ],
                     "returns": {
                         "type": "Promise.<Entity>",
@@ -2692,7 +2740,7 @@
                         }
                     ],
                     "examples": [
-                        "const Product = lump.resource('Product')\nasync function tryUpdate () {\n  let product = await Product.update(1, {\n    name: 'Super Super Car'\n  })\n  console.log(product)\n}\ntryUpdate()"
+                        "const Product = lump.resource('Product')\nasync function tryUpdate () {\n  const product = await Product.update(1, {\n    name: 'Super Super Car'\n  })\n  console.log(product)\n}\ntryUpdate()"
                     ],
                     "returns": {
                         "type": "Promise.<Entity>",
@@ -2752,7 +2800,7 @@
                         }
                     ],
                     "examples": [
-                        "const Product = lump.resource('Product')\nasync function tryOneBulk () {\n  let products = await Product.oneBulk([ 1, 5, 10 ])\n  console.log(products)\n}\ntryOneBulk()"
+                        "const Product = lump.resource('Product')\nasync function tryOneBulk () {\n  const products = await Product.oneBulk([ 1, 5, 10 ])\n  console.log(products)\n}\ntryOneBulk()"
                     ],
                     "returns": {
                         "type": "Promise.<Object.<ClayId, Entity>>",
@@ -2775,7 +2823,7 @@
                         }
                     ],
                     "examples": [
-                        "const Product = lump.resource('Product')\nasync function tryListBulk () {\n  let [ cars, ships ] = await Product.listBulk([\n    { filter: { type: 'CAR' } },\n    { filter: { type: 'SHIP' } },\n  ])\n  console.log(cars)\n  console.log(ships)\n}\ntryListBulk()"
+                        "const Product = lump.resource('Product')\nasync function tryListBulk () {\n  const [ cars, ships ] = await Product.listBulk([\n    { filter: { type: 'CAR' } },\n    { filter: { type: 'SHIP' } },\n  ])\n  console.log(cars)\n  console.log(ships)\n}\ntryListBulk()"
                     ],
                     "returns": {
                         "type": "Promise.<Array.<Collection>>",
@@ -2970,7 +3018,7 @@
                         }
                     ],
                     "examples": [
-                        "const Product = lump.resource('Product')\nasync function tryEach () {\n   async Product.each(async (product) => {\n      // Do something with each entity\n   }, {\n      filter: {price: {$gt: 100}}\n   })\n}\ntryEach()"
+                        "const Product = lump.resource('Product')\nasync function tryEach () {\n   await Product.each(async (product) => {\n      // Do something with each entity\n   }, {\n      filter: {price: {$gt: 100}}\n   })\n}\ntryEach()"
                     ],
                     "returns": {
                         "type": "Promise",
@@ -3009,7 +3057,7 @@
                         }
                     ],
                     "examples": [
-                        "const Product = lump.resource('Product')\nasync function tryFirst () {\n  let product = Product.first({ name: 'Super Super Orange' })\n  console.log(product)\n}\ntryFirst()"
+                        "const Product = lump.resource('Product')\nasync function tryFirst () {\n  const product = Product.first({ name: 'Super Super Orange' })\n  console.log(product)\n}\ntryFirst()"
                     ],
                     "returns": {
                         "type": "Promise.<?Entity>",
@@ -3048,7 +3096,7 @@
                         }
                     ],
                     "examples": [
-                        "const Product = lump.resource('Product')\nasync function tryFirst () {\n  let product = Product.only({ name: 'Super Super Orange' })\n  console.log(product)\n}\ntryFirst()"
+                        "const Product = lump.resource('Product')\nasync function tryFirst () {\n  const product = Product.only({ name: 'Super Super Orange' })\n  console.log(product)\n}\ntryFirst()"
                     ],
                     "returns": {
                         "type": "Promise.<?Entity>",
@@ -3179,7 +3227,7 @@
                         }
                     ],
                     "examples": [
-                        "const Product = lump.resource('Product')\nasync function tryOf () {\n  let values = await Product.of({ code: '#1234' })\n  console.log(values)\n}\ntryOf()"
+                        "const Product = lump.resource('Product')\nasync function tryOf () {\n  const values = await Product.of({ code: '#1234' })\n  console.log(values)\n}\ntryOf()"
                     ]
                 },
                 {
@@ -3209,6 +3257,30 @@
                     "returns": {
                         "type": "Promise.<Array.<ClayEntity>>",
                         "description": "Entities"
+                    }
+                },
+                {
+                    "name": "refOf",
+                    "access": "",
+                    "virtual": false,
+                    "description": "Get resource ref string for this resource",
+                    "parameters": [
+                        {
+                            "name": "id",
+                            "type": [
+                                "ClayId",
+                                "string"
+                            ],
+                            "description": "Resource id",
+                            "default": "",
+                            "optional": "",
+                            "nullable": ""
+                        }
+                    ],
+                    "examples": [],
+                    "returns": {
+                        "type": "string",
+                        "description": "- Ref string"
                     }
                 },
                 {
@@ -3243,7 +3315,7 @@
                         }
                     ],
                     "examples": [
-                        "const Product = lump.resource('Product')\nasync function tryOne () {\n  let product = await Product.one(1) // Find by id\n  console.log(product)\n}"
+                        "const Product = lump.resource('Product')\nasync function tryOne () {\n  const product = await Product.one(1) // Find by id\n  console.log(product)\n}"
                     ],
                     "returns": {
                         "type": "Promise.<Entity>",
@@ -3306,7 +3378,7 @@
                         }
                     ],
                     "examples": [
-                        "const Product = lump.resource('Product')\nasync function tryList () {\n  let products = await Product.list({\n    filter: { type: 'Vehicle' },  // Filter condition\n    page: { number: 1, size: 25 }, // Paginate\n    sort: [ 'createdAt', '-name' ] // Sort condition\n  })\n  console.log(products)\n}\ntryList()"
+                        "const Product = lump.resource('Product')\nasync function tryList () {\n  const products = await Product.list({\n    filter: { type: 'Vehicle' },  // Filter condition\n    page: { number: 1, size: 25 }, // Paginate\n    sort: [ 'createdAt', '-name' ] // Sort condition\n  })\n  console.log(products)\n}\ntryList()"
                     ],
                     "returns": {
                         "type": "Promise.<Collection>",
@@ -3353,7 +3425,7 @@
                         }
                     ],
                     "examples": [
-                        "const Product = lump.resource('Product')\nasync function tryCreate () {\n  let product = await Product.create({\n    name: 'Super Car',\n    type: 'Vehicle'\n  })\n  console.log(product)\n}\ntryCreate()"
+                        "const Product = lump.resource('Product')\nasync function tryCreate () {\n  const product = await Product.create({\n    name: 'Super Car',\n    type: 'Vehicle'\n  })\n  console.log(product)\n}\ntryCreate()"
                     ],
                     "returns": {
                         "type": "Promise.<Entity>",
@@ -3400,7 +3472,7 @@
                         }
                     ],
                     "examples": [
-                        "const Product = lump.resource('Product')\nasync function tryUpdate () {\n  let product = await Product.update(1, {\n    name: 'Super Super Car'\n  })\n  console.log(product)\n}\ntryUpdate()"
+                        "const Product = lump.resource('Product')\nasync function tryUpdate () {\n  const product = await Product.update(1, {\n    name: 'Super Super Car'\n  })\n  console.log(product)\n}\ntryUpdate()"
                     ],
                     "returns": {
                         "type": "Promise.<Entity>",
@@ -3460,7 +3532,7 @@
                         }
                     ],
                     "examples": [
-                        "const Product = lump.resource('Product')\nasync function tryOneBulk () {\n  let products = await Product.oneBulk([ 1, 5, 10 ])\n  console.log(products)\n}\ntryOneBulk()"
+                        "const Product = lump.resource('Product')\nasync function tryOneBulk () {\n  const products = await Product.oneBulk([ 1, 5, 10 ])\n  console.log(products)\n}\ntryOneBulk()"
                     ],
                     "returns": {
                         "type": "Promise.<Object.<ClayId, Entity>>",
@@ -3483,7 +3555,7 @@
                         }
                     ],
                     "examples": [
-                        "const Product = lump.resource('Product')\nasync function tryListBulk () {\n  let [ cars, ships ] = await Product.listBulk([\n    { filter: { type: 'CAR' } },\n    { filter: { type: 'SHIP' } },\n  ])\n  console.log(cars)\n  console.log(ships)\n}\ntryListBulk()"
+                        "const Product = lump.resource('Product')\nasync function tryListBulk () {\n  const [ cars, ships ] = await Product.listBulk([\n    { filter: { type: 'CAR' } },\n    { filter: { type: 'SHIP' } },\n  ])\n  console.log(cars)\n  console.log(ships)\n}\ntryListBulk()"
                     ],
                     "returns": {
                         "type": "Promise.<Array.<Collection>>",
@@ -3678,7 +3750,7 @@
                         }
                     ],
                     "examples": [
-                        "const Product = lump.resource('Product')\nasync function tryEach () {\n   async Product.each(async (product) => {\n      // Do something with each entity\n   }, {\n      filter: {price: {$gt: 100}}\n   })\n}\ntryEach()"
+                        "const Product = lump.resource('Product')\nasync function tryEach () {\n   await Product.each(async (product) => {\n      // Do something with each entity\n   }, {\n      filter: {price: {$gt: 100}}\n   })\n}\ntryEach()"
                     ],
                     "returns": {
                         "type": "Promise",
@@ -3717,7 +3789,7 @@
                         }
                     ],
                     "examples": [
-                        "const Product = lump.resource('Product')\nasync function tryFirst () {\n  let product = Product.first({ name: 'Super Super Orange' })\n  console.log(product)\n}\ntryFirst()"
+                        "const Product = lump.resource('Product')\nasync function tryFirst () {\n  const product = Product.first({ name: 'Super Super Orange' })\n  console.log(product)\n}\ntryFirst()"
                     ],
                     "returns": {
                         "type": "Promise.<?Entity>",
@@ -3756,7 +3828,7 @@
                         }
                     ],
                     "examples": [
-                        "const Product = lump.resource('Product')\nasync function tryFirst () {\n  let product = Product.only({ name: 'Super Super Orange' })\n  console.log(product)\n}\ntryFirst()"
+                        "const Product = lump.resource('Product')\nasync function tryFirst () {\n  const product = Product.only({ name: 'Super Super Orange' })\n  console.log(product)\n}\ntryFirst()"
                     ],
                     "returns": {
                         "type": "Promise.<?Entity>",
@@ -3887,7 +3959,7 @@
                         }
                     ],
                     "examples": [
-                        "const Product = lump.resource('Product')\nasync function tryOf () {\n  let values = await Product.of({ code: '#1234' })\n  console.log(values)\n}\ntryOf()"
+                        "const Product = lump.resource('Product')\nasync function tryOf () {\n  const values = await Product.of({ code: '#1234' })\n  console.log(values)\n}\ntryOf()"
                     ]
                 },
                 {
@@ -3917,6 +3989,30 @@
                     "returns": {
                         "type": "Promise.<Array.<ClayEntity>>",
                         "description": "Entities"
+                    }
+                },
+                {
+                    "name": "refOf",
+                    "access": "",
+                    "virtual": false,
+                    "description": "Get resource ref string for this resource",
+                    "parameters": [
+                        {
+                            "name": "id",
+                            "type": [
+                                "ClayId",
+                                "string"
+                            ],
+                            "description": "Resource id",
+                            "default": "",
+                            "optional": "",
+                            "nullable": ""
+                        }
+                    ],
+                    "examples": [],
+                    "returns": {
+                        "type": "string",
+                        "description": "- Ref string"
                     }
                 },
                 {

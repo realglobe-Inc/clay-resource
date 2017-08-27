@@ -35,12 +35,14 @@ describe('clay-resource', function () {
     ok(clone.one)
     equal(clone.name, 'hoge')
     equal(clone.domain, 'example.com')
+
+    equal(resource.refOf(1), 'hoge@example.com#1')
   })
 
   it('Ref and sub', async () => {
-    let resource01 = new ClayResource('resource01')
-    let resource02 = new ClayResource('resource02')
-    let resource03 = resource01.sub('03')
+    const resource01 = new ClayResource('resource01')
+    const resource02 = new ClayResource('resource02')
+    const resource03 = resource01.sub('03')
     resource01.refs(resource02)
     deepEqual(Object.keys(resource03.refs()), ['resource01', 'resource02'])
   })

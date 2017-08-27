@@ -645,7 +645,7 @@ describe('from-driver', function () {
     Box.refs(Ball)
     Ball.refs(Box)
 
-    let created = await Ball.create({
+    const created = await Ball.create({
       box: {
         $$as: 'Box',
         name: 'box01'
