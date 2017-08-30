@@ -50,7 +50,7 @@
     "ape-tmpl": "^6.0.0",
     "ape-updating": "^4.1.1",
     "clay-driver-memory": "^4.1.1",
-    "clay-driver-sqlite": "^5.0.6",
+    "clay-driver-sqlite": "^6.2.1",
     "claydb-assets": "^2.0.3",
     "coz": "^6.0.20",
     "filecopy": "^3.0.1",

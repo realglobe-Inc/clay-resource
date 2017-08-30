@@ -371,11 +371,11 @@ describe('from-driver', function () {
   })
 
   it('Search by ref', async () => {
-    let drivers = [
+    const drivers = [
       clayDriverMemory(),
       clayDriverSqlite(`${__dirname}/../tmp/search-by-ref.db`)
     ]
-    for (let driver of drivers) {
+    for (const driver of drivers) {
       const Org = fromDriver(driver, 'Org')
       const User = fromDriver(driver, 'User')
       Org.refs(User)
