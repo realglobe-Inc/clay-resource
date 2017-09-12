@@ -9,7 +9,7 @@ const {ok, equal, deepEqual} = require('assert')
 const {MemoryDriver} = require('clay-driver-memory')
 
 describe('clay-resource', function () {
-  this.timeout(3000)
+  this.timeout(30000)
 
   before(async () => {
 
@@ -83,6 +83,21 @@ describe('clay-resource', function () {
     let userResource = UserResource.fromDriver(driver, 'User')
     let user = await userResource.create({name: 'foo'})
     equal(user.name, 'foo')
+  })
+
+  // https://github.com/realglobe-Inc/claydb/issues/16
+  it('All with paging', async () => {
+    class UserResource extends ClayResource {
+    }
+
+    const driver = new MemoryDriver()
+    const userResource = UserResource.fromDriver(driver, 'User')
+    for (let i = 0; i < 120; i++) {
+      await userResource.create({i})
+    }
+
+    const users = await userResource.all({i: {$gt: 10}})
+    equal(users.length, 109)
   })
 })
 
