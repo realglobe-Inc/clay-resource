@@ -1,4 +1,4 @@
-# clay-resource@5.0.2
+# clay-resource@5.0.3
 
 Resource accessor for ClayDB
 
@@ -401,7 +401,7 @@ Update multiple resources
 ```javascript
 const Product = lump.resource('Product')
 async function tryUpdateBulk () {
-  let products = await Product.updateBulk({
+  const products = await Product.updateBulk({
     '1': { name: 'Super Super Orange' },
     '2': { name: 'Ultra Ultra Green' },
   })
@@ -447,12 +447,12 @@ Create cursor to cursor
 ```javascript
 const Product = lump.resource('Product')
 async function tryCursor () {
-  let cursor = await Product.cursor({
+  const cursor = await Product.cursor({
     filter: { type: 'CAR' }
   })
   console.log(cursor.length) // Number of entities matches the condition
-  for (let fetch of cursor) {
-    let car = await fetch() // Fetch the pointed entity
+  for (const fetch of cursor) {
+    const car = await fetch() // Fetch the pointed entity
     console.log(car)
   }
 }
@@ -570,7 +570,7 @@ Check entity with id exists
 ```javascript
 const Product = lump.resource('Product')
 async function tryHas () {
-  let has = await Product.has(1)
+  const has = await Product.has(1)
   console.log(has)
 }
 tryHas()
@@ -591,7 +591,7 @@ Check data exists with filter
 ```javascript
 const Product = lump.resource('Product')
 async function tryExists () {
-  let exists = await Product.exists({ name: 'Super Super Orange' })
+  const exists = await Product.exists({ name: 'Super Super Orange' })
   console.log(exists)
 }
 tryExists()
@@ -612,7 +612,7 @@ Count data matches filter
 ```javascript
 const Product = lump.resource('Product')
 async function tryCount () {
-  let count = await Product.count({ type: 'CAR' })
+  const count = await Product.count({ type: 'CAR' })
   console.log(count)
 }
 tryCount()
@@ -893,7 +893,7 @@ Update multiple resources
 ```javascript
 const Product = lump.resource('Product')
 async function tryUpdateBulk () {
-  let products = await Product.updateBulk({
+  const products = await Product.updateBulk({
     '1': { name: 'Super Super Orange' },
     '2': { name: 'Ultra Ultra Green' },
   })
@@ -939,12 +939,12 @@ Create cursor to cursor
 ```javascript
 const Product = lump.resource('Product')
 async function tryCursor () {
-  let cursor = await Product.cursor({
+  const cursor = await Product.cursor({
     filter: { type: 'CAR' }
   })
   console.log(cursor.length) // Number of entities matches the condition
-  for (let fetch of cursor) {
-    let car = await fetch() // Fetch the pointed entity
+  for (const fetch of cursor) {
+    const car = await fetch() // Fetch the pointed entity
     console.log(car)
   }
 }
@@ -1062,7 +1062,7 @@ Check entity with id exists
 ```javascript
 const Product = lump.resource('Product')
 async function tryHas () {
-  let has = await Product.has(1)
+  const has = await Product.has(1)
   console.log(has)
 }
 tryHas()
@@ -1083,7 +1083,7 @@ Check data exists with filter
 ```javascript
 const Product = lump.resource('Product')
 async function tryExists () {
-  let exists = await Product.exists({ name: 'Super Super Orange' })
+  const exists = await Product.exists({ name: 'Super Super Orange' })
   console.log(exists)
 }
 tryExists()
@@ -1104,7 +1104,7 @@ Count data matches filter
 ```javascript
 const Product = lump.resource('Product')
 async function tryCount () {
-  let count = await Product.count({ type: 'CAR' })
+  const count = await Product.count({ type: 'CAR' })
   console.log(count)
 }
 tryCount()
