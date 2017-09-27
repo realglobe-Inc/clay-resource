@@ -14,32 +14,40 @@ const {ENTITY_CREATE} = require('../../lib/resource_events')
     const driver = clayDriverMemory()
     const A = fromDriver(driver, 'A')
 
-    await asleep(1000)
-
-    cluster.on('listening', () => console.log('!!!l'))
+    await asleep(600)
 
     A.on(ENTITY_CREATE, ({created}) => {
-      console.log('ENTITY_CREATE on master:', created.name)
+      console.log(`ENTITY_CREATE on master: "${created.name}"`)
     })
     asleep(10)
 
-    const worker = fork({})
+    const worker01 = fork({WORKER_NAME: 'worker01'})
+    const worker02 = fork({WORKER_NAME: 'worker02'})
 
     asleep(100)
     await A.create({name: 'a-in-master'})
 
-    await asleep(2000)
-    worker.kill()
+    await asleep(600)
+    worker01.kill()
+    worker02.kill()
   } else {
+    const {WORKER_NAME} = process.env
     const driver = clayDriverMemory()
     const A = fromDriver(driver, 'A')
 
     A.on(ENTITY_CREATE, ({created}) => {
-      console.log('ENTITY_CREATE on worker:', created.name)
+      console.log(`ENTITY_CREATE on ${WORKER_NAME}: "${created.name}"`)
     })
     asleep(10)
-    await A.create({name: 'a-in-worker'})
 
-    await asleep(500)
+    switch (WORKER_NAME) {
+      case 'worker01':
+        await A.create({name: 'a-in-worker01'})
+        break
+      default:
+        break
+    }
+
+    await asleep(200)
   }
 })()
