@@ -56,7 +56,7 @@
     "filecopy": "^4.0.0",
     "injectmock": "^2.0.0",
     "markdown-toc": "^1.2.0",
-    "request": "*",
+    "request": "^2.82.0",
     "sg-templates": "^1.4.4",
     "sqlite3": "^3.1.12",
     "sugos-travis": "^2.0.7",
