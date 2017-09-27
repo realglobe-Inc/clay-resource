@@ -1,4 +1,4 @@
-# clay-resource@5.1.0
+# clay-resource@5.1.1
 
 Resource accessor for ClayDB
 
@@ -76,6 +76,7 @@ Resource accessor for ClayDB
   + [resource.savePolicy(policy)](#clay-resource-class-clay-resource-savePolicy)
   + [resource.addRef(resourceName, resource)](#clay-resource-class-clay-resource-addRef)
   + [resource.hasRef(resourceName)](#clay-resource-class-clay-resource-hasRef)
+  + [resource.getRef(resourceName)](#clay-resource-class-clay-resource-getRef)
   + [resource.removeRef(resourceName)](#clay-resource-class-clay-resource-removeRef)
   + [resource.sub(name)](#clay-resource-class-clay-resource-sub)
   + [resource.subNames()](#clay-resource-class-clay-resource-subNames)
@@ -1416,7 +1417,18 @@ Add resource ref
 
 ### resource.hasRef(resourceName) -> `boolean`
 
-has resources ref
+Has resources ref
+
+| Param | Type | Description |
+| ----- | --- | -------- |
+| resourceName | string |  |
+
+
+<a class='md-heading-link' name="clay-resource-class-clay-resource-getRef" ></a>
+
+### resource.getRef(resourceName) -> `boolean`
+
+Get resource ref
 
 | Param | Type | Description |
 | ----- | --- | -------- |

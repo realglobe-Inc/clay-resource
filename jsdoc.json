@@ -2097,7 +2097,28 @@
                     "name": "hasRef",
                     "access": "",
                     "virtual": false,
-                    "description": "has resources ref",
+                    "description": "Has resources ref",
+                    "parameters": [
+                        {
+                            "name": "resourceName",
+                            "type": "string",
+                            "description": "",
+                            "default": "",
+                            "optional": "",
+                            "nullable": ""
+                        }
+                    ],
+                    "examples": [],
+                    "returns": {
+                        "type": "boolean",
+                        "description": ""
+                    }
+                },
+                {
+                    "name": "getRef",
+                    "access": "",
+                    "virtual": false,
+                    "description": "Get resource ref",
                     "parameters": [
                         {
                             "name": "resourceName",
@@ -4579,7 +4600,28 @@
                     "name": "hasRef",
                     "access": "",
                     "virtual": false,
-                    "description": "has resources ref",
+                    "description": "Has resources ref",
+                    "parameters": [
+                        {
+                            "name": "resourceName",
+                            "type": "string",
+                            "description": "",
+                            "default": "",
+                            "optional": "",
+                            "nullable": ""
+                        }
+                    ],
+                    "examples": [],
+                    "returns": {
+                        "type": "boolean",
+                        "description": ""
+                    }
+                },
+                {
+                    "name": "getRef",
+                    "access": "",
+                    "virtual": false,
+                    "description": "Get resource ref",
                     "parameters": [
                         {
                             "name": "resourceName",
@@ -6127,7 +6169,28 @@
                     "name": "hasRef",
                     "access": "",
                     "virtual": false,
-                    "description": "has resources ref",
+                    "description": "Has resources ref",
+                    "parameters": [
+                        {
+                            "name": "resourceName",
+                            "type": "string",
+                            "description": "",
+                            "default": "",
+                            "optional": "",
+                            "nullable": ""
+                        }
+                    ],
+                    "examples": [],
+                    "returns": {
+                        "type": "boolean",
+                        "description": ""
+                    }
+                },
+                {
+                    "name": "getRef",
+                    "access": "",
+                    "virtual": false,
+                    "description": "Get resource ref",
                     "parameters": [
                         {
                             "name": "resourceName",

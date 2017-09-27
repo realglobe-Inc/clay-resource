@@ -49,6 +49,7 @@
     "ape-tasking": "^4.0.9",
     "ape-tmpl": "^6.0.2",
     "ape-updating": "^4.1.1",
+    "clay-driver-json": "^3.0.3",
     "clay-driver-memory": "^4.1.1",
     "clay-driver-sqlite": "^6.2.4",
     "claydb-assets": "^2.0.3",
@@ -61,7 +62,8 @@
     "sqlite3": "^3.1.12",
     "sugos-travis": "^2.0.7",
     "the-script-jsdoc": "^2.0.0",
-    "writeout": "^2.2.1"
+    "writeout": "^2.2.1",
+    "rimraf": "latest"
   },
   "engines": {
     "node": ">=7.6",
