@@ -685,6 +685,16 @@ describe('from-driver', function () {
     }
 
   })
+
+  it('Using cluster', async () => {
+    const {fork} = require('child_process')
+
+    fork(
+      require.resolve('../misc/mocks/mock-cluster')
+    )
+
+    await asleep(5000)
+  })
 })
 
 /* global describe, before, after, it */
