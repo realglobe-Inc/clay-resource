@@ -5108,6 +5108,20 @@
             ]
         },
         {
+            "name": "ClusterMixed",
+            "description": "",
+            "extends": [],
+            "access": "",
+            "virtual": false,
+            "fires": "",
+            "constructor": {
+                "name": "ClusterMixed",
+                "description": "",
+                "parameters": [],
+                "examples": []
+            }
+        },
+        {
             "name": "CollectionMixed",
             "description": "",
             "extends": [],
@@ -6610,6 +6624,27 @@
             "access": "",
             "virtual": false,
             "description": "Mixin for clone feature",
+            "parameters": [
+                {
+                    "name": "BaseClass",
+                    "type": "function",
+                    "description": "Class to mix",
+                    "default": "",
+                    "optional": "",
+                    "nullable": ""
+                }
+            ],
+            "examples": [],
+            "returns": {
+                "type": "function",
+                "description": "Mixed class"
+            }
+        },
+        {
+            "name": "clusterMix",
+            "access": "",
+            "virtual": false,
+            "description": "Mixin for cluster",
             "parameters": [
                 {
                     "name": "BaseClass",
