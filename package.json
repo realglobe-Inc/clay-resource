@@ -37,7 +37,7 @@
     "clay-resource-name": "^4.0.3",
     "clay-resource-ref": "^2.0.2",
     "clay-schemas": "^4.0.5",
-    "objnest": "*"
+    "objnest": "^4.0.0"
   },
   "devDependencies": {
     "ababel": "^2.0.2",
@@ -57,13 +57,13 @@
     "filecopy": "^4.0.0",
     "injectmock": "^2.0.0",
     "markdown-toc": "^1.2.0",
-    "request": "^2.82.0",
+    "request": "^2.83.0",
+    "rimraf": "latest",
     "sg-templates": "^1.4.4",
     "sqlite3": "^3.1.12",
     "sugos-travis": "^2.0.7",
     "the-script-jsdoc": "^2.0.0",
-    "writeout": "^2.2.1",
-    "rimraf": "latest"
+    "writeout": "^2.2.1"
   },
   "engines": {
     "node": ">=7.6",
