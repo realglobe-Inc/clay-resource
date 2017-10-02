@@ -693,7 +693,7 @@ describe('from-driver', function () {
       require.resolve('../misc/mocks/mock-cluster')
     )
 
-    await asleep(5000)
+    await asleep(6000)
   })
 })
 

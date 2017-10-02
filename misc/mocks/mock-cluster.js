@@ -8,6 +8,7 @@ const fromDriver = require('../../lib/from_driver.js')
 const asleep = require('asleep')
 const {
   ENTITY_CREATE,
+  ENTITY_UPDATE,
   ENTITY_CREATE_BULK
 } = require('../../lib/resource_events')
 const rimraf = require('rimraf')
@@ -32,17 +33,21 @@ const rimraf = require('rimraf')
     A.on(ENTITY_CREATE, ({created}) => {
       console.log(`ENTITY_CREATE on master: "${created.name}"`)
     })
-    asleep(10)
+    A.on(ENTITY_UPDATE, ({updated}) => {
+      console.log(`ENTITY_UPDATE on master: "${updated.name}"`)
+    })
+    asleep(100)
 
     const worker01 = fork({WORKER_NAME: 'worker01'})
     const worker02 = fork({WORKER_NAME: 'worker02'})
 
-    asleep(100)
+    asleep(300)
     const a = await A.create({name: 'a-in-master'})
+    await a.update({name: 'a-in-master-updated'})
     const b = await B.create({a, name: 'b-in-master'})
     await b.update({name: 'b-in-master-updated'})
 
-    await asleep(1600)
+    await asleep(1900)
     worker01.kill()
     worker02.kill()
   } else {
@@ -51,12 +56,15 @@ const rimraf = require('rimraf')
     A.on(ENTITY_CREATE, ({created}) => {
       console.log(`ENTITY_CREATE on ${WORKER_NAME}: "${created.name}"`)
     })
+    A.on(ENTITY_UPDATE, ({updated}) => {
+      console.log(`ENTITY_UPDATE on ${WORKER_NAME}: "${updated.name}"`)
+    })
 
     A.on(ENTITY_CREATE_BULK, ({created}) => {
       console.log(`ENTITY_CREATE_BULK on ${WORKER_NAME}: "${created.map(({name}) => name)}"`)
     })
 
-    asleep(10)
+    asleep(200)
 
     switch (WORKER_NAME) {
       case 'worker01':
@@ -71,6 +79,6 @@ const rimraf = require('rimraf')
         break
     }
 
-    await asleep(1200)
+    await asleep(1800)
   }
 })()
