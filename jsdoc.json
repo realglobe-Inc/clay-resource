@@ -92,6 +92,14 @@
                             "nullable": ""
                         },
                         {
+                            "name": "options.ignoreCached",
+                            "type": "boolean",
+                            "description": "Ignore cached data",
+                            "default": "",
+                            "optional": true,
+                            "nullable": ""
+                        },
+                        {
                             "name": "options.strict",
                             "type": "boolean",
                             "description": "If true, throws an error when not found",
@@ -820,6 +828,14 @@
                             "type": "Object",
                             "description": "Optional settings",
                             "default": "{}",
+                            "optional": true,
+                            "nullable": ""
+                        },
+                        {
+                            "name": "options.ignoreCached",
+                            "type": "boolean",
+                            "description": "Ignore cached data",
+                            "default": "",
                             "optional": true,
                             "nullable": ""
                         },
@@ -2595,6 +2611,14 @@
                             "nullable": ""
                         },
                         {
+                            "name": "options.ignoreCached",
+                            "type": "boolean",
+                            "description": "Ignore cached data",
+                            "default": "",
+                            "optional": true,
+                            "nullable": ""
+                        },
+                        {
                             "name": "options.strict",
                             "type": "boolean",
                             "description": "If true, throws an error when not found",
@@ -3323,6 +3347,14 @@
                             "type": "Object",
                             "description": "Optional settings",
                             "default": "{}",
+                            "optional": true,
+                            "nullable": ""
+                        },
+                        {
+                            "name": "options.ignoreCached",
+                            "type": "boolean",
+                            "description": "Ignore cached data",
+                            "default": "",
                             "optional": true,
                             "nullable": ""
                         },
