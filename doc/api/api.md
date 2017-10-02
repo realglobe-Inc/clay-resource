@@ -1,4 +1,4 @@
-# clay-resource@5.1.4
+# clay-resource@5.1.5
 
 Resource accessor for ClayDB
 
@@ -182,6 +182,7 @@ Get a resource
 | ----- | --- | -------- |
 | id | ClayId | Id of the entity |
 | options | Object | Optional settings |
+| options.ignoreCached | boolean | Ignore cached data |
 | options.strict | boolean | If true, throws an error when not found |
 
 **Example**:
@@ -674,6 +675,7 @@ Get a resource
 | ----- | --- | -------- |
 | id | ClayId | Id of the entity |
 | options | Object | Optional settings |
+| options.ignoreCached | boolean | Ignore cached data |
 | options.strict | boolean | If true, throws an error when not found |
 
 **Example**:
