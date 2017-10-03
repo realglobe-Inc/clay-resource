@@ -16,7 +16,8 @@
                 "PrepareMixed",
                 "DecorateMixed",
                 "CacheMixed",
-                "ConditionMixed"
+                "ConditionMixed",
+                "ClusterMixed"
             ],
             "access": "",
             "virtual": false,
@@ -2253,6 +2254,27 @@
                     "returns": {
                         "type": "Promise.<Array.<string>>",
                         "description": ""
+                    }
+                },
+                {
+                    "name": "prepares",
+                    "access": "",
+                    "virtual": false,
+                    "description": "Toggle prepare support",
+                    "parameters": [
+                        {
+                            "name": "prepares",
+                            "type": "boolean",
+                            "description": "Should prepare or not",
+                            "default": "",
+                            "optional": "",
+                            "nullable": ""
+                        }
+                    ],
+                    "examples": [],
+                    "returns": {
+                        "type": "PrepareMixed",
+                        "description": "this"
                     }
                 },
                 {
@@ -2535,7 +2557,8 @@
                 "PrepareMixed",
                 "DecorateMixed",
                 "CacheMixed",
-                "ConditionMixed"
+                "ConditionMixed",
+                "ClusterMixed"
             ],
             "access": "",
             "virtual": false,
@@ -4772,6 +4795,27 @@
                     "returns": {
                         "type": "Promise.<Array.<string>>",
                         "description": ""
+                    }
+                },
+                {
+                    "name": "prepares",
+                    "access": "",
+                    "virtual": false,
+                    "description": "Toggle prepare support",
+                    "parameters": [
+                        {
+                            "name": "prepares",
+                            "type": "boolean",
+                            "description": "Should prepare or not",
+                            "default": "",
+                            "optional": "",
+                            "nullable": ""
+                        }
+                    ],
+                    "examples": [],
+                    "returns": {
+                        "type": "PrepareMixed",
+                        "description": "this"
                     }
                 },
                 {
@@ -6040,6 +6084,27 @@
                 "examples": []
             },
             "functions": [
+                {
+                    "name": "prepares",
+                    "access": "",
+                    "virtual": false,
+                    "description": "Toggle prepare support",
+                    "parameters": [
+                        {
+                            "name": "prepares",
+                            "type": "boolean",
+                            "description": "Should prepare or not",
+                            "default": "",
+                            "optional": "",
+                            "nullable": ""
+                        }
+                    ],
+                    "examples": [],
+                    "returns": {
+                        "type": "PrepareMixed",
+                        "description": "this"
+                    }
+                },
                 {
                     "name": "prepareIfNeeded",
                     "access": "",

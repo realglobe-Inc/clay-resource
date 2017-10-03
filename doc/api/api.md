@@ -83,6 +83,7 @@ Resource accessor for ClayDB
   + [resource.throwEntityNotFoundError(id)](#clay-resource-class-clay-resource-throwEntityNotFoundError)
   + [resource.internal(name)](#clay-resource-class-clay-resource-internal)
   + [resource.internalNames()](#clay-resource-class-clay-resource-internalNames)
+  + [resource.prepares(prepares)](#clay-resource-class-clay-resource-prepares)
   + [resource.prepareIfNeeded()](#clay-resource-class-clay-resource-prepareIfNeeded)
   + [resource.prepare()](#clay-resource-class-clay-resource-prepare)
   + [resource.addPrepareTask(name, task)](#clay-resource-class-clay-resource-addPrepareTask)
@@ -154,6 +155,7 @@ Resource accessor
 + `DecorateMixed`
 + `CacheMixed`
 + `ConditionMixed`
++ `ClusterMixed`
 
 
 
@@ -1492,6 +1494,17 @@ Get internal resource
 ### resource.internalNames() -> `Promise.<Array.<string>>`
 
 Get names of internal resources
+
+<a class='md-heading-link' name="clay-resource-class-clay-resource-prepares" ></a>
+
+### resource.prepares(prepares) -> `PrepareMixed`
+
+Toggle prepare support
+
+| Param | Type | Description |
+| ----- | --- | -------- |
+| prepares | boolean | Should prepare or not |
+
 
 <a class='md-heading-link' name="clay-resource-class-clay-resource-prepareIfNeeded" ></a>
 
