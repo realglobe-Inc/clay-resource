@@ -661,6 +661,31 @@ describe('from-driver', function () {
     equal(one.box.name, 'box01')
   })
 
+  it('Using nested ref', async () => {
+    const driver = clayDriverSqlite(`${__dirname}/../tmp/nested-ref.db`)
+    const Ball = fromDriver(driver, 'Ball')
+    const Box = fromDriver(driver, 'Box')
+    Box.refs(Ball)
+    Ball.refs(Box)
+    await Ball.drop()
+    await Box.drop()
+
+    const ball01 = await Ball.create({name: 'ball01'})
+    await Box.create({
+      name: 'box01',
+      contents: {
+        ball: ball01
+      }
+    })
+    {
+      const [box] = await Box.all()
+      console.log(box.contents.ball)
+      equal(String(box.contents.ball.id), String(ball01.id))
+    }
+
+    await driver.close()
+  })
+
   // https://github.com/realglobe-Inc/claydb/issues/10
   it('Indirect circular ref', async () => {
     const driver = clayDriverMemory()
