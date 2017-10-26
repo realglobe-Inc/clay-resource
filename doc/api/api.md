@@ -94,6 +94,7 @@ Resource accessor for ClayDB
   + [resource.caches(caches)](#clay-resource-class-clay-resource-caches)
   + [resource.storeCache(entity)](#clay-resource-class-clay-resource-storeCache)
   + [resource.gainCache(id)](#clay-resource-class-clay-resource-gainCache)
+  + [resource.removeCache(id)](#clay-resource-class-clay-resource-removeCache)
   + [resource.requestCacheClear(ids)](#clay-resource-class-clay-resource-requestCacheClear)
   + [resource.parseCondition(condition)](#clay-resource-class-clay-resource-parseCondition)
   + [resource.parseConditionArray(conditionArray)](#clay-resource-class-clay-resource-parseConditionArray)
@@ -1602,6 +1603,17 @@ Store an entity into cache
 ### resource.gainCache(id)
 
 Gain entity from cache
+
+| Param | Type | Description |
+| ----- | --- | -------- |
+| id | ClayId |  |
+
+
+<a class='md-heading-link' name="clay-resource-class-clay-resource-removeCache" ></a>
+
+### resource.removeCache(id)
+
+Remove entity from cache
 
 | Param | Type | Description |
 | ----- | --- | -------- |

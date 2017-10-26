@@ -2478,6 +2478,23 @@
                     "examples": []
                 },
                 {
+                    "name": "removeCache",
+                    "access": "",
+                    "virtual": false,
+                    "description": "Remove entity from cache",
+                    "parameters": [
+                        {
+                            "name": "id",
+                            "type": "ClayId",
+                            "description": "",
+                            "default": "",
+                            "optional": "",
+                            "nullable": ""
+                        }
+                    ],
+                    "examples": []
+                },
+                {
                     "name": "requestCacheClear",
                     "access": "",
                     "virtual": false,
@@ -5019,6 +5036,23 @@
                     "examples": []
                 },
                 {
+                    "name": "removeCache",
+                    "access": "",
+                    "virtual": false,
+                    "description": "Remove entity from cache",
+                    "parameters": [
+                        {
+                            "name": "id",
+                            "type": "ClayId",
+                            "description": "",
+                            "default": "",
+                            "optional": "",
+                            "nullable": ""
+                        }
+                    ],
+                    "examples": []
+                },
+                {
                     "name": "requestCacheClear",
                     "access": "",
                     "virtual": false,
@@ -5163,6 +5197,23 @@
                     "access": "",
                     "virtual": false,
                     "description": "Gain entity from cache",
+                    "parameters": [
+                        {
+                            "name": "id",
+                            "type": "ClayId",
+                            "description": "",
+                            "default": "",
+                            "optional": "",
+                            "nullable": ""
+                        }
+                    ],
+                    "examples": []
+                },
+                {
+                    "name": "removeCache",
+                    "access": "",
+                    "virtual": false,
+                    "description": "Remove entity from cache",
                     "parameters": [
                         {
                             "name": "id",
