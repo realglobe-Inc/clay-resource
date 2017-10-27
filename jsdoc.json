@@ -592,6 +592,43 @@
                     }
                 },
                 {
+                    "name": "last",
+                    "access": "",
+                    "virtual": false,
+                    "description": "Get the last entity matches filter",
+                    "parameters": [
+                        {
+                            "name": "filter",
+                            "type": "FilterTerm",
+                            "description": "Listing filter",
+                            "default": "{}",
+                            "optional": true,
+                            "nullable": ""
+                        },
+                        {
+                            "name": "options",
+                            "type": "Object",
+                            "description": "Optional settings",
+                            "default": "{}",
+                            "optional": true,
+                            "nullable": ""
+                        },
+                        {
+                            "name": "options.sort",
+                            "type": "Object",
+                            "description": "Sort conditions",
+                            "default": "[]",
+                            "optional": true,
+                            "nullable": ""
+                        }
+                    ],
+                    "examples": [],
+                    "returns": {
+                        "type": "Promise.<?Entity>",
+                        "description": "Found one"
+                    }
+                },
+                {
                     "name": "only",
                     "access": "",
                     "virtual": false,
@@ -623,7 +660,7 @@
                         }
                     ],
                     "examples": [
-                        "const Product = lump.resource('Product')\nasync function tryFirst () {\n  const product = Product.only({ name: 'Super Super Orange' })\n  console.log(product)\n}\ntryFirst()"
+                        "const Product = lump.resource('Product')\nasync function tryOnly () {\n  const product = Product.only({ name: 'Super Super Orange' })\n  console.log(product)\n}\ntryOnly()"
                     ],
                     "returns": {
                         "type": "Promise.<?Entity>",
@@ -1332,6 +1369,43 @@
                     }
                 },
                 {
+                    "name": "last",
+                    "access": "",
+                    "virtual": false,
+                    "description": "Get the last entity matches filter",
+                    "parameters": [
+                        {
+                            "name": "filter",
+                            "type": "FilterTerm",
+                            "description": "Listing filter",
+                            "default": "{}",
+                            "optional": true,
+                            "nullable": ""
+                        },
+                        {
+                            "name": "options",
+                            "type": "Object",
+                            "description": "Optional settings",
+                            "default": "{}",
+                            "optional": true,
+                            "nullable": ""
+                        },
+                        {
+                            "name": "options.sort",
+                            "type": "Object",
+                            "description": "Sort conditions",
+                            "default": "[]",
+                            "optional": true,
+                            "nullable": ""
+                        }
+                    ],
+                    "examples": [],
+                    "returns": {
+                        "type": "Promise.<?Entity>",
+                        "description": "Found one"
+                    }
+                },
+                {
                     "name": "only",
                     "access": "",
                     "virtual": false,
@@ -1363,7 +1437,7 @@
                         }
                     ],
                     "examples": [
-                        "const Product = lump.resource('Product')\nasync function tryFirst () {\n  const product = Product.only({ name: 'Super Super Orange' })\n  console.log(product)\n}\ntryFirst()"
+                        "const Product = lump.resource('Product')\nasync function tryOnly () {\n  const product = Product.only({ name: 'Super Super Orange' })\n  console.log(product)\n}\ntryOnly()"
                     ],
                     "returns": {
                         "type": "Promise.<?Entity>",
@@ -3150,6 +3224,43 @@
                     }
                 },
                 {
+                    "name": "last",
+                    "access": "",
+                    "virtual": false,
+                    "description": "Get the last entity matches filter",
+                    "parameters": [
+                        {
+                            "name": "filter",
+                            "type": "FilterTerm",
+                            "description": "Listing filter",
+                            "default": "{}",
+                            "optional": true,
+                            "nullable": ""
+                        },
+                        {
+                            "name": "options",
+                            "type": "Object",
+                            "description": "Optional settings",
+                            "default": "{}",
+                            "optional": true,
+                            "nullable": ""
+                        },
+                        {
+                            "name": "options.sort",
+                            "type": "Object",
+                            "description": "Sort conditions",
+                            "default": "[]",
+                            "optional": true,
+                            "nullable": ""
+                        }
+                    ],
+                    "examples": [],
+                    "returns": {
+                        "type": "Promise.<?Entity>",
+                        "description": "Found one"
+                    }
+                },
+                {
                     "name": "only",
                     "access": "",
                     "virtual": false,
@@ -3181,7 +3292,7 @@
                         }
                     ],
                     "examples": [
-                        "const Product = lump.resource('Product')\nasync function tryFirst () {\n  const product = Product.only({ name: 'Super Super Orange' })\n  console.log(product)\n}\ntryFirst()"
+                        "const Product = lump.resource('Product')\nasync function tryOnly () {\n  const product = Product.only({ name: 'Super Super Orange' })\n  console.log(product)\n}\ntryOnly()"
                     ],
                     "returns": {
                         "type": "Promise.<?Entity>",
@@ -3890,6 +4001,43 @@
                     }
                 },
                 {
+                    "name": "last",
+                    "access": "",
+                    "virtual": false,
+                    "description": "Get the last entity matches filter",
+                    "parameters": [
+                        {
+                            "name": "filter",
+                            "type": "FilterTerm",
+                            "description": "Listing filter",
+                            "default": "{}",
+                            "optional": true,
+                            "nullable": ""
+                        },
+                        {
+                            "name": "options",
+                            "type": "Object",
+                            "description": "Optional settings",
+                            "default": "{}",
+                            "optional": true,
+                            "nullable": ""
+                        },
+                        {
+                            "name": "options.sort",
+                            "type": "Object",
+                            "description": "Sort conditions",
+                            "default": "[]",
+                            "optional": true,
+                            "nullable": ""
+                        }
+                    ],
+                    "examples": [],
+                    "returns": {
+                        "type": "Promise.<?Entity>",
+                        "description": "Found one"
+                    }
+                },
+                {
                     "name": "only",
                     "access": "",
                     "virtual": false,
@@ -3921,7 +4069,7 @@
                         }
                     ],
                     "examples": [
-                        "const Product = lump.resource('Product')\nasync function tryFirst () {\n  const product = Product.only({ name: 'Super Super Orange' })\n  console.log(product)\n}\ntryFirst()"
+                        "const Product = lump.resource('Product')\nasync function tryOnly () {\n  const product = Product.only({ name: 'Super Super Orange' })\n  console.log(product)\n}\ntryOnly()"
                     ],
                     "returns": {
                         "type": "Promise.<?Entity>",

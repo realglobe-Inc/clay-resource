@@ -1,4 +1,4 @@
-# clay-resource@5.4.0
+# clay-resource@5.4.1
 
 Resource accessor for ClayDB
 
@@ -21,6 +21,7 @@ Resource accessor for ClayDB
   + [resource.cursor(condition)](#clay-resource-class-clay-resource-cursor)
   + [resource.each(handler, condition)](#clay-resource-class-clay-resource-each)
   + [resource.first(filter, options)](#clay-resource-class-clay-resource-first)
+  + [resource.last(filter, options)](#clay-resource-class-clay-resource-last)
   + [resource.only(filter, options)](#clay-resource-class-clay-resource-only)
   + [resource.seal(privateKey, options)](#clay-resource-class-clay-resource-seal)
   + [resource.has(id)](#clay-resource-class-clay-resource-has)
@@ -43,6 +44,7 @@ Resource accessor for ClayDB
   + [resource.cursor(condition)](#clay-resource-class-clay-resource-cursor)
   + [resource.each(handler, condition)](#clay-resource-class-clay-resource-each)
   + [resource.first(filter, options)](#clay-resource-class-clay-resource-first)
+  + [resource.last(filter, options)](#clay-resource-class-clay-resource-last)
   + [resource.only(filter, options)](#clay-resource-class-clay-resource-only)
   + [resource.seal(privateKey, options)](#clay-resource-class-clay-resource-seal)
   + [resource.has(id)](#clay-resource-class-clay-resource-has)
@@ -514,6 +516,19 @@ async function tryFirst () {
 tryFirst()
 ```
 
+<a class='md-heading-link' name="clay-resource-class-clay-resource-last" ></a>
+
+### resource.last(filter, options) -> `Promise.<?Entity>`
+
+Get the last entity matches filter
+
+| Param | Type | Description |
+| ----- | --- | -------- |
+| filter | FilterTerm | Listing filter |
+| options | Object | Optional settings |
+| options.sort | Object | Sort conditions |
+
+
 <a class='md-heading-link' name="clay-resource-class-clay-resource-only" ></a>
 
 ### resource.only(filter, options) -> `Promise.<?Entity>`
@@ -530,11 +545,11 @@ Almost same with `.first()`, but throws an error if multiple record hits, or no 
 
 ```javascript
 const Product = lump.resource('Product')
-async function tryFirst () {
+async function tryOnly () {
   const product = Product.only({ name: 'Super Super Orange' })
   console.log(product)
 }
-tryFirst()
+tryOnly()
 ```
 
 <a class='md-heading-link' name="clay-resource-class-clay-resource-seal" ></a>
@@ -1007,6 +1022,19 @@ async function tryFirst () {
 tryFirst()
 ```
 
+<a class='md-heading-link' name="clay-resource-class-clay-resource-last" ></a>
+
+### resource.last(filter, options) -> `Promise.<?Entity>`
+
+Get the last entity matches filter
+
+| Param | Type | Description |
+| ----- | --- | -------- |
+| filter | FilterTerm | Listing filter |
+| options | Object | Optional settings |
+| options.sort | Object | Sort conditions |
+
+
 <a class='md-heading-link' name="clay-resource-class-clay-resource-only" ></a>
 
 ### resource.only(filter, options) -> `Promise.<?Entity>`
@@ -1023,11 +1051,11 @@ Almost same with `.first()`, but throws an error if multiple record hits, or no 
 
 ```javascript
 const Product = lump.resource('Product')
-async function tryFirst () {
+async function tryOnly () {
   const product = Product.only({ name: 'Super Super Orange' })
   console.log(product)
 }
-tryFirst()
+tryOnly()
 ```
 
 <a class='md-heading-link' name="clay-resource-class-clay-resource-seal" ></a>
