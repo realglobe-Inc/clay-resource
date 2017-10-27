@@ -724,6 +724,18 @@ describe('from-driver', function () {
 
     await asleep(6000)
   })
+
+  it('First/last method', async () => {
+    const driver = clayDriverMemory()
+    const A = fromDriver(driver, 'A')
+    for (let i = 0; i < 100; i++) {
+      await A.create({i})
+    }
+    equal((await A.first({})).i, 0)
+    equal((await A.first({}, {skip: 3})).i, 3)
+    equal((await A.last({})).i, 99)
+    equal((await A.last({}, {skip: 3})).i, 96)
+  })
 })
 
 /* global describe, before, after, it */
