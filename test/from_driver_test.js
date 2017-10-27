@@ -474,7 +474,7 @@ describe('from-driver', function () {
   })
 
   it('Using entity bind', async () => {
-    let driver = clayDriverMemory()
+    const driver = clayDriverMemory()
     let User = fromDriver(driver, 'User')
     let user01 = await User.create({name: 'Rider01'})
     ok(user01.update)
@@ -502,10 +502,12 @@ describe('from-driver', function () {
       }
       ok(caught)
     }
+
+    await driver.close()
   })
 
   it('Use strict options', async () => {
-    let driver = clayDriverMemory()
+    const driver = clayDriverMemory()
     let User = fromDriver(driver, 'User')
     let user01 = await User.create({name: 'Rider01'})
     await User.one(user01.id, {strict: false})
@@ -519,6 +521,8 @@ describe('from-driver', function () {
       caught = e
     }
     ok(caught)
+
+    await driver.close()
   })
 
   it('Use resource collection', async () => {
@@ -559,6 +563,8 @@ describe('from-driver', function () {
       }, {filter: {org: org01}})
       equal(eachUsers.length, 51)
     }
+
+    await driver.close()
   })
 
   it('Enhance entity', async () => {
@@ -575,6 +581,8 @@ describe('from-driver', function () {
 
     let user01 = await User.create({firstName: 'Taka', familyName: 'Okunishi'})
     equal(user01.fullName, 'Taka Okunishi')
+
+    await driver.close()
   })
 
   it('Enhance collection', async () => {
@@ -604,6 +612,8 @@ describe('from-driver', function () {
       sort: ['-name']
     })
     equal((await users.nextOne()).name, 'user01')
+
+    await driver.close()
   })
 
   // https://github.com/realglobe-Inc/clay-resource/issues/51
@@ -632,6 +642,8 @@ describe('from-driver', function () {
     ok(live)
 
     equal(live.createdBy.userKey, 'miyazaki')
+
+    await driver.close()
   })
 
   it('Numeric id', async () => {
@@ -640,6 +652,8 @@ describe('from-driver', function () {
 
     let created = await Ball.create({id: 1}, {allowReserved: true})
     strictEqual(String(created.id), '1')
+
+    await driver.close()
   })
 
   it('Save ref', async () => {
@@ -659,6 +673,8 @@ describe('from-driver', function () {
 
     let one = await Ball.one(created.id)
     equal(one.box.name, 'box01')
+
+    await driver.close()
   })
 
   it('Using nested ref', async () => {
@@ -713,16 +729,20 @@ describe('from-driver', function () {
       equal(a.b.c.a.$ref, `A#${String(a.id)}`)
     }
 
+    await driver.close()
+
   })
 
   it('Using cluster', async () => {
     const {fork} = require('child_process')
 
-    fork(
+    const forked = fork(
       require.resolve('../misc/mocks/mock-cluster')
     )
 
     await asleep(6000)
+
+    forked.kill()
   })
 
   it('First/last method', async () => {
@@ -735,6 +755,8 @@ describe('from-driver', function () {
     equal((await A.first({}, {skip: 3})).i, 3)
     equal((await A.last({})).i, 99)
     equal((await A.last({}, {skip: 3})).i, 96)
+
+    await driver.close()
   })
 })
 
