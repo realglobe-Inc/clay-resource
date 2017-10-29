@@ -567,6 +567,10 @@ describe('from-driver', function () {
       equal(eachUsers.length, 51)
     }
 
+    {
+      equal((await User.count({org: org01})), 51)
+    }
+
     await driver.close()
   })
 
@@ -796,6 +800,40 @@ describe('from-driver', function () {
     const user01 = await User.of({username: 'user01', org: org01})
     ok(user01)
 
+  })
+
+  it('Array filter of ref', async () => {
+    let filename = `${__dirname}/../tmp/array-filter.db`
+    const driver = clayDriverSqlite(filename)
+    const A = fromDriver(driver, 'A')
+    const B = fromDriver(driver, 'B')
+    await A.drop()
+    await asleep(100)
+    await B.drop()
+    await asleep(100)
+    const b01 = await B.create({name: 'b01'})
+    await asleep(100)
+    await A.createBulk([
+      {
+        name: 'a01',
+        b: b01
+      },
+      {
+        name: 'a02',
+        b: b01
+      }
+    ])
+    await asleep(10)
+
+    equal(await A.count({b: b01}), 2)
+    await asleep(10)
+    equal(await A.count({b: [b01]}), 2)
+
+    await asleep(10)
+    equal(await A.count([{b: b01}]), 2)
+
+    await driver.close()
+    await asleep(100)
   })
 })
 
