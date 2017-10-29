@@ -225,8 +225,8 @@ describe('from-driver', function () {
 
   it('Policy check', async () => {
     const {STRING, DATE} = clayPolicy.DataTypes
-    let driver = clayDriverMemory()
-    let User = fromDriver(driver, 'User')
+    const driver = clayDriverMemory()
+    const User = fromDriver(driver, 'User')
 
     User.setPolicy({
       username: {
@@ -760,6 +760,42 @@ describe('from-driver', function () {
     equal((await A.last({}, {skip: 3})).i, 96)
 
     await driver.close()
+  })
+
+  it('Nested policies', async () => {
+    const {STRING, ENTITY, REF} = clayPolicy.DataTypes
+    const driver = clayDriverMemory()
+    const User = fromDriver(driver, 'User')
+    const Org = fromDriver(driver, 'Org')
+
+    User.setPolicy({
+      username: {
+        type: STRING,
+        required: true,
+        trim: true
+      },
+      org: {
+        type: [ENTITY, REF],
+        required: true
+      }
+    })
+
+    Org.setPolicy({
+      name: {
+        type: STRING,
+        minLength: 2,
+        required: true
+      }
+    })
+
+    Org.refs(User)
+    User.refs(Org)
+
+    const org01 = await Org.of({name: 'org01'})
+    ok(org01)
+    const user01 = await User.of({username: 'user01', org: org01})
+    ok(user01)
+
   })
 })
 
