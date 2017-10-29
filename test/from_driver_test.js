@@ -308,6 +308,9 @@ describe('from-driver', function () {
       caught = thrown
     }
     ok(caught)
+
+    await Fruit.create({name: 'orange'})
+    await Fruit.create({name: 'apple'})
     await Fruit.drop()
   })
 
