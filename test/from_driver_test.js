@@ -275,6 +275,10 @@ describe('from-driver', function () {
 
     let user02 = await User.create({username: '  hoge  '})
     equal(user02.username, 'hoge', 'Should be trimmed')
+
+    {
+      await user02.update({v: 2})
+    }
   })
 
   it('of', async () => {
