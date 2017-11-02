@@ -258,6 +258,14 @@
                             "nullable": ""
                         },
                         {
+                            "name": "options.allowReserved",
+                            "type": "boolean",
+                            "description": "Arrow to set reserved attributes (like \"id\")",
+                            "default": "",
+                            "optional": true,
+                            "nullable": ""
+                        },
+                        {
                             "name": "options.errorNamespace",
                             "type": "string",
                             "description": "Namespace for error fields",
@@ -423,6 +431,14 @@
                             "type": "Object",
                             "description": "Optional settings",
                             "default": "{}",
+                            "optional": true,
+                            "nullable": ""
+                        },
+                        {
+                            "name": "options.allowReserved",
+                            "type": "boolean",
+                            "description": "Arrow to set reserved attributes (like \"id\")",
+                            "default": "",
                             "optional": true,
                             "nullable": ""
                         },
@@ -1035,6 +1051,14 @@
                             "nullable": ""
                         },
                         {
+                            "name": "options.allowReserved",
+                            "type": "boolean",
+                            "description": "Arrow to set reserved attributes (like \"id\")",
+                            "default": "",
+                            "optional": true,
+                            "nullable": ""
+                        },
+                        {
                             "name": "options.errorNamespace",
                             "type": "string",
                             "description": "Namespace for error fields",
@@ -1200,6 +1224,14 @@
                             "type": "Object",
                             "description": "Optional settings",
                             "default": "{}",
+                            "optional": true,
+                            "nullable": ""
+                        },
+                        {
+                            "name": "options.allowReserved",
+                            "type": "boolean",
+                            "description": "Arrow to set reserved attributes (like \"id\")",
+                            "default": "",
                             "optional": true,
                             "nullable": ""
                         },
@@ -2890,6 +2922,14 @@
                             "nullable": ""
                         },
                         {
+                            "name": "options.allowReserved",
+                            "type": "boolean",
+                            "description": "Arrow to set reserved attributes (like \"id\")",
+                            "default": "",
+                            "optional": true,
+                            "nullable": ""
+                        },
+                        {
                             "name": "options.errorNamespace",
                             "type": "string",
                             "description": "Namespace for error fields",
@@ -3055,6 +3095,14 @@
                             "type": "Object",
                             "description": "Optional settings",
                             "default": "{}",
+                            "optional": true,
+                            "nullable": ""
+                        },
+                        {
+                            "name": "options.allowReserved",
+                            "type": "boolean",
+                            "description": "Arrow to set reserved attributes (like \"id\")",
+                            "default": "",
                             "optional": true,
                             "nullable": ""
                         },
@@ -3667,6 +3715,14 @@
                             "nullable": ""
                         },
                         {
+                            "name": "options.allowReserved",
+                            "type": "boolean",
+                            "description": "Arrow to set reserved attributes (like \"id\")",
+                            "default": "",
+                            "optional": true,
+                            "nullable": ""
+                        },
+                        {
                             "name": "options.errorNamespace",
                             "type": "string",
                             "description": "Namespace for error fields",
@@ -3832,6 +3888,14 @@
                             "type": "Object",
                             "description": "Optional settings",
                             "default": "{}",
+                            "optional": true,
+                            "nullable": ""
+                        },
+                        {
+                            "name": "options.allowReserved",
+                            "type": "boolean",
+                            "description": "Arrow to set reserved attributes (like \"id\")",
+                            "default": "",
                             "optional": true,
                             "nullable": ""
                         },

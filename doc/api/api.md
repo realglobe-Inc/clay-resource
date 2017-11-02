@@ -1,4 +1,4 @@
-# clay-resource@5.4.5
+# clay-resource@5.4.6
 
 Resource accessor for ClayDB
 
@@ -268,6 +268,7 @@ Update an existing entity in resource
 | id | ClayId | Resource id |
 | attributes | Object | Resource attributes to update |
 | options | Object | Optional settings |
+| options.allowReserved | boolean | Arrow to set reserved attributes (like "id") |
 | options.errorNamespace | string | Namespace for error fields |
 
 **Example**:
@@ -401,6 +402,7 @@ Update multiple resources
 | ----- | --- | -------- |
 | attributesHash | Object.&lt;ClayId, Object&gt; | Hash of attributes |
 | options | Object | Optional settings |
+| options.allowReserved | boolean | Arrow to set reserved attributes (like "id") |
 | options.errorNamespace | string | Namespace for error fields |
 
 **Example**:
@@ -774,6 +776,7 @@ Update an existing entity in resource
 | id | ClayId | Resource id |
 | attributes | Object | Resource attributes to update |
 | options | Object | Optional settings |
+| options.allowReserved | boolean | Arrow to set reserved attributes (like "id") |
 | options.errorNamespace | string | Namespace for error fields |
 
 **Example**:
@@ -907,6 +910,7 @@ Update multiple resources
 | ----- | --- | -------- |
 | attributesHash | Object.&lt;ClayId, Object&gt; | Hash of attributes |
 | options | Object | Optional settings |
+| options.allowReserved | boolean | Arrow to set reserved attributes (like "id") |
 | options.errorNamespace | string | Namespace for error fields |
 
 **Example**:
