@@ -51,7 +51,7 @@
     "ape-updating": "^4.1.1",
     "clay-driver-json": "^4.0.3",
     "clay-driver-memory": "^4.1.5",
-    "clay-driver-sqlite": "^6.3.3",
+    "clay-driver-sqlite": "^6.3.4",
     "claydb-assets": "^2.0.3",
     "coz": "^6.0.20",
     "eslint": "^4.10.0",
