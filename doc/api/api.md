@@ -1,4 +1,4 @@
-# clay-resource@5.4.6
+# clay-resource@5.4.7
 
 Resource accessor for ClayDB
 
@@ -7,8 +7,8 @@ Resource accessor for ClayDB
   + [fromDriver(driver, nameString, options)](#clay-resource-function-from-driver)
 + [`ClayResource`](#clay-resource-class) Class
   + [new ClayResource(nameString, bounds, options)](#clay-resource-class-clay-resource-constructor)
-  + [resource.one(id, options)](#clay-resource-class-clay-resource-one)
-  + [resource.list(condition)](#clay-resource-class-clay-resource-list)
+  + [resource.one(id, options, )](#clay-resource-class-clay-resource-one)
+  + [resource.list(condition, options, )](#clay-resource-class-clay-resource-list)
   + [resource.create(attributes, options)](#clay-resource-class-clay-resource-create)
   + [resource.update(id, attributes, options)](#clay-resource-class-clay-resource-update)
   + [resource.destroy(id)](#clay-resource-class-clay-resource-destroy)
@@ -28,10 +28,10 @@ Resource accessor for ClayDB
   + [resource.exists(filter)](#clay-resource-class-clay-resource-exists)
   + [resource.count(filter)](#clay-resource-class-clay-resource-count)
   + [resource.of(attributes)](#clay-resource-class-clay-resource-of)
-  + [resource.all(filter, options)](#clay-resource-class-clay-resource-all)
+  + [resource.all(filter, options, )](#clay-resource-class-clay-resource-all)
   + [resource.refOf(id)](#clay-resource-class-clay-resource-refOf)
-  + [resource.one(id, options)](#clay-resource-class-clay-resource-one)
-  + [resource.list(condition)](#clay-resource-class-clay-resource-list)
+  + [resource.one(id, options, )](#clay-resource-class-clay-resource-one)
+  + [resource.list(condition, options, )](#clay-resource-class-clay-resource-list)
   + [resource.create(attributes, options)](#clay-resource-class-clay-resource-create)
   + [resource.update(id, attributes, options)](#clay-resource-class-clay-resource-update)
   + [resource.destroy(id)](#clay-resource-class-clay-resource-destroy)
@@ -51,7 +51,7 @@ Resource accessor for ClayDB
   + [resource.exists(filter)](#clay-resource-class-clay-resource-exists)
   + [resource.count(filter)](#clay-resource-class-clay-resource-count)
   + [resource.of(attributes)](#clay-resource-class-clay-resource-of)
-  + [resource.all(filter, options)](#clay-resource-class-clay-resource-all)
+  + [resource.all(filter, options, )](#clay-resource-class-clay-resource-all)
   + [resource.refOf(id)](#clay-resource-class-clay-resource-refOf)
   + [resource.toggleAnnotate()](#clay-resource-class-clay-resource-toggleAnnotate)
   + [resource.clone()](#clay-resource-class-clay-resource-clone)
@@ -179,7 +179,7 @@ Constructor of ClayResource class
 
 <a class='md-heading-link' name="clay-resource-class-clay-resource-one" ></a>
 
-### resource.one(id, options) -> `Promise.<Entity>`
+### resource.one(id, options, ) -> `Promise.<Entity>`
 
 Get a resource
 
@@ -187,6 +187,7 @@ Get a resource
 | ----- | --- | -------- |
 | id | ClayId | Id of the entity |
 | options | Object | Optional settings |
+|  |  |  |
 | options.ignoreCached | boolean | Ignore cached data |
 | options.strict | boolean | If true, throws an error when not found |
 
@@ -202,7 +203,7 @@ async function tryOne () {
 
 <a class='md-heading-link' name="clay-resource-class-clay-resource-list" ></a>
 
-### resource.list(condition) -> `Promise.<Collection>`
+### resource.list(condition, options, ) -> `Promise.<Collection>`
 
 List entities from resource
 
@@ -214,6 +215,8 @@ List entities from resource
 | condition.page.number | number | Number of page, start with 1 |
 | condition.page.size | number | Number of resources per page |
 | condition.sort | SortTerm | Sort condition |
+| options | Object | Optional settings |
+|  |  |  |
 
 **Example**:
 
@@ -664,7 +667,7 @@ tryOf()
 
 <a class='md-heading-link' name="clay-resource-class-clay-resource-all" ></a>
 
-### resource.all(filter, options) -> `Promise.<Array.<ClayEntity>>`
+### resource.all(filter, options, ) -> `Promise.<Array.<ClayEntity>>`
 
 Get all entities inside resource which matches the filter
 
@@ -672,6 +675,9 @@ Get all entities inside resource which matches the filter
 | ----- | --- | -------- |
 | filter | FilterTerm | Listing filter |
 | options | Object | Optional settings |
+| options.sort | string,Array.&lt;string&gt; | Sort attribute |
+| options.iterateSize | number | Size to iterate |
+|  |  |  |
 
 
 <a class='md-heading-link' name="clay-resource-class-clay-resource-refOf" ></a>
@@ -687,7 +693,7 @@ Get resource ref string for this resource
 
 <a class='md-heading-link' name="clay-resource-class-clay-resource-one" ></a>
 
-### resource.one(id, options) -> `Promise.<Entity>`
+### resource.one(id, options, ) -> `Promise.<Entity>`
 
 Get a resource
 
@@ -695,6 +701,7 @@ Get a resource
 | ----- | --- | -------- |
 | id | ClayId | Id of the entity |
 | options | Object | Optional settings |
+|  |  |  |
 | options.ignoreCached | boolean | Ignore cached data |
 | options.strict | boolean | If true, throws an error when not found |
 
@@ -710,7 +717,7 @@ async function tryOne () {
 
 <a class='md-heading-link' name="clay-resource-class-clay-resource-list" ></a>
 
-### resource.list(condition) -> `Promise.<Collection>`
+### resource.list(condition, options, ) -> `Promise.<Collection>`
 
 List entities from resource
 
@@ -722,6 +729,8 @@ List entities from resource
 | condition.page.number | number | Number of page, start with 1 |
 | condition.page.size | number | Number of resources per page |
 | condition.sort | SortTerm | Sort condition |
+| options | Object | Optional settings |
+|  |  |  |
 
 **Example**:
 
@@ -1172,7 +1181,7 @@ tryOf()
 
 <a class='md-heading-link' name="clay-resource-class-clay-resource-all" ></a>
 
-### resource.all(filter, options) -> `Promise.<Array.<ClayEntity>>`
+### resource.all(filter, options, ) -> `Promise.<Array.<ClayEntity>>`
 
 Get all entities inside resource which matches the filter
 
@@ -1180,6 +1189,9 @@ Get all entities inside resource which matches the filter
 | ----- | --- | -------- |
 | filter | FilterTerm | Listing filter |
 | options | Object | Optional settings |
+| options.sort | string,Array.&lt;string&gt; | Sort attribute |
+| options.iterateSize | number | Size to iterate |
+|  |  |  |
 
 
 <a class='md-heading-link' name="clay-resource-class-clay-resource-refOf" ></a>
