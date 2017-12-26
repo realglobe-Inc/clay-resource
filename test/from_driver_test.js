@@ -115,7 +115,7 @@ describe('from-driver', function () {
       equal(caught.message, '[Clay][hogehoge] id is required')
     }
 
-    let updated = await resource.update(id, {foo2: 'bar2'})
+    const updated = await resource.update(id, {foo2: 'bar2'})
     ok(updated)
     equal(updated.foo, 'bar')
     equal(updated.foo2, 'bar2')
