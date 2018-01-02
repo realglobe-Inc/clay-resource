@@ -292,14 +292,16 @@ describe('from-driver', function () {
   })
 
   it('Unique', async () => {
-    let driver = clayDriverMemory()
-    let Fruit = fromDriver(driver, 'Fruit')
+    const driver = clayDriverMemory()
+    const Fruit = fromDriver(driver, 'Fruit')
     Fruit.policy({
       name: {
         type: DataTypes.STRING,
         unique: true
       }
     })
+    await Fruit.create({name: null})
+    await Fruit.create({name: null})
     await Fruit.create({name: 'banana'})
     let caught
     try {
