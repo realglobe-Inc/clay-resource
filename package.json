@@ -33,7 +33,7 @@
     "clay-policy": "^2.1.5",
     "clay-resource-cache": "^2.0.1",
     "clay-resource-collection": "^2.0.1",
-    "clay-resource-entity": "^2.3.2",
+    "clay-resource-entity": "^2.4.2",
     "clay-resource-name": "^4.0.3",
     "clay-resource-ref": "^2.0.2",
     "clay-schemas": "^4.0.5",
