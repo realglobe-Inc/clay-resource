@@ -1486,7 +1486,7 @@ Get resource ref
 
 <a class='md-heading-link' name="clay-resource-class-clay-resource-removeRef" ></a>
 
-### resource.removeRef(resourceName) -> `FormatMix`
+### resource.removeRef(resourceName) -> `RefMixed`
 
 Remove resource ref
 

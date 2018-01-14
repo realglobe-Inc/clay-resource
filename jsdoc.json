@@ -2377,8 +2377,8 @@
                     ],
                     "examples": [],
                     "returns": {
-                        "type": "FormatMix",
-                        "description": ""
+                        "type": "RefMixed",
+                        "description": "this"
                     }
                 },
                 {
@@ -5143,8 +5143,8 @@
                     ],
                     "examples": [],
                     "returns": {
-                        "type": "FormatMix",
-                        "description": ""
+                        "type": "RefMixed",
+                        "description": "this"
                     }
                 },
                 {
@@ -6788,8 +6788,8 @@
                     ],
                     "examples": [],
                     "returns": {
-                        "type": "FormatMix",
-                        "description": ""
+                        "type": "RefMixed",
+                        "description": "this"
                     }
                 }
             ]

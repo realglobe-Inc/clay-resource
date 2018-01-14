@@ -40,8 +40,7 @@
     "objnest": "^4.0.0"
   },
   "devDependencies": {
-    "ababel": "^2.0.3",
-    "ababel-es2015": "^2.0.2",
+    "ababel": "^3.0.1",
     "amocha": "^4.0.0",
     "ape-doc": "^2.0.4",
     "ape-formatting": "^1.0.2",
