@@ -1,6 +1,6 @@
 {
   "name": "clay-resource",
-  "version": "5.4.17",
+  "version": "5.5.0",
   "description": "Resource accessor for ClayDB",
   "browser": "shim/browser",
   "main": "lib",
@@ -37,10 +37,10 @@
     "clay-resource-name": "^4.0.3",
     "clay-resource-ref": "^2.0.2",
     "clay-schemas": "^4.0.5",
-    "objnest": "^4.0.0"
+    "objnest": "^4.0.2"
   },
   "devDependencies": {
-    "ababel": "^3.0.1",
+    "ababel": "^3.0.2",
     "amocha": "^4.0.0",
     "ape-doc": "^2.0.4",
     "ape-formatting": "^1.0.2",
