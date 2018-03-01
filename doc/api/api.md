@@ -1,4 +1,4 @@
-# clay-resource@5.5.4
+# clay-resource@5.5.5
 
 Resource accessor for ClayDB
 
@@ -11,13 +11,13 @@ Resource accessor for ClayDB
   + [resource.list(condition, options, )](#clay-resource-class-clay-resource-list)
   + [resource.create(attributes, options)](#clay-resource-class-clay-resource-create)
   + [resource.update(id, attributes, options)](#clay-resource-class-clay-resource-update)
-  + [resource.destroy(id)](#clay-resource-class-clay-resource-destroy)
-  + [resource.drop()](#clay-resource-class-clay-resource-drop)
+  + [resource.destroy(id, options)](#clay-resource-class-clay-resource-destroy)
+  + [resource.drop(options)](#clay-resource-class-clay-resource-drop)
   + [resource.oneBulk(ids)](#clay-resource-class-clay-resource-oneBulk)
   + [resource.listBulk(conditionArray)](#clay-resource-class-clay-resource-listBulk)
   + [resource.createBulk(attributesArray, options)](#clay-resource-class-clay-resource-createBulk)
   + [resource.updateBulk(attributesHash, options)](#clay-resource-class-clay-resource-updateBulk)
-  + [resource.destroyBulk(ids)](#clay-resource-class-clay-resource-destroyBulk)
+  + [resource.destroyBulk(ids, options)](#clay-resource-class-clay-resource-destroyBulk)
   + [resource.cursor(condition)](#clay-resource-class-clay-resource-cursor)
   + [resource.each(handler, condition)](#clay-resource-class-clay-resource-each)
   + [resource.first(filter, options)](#clay-resource-class-clay-resource-first)
@@ -34,13 +34,13 @@ Resource accessor for ClayDB
   + [resource.list(condition, options, )](#clay-resource-class-clay-resource-list)
   + [resource.create(attributes, options)](#clay-resource-class-clay-resource-create)
   + [resource.update(id, attributes, options)](#clay-resource-class-clay-resource-update)
-  + [resource.destroy(id)](#clay-resource-class-clay-resource-destroy)
-  + [resource.drop()](#clay-resource-class-clay-resource-drop)
+  + [resource.destroy(id, options)](#clay-resource-class-clay-resource-destroy)
+  + [resource.drop(options)](#clay-resource-class-clay-resource-drop)
   + [resource.oneBulk(ids)](#clay-resource-class-clay-resource-oneBulk)
   + [resource.listBulk(conditionArray)](#clay-resource-class-clay-resource-listBulk)
   + [resource.createBulk(attributesArray, options)](#clay-resource-class-clay-resource-createBulk)
   + [resource.updateBulk(attributesHash, options)](#clay-resource-class-clay-resource-updateBulk)
-  + [resource.destroyBulk(ids)](#clay-resource-class-clay-resource-destroyBulk)
+  + [resource.destroyBulk(ids, options)](#clay-resource-class-clay-resource-destroyBulk)
   + [resource.cursor(condition)](#clay-resource-class-clay-resource-cursor)
   + [resource.each(handler, condition)](#clay-resource-class-clay-resource-each)
   + [resource.first(filter, options)](#clay-resource-class-clay-resource-first)
@@ -245,6 +245,7 @@ Create a new entity with resource
 | options | Object | Optional settings |
 | options.allowReserved | boolean | Arrow to set reserved attributes (like "id") |
 | options.errorNamespace | string | Namespace for error fields |
+| options.waitListeners | boolean | Wait for listeners |
 
 **Example**:
 
@@ -273,6 +274,7 @@ Update an existing entity in resource
 | options | Object | Optional settings |
 | options.allowReserved | boolean | Arrow to set reserved attributes (like "id") |
 | options.errorNamespace | string | Namespace for error fields |
+| options.waitListeners | boolean | Wait for listeners |
 
 **Example**:
 
@@ -289,13 +291,15 @@ tryUpdate()
 
 <a class='md-heading-link' name="clay-resource-class-clay-resource-destroy" ></a>
 
-### resource.destroy(id) -> `Promise.<number>`
+### resource.destroy(id, options) -> `Promise.<number>`
 
 Delete a entity resource
 
 | Param | Type | Description |
 | ----- | --- | -------- |
 | id | ClayId | Resource id |
+| options | Object | Optional settings |
+| options.waitListeners | boolean | Wait for listeners |
 
 **Example**:
 
@@ -309,9 +313,15 @@ tryDestroy()
 
 <a class='md-heading-link' name="clay-resource-class-clay-resource-drop" ></a>
 
-### resource.drop() -> `Promise.<boolean>`
+### resource.drop(options) -> `Promise.<boolean>`
 
 Drop resource
+
+| Param | Type | Description |
+| ----- | --- | -------- |
+| options | Object | Optional settings |
+| options.waitListeners | boolean | Wait for listeners |
+
 **Example**:
 
 ```javascript
@@ -380,6 +390,7 @@ Create multiple resources
 | options | Object | Optional settings |
 | options.allowReserved | boolean | Arrow to set reserved attributes (like "id") |
 | options.errorNamespace | string | Namespace for error fields |
+| options.waitListeners | boolean | Wait for listeners |
 
 **Example**:
 
@@ -407,6 +418,7 @@ Update multiple resources
 | options | Object | Optional settings |
 | options.allowReserved | boolean | Arrow to set reserved attributes (like "id") |
 | options.errorNamespace | string | Namespace for error fields |
+| options.waitListeners | boolean | Wait for listeners |
 
 **Example**:
 
@@ -424,13 +436,14 @@ tryUpdateBulk()
 
 <a class='md-heading-link' name="clay-resource-class-clay-resource-destroyBulk" ></a>
 
-### resource.destroyBulk(ids) -> `Promise.<number>`
+### resource.destroyBulk(ids, options) -> `Promise.<number>`
 
 Update multiple resources
 
 | Param | Type | Description |
 | ----- | --- | -------- |
 | ids | Array.&lt;ClayId&gt; | Ids to destroy |
+| options | Object | Optional settings |
 
 **Example**:
 
@@ -759,6 +772,7 @@ Create a new entity with resource
 | options | Object | Optional settings |
 | options.allowReserved | boolean | Arrow to set reserved attributes (like "id") |
 | options.errorNamespace | string | Namespace for error fields |
+| options.waitListeners | boolean | Wait for listeners |
 
 **Example**:
 
@@ -787,6 +801,7 @@ Update an existing entity in resource
 | options | Object | Optional settings |
 | options.allowReserved | boolean | Arrow to set reserved attributes (like "id") |
 | options.errorNamespace | string | Namespace for error fields |
+| options.waitListeners | boolean | Wait for listeners |
 
 **Example**:
 
@@ -803,13 +818,15 @@ tryUpdate()
 
 <a class='md-heading-link' name="clay-resource-class-clay-resource-destroy" ></a>
 
-### resource.destroy(id) -> `Promise.<number>`
+### resource.destroy(id, options) -> `Promise.<number>`
 
 Delete a entity resource
 
 | Param | Type | Description |
 | ----- | --- | -------- |
 | id | ClayId | Resource id |
+| options | Object | Optional settings |
+| options.waitListeners | boolean | Wait for listeners |
 
 **Example**:
 
@@ -823,9 +840,15 @@ tryDestroy()
 
 <a class='md-heading-link' name="clay-resource-class-clay-resource-drop" ></a>
 
-### resource.drop() -> `Promise.<boolean>`
+### resource.drop(options) -> `Promise.<boolean>`
 
 Drop resource
+
+| Param | Type | Description |
+| ----- | --- | -------- |
+| options | Object | Optional settings |
+| options.waitListeners | boolean | Wait for listeners |
+
 **Example**:
 
 ```javascript
@@ -894,6 +917,7 @@ Create multiple resources
 | options | Object | Optional settings |
 | options.allowReserved | boolean | Arrow to set reserved attributes (like "id") |
 | options.errorNamespace | string | Namespace for error fields |
+| options.waitListeners | boolean | Wait for listeners |
 
 **Example**:
 
@@ -921,6 +945,7 @@ Update multiple resources
 | options | Object | Optional settings |
 | options.allowReserved | boolean | Arrow to set reserved attributes (like "id") |
 | options.errorNamespace | string | Namespace for error fields |
+| options.waitListeners | boolean | Wait for listeners |
 
 **Example**:
 
@@ -938,13 +963,14 @@ tryUpdateBulk()
 
 <a class='md-heading-link' name="clay-resource-class-clay-resource-destroyBulk" ></a>
 
-### resource.destroyBulk(ids) -> `Promise.<number>`
+### resource.destroyBulk(ids, options) -> `Promise.<number>`
 
 Update multiple resources
 
 | Param | Type | Description |
 | ----- | --- | -------- |
 | ids | Array.&lt;ClayId&gt; | Ids to destroy |
+| options | Object | Optional settings |
 
 **Example**:
 

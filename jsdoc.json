@@ -241,6 +241,14 @@
                             "default": "",
                             "optional": true,
                             "nullable": ""
+                        },
+                        {
+                            "name": "options.waitListeners",
+                            "type": "boolean",
+                            "description": "Wait for listeners",
+                            "default": "",
+                            "optional": true,
+                            "nullable": ""
                         }
                     ],
                     "examples": [
@@ -296,6 +304,14 @@
                             "default": "",
                             "optional": true,
                             "nullable": ""
+                        },
+                        {
+                            "name": "options.waitListeners",
+                            "type": "boolean",
+                            "description": "Wait for listeners",
+                            "default": "",
+                            "optional": true,
+                            "nullable": ""
                         }
                     ],
                     "examples": [
@@ -319,6 +335,22 @@
                             "default": "",
                             "optional": "",
                             "nullable": ""
+                        },
+                        {
+                            "name": "options",
+                            "type": "Object",
+                            "description": "Optional settings",
+                            "default": "{}",
+                            "optional": true,
+                            "nullable": ""
+                        },
+                        {
+                            "name": "options.waitListeners",
+                            "type": "boolean",
+                            "description": "Wait for listeners",
+                            "default": "",
+                            "optional": true,
+                            "nullable": ""
                         }
                     ],
                     "examples": [
@@ -334,7 +366,24 @@
                     "access": "",
                     "virtual": false,
                     "description": "Drop resource",
-                    "parameters": [],
+                    "parameters": [
+                        {
+                            "name": "options",
+                            "type": "Object",
+                            "description": "Optional settings",
+                            "default": "{}",
+                            "optional": true,
+                            "nullable": ""
+                        },
+                        {
+                            "name": "options.waitListeners",
+                            "type": "boolean",
+                            "description": "Wait for listeners",
+                            "default": "",
+                            "optional": true,
+                            "nullable": ""
+                        }
+                    ],
                     "examples": [
                         "const Product = lump.resource('Product')\nasync function tryDrop () {\n  await Product.drop()\n}\ntryDrop()"
                     ],
@@ -426,6 +475,14 @@
                             "default": "",
                             "optional": true,
                             "nullable": ""
+                        },
+                        {
+                            "name": "options.waitListeners",
+                            "type": "boolean",
+                            "description": "Wait for listeners",
+                            "default": "",
+                            "optional": true,
+                            "nullable": ""
                         }
                     ],
                     "examples": [
@@ -473,6 +530,14 @@
                             "default": "",
                             "optional": true,
                             "nullable": ""
+                        },
+                        {
+                            "name": "options.waitListeners",
+                            "type": "boolean",
+                            "description": "Wait for listeners",
+                            "default": "",
+                            "optional": true,
+                            "nullable": ""
                         }
                     ],
                     "examples": [
@@ -495,6 +560,14 @@
                             "description": "Ids to destroy",
                             "default": "",
                             "optional": "",
+                            "nullable": ""
+                        },
+                        {
+                            "name": "options",
+                            "type": "Object",
+                            "description": "Optional settings",
+                            "default": "{}",
+                            "optional": true,
                             "nullable": ""
                         }
                     ],
@@ -1085,6 +1158,14 @@
                             "default": "",
                             "optional": true,
                             "nullable": ""
+                        },
+                        {
+                            "name": "options.waitListeners",
+                            "type": "boolean",
+                            "description": "Wait for listeners",
+                            "default": "",
+                            "optional": true,
+                            "nullable": ""
                         }
                     ],
                     "examples": [
@@ -1140,6 +1221,14 @@
                             "default": "",
                             "optional": true,
                             "nullable": ""
+                        },
+                        {
+                            "name": "options.waitListeners",
+                            "type": "boolean",
+                            "description": "Wait for listeners",
+                            "default": "",
+                            "optional": true,
+                            "nullable": ""
                         }
                     ],
                     "examples": [
@@ -1163,6 +1252,22 @@
                             "default": "",
                             "optional": "",
                             "nullable": ""
+                        },
+                        {
+                            "name": "options",
+                            "type": "Object",
+                            "description": "Optional settings",
+                            "default": "{}",
+                            "optional": true,
+                            "nullable": ""
+                        },
+                        {
+                            "name": "options.waitListeners",
+                            "type": "boolean",
+                            "description": "Wait for listeners",
+                            "default": "",
+                            "optional": true,
+                            "nullable": ""
                         }
                     ],
                     "examples": [
@@ -1178,7 +1283,24 @@
                     "access": "",
                     "virtual": false,
                     "description": "Drop resource",
-                    "parameters": [],
+                    "parameters": [
+                        {
+                            "name": "options",
+                            "type": "Object",
+                            "description": "Optional settings",
+                            "default": "{}",
+                            "optional": true,
+                            "nullable": ""
+                        },
+                        {
+                            "name": "options.waitListeners",
+                            "type": "boolean",
+                            "description": "Wait for listeners",
+                            "default": "",
+                            "optional": true,
+                            "nullable": ""
+                        }
+                    ],
                     "examples": [
                         "const Product = lump.resource('Product')\nasync function tryDrop () {\n  await Product.drop()\n}\ntryDrop()"
                     ],
@@ -1270,6 +1392,14 @@
                             "default": "",
                             "optional": true,
                             "nullable": ""
+                        },
+                        {
+                            "name": "options.waitListeners",
+                            "type": "boolean",
+                            "description": "Wait for listeners",
+                            "default": "",
+                            "optional": true,
+                            "nullable": ""
                         }
                     ],
                     "examples": [
@@ -1317,6 +1447,14 @@
                             "default": "",
                             "optional": true,
                             "nullable": ""
+                        },
+                        {
+                            "name": "options.waitListeners",
+                            "type": "boolean",
+                            "description": "Wait for listeners",
+                            "default": "",
+                            "optional": true,
+                            "nullable": ""
                         }
                     ],
                     "examples": [
@@ -1339,6 +1477,14 @@
                             "description": "Ids to destroy",
                             "default": "",
                             "optional": "",
+                            "nullable": ""
+                        },
+                        {
+                            "name": "options",
+                            "type": "Object",
+                            "description": "Optional settings",
+                            "default": "{}",
+                            "optional": true,
                             "nullable": ""
                         }
                     ],
@@ -3007,6 +3153,14 @@
                             "default": "",
                             "optional": true,
                             "nullable": ""
+                        },
+                        {
+                            "name": "options.waitListeners",
+                            "type": "boolean",
+                            "description": "Wait for listeners",
+                            "default": "",
+                            "optional": true,
+                            "nullable": ""
                         }
                     ],
                     "examples": [
@@ -3062,6 +3216,14 @@
                             "default": "",
                             "optional": true,
                             "nullable": ""
+                        },
+                        {
+                            "name": "options.waitListeners",
+                            "type": "boolean",
+                            "description": "Wait for listeners",
+                            "default": "",
+                            "optional": true,
+                            "nullable": ""
                         }
                     ],
                     "examples": [
@@ -3085,6 +3247,22 @@
                             "default": "",
                             "optional": "",
                             "nullable": ""
+                        },
+                        {
+                            "name": "options",
+                            "type": "Object",
+                            "description": "Optional settings",
+                            "default": "{}",
+                            "optional": true,
+                            "nullable": ""
+                        },
+                        {
+                            "name": "options.waitListeners",
+                            "type": "boolean",
+                            "description": "Wait for listeners",
+                            "default": "",
+                            "optional": true,
+                            "nullable": ""
                         }
                     ],
                     "examples": [
@@ -3100,7 +3278,24 @@
                     "access": "",
                     "virtual": false,
                     "description": "Drop resource",
-                    "parameters": [],
+                    "parameters": [
+                        {
+                            "name": "options",
+                            "type": "Object",
+                            "description": "Optional settings",
+                            "default": "{}",
+                            "optional": true,
+                            "nullable": ""
+                        },
+                        {
+                            "name": "options.waitListeners",
+                            "type": "boolean",
+                            "description": "Wait for listeners",
+                            "default": "",
+                            "optional": true,
+                            "nullable": ""
+                        }
+                    ],
                     "examples": [
                         "const Product = lump.resource('Product')\nasync function tryDrop () {\n  await Product.drop()\n}\ntryDrop()"
                     ],
@@ -3192,6 +3387,14 @@
                             "default": "",
                             "optional": true,
                             "nullable": ""
+                        },
+                        {
+                            "name": "options.waitListeners",
+                            "type": "boolean",
+                            "description": "Wait for listeners",
+                            "default": "",
+                            "optional": true,
+                            "nullable": ""
                         }
                     ],
                     "examples": [
@@ -3239,6 +3442,14 @@
                             "default": "",
                             "optional": true,
                             "nullable": ""
+                        },
+                        {
+                            "name": "options.waitListeners",
+                            "type": "boolean",
+                            "description": "Wait for listeners",
+                            "default": "",
+                            "optional": true,
+                            "nullable": ""
                         }
                     ],
                     "examples": [
@@ -3261,6 +3472,14 @@
                             "description": "Ids to destroy",
                             "default": "",
                             "optional": "",
+                            "nullable": ""
+                        },
+                        {
+                            "name": "options",
+                            "type": "Object",
+                            "description": "Optional settings",
+                            "default": "{}",
+                            "optional": true,
                             "nullable": ""
                         }
                     ],
@@ -3851,6 +4070,14 @@
                             "default": "",
                             "optional": true,
                             "nullable": ""
+                        },
+                        {
+                            "name": "options.waitListeners",
+                            "type": "boolean",
+                            "description": "Wait for listeners",
+                            "default": "",
+                            "optional": true,
+                            "nullable": ""
                         }
                     ],
                     "examples": [
@@ -3906,6 +4133,14 @@
                             "default": "",
                             "optional": true,
                             "nullable": ""
+                        },
+                        {
+                            "name": "options.waitListeners",
+                            "type": "boolean",
+                            "description": "Wait for listeners",
+                            "default": "",
+                            "optional": true,
+                            "nullable": ""
                         }
                     ],
                     "examples": [
@@ -3929,6 +4164,22 @@
                             "default": "",
                             "optional": "",
                             "nullable": ""
+                        },
+                        {
+                            "name": "options",
+                            "type": "Object",
+                            "description": "Optional settings",
+                            "default": "{}",
+                            "optional": true,
+                            "nullable": ""
+                        },
+                        {
+                            "name": "options.waitListeners",
+                            "type": "boolean",
+                            "description": "Wait for listeners",
+                            "default": "",
+                            "optional": true,
+                            "nullable": ""
                         }
                     ],
                     "examples": [
@@ -3944,7 +4195,24 @@
                     "access": "",
                     "virtual": false,
                     "description": "Drop resource",
-                    "parameters": [],
+                    "parameters": [
+                        {
+                            "name": "options",
+                            "type": "Object",
+                            "description": "Optional settings",
+                            "default": "{}",
+                            "optional": true,
+                            "nullable": ""
+                        },
+                        {
+                            "name": "options.waitListeners",
+                            "type": "boolean",
+                            "description": "Wait for listeners",
+                            "default": "",
+                            "optional": true,
+                            "nullable": ""
+                        }
+                    ],
                     "examples": [
                         "const Product = lump.resource('Product')\nasync function tryDrop () {\n  await Product.drop()\n}\ntryDrop()"
                     ],
@@ -4036,6 +4304,14 @@
                             "default": "",
                             "optional": true,
                             "nullable": ""
+                        },
+                        {
+                            "name": "options.waitListeners",
+                            "type": "boolean",
+                            "description": "Wait for listeners",
+                            "default": "",
+                            "optional": true,
+                            "nullable": ""
                         }
                     ],
                     "examples": [
@@ -4083,6 +4359,14 @@
                             "default": "",
                             "optional": true,
                             "nullable": ""
+                        },
+                        {
+                            "name": "options.waitListeners",
+                            "type": "boolean",
+                            "description": "Wait for listeners",
+                            "default": "",
+                            "optional": true,
+                            "nullable": ""
                         }
                     ],
                     "examples": [
@@ -4105,6 +4389,14 @@
                             "description": "Ids to destroy",
                             "default": "",
                             "optional": "",
+                            "nullable": ""
+                        },
+                        {
+                            "name": "options",
+                            "type": "Object",
+                            "description": "Optional settings",
+                            "default": "{}",
+                            "optional": true,
                             "nullable": ""
                         }
                     ],
