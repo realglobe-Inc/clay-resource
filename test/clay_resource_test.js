@@ -7,6 +7,17 @@
 const ClayResource = require('../lib/clay_resource.js')
 const {ok, equal, deepEqual} = require('assert')
 const {MemoryDriver} = require('clay-driver-memory')
+const {
+  ENTITY_CREATE,
+  ENTITY_CREATE_BULK,
+  ENTITY_UPDATE,
+  ENTITY_UPDATE_BULK,
+  ENTITY_DESTROY,
+  ENTITY_DESTROY_BULK,
+  ENTITY_DROP,
+  INVALIDATE,
+  INVALIDATE_BULK,
+} = require('../lib/resource_events')
 
 describe('clay-resource', function () {
   this.timeout(30000)
@@ -79,10 +90,31 @@ describe('clay-resource', function () {
     class UserResource extends ClayResource {
     }
 
-    let driver = new MemoryDriver()
-    let userResource = UserResource.fromDriver(driver, 'User')
-    let user = await userResource.create({name: 'foo'})
+    const driver = new MemoryDriver()
+    const userResource = UserResource.fromDriver(driver, 'User')
+    const user = await userResource.create({name: 'foo'})
     equal(user.name, 'foo')
+  })
+
+  it('Emit', async () => {
+    class UserResource extends ClayResource {
+    }
+
+    const driver = new MemoryDriver()
+    const userResource = UserResource.fromDriver(driver, 'User')
+    const createEvents = []
+    const updateEvents = []
+    userResource.on(ENTITY_CREATE, ({created}) => {
+      createEvents.push(created)
+    })
+    userResource.on(ENTITY_UPDATE, (updated) => {
+      updateEvents.push(updated)
+    })
+    const user = await userResource.create({name: 'foo'})
+    equal(user.name, 'foo')
+    await user.update({name: 'foo2'})
+    equal(createEvents.length, 1)
+    equal(updateEvents.length, 1)
   })
 
   // https://github.com/realglobe-Inc/claydb/issues/16
