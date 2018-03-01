@@ -104,11 +104,11 @@ describe('clay-resource', function () {
     const userResource = UserResource.fromDriver(driver, 'User')
     const createEvents = []
     const updateEvents = []
-    userResource.on(ENTITY_CREATE, ({created}) => {
-      createEvents.push(created)
+    userResource.on(ENTITY_CREATE, (d) => {
+      createEvents.push(d)
     })
-    userResource.on(ENTITY_UPDATE, (updated) => {
-      updateEvents.push(updated)
+    userResource.on(ENTITY_UPDATE, (d) => {
+      updateEvents.push(d)
     })
     const user = await userResource.create({name: 'foo'})
     equal(user.name, 'foo')

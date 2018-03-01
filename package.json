@@ -37,7 +37,8 @@
     "clay-resource-name": "^4.0.3",
     "clay-resource-ref": "^2.0.2",
     "clay-schemas": "^4.0.5",
-    "objnest": "^4.1.2"
+    "objnest": "^4.1.2",
+    "uuid": "^3.2.1"
   },
   "devDependencies": {
     "ababel": "^4.0.7",
