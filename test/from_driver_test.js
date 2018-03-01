@@ -17,7 +17,7 @@ const {generate: generateKeys, verify} = require('clay-crypto')
 const {DataTypes} = clayPolicy
 
 describe('from-driver', function () {
-  this.timeout(30000)
+  this.timeout(300000)
 
   before(async () => {
 
