@@ -225,7 +225,7 @@ To define custom resource,  extends `ClayResource` class and use `.fromDriver()`
 ```javascript
 'use strict'
 
-const { ClayResource } = require('clay-resource')
+const {ClayResource} = require('clay-resource')
 const clayDriverMemory = require('clay-driver-memory')
 
 // Extends ClayResource class
@@ -233,13 +233,13 @@ class UserResource extends ClayResource {
   /* ... */
 }
 
-{
-  let driver = clayDriverMemory()
-  let userResource = UserResource.fromDriver(driver, 'User')
+void async function () {
+  const driver = clayDriverMemory()
+  const userResource = UserResource.fromDriver(driver, 'User')
 
-  let user = yield userResource.create({ name: 'Taka Okunishi' })
+  const user = await userResource.create({name: 'Taka Okunishi'})
   /* ... */
-}
+}()
 
 
 ```
@@ -254,7 +254,7 @@ class UserResource extends ClayResource {
 API Guide
 -----
 
-+ [clay-resource@5.5.6](./doc/api/api.md)
++ [clay-resource@5.5.7](./doc/api/api.md)
   + [create(args)](./doc/api/api.md#clay-resource-function-create)
   + [fromDriver(driver, nameString, options)](./doc/api/api.md#clay-resource-function-from-driver)
   + [ClayResource](./doc/api/api.md#clay-resource-class)
