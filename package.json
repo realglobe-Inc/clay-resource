@@ -30,7 +30,7 @@
     "clay-driver-base": "^4.1.1",
     "clay-entity": "^2.1.4",
     "clay-errors": "^3.1.1",
-    "clay-policy": "^2.1.7",
+    "clay-policy": "^2.1.8",
     "clay-resource-cache": "^2.0.1",
     "clay-resource-collection": "^2.0.3",
     "clay-resource-entity": "^2.6.2",
