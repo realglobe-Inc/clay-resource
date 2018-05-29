@@ -757,6 +757,8 @@ describe('from-driver', function () {
   it('First/last method', async () => {
     const driver = clayDriverMemory()
     const A = fromDriver(driver, 'A')
+    equal(await A.first(), null)
+    equal(await A.last(), null)
     for (let i = 0; i < 100; i++) {
       await A.create({i})
     }
