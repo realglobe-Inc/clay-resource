@@ -7,6 +7,7 @@
 const ClayResource = require('../lib/clay_resource.js')
 const {ok, equal, deepEqual} = require('assert')
 const {MemoryDriver} = require('clay-driver-memory')
+const {SqliteDriver} = require('clay-driver-sqlite')
 const {
   ENTITY_CREATE,
   ENTITY_CREATE_BULK,
@@ -18,6 +19,7 @@ const {
   INVALIDATE,
   INVALIDATE_BULK,
 } = require('../lib/resource_events')
+const leakage = require('leakage')
 
 describe('clay-resource', function () {
   this.timeout(30000)
@@ -130,6 +132,21 @@ describe('clay-resource', function () {
 
     const users = await userResource.all({i: {$gt: 10}})
     equal(users.length, 109)
+  })
+
+  it('Check memory leak', async () => {
+
+    return // FIXME Remove
+
+    class UserResource extends ClayResource {
+    }
+
+    const driver = new MemoryDriver()
+    const userResource = UserResource.fromDriver(driver, 'User')
+    await leakage.iterate.async(async () => {
+      await userResource.create({a: 1})
+    })
+    await driver.close()
   })
 })
 
