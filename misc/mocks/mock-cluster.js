@@ -64,7 +64,7 @@ const rimraf = require('rimraf')
       console.log(`ENTITY_CREATE_BULK on ${WORKER_NAME}: "${created.map(({name}) => name)}"`)
     })
 
-    asleep(200)
+    await asleep(200)
 
     switch (WORKER_NAME) {
       case 'worker01':
