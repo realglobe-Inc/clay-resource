@@ -748,10 +748,13 @@ describe('from-driver', function () {
     const forked = fork(
       require.resolve('../misc/mocks/mock-cluster')
     )
+    forked.on('error', (e) => {throw e})
 
     await asleep(6000)
 
     forked.kill()
+
+    await asleep(300)
   })
 
   it('First/last method', async () => {
