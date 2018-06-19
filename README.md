@@ -254,7 +254,7 @@ void async function () {
 API Guide
 -----
 
-+ [clay-resource@5.5.17](./doc/api/api.md)
++ [clay-resource@5.5.18](./doc/api/api.md)
   + [create(args)](./doc/api/api.md#clay-resource-function-create)
   + [fromDriver(driver, nameString, options)](./doc/api/api.md#clay-resource-function-from-driver)
   + [ClayResource](./doc/api/api.md#clay-resource-class)
