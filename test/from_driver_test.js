@@ -707,6 +707,16 @@ describe('from-driver', function () {
       console.log(box.contents.ball)
       equal(String(box.contents.ball.id), String(ball01.id))
     }
+    await Box.drop()
+    await Ball.drop()
+    {
+      const box01 = await Box.create({name: 'box01'})
+      const ball12 = await Ball.create({name: 'box12'})
+      const ball11 = await Ball.create({name: 'box11', box: box01})
+      const ball13 = await Ball.create({name: 'box13', box: null})
+      equal(await Ball.count(), 3)
+      equal(await Ball.count({box: box01}), 1)
+    }
 
     await driver.close()
   })
