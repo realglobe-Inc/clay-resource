@@ -44,13 +44,13 @@ describe('from-driver', function () {
 
     let {id} = created
 
-    let one = await resource.one(id)
+    const one = await resource.one(id)
     equal(one.foo, 'bar')
     equal(String(one.id), String(id))
 
     await asleep(10)
 
-    let updated = await resource.update(id, {foo2: 'bar2'})
+    const updated = await resource.update(id, {foo2: 'bar2'})
     ok(updated)
     equal(updated.foo, 'bar')
     equal(updated.foo2, 'bar2')
@@ -60,9 +60,14 @@ describe('from-driver', function () {
     ok(first)
     ok(first.foo2, 'bar2')
 
-    let only = await resource.only({foo2: 'bar2'})
+    await resource.create({})
+    const only = await resource.only({foo2: 'bar2'})
     ok(only)
     ok(only.foo2, 'bar2')
+
+    console.log(
+      await resource.only().catch((e) => e)
+    )
 
     await resource.destroy(id)
 
