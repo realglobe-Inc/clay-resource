@@ -1,4 +1,4 @@
-# clay-resource@5.5.22
+# clay-resource@5.5.23
 
 Resource accessor for ClayDB
 
@@ -13,7 +13,7 @@ Resource accessor for ClayDB
   + [resource.update(id, attributes, options)](#clay-resource-class-clay-resource-update)
   + [resource.destroy(id, options)](#clay-resource-class-clay-resource-destroy)
   + [resource.drop(options)](#clay-resource-class-clay-resource-drop)
-  + [resource.oneBulk(ids)](#clay-resource-class-clay-resource-oneBulk)
+  + [resource.oneBulk(ids, options)](#clay-resource-class-clay-resource-oneBulk)
   + [resource.listBulk(conditionArray)](#clay-resource-class-clay-resource-listBulk)
   + [resource.createBulk(attributesArray, options)](#clay-resource-class-clay-resource-createBulk)
   + [resource.updateBulk(attributesHash, options)](#clay-resource-class-clay-resource-updateBulk)
@@ -311,13 +311,14 @@ tryDrop()
 
 <a class='md-heading-link' name="clay-resource-class-clay-resource-oneBulk" ></a>
 
-### resource.oneBulk(ids) -> `Promise.<Object.<ClayId, Entity>>`
+### resource.oneBulk(ids, options) -> `Promise.<Object.<ClayId, Entity>>`
 
 One as bulk
 
 | Param | Type | Description |
 | ----- | --- | -------- |
 | ids | Array.&lt;ClayId&gt; | Resource ids |
+| options | Object | Optional settings |
 
 **Example**:
 

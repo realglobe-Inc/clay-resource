@@ -405,6 +405,14 @@
                             "default": "",
                             "optional": "",
                             "nullable": ""
+                        },
+                        {
+                            "name": "options",
+                            "type": "Object",
+                            "description": "Optional settings",
+                            "default": "{}",
+                            "optional": true,
+                            "nullable": ""
                         }
                     ],
                     "examples": [
