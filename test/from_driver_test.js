@@ -7,14 +7,14 @@
 const fromDriver = require('../lib/from_driver.js')
 const clayDriverMemory = require('clay-driver-memory')
 const clayDriverSqlite = require('clay-driver-sqlite')
-const {decorate} = require('clay-entity')
-const {ok, equal, strictEqual, deepEqual} = require('assert')
+const { decorate } = require('clay-entity')
+const { ok, equal, strictEqual, deepEqual } = require('assert')
 const asleep = require('asleep')
 const clayPolicy = require('clay-policy')
-const {refTo} = require('clay-resource-ref')
-const {generate: generateKeys, verify} = require('clay-crypto')
+const { refTo } = require('clay-resource-ref')
+const { generate: generateKeys, verify } = require('clay-crypto')
 
-const {DataTypes} = clayPolicy
+const { DataTypes } = clayPolicy
 
 describe('from-driver', function () {
   this.timeout(30000)
@@ -29,20 +29,20 @@ describe('from-driver', function () {
 
   it('From driver', async () => {
     let driver = clayDriverMemory()
-    let resource = fromDriver(driver, 'hogehoge', {annotates: true})
+    let resource = fromDriver(driver, 'hogehoge', { annotates: true })
 
-    ok(!(await resource.exists({foo: 'bar'})))
+    ok(!(await resource.exists({ foo: 'bar' })))
 
-    let created = await resource.create({foo: 'bar'})
+    let created = await resource.create({ foo: 'bar' })
     ok(created)
     ok(created.id)
     ok(created.$$at)
 
-    ok(await resource.exists({foo: 'bar'}))
+    ok(await resource.exists({ foo: 'bar' }))
 
     equal(await resource.count(), 1)
 
-    let {id} = created
+    let { id } = created
 
     const one = await resource.one(id)
     equal(one.foo, 'bar')
@@ -50,18 +50,18 @@ describe('from-driver', function () {
 
     await asleep(10)
 
-    const updated = await resource.update(id, {foo2: 'bar2'})
+    const updated = await resource.update(id, { foo2: 'bar2' })
     ok(updated)
     equal(updated.foo, 'bar')
     equal(updated.foo2, 'bar2')
     ok(updated.$$at > created.$$at)
 
-    let first = await resource.first({foo2: 'bar2'})
+    let first = await resource.first({ foo2: 'bar2' })
     ok(first)
     ok(first.foo2, 'bar2')
 
     await resource.create({})
-    const only = await resource.only({foo2: 'bar2'})
+    const only = await resource.only({ foo2: 'bar2' })
     ok(only)
     ok(only.foo2, 'bar2')
 
@@ -75,7 +75,7 @@ describe('from-driver', function () {
     {
       let hogeResource = resource.sub('hoge')
       ok(hogeResource)
-      await hogeResource.create({fooSub: 'barSub'})
+      await hogeResource.create({ fooSub: 'barSub' })
 
       strictEqual(resource.sub('hoge'), resource.sub('hoge'), 'Using cache')
 
@@ -99,9 +99,9 @@ describe('from-driver', function () {
     let driver = clayDriverMemory()
     let resource = fromDriver(driver, 'hogehoge').annotates(false)
 
-    let created = await resource.create({foo: 'bar'})
+    let created = await resource.create({ foo: 'bar' })
 
-    let {id} = created
+    let { id } = created
 
     let one = await resource.one(id)
     equal(one.foo, 'bar')
@@ -120,7 +120,7 @@ describe('from-driver', function () {
       equal(caught.message, '[Clay][hogehoge] id is required')
     }
 
-    const updated = await resource.update(id, {foo2: 'bar2'})
+    const updated = await resource.update(id, { foo2: 'bar2' })
     ok(updated)
     equal(updated.foo, 'bar')
     equal(updated.foo2, 'bar2')
@@ -130,19 +130,19 @@ describe('from-driver', function () {
 
     // Bulk
     {
-      let [created] = await resource.createBulk([{foo: 'bar'}])
+      let [created] = await resource.createBulk([{ foo: 'bar' }])
       ok(created)
       ok(created.id)
       ok(!created.$$at)
 
-      let {id} = created
+      let { id } = created
       let one = (await resource.oneBulk([id]))[id]
       equal(one.foo, 'bar')
       equal(String(one.id), String(created.id))
 
       await asleep(10)
 
-      let updated = (await resource.updateBulk({[id]: {foo2: 'bar2'}}))[id]
+      let updated = (await resource.updateBulk({ [id]: { foo2: 'bar2' } }))[id]
       ok(updated)
       equal(updated.foo, 'bar')
       equal(updated.foo2, 'bar2')
@@ -158,21 +158,21 @@ describe('from-driver', function () {
 
   it('From driver bulk', async () => {
     let driver = clayDriverMemory()
-    let resource = fromDriver(driver, 'hogehoge', {annotate: true})
+    let resource = fromDriver(driver, 'hogehoge', { annotate: true })
 
-    let [created] = await resource.createBulk([{foo: 'bar'}])
+    let [created] = await resource.createBulk([{ foo: 'bar' }])
     ok(created)
     ok(created.id)
     ok(created.$$at)
 
-    let {id} = created
+    let { id } = created
     let one = (await resource.oneBulk([id]))[id]
     equal(one.foo, 'bar')
     equal(String(one.id), String(created.id))
 
     await asleep(10)
 
-    let updated = (await resource.updateBulk({[id]: {foo2: 'bar2'}}))[id]
+    let updated = (await resource.updateBulk({ [id]: { foo2: 'bar2' } }))[id]
     ok(updated)
     equal(updated.foo, 'bar')
     equal(updated.foo2, 'bar2')
@@ -185,11 +185,11 @@ describe('from-driver', function () {
   it('From driver seal', async () => {
     let driver = clayDriverMemory()
     let resource = fromDriver(driver, 'hogehoge').clone().annotates(true)
-    let created = await resource.create({foo: 'bar'})
-    let {id} = created
+    let created = await resource.create({ foo: 'bar' })
+    let { id } = created
 
-    let {privateKey, publicKey} = generateKeys()
-    await resource.seal(privateKey, {by: 'foo!'})
+    let { privateKey, publicKey } = generateKeys()
+    await resource.seal(privateKey, { by: 'foo!' })
 
     let one = await resource.one(id)
     ok(one.$$seal)
@@ -205,10 +205,10 @@ describe('from-driver', function () {
     let driver = clayDriverMemory()
     let Org = fromDriver(driver, 'Org')
     let User = fromDriver(driver, 'User').refs(Org)
-    let org01 = await Org.create({name: 'org01'})
+    let org01 = await Org.create({ name: 'org01' })
     let user01 = await User.create({
       name: 'user01',
-      org: {$ref: refTo(Org, org01.id)}
+      org: { $ref: refTo(Org, org01.id) }
     })
     equal(user01.org.name, 'org01')
     let user02 = await User.create({
@@ -222,14 +222,14 @@ describe('from-driver', function () {
     let Team = fromDriver(driver, 'Team').refs(User)
     let team01 = await Team.create({
       name: 'Team01',
-      users: [{$ref: refTo(User, user01.id)}]
+      users: [{ $ref: refTo(User, user01.id) }]
     })
     ok(team01)
     equal(team01.users[0].name, 'user01')
   })
 
   it('Policy check', async () => {
-    const {STRING, DATE} = clayPolicy.DataTypes
+    const { STRING, DATE } = clayPolicy.DataTypes
     const driver = clayDriverMemory()
     const User = fromDriver(driver, 'User')
 
@@ -265,7 +265,7 @@ describe('from-driver', function () {
         await User.create({
           username: 'hoge',
           rank: 'SUPER'
-        }, {errorNamespace: 'joined'})
+        }, { errorNamespace: 'joined' })
       } catch (thrown) {
         caught = thrown
       }
@@ -275,23 +275,23 @@ describe('from-driver', function () {
     deepEqual(caught.detail.failures.rank, {
       reason: 'UNEXPECTED_VALUE_ERROR',
       actual: 'SUPER',
-      expects: {oneOf: ['GOLD', 'SLIVER', 'BRONZE']}
+      expects: { oneOf: ['GOLD', 'SLIVER', 'BRONZE'] }
     })
 
-    let user02 = await User.create({username: '  hoge  '})
+    let user02 = await User.create({ username: '  hoge  ' })
     equal(user02.username, 'hoge', 'Should be trimmed')
 
     {
-      await user02.update({v: 2})
+      await user02.update({ v: 2 })
     }
   })
 
   it('of', async () => {
     let driver = clayDriverMemory()
     let Product = fromDriver(driver, 'Product')
-    let product01 = await Product.of({code: '#1234'})
+    let product01 = await Product.of({ code: '#1234' })
     equal(product01.code, '#1234')
-    let product02 = await Product.of({code: '#1234'})
+    let product02 = await Product.of({ code: '#1234' })
     equal(String(product01).id, String(product02).id)
     await Product.drop()
   })
@@ -305,19 +305,19 @@ describe('from-driver', function () {
         unique: true
       }
     })
-    await Fruit.create({name: null})
-    await Fruit.create({name: null})
-    await Fruit.create({name: 'banana'})
+    await Fruit.create({ name: null })
+    await Fruit.create({ name: null })
+    await Fruit.create({ name: 'banana' })
     let caught
     try {
-      await Fruit.create({name: 'banana'})
+      await Fruit.create({ name: 'banana' })
     } catch (thrown) {
       caught = thrown
     }
     ok(caught)
 
-    await Fruit.create({name: 'orange'})
-    await Fruit.create({name: 'apple'})
+    await Fruit.create({ name: 'orange' })
+    await Fruit.create({ name: 'apple' })
     await Fruit.drop()
   })
 
@@ -330,7 +330,7 @@ describe('from-driver', function () {
         default: 'Wood'
       }
     })
-    let toyBox = await Box.create({name: 'toy'})
+    let toyBox = await Box.create({ name: 'toy' })
     equal(toyBox.type, 'Wood')
     Box.policy({
       type: {
@@ -338,9 +338,9 @@ describe('from-driver', function () {
         default: 'Steal'
       }
     })
-    let toyBox2 = await Box.update(toyBox.id, {name: 'toy2'})
+    let toyBox2 = await Box.update(toyBox.id, { name: 'toy2' })
     equal(toyBox2.type, 'Wood')
-    let toyBox3 = await Box.create({name: 'toy3'})
+    let toyBox3 = await Box.create({ name: 'toy3' })
     equal(toyBox3.type, 'Steal')
   })
 
@@ -363,8 +363,8 @@ describe('from-driver', function () {
     let driver = clayDriverMemory()
     let Fruit = fromDriver(driver, 'Fruit')
 
-    let orange01 = await Fruit.create({name: 'orange'})
-    let banana01 = await Fruit.create({name: 'banana'})
+    let orange01 = await Fruit.create({ name: 'orange' })
+    let banana01 = await Fruit.create({ name: 'banana' })
 
     await Fruit.one(orange01.id)
     await Fruit.one(orange01.id)
@@ -372,7 +372,7 @@ describe('from-driver', function () {
     await Fruit.one(banana01.id)
     equal(Fruit._resourceCache.size, 2)
 
-    await Fruit.update(orange01.id, {vr: 2})
+    await Fruit.update(orange01.id, { vr: 2 })
     equal(Fruit._resourceCache.size, 1)
     let orange01Again = await Fruit.one(orange01.id)
     equal(orange01Again.vr, 2)
@@ -395,20 +395,20 @@ describe('from-driver', function () {
       Org.refs(User)
       User.refs(Org)
 
-      const org01 = await Org.create({name: 'org01'})
-      const org02 = await Org.create({name: 'org02'})
-      await User.create({name: 'user01', org: org01})
-      await User.create({name: 'user02', org: org02})
+      const org01 = await Org.create({ name: 'org01' })
+      const org02 = await Org.create({ name: 'org02' })
+      await User.create({ name: 'user01', org: org01 })
+      await User.create({ name: 'user02', org: org02 })
 
       const org01onceJSON = JSON.parse(JSON.stringify(org01))
-      const {meta, entities, demand} = await User.list({filter: {org: org01onceJSON}})
+      const { meta, entities, demand } = await User.list({ filter: { org: org01onceJSON } })
       equal(meta.length, 1)
       const [user] = entities
       equal(user.name, 'user01')
       equal(demand.filter.org.$ref, `Org#${org01.id}`)
 
       {
-        let [{meta, entities, demand}] = await User.listBulk([{filter: {org: org01}}])
+        let [{ meta, entities, demand }] = await User.listBulk([{ filter: { org: org01 } }])
         equal(meta.length, 1)
         let [user] = entities
         equal(user.name, 'user01')
@@ -425,12 +425,12 @@ describe('from-driver', function () {
     Toy.refs(House)
     House.refs(Toy)
 
-    let house01 = await House.create({name: 'house01'})
+    let house01 = await House.create({ name: 'house01' })
 
-    let toy01 = await Toy.create({name: 'toy01', house: house01})
-    let toy02 = await Toy.create({name: 'toy02', house: house01})
+    let toy01 = await Toy.create({ name: 'toy01', house: house01 })
+    let toy02 = await Toy.create({ name: 'toy02', house: house01 })
 
-    await House.update(house01.id, {toys: [toy01, toy02]})
+    await House.update(house01.id, { toys: [toy01, toy02] })
 
     let house01Again = await House.one(house01.id)
     equal(house01Again.toys[0].house.$ref, `House#${house01.id}`)
@@ -446,9 +446,9 @@ describe('from-driver', function () {
     let User = fromDriver(driver, 'User')
     Org.refs(User)
     User.refs(Org)
-    let realglobe = await Org.create({name: 'realglobe'})
+    let realglobe = await Org.create({ name: 'realglobe' })
     let realglobeObj = Object(realglobe)
-    let user = await User.create({name: 'fuji', org: realglobeObj})
+    let user = await User.create({ name: 'fuji', org: realglobeObj })
     ok(user.org.$$entity)
   })
 
@@ -458,7 +458,7 @@ describe('from-driver', function () {
     let User = fromDriver(driver, 'User')
     Org.refs(User)
     User.refs(Org)
-    let org01 = await Org.create({name: 'FantasticPark'})
+    let org01 = await Org.create({ name: 'FantasticPark' })
     let user01 = await User.create({
       name: 'Rider01',
       org: {
@@ -472,9 +472,9 @@ describe('from-driver', function () {
   it('Convert id', async () => {
     let driver = clayDriverMemory()
     let User = fromDriver(driver, 'User')
-    let user01 = await User.create({name: 'Rider01'})
+    let user01 = await User.create({ name: 'Rider01' })
 
-    await User.update(user01, {name: 'Updated Rider01'})
+    await User.update(user01, { name: 'Updated Rider01' })
 
     equal((await User.one(user01)).name, 'Updated Rider01')
 
@@ -486,15 +486,15 @@ describe('from-driver', function () {
   it('Using entity bind', async () => {
     const driver = clayDriverMemory()
     let User = fromDriver(driver, 'User')
-    let user01 = await User.create({name: 'Rider01'})
+    let user01 = await User.create({ name: 'Rider01' })
     ok(user01.update)
     ok(user01.destroy)
     ok(Object.assign({}, user01).name)
     ok(!Object.assign({}, user01).update)
     ok(!Object.assign({}, user01).destroy)
 
-    await user01.update({version: 2})
-    await User.update(user01, {foo: 'bar'})
+    await user01.update({ version: 2 })
+    await User.update(user01, { foo: 'bar' })
     await user01.sync()
     equal(user01.foo, 'bar')
     equal(user01.version, 2)
@@ -506,7 +506,7 @@ describe('from-driver', function () {
     {
       let caught
       try {
-        await user01.update({foo: 'bar'})
+        await user01.update({ foo: 'bar' })
       } catch (e) {
         caught = e
       }
@@ -519,14 +519,14 @@ describe('from-driver', function () {
   it('Use strict options', async () => {
     const driver = clayDriverMemory()
     let User = fromDriver(driver, 'User')
-    let user01 = await User.create({name: 'Rider01'})
-    await User.one(user01.id, {strict: false})
-    await User.one(user01.id, {strict: true})
+    let user01 = await User.create({ name: 'Rider01' })
+    await User.one(user01.id, { strict: false })
+    await User.one(user01.id, { strict: true })
 
-    await User.one('__invalid_id__', {strict: false})
+    await User.one('__invalid_id__', { strict: false })
     let caught
     try {
-      await User.one('__invalid_id__', {strict: true})
+      await User.one('__invalid_id__', { strict: true })
     } catch (e) {
       caught = e
     }
@@ -543,8 +543,8 @@ describe('from-driver', function () {
     Org.refs(User)
     User.refs(Org)
 
-    const org01 = await Org.create({name: 'org01'})
-    const org02 = await Org.create({name: 'org02'})
+    const org01 = await Org.create({ name: 'org01' })
+    const org02 = await Org.create({ name: 'org02' })
     for (let i = 0; i < 102; i++) {
       await User.create({
         name: `user-${i}`,
@@ -552,7 +552,7 @@ describe('from-driver', function () {
         org: i % 2 === 0 ? org01 : org02
       })
     }
-    let users = await User.list({filter: {group: 'green'}, page: {number: 1, size: '25'}})
+    let users = await User.list({ filter: { group: 'green' }, page: { number: 1, size: '25' } })
     let counts = []
     while (users.hasNext) {
       counts.push(users.meta)
@@ -560,9 +560,9 @@ describe('from-driver', function () {
     }
     counts.push(users.meta)
     deepEqual(counts, [
-      {offset: 0, limit: 25, length: 25, total: 51},
-      {offset: 25, limit: 25, length: 25, total: 51},
-      {offset: 50, limit: 25, length: 1, total: 51}
+      { offset: 0, limit: 25, length: 25, total: 51 },
+      { offset: 25, limit: 25, length: 25, total: 51 },
+      { offset: 50, limit: 25, length: 1, total: 51 }
     ])
 
     {
@@ -570,12 +570,12 @@ describe('from-driver', function () {
       await User.each((user) => {
         ok(user.org)
         eachUsers.push(user)
-      }, {filter: {org: org01}})
+      }, { filter: { org: org01 } })
       equal(eachUsers.length, 51)
     }
 
     {
-      equal((await User.count({org: org01})), 51)
+      equal((await User.count({ org: org01 })), 51)
     }
 
     await driver.close()
@@ -587,13 +587,13 @@ describe('from-driver', function () {
     User.enhanceResourceEntity((UserEntity) =>
       class EnhancedUserEntity extends UserEntity {
         get fullName () {
-          let {familyName, firstName} = this
+          let { familyName, firstName } = this
           return [firstName, familyName].filter(Boolean).join(' ')
         }
       }
     )
 
-    let user01 = await User.create({firstName: 'Taka', familyName: 'Okunishi'})
+    let user01 = await User.create({ firstName: 'Taka', familyName: 'Okunishi' })
     equal(user01.fullName, 'Taka Okunishi')
 
     await driver.close()
@@ -605,7 +605,7 @@ describe('from-driver', function () {
     User.enhanceResourceCollection((UserCollection) =>
       class EnhancedUserCollection extends UserCollection {
         nextOne () {
-          let {demand, page} = this
+          let { demand, page } = this
           return User.first(demand.filter, {
             sort: demand.sort,
             skip: page.size * page.number
@@ -614,9 +614,9 @@ describe('from-driver', function () {
       }
     )
 
-    await User.create({name: 'user01'})
-    await User.create({name: 'user02'})
-    await User.create({name: 'user03'})
+    await User.create({ name: 'user01' })
+    await User.create({ name: 'user02' })
+    await User.create({ name: 'user03' })
 
     let users = await User.list({
       page: {
@@ -664,7 +664,7 @@ describe('from-driver', function () {
     const driver = clayDriverMemory()
     const Ball = fromDriver(driver, 'Ball')
 
-    let created = await Ball.create({id: 1}, {allowReserved: true})
+    let created = await Ball.create({ id: 1 }, { allowReserved: true })
     strictEqual(String(created.id), '1')
 
     await driver.close()
@@ -700,7 +700,7 @@ describe('from-driver', function () {
     await Ball.drop()
     await Box.drop()
 
-    const ball01 = await Ball.create({name: 'ball01'})
+    const ball01 = await Ball.create({ name: 'ball01' })
     await Box.create({
       name: 'box01',
       contents: {
@@ -715,12 +715,12 @@ describe('from-driver', function () {
     await Box.drop()
     await Ball.drop()
     {
-      const box01 = await Box.create({name: 'box01'})
-      const ball12 = await Ball.create({name: 'box12'})
-      const ball11 = await Ball.create({name: 'box11', box: box01})
-      const ball13 = await Ball.create({name: 'box13', box: null})
+      const box01 = await Box.create({ name: 'box01' })
+      const ball12 = await Ball.create({ name: 'box12' })
+      const ball11 = await Ball.create({ name: 'box11', box: box01 })
+      const ball13 = await Ball.create({ name: 'box13', box: null })
       equal(await Ball.count(), 3)
-      equal(await Ball.count({box: box01}), 1)
+      equal(await Ball.count({ box: box01 }), 1)
     }
 
     await driver.close()
@@ -741,9 +741,9 @@ describe('from-driver', function () {
     C.refs(A)
 
     const c = await C.create({})
-    const b = await B.create({c})
-    const a = await A.create({b})
-    await C.update(c.id, {a})
+    const b = await B.create({ c })
+    const a = await A.create({ b })
+    await C.update(c.id, { a })
 
     {
       const a = await A.first()
@@ -758,7 +758,7 @@ describe('from-driver', function () {
   })
 
   it('Using cluster', async () => {
-    const {fork} = require('child_process')
+    const { fork } = require('child_process')
 
     const forked = fork(
       require.resolve('../misc/mocks/mock-cluster')
@@ -778,18 +778,27 @@ describe('from-driver', function () {
     equal(await A.first(), null)
     equal(await A.last(), null)
     for (let i = 0; i < 100; i++) {
-      await A.create({i})
+      await A.create({ i })
     }
     equal((await A.first({})).i, 0)
-    equal((await A.first({}, {skip: 3})).i, 3)
+    equal((await A.first({}, { skip: 3 })).i, 3)
     equal((await A.last({})).i, 99)
-    equal((await A.last({}, {skip: 3})).i, 96)
+    equal((await A.last({}, { skip: 3 })).i, 96)
 
     await driver.close()
   })
 
+  it('last when 1', async () => {
+    const driver = clayDriverMemory()
+    const A = fromDriver(driver, 'A')
+    equal(await A.last(), null)
+    await A.create({ i: 0 })
+    equal((await A.last({})).i, 0)
+    await driver.close()
+  })
+
   it('Nested policies', async () => {
-    const {STRING, ENTITY, REF} = clayPolicy.DataTypes
+    const { STRING, ENTITY, REF } = clayPolicy.DataTypes
     const driver = clayDriverMemory()
     const User = fromDriver(driver, 'User')
     const Org = fromDriver(driver, 'Org')
@@ -817,9 +826,9 @@ describe('from-driver', function () {
     Org.refs(User)
     User.refs(Org)
 
-    const org01 = await Org.of({name: 'org01'})
+    const org01 = await Org.of({ name: 'org01' })
     ok(org01)
-    const user01 = await User.of({username: 'user01', org: org01})
+    const user01 = await User.of({ username: 'user01', org: org01 })
     ok(user01)
 
   })
@@ -833,7 +842,7 @@ describe('from-driver', function () {
     await asleep(100)
     await B.drop()
     await asleep(100)
-    const b01 = await B.create({name: 'b01'})
+    const b01 = await B.create({ name: 'b01' })
     await asleep(100)
     await A.createBulk([
       {
@@ -847,12 +856,12 @@ describe('from-driver', function () {
     ])
     await asleep(10)
 
-    equal(await A.count({b: b01}), 2)
+    equal(await A.count({ b: b01 }), 2)
     await asleep(10)
-    equal(await A.count({b: [b01]}), 2)
+    equal(await A.count({ b: [b01] }), 2)
 
     await asleep(10)
-    equal(await A.count([{b: b01}]), 2)
+    equal(await A.count([{ b: b01 }]), 2)
 
     await driver.close()
     await asleep(100)
