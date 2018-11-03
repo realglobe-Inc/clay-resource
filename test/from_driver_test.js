@@ -202,11 +202,11 @@ describe('from-driver', function () {
   })
 
   it('Resolve refs', async () => {
-    let driver = clayDriverMemory()
-    let Org = fromDriver(driver, 'Org')
-    let User = fromDriver(driver, 'User').refs(Org)
-    let org01 = await Org.create({ name: 'org01' })
-    let user01 = await User.create({
+    const driver = clayDriverMemory()
+    const Org = fromDriver(driver, 'Org')
+    const User = fromDriver(driver, 'User').refs(Org)
+    const org01 = await Org.create({ name: 'org01' })
+    const user01 = await User.create({
       name: 'user01',
       org: { $ref: refTo(Org, org01.id) }
     })
@@ -219,13 +219,17 @@ describe('from-driver', function () {
 
     equal(driver._storages.User[String(user02.id)].org.$ref, `Org#${org01.id}`)
 
-    let Team = fromDriver(driver, 'Team').refs(User)
-    let team01 = await Team.create({
+    const Team = fromDriver(driver, 'Team').refs(User)
+    const team01 = await Team.create({
       name: 'Team01',
       users: [{ $ref: refTo(User, user01.id) }]
     })
     ok(team01)
     equal(team01.users[0].name, 'user01')
+
+    {
+      ok(await User.count({ org: org01.toJSON() }))
+    }
   })
 
   it('Policy check', async () => {
