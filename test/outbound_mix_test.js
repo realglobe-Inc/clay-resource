@@ -7,7 +7,7 @@
 const outboundMix = require('../lib/mixins/outbound_mix.js')
 const collectionMix = require('../lib/mixins/collection_mix')
 const assert = require('assert')
-
+const clayEntity = require('clay-entity')
 
 describe('outbound-mix', function () {
   this.timeout(3000)
@@ -42,7 +42,7 @@ describe('outbound-mix', function () {
       '2': null,
     })
     assert.deepStrictEqual(entities, {
-      '1': { id: '1', foo: 'foo' },
+      '1': clayEntity({ id: '1', foo: 'foo' }),
       '2': null,
     })
 
