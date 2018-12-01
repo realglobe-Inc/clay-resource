@@ -19,7 +19,6 @@ module.exports = {
   },
   tmpl (data){
     let { src } = data
-    console.log(src)
     return toc(src, {
       filter (line) {
         let rejectPatterns = [ /Table of Contents/ ]
