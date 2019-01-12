@@ -1,6 +1,6 @@
 {
   "name": "clay-resource",
-  "version": "5.5.33",
+  "version": "5.6.0",
   "description": "Resource accessor for ClayDB",
   "browser": "shim/browser",
   "main": "lib",
@@ -31,14 +31,14 @@
     "clay-entity": "^2.1.10",
     "clay-errors": "^3.1.1",
     "clay-policy": "^2.1.11",
-    "clay-resource-cache": "^2.0.1",
+    "clay-resource-cache": "^2.0.2",
     "clay-resource-collection": "^2.0.5",
     "clay-resource-entity": "^2.6.7",
     "clay-resource-name": "^4.0.5",
     "clay-resource-ref": "^2.0.8",
     "clay-schemas": "^4.0.5",
     "debug": "^4.1.0",
-    "objnest": "^5.0.3",
+    "objnest": "^5.0.4",
     "uuid": "^3.3.2"
   },
   "devDependencies": {
@@ -64,7 +64,7 @@
     "sg-templates": "^1.4.4",
     "sqlite3": "^4.0.4",
     "sugos-travis": "^2.0.7",
-    "the-script-jsdoc": "^2.0.3",
+    "the-script-jsdoc": "^2.0.4",
     "writeout": "^2.2.1"
   },
   "engines": {
