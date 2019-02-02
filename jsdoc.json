@@ -115,6 +115,14 @@
                             "default": "",
                             "optional": true,
                             "nullable": ""
+                        },
+                        {
+                            "name": "options.plain",
+                            "type": "boolean",
+                            "description": "Mark result as plain object",
+                            "default": "",
+                            "optional": true,
+                            "nullable": ""
                         }
                     ],
                     "examples": [

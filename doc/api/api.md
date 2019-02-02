@@ -1,4 +1,4 @@
-# clay-resource@5.6.0
+# clay-resource@5.6.1
 
 Resource accessor for ClayDB
 
@@ -167,6 +167,7 @@ Get a resource
 |  |  |  |
 | options.ignoreCached | boolean | Ignore cached data |
 | options.strict | boolean | If true, throws an error when not found |
+| options.plain | boolean | Mark result as plain object |
 
 **Example**:
 

@@ -364,11 +364,11 @@ describe('from-driver', function () {
   })
 
   it('Using cache', async () => {
-    let driver = clayDriverMemory()
-    let Fruit = fromDriver(driver, 'Fruit')
+    const driver = clayDriverMemory()
+    const Fruit = fromDriver(driver, 'Fruit')
 
-    let orange01 = await Fruit.create({ name: 'orange' })
-    let banana01 = await Fruit.create({ name: 'banana' })
+    const orange01 = await Fruit.create({ name: 'orange' })
+    const banana01 = await Fruit.create({ name: 'banana' })
 
     await Fruit.one(orange01.id)
     await Fruit.one(orange01.id)
@@ -869,6 +869,17 @@ describe('from-driver', function () {
 
     await driver.close()
     await asleep(100)
+  })
+
+  it('With plain object', async () => {
+    const driver = clayDriverMemory()
+    const Fruit = fromDriver(driver, 'Fruit')
+
+    const orange01 = await Fruit.create({ name: 'orange' })
+    const banana01 = await Fruit.create({ name: 'banana' })
+
+    const one = Fruit.one(banana01.id, { plain: true })
+    equal(one.$$entity)
   })
 })
 
