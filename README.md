@@ -55,7 +55,7 @@ Resource accessor for ClayDB
 
 <!-- Section from "doc/guides/00.TOC.md.hbs" Start -->
 
-<a name="section-doc-guides-00-t-o-c-md"></a>
+<a name="section-doc-guides-00-toc-md"></a>
 
 Table of Contents
 ----------------
@@ -249,12 +249,12 @@ void async function () {
 
 <!-- Section from "doc/guides/10.API Guide.md.hbs" Start -->
 
-<a name="section-doc-guides-10-a-p-i-guide-md"></a>
+<a name="section-doc-guides-10-api-guide-md"></a>
 
 API Guide
 -----
 
-+ [clay-resource@5.6.1](./doc/api/api.md)
++ [clay-resource@5.6.2](./doc/api/api.md)
   + [create(args)](./doc/api/api.md#clay-resource-function-create)
   + [fromDriver(driver, nameString, options)](./doc/api/api.md#clay-resource-function-from-driver)
   + [ClayResource](./doc/api/api.md#clay-resource-class)
