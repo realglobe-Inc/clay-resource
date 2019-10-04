@@ -8,7 +8,7 @@ const fromDriver = require('../lib/from_driver.js')
 const clayDriverMemory = require('clay-driver-memory')
 const clayDriverSqlite = require('clay-driver-sqlite')
 const { decorate } = require('clay-entity')
-const { ok, equal, strictEqual, deepEqual } = require('assert')
+const { ok, equal, strictEqual, deepEqual } = require('assert').strict
 const asleep = require('asleep')
 const clayPolicy = require('clay-policy')
 const { refTo } = require('clay-resource-ref')
@@ -151,7 +151,7 @@ describe('from-driver', function () {
       equal((await resource.all())[0].foo, 'bar')
 
       let count = await resource.destroyBulk([created.id])
-      equal(count, 1)
+      deepEqual(count, [1])
 
     }
   })
@@ -178,8 +178,8 @@ describe('from-driver', function () {
     equal(updated.foo2, 'bar2')
     ok(updated.$$at > created.$$at)
 
-    let count = await resource.destroyBulk([created.id])
-    equal(count, 1)
+    const count = await resource.destroyBulk([created.id])
+    deepEqual(count, [1])
   })
 
   it('From driver seal', async () => {
@@ -779,8 +779,8 @@ describe('from-driver', function () {
   it('First/last method', async () => {
     const driver = clayDriverMemory()
     const A = fromDriver(driver, 'A')
-    equal(await A.first(), null)
-    equal(await A.last(), null)
+    ok(!(await A.first()))
+    ok(!(await A.last()))
     for (let i = 0; i < 100; i++) {
       await A.create({ i })
     }
@@ -878,8 +878,8 @@ describe('from-driver', function () {
     const orange01 = await Fruit.create({ name: 'orange' })
     const banana01 = await Fruit.create({ name: 'banana' })
 
-    const one = Fruit.one(banana01.id, { plain: true })
-    equal(one.$$entity)
+    const one = await Fruit.one(banana01.id, { plain: true })
+    ok(!one.$$entity)
   })
 })
 
