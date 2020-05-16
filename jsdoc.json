@@ -604,7 +604,7 @@
                         {
                             "name": "condition",
                             "type": "Object",
-                            "description": "Optional settings",
+                            "description": "Search condition",
                             "default": "{}",
                             "optional": true,
                             "nullable": ""
@@ -622,6 +622,14 @@
                             "type": "SortTerm",
                             "description": "Sort condition",
                             "default": "[]",
+                            "optional": true,
+                            "nullable": ""
+                        },
+                        {
+                            "name": "options",
+                            "type": "Object",
+                            "description": "Optional settings",
+                            "default": "{}",
                             "optional": true,
                             "nullable": ""
                         }
@@ -669,6 +677,14 @@
                             "type": "SortTerm",
                             "description": "Sort condition",
                             "default": "[]",
+                            "optional": true,
+                            "nullable": ""
+                        },
+                        {
+                            "name": "options",
+                            "type": "Object",
+                            "description": "Optional settings",
+                            "default": "{}",
                             "optional": true,
                             "nullable": ""
                         }

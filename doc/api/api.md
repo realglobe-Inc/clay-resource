@@ -1,4 +1,4 @@
-# clay-resource@5.6.4
+# clay-resource@5.6.5
 
 Resource accessor for ClayDB
 
@@ -18,8 +18,8 @@ Resource accessor for ClayDB
   + [resource.createBulk(attributesArray, options)](#clay-resource-class-clay-resource-createBulk)
   + [resource.updateBulk(attributesHash, options)](#clay-resource-class-clay-resource-updateBulk)
   + [resource.destroyBulk(ids, options)](#clay-resource-class-clay-resource-destroyBulk)
-  + [resource.cursor(condition)](#clay-resource-class-clay-resource-cursor)
-  + [resource.each(handler, condition)](#clay-resource-class-clay-resource-each)
+  + [resource.cursor(condition, options)](#clay-resource-class-clay-resource-cursor)
+  + [resource.each(handler, condition, options)](#clay-resource-class-clay-resource-each)
   + [resource.first(filter, options)](#clay-resource-class-clay-resource-first)
   + [resource.last(filter, options)](#clay-resource-class-clay-resource-last)
   + [resource.only(filter, options)](#clay-resource-class-clay-resource-only)
@@ -436,15 +436,16 @@ tryDestroyBulk()
 
 <a class='md-heading-link' name="clay-resource-class-clay-resource-cursor" ></a>
 
-### resource.cursor(condition) -> `Object`
+### resource.cursor(condition, options) -> `Object`
 
 Create cursor to cursor
 
 | Param | Type | Description |
 | ----- | --- | -------- |
-| condition | Object | Optional settings |
+| condition | Object | Search condition |
 | condition.filter | FilterTerm | Filter condition |
 | condition.sort | SortTerm | Sort condition |
+| options | Object | Optional settings |
 
 **Example**:
 
@@ -465,7 +466,7 @@ tryCursor()
 
 <a class='md-heading-link' name="clay-resource-class-clay-resource-each" ></a>
 
-### resource.each(handler, condition) -> `Promise`
+### resource.each(handler, condition, options) -> `Promise`
 
 Iterate entities with handler
 
@@ -475,6 +476,7 @@ Iterate entities with handler
 | condition | Object | Optional settings |
 | condition.filter | FilterTerm | Filter condition |
 | condition.sort | SortTerm | Sort condition |
+| options | Object | Optional settings |
 
 **Example**:
 
