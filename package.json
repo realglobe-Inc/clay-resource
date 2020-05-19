@@ -1,6 +1,6 @@
 {
   "name": "clay-resource",
-  "version": "5.7.0",
+  "version": "5.7.4",
   "description": "Resource accessor for ClayDB",
   "browser": "shim/browser",
   "main": "lib",
@@ -27,7 +27,7 @@
     "asobj": "^3.0.1",
     "clay-collection": "^3.1.5",
     "clay-constants": "^3.5.1",
-    "clay-driver-base": "^4.1.8",
+    "clay-driver-base": "^4.1.9",
     "clay-entity": "^2.1.11",
     "clay-errors": "^3.1.1",
     "clay-policy": "^2.1.13",
