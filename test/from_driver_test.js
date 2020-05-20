@@ -418,6 +418,15 @@ describe('from-driver', function () {
         equal(user.name, 'user01')
         equal(demand.filter.org.$ref, `Org#${org01.id}`)
       }
+
+      {
+        const all = await User.all({ org: org01 }, { skipResolvingRefFor: 'org', sort: ['-createdAt'] })
+        equal(all[0].org.$ref, `Org#${org01.id}`)
+      }
+      {
+        const all = await User.all({ org: org01 }, { sort: ['-createdAt'] })
+        equal(all[0].org.id, org01.id)
+      }
     }
   })
 
